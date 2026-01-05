@@ -1,0 +1,77 @@
+# 依赖目录
+node_modules/
+bower_components/
+
+# 构建输出目录
+dist/
+build/
+public/
+out/
+.next/
+.nuxt/
+
+# 缓存文件
+.cache/
+.parcel-cache/
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE和编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 打包分析文件
+.storybook/
+.storybook-static/
+
+# 临时文件
+.tmp/
+temp/
+
+# 包管理器锁文件（可根据需要取消注释）
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# 特定框架文件
+# Vue
+*.vue.swp
+# Angular
+angular/
+# React
+.eslintcache
+# Next.js
+.next/
+# Nuxt.js
+.nuxt/
+# Gatsby
+.cache/
+public
+
+# 配置文件（可根据需要保留）
+# 取消注释以下行以忽略配置文件
+# .eslintrc.js
+# .prettierrc
+# babel.config.js
+# webpack.config.js
