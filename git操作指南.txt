@@ -8,11 +8,12 @@
 合并：在提交后把自己的分支内容提交到主分支或者把主分支更新内容更新到自己的分支
 0.git pull
 1.git fetch . 自己的分支名：main //将自己分支更新提交到主分支
+2.git push origin main //将主分支的更新推到github上的远程仓库
 
 从主分支拉取更新时
 0.git pull
 1.git merge main //从主分支拉取更新
-
+2.git push //将合并操作提交到远程仓库
 切换分支
 git checkout 分支名
 
