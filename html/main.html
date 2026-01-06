@@ -1,11 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>重走长征路 - 红色精神传承</title>
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 这里写首页导航页面 -->
+    <!-- 视差滚动图片 -->
+    <div class="parallax-container">
+        <div class="parallax-image" id="parallaxImage"></div>
+        <div class="parallax-overlay"></div>
+    </div>
+
+    <!-- 背景元素 -->
+    <div class="background-container">
+        <div class="red-banner"></div>
+        <div class="mountain-bg"></div>
+        <div class="clouds"></div>
+        <div class="clouds clouds2"></div>
+        <div class="river"></div>
+        <div class="route-line"></div>
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+    </div>
+
+    <!-- 侧边导航 -->
+    <nav class="side-nav" id="sideNav">
+        <div class="side-nav-logo">
+            <i class="fas fa-mountain"></i>
+        </div>
+        <ul class="side-nav-list">
+            <li><a href="#home" class="active"><i class="fas fa-home"></i><span>首页</span></a></li>
+            <li><a href="#context"><i class="fas fa-book-open"></i><span>前情提要</span></a></li>
+            <li><a href="#explore"><i class="fas fa-compass"></i><span>开始探索</span></a></li>
+            <li><a href="#stats"><i class="fas fa-chart-bar"></i><span>长征数据</span></a></li>
+            <li><a href="#features"><i class="fas fa-star"></i><span>特色功能</span></a></li>
+        </ul>
+        <div class="side-nav-indicator" id="navIndicator"></div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 顶部导航 - 简化版 -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <h1>重走长征路</h1>
+            </div>
+            <div class="header-quote">
+                <p>不忘初心，牢记使命，传承红色基因</p>
+            </div>
+        </header>
+
+        <!-- 主要内容 -->
+        <main class="main-content">
+            <!-- 标题区域 -->
+            <section class="hero-section" id="home">
+                <div class="title-container">
+                    <h2 class="subtitle">纪念中国工农红军长征胜利</h2>
+                    <h1 class="main-title">重走长征路</h1>
+                    <div class="title-line">
+                        <div class="line-part"></div>
+                        <div class="star-icon"><i class="fas fa-star"></i></div>
+                        <div class="line-part"></div>
+                    </div>
+                    <p class="tagline">体验长征精神，传承红色文化</p>
+                    <button class="start-btn" id="startBtn">
+                        开始重走长征路
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 前情提要 -->
+            <section class="context-section" id="context">
+                <div class="section-header">
+                    <h3><i class="fas fa-book-open"></i> 前情提要</h3>
+                    <div class="section-line"></div>
+                </div>
+                <div class="context-content">
+                    <p>1934年，由于第五次反"围剿"失败，中国工农红军被迫进行战略转移，开始了艰苦卓绝的长征。红军战士爬雪山、过草地，历经千难万险，行程约二万五千里，最终于1936年10月胜利会师。</p>
+                    <p>长征是宣言书，长征是宣传队，长征是播种机。它向全世界宣告，中国共产党及其领导的人民军队是不可战胜的。</p>
+                    <div class="context-highlight">
+                        <i class="fas fa-quote-left"></i>
+                        <p>长征的胜利，是中国共产党和红军将士用生命和热血铸就的不朽丰碑。</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 导航选择区域 -->
+            <section class="navigation-section" id="explore">
+                <div class="section-header">
+                    <h3><i class="fas fa-compass"></i> 请选择您的探索方式</h3>
+                    <div class="section-line"></div>
+                </div>
+                <p class="section-description">通过不同方式体验长征精神，了解这段波澜壮阔的历史</p>
+                
+                <div class="navigation-options">
+                    <!-- 线性引导选项 -->
+                    <div class="nav-option linear-guide">
+                        <div class="option-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <h4 class="option-title">线性引导</h4>
+                        <p class="option-description">按照历史时间顺序，系统了解长征全过程，适合初次体验者。</p>
+                        <ul class="option-features">
+                            <li><i class="fas fa-check-circle"></i> 按时间线系统学习</li>
+                            <li><i class="fas fa-check-circle"></i> 历史事件详细讲解</li>
+                            <li><i class="fas fa-check-circle"></i> 交互式时间轴导航</li>
+                        </ul>
+                        <button class="enter-btn" id="linearBtn">
+                            开始线性探索
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <div class="route-animation"></div>
+                    </div>
+                    
+                    <!-- 自由探索选项 -->
+                    <div class="nav-option free-explore">
+                        <div class="option-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 class="option-title">自由探索</h4>
+                        <p class="option-description">自由选择感兴趣的长征地点和事件，深度探索长征细节。</p>
+                        <ul class="option-features">
+                            <li><i class="fas fa-check-circle"></i> 互动式地图探索</li>
+                            <li><i class="fas fa-check-circle"></i> 自主选择探索路径</li>
+                            <li><i class="fas fa-check-circle"></i> 多媒体内容体验</li>
+                        </ul>
+                        <button class="enter-btn" id="freeBtn">
+                            开始自由探索
+                            <i class="fas fa-expand-alt"></i>
+                        </button>
+                        <div class="map-animation"></div>
+                    </div>
+                </div>
+                
+                <!-- 提示信息 -->
+                <div class="hint">
+                    <i class="fas fa-lightbulb"></i>
+                    首次访问建议选择"线性引导"模式，可系统了解长征全过程
+                </div>
+            </section>
+            
+            <!-- 长征数据展示 -->
+            <section class="stats-section" id="stats">
+                <div class="section-header">
+                    <h3><i class="fas fa-chart-bar"></i> 长征数字记忆</h3>
+                    <div class="section-line"></div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="25000">0</div>
+                        <div class="stat-label">行军里程（里）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="600">0</div>
+                        <div class="stat-label">重要战役（次）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="18">0</div>
+                        <div class="stat-label">翻越大山（座）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="24">0</div>
+                        <div class="stat-label">跨越大河（条）</div>
+                    </div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="14">0</div>
+                        <div class="stat-label">途经省份（个）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="11">0</div>
+                        <div class="stat-label">少数民族地区（个）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="380">0</div>
+                        <div class="stat-label">大小战斗（次）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">翻越雪山（次）</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 特色功能区域 -->
+            <section class="features-section" id="features">
+                <div class="section-header">
+                    <h3><i class="fas fa-star"></i> 体验特色功能</h3>
+                    <div class="section-line"></div>
+                </div>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h4 class="feature-title">沉浸式体验</h4>
+                        <p class="feature-description">身临其境感受长征路上的艰苦与荣光。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="feature-title">AI答疑</h4>
+                        <p class="feature-description">智能AI助手，随时解答关于长征历史的各种问题。</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部信息 - 简化版 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-mountain"></i>
+                    <span>重走长征路 - 红色精神传承项目</span>
+                </div>
+                <div class="footer-quote">
+                    <p>"每一代人有每一代人的长征路，每一代人都要走好自己的长征路。"</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 进入动画 -->
+    <div class="enter-animation" id="enterAnimation">
+        <div class="animation-content">
+            <div class="animation-title">重走长征路</div>
+            <div class="animation-subtitle">正在进入互动长征地图...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="/js/mainScript.js"></script>
 </body>
 </html>
