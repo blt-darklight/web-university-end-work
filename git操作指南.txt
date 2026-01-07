@@ -6,7 +6,7 @@
 2.git commit -m"提交说明"
 3.git push //将本地仓库文件推送至远程仓库
 合并：在提交后把自己的分支内容提交到主分支或者把主分支更新内容更新到自己的分支
-0.git pull
+0.git pull       注意：提交前如果主分支和自己分支不一样要先拉取喔
 0-1.git pull origin main //更新主分支
 1.git fetch . 自己的分支名:main //将自己分支更新提交到主分支
 2.git push origin main //将主分支的更新推到github上的远程仓库
