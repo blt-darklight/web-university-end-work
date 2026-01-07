@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伟大转折——遵义会议沉浸式探索</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary-red: #c62828;
+            --secondary-red: #ef5350;
+            --dark-bg: #0a0a14;
+            --light-gray: #f5f5f5;
+            --accent-gold: #ffb300;
+            --mystery-blue: #1565c0;
+            --explore-green: #2e7d32;
+            --transition-time: 0.4s;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* 动态背景 - 会议紧迫感 */
+        .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        /* 深夜会议氛围 */
+        .meeting-night {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 30%, #1a0a14 70%, #0a050a 100%);
+        }
+        
+        /* 紧急会议云层 */
+        .urgent-clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .urgent-cloud {
+            position: absolute;
+            background: rgba(80, 60, 80, 0.2);
+            border-radius: 100px;
+            filter: blur(30px);
+            opacity: 0.7;
+        }
+        
+        .urgent-cloud-1 {
+            width: 500px;
+            height: 150px;
+            top: 10%;
+            left: -500px;
+            animation: urgentCloudMove 20s linear infinite;
+            background: rgba(80, 60, 80, 0.25);
+        }
+        
+        .urgent-cloud-2 {
+            width: 400px;
+            height: 120px;
+            top: 40%;
+            left: -400px;
+            animation: urgentCloudMove 25s linear infinite 5s;
+            background: rgba(60, 60, 100, 0.2);
+        }
+        
+        .urgent-cloud-3 {
+            width: 350px;
+            height: 100px;
+            top: 70%;
+            left: -350px;
+            animation: urgentCloudMove 22s linear infinite 8s;
+            background: rgba(80, 60, 80, 0.3);
+        }
+        
+        @keyframes urgentCloudMove {
+            0% { transform: translateX(0); opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.5; }
+        }
+        
+        /* 会议室灯光效果 */
+        .meeting-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .meeting-light {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.3;
+        }
+        
+        .meeting-light-1 {
+            top: 20%;
+            left: 15%;
+        }
+        
+        .meeting-light-2 {
+            top: 35%;
+            right: 20%;
+        }
+        
+        .meeting-light-3 {
+            bottom: 25%;
+            left: 25%;
+        }
+        
+        .light-glow {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            animation: lightPulse 6s infinite alternate;
+        }
+        
+        @keyframes lightPulse {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.2; }
+            100% { transform: translateX(-50%) scale(1.3); opacity: 0.4; }
+        }
+        
+        .light-source {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(ellipse at center, #ffd700 0%, #ffab00 50%, transparent 70%);
+            border-radius: 50% 50% 20% 20%;
+            filter: blur(10px);
+            animation: lightFlicker 4s infinite alternate;
+        }
+        
+        @keyframes lightFlicker {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 0.9; }
+        }
+        
+        /* 贵州山脉轮廓 */
+        .guizhou-mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to top, rgba(30, 30, 40, 0.7) 0%, transparent 100%);
+            overflow: hidden;
+            clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 90% 25%, 80% 40%, 70% 20%, 60% 35%, 50% 15%, 40% 30%, 30% 10%, 20% 25%, 10% 5%, 0% 20%);
+        }
+        
+        .mountain-shadow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(90deg, transparent, rgba(60, 60, 80, 0.5), transparent);
+            animation: shadowMove 8s linear infinite;
+        }
+        
+        .mountain-shadow:nth-child(2) {
+            animation-delay: -2s;
+            opacity: 0.7;
+        }
+        
+        .mountain-shadow:nth-child(3) {
+            animation-delay: -4s;
+            opacity: 0.4;
+        }
+        
+        @keyframes shadowMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* 紧急信号光点 */
+        .urgent-signal {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #ff5722;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: signalBlink 4s infinite;
+        }
+        
+        @keyframes signalBlink {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* 交互粒子效果 */
+        .interactive-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        /* 开始界面 */
+        .start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(10, 10, 20, 0.95);
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        .start-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .historical-badge {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4);
+            animation: badgePulse 3s infinite alternate;
+        }
+        
+        @keyframes badgePulse {
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(198, 40, 40, 0.6); }
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+        }
+        
+        .main-title span {
+            color: var(--accent-gold);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .main-title span::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-gold);
+            animation: underline 3s infinite alternate;
+        }
+        
+        @keyframes underline {
+            0% { width: 0%; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0%; left: 100%; }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #b0bec5;
+            max-width: 800px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .start-button {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .start-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.6);
+        }
+        
+        .start-button i {
+            margin-left: 15px;
+            animation: arrowBounce 1.5s infinite;
+        }
+        
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* 视频播放器 */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .video-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .video-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+        }
+        
+        .video-overlay.active .video-container {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .close-video {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-video:hover {
+            transform: scale(1.1) rotate(90deg);
+            background-color: #b71c1c;
+        }
+        
+        .video-info {
+            color: white;
+            text-align: center;
+            margin-top: 25px;
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+        
+        /* 探索主界面 */
+        .exploration-container {
+            min-height: 100vh;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .exploration-container.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 1s ease;
+        }
+        
+        /* 时间定位器 */
+        .time-locator {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 5px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-30px);
+            opacity: 0;
+            animation: slideIn 0.8s ease 0.2s forwards;
+        }
+        
+        @keyframes slideIn {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .time-period {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-period i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .location {
+            font-size: 1.4rem;
+            color: #bbdefb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location i {
+            margin-right: 10px;
+        }
+        
+        /* 章节导航 */
+        .chapter-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .chapter-nav-item {
+            background-color: rgba(30, 30, 40, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all var(--transition-time) ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .chapter-nav-item.visible {
+            animation: slideUp 0.6s ease forwards;
+        }
+        
+        .chapter-nav-item:nth-child(1) { animation-delay: 0.3s; }
+        .chapter-nav-item:nth-child(2) { animation-delay: 0.4s; }
+        .chapter-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .chapter-nav-item:nth-child(4) { animation-delay: 0.6s; }
+        
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .chapter-nav-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 179, 0, 0.05), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-time) ease;
+        }
+        
+        .chapter-nav-item:hover::before {
+            opacity: 1;
+        }
+        
+        .chapter-nav-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.15);
+        }
+        
+        .chapter-nav-item.active {
+            border-color: var(--accent-gold);
+            background-color: rgba(30, 30, 40, 0.9);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.2);
+        }
+        
+        .chapter-nav-item.locked {
+            cursor: not-allowed;
+            opacity: 0.5;
+            transform: none !important;
+        }
+        
+        .chapter-nav-item.locked:hover {
+            transform: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        
+        .chapter-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-nav-item.active .chapter-icon {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+        }
+        
+        .chapter-nav-item.completed .chapter-icon {
+            background: linear-gradient(135deg, var(--explore-green) 0%, #1b5e20 100%);
+        }
+        
+        .chapter-title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .chapter-description {
+            color: #b0bec5;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .status-locked {
+            background-color: rgba(85, 85, 85, 0.5);
+            color: #aaa;
+        }
+        
+        .status-available {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: #64b5f6;
+        }
+        
+        .status-completed {
+            background-color: rgba(46, 125, 50, 0.2);
+            color: #81c784;
+        }
+        
+        /* 内容区域 */
+        .content-area {
+            flex-grow: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 0;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            display: none;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .content-area.active {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+            animation: contentAppear 0.6s ease;
+        }
+        
+        @keyframes contentAppear {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .content-header {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .content-title {
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .content-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+        }
+        
+        .close-content {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .close-content:hover {
+            background-color: white;
+            color: var(--primary-red);
+            transform: rotate(90deg);
+        }
+        
+        .content-body {
+            padding: 40px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        /* 场景模拟 */
+        .scene-simulation {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border-left: 5px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-simulation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 179, 0, 0.05) 100%);
+            z-index: 0;
+        }
+        
+        .scene-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene-title i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .scene-description {
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+        }
+        
+        .scene-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .scene-image span {
+            position: relative;
+            z-index: 1;
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* 互动元素 */
+        .interactive-element {
+            background-color: rgba(13, 71, 161, 0.15);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(13, 71, 161, 0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(13, 71, 161, 0.2);
+            border-color: rgba(13, 71, 161, 0.6);
+        }
+        
+        .interactive-element.disabled {
+            cursor: default;
+            opacity: 0.7;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .interactive-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #bbdefb;
+            font-size: 1.4rem;
+        }
+        
+        .interactive-title i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .interactive-description {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* 历史问答 */
+        .historical-quiz {
+            background-color: rgba(30, 30, 40, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .historical-quiz.visible {
+            display: block;
+        }
+        
+        .quiz-title {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-title i {
+            margin-right: 10px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quiz-option {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-gold);
+        }
+        
+        .quiz-option.selected {
+            background-color: rgba(255, 179, 0, 0.2);
+            border-color: var(--accent-gold);
+        }
+        
+        .quiz-option.correct {
+            background-color: rgba(46, 125, 50, 0.3);
+            border-color: var(--explore-green);
+        }
+        
+        .quiz-option.incorrect {
+            background-color: rgba(198, 40, 40, 0.3);
+            border-color: var(--primary-red);
+        }
+        
+        .quiz-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--accent-gold);
+            display: none;
+        }
+        
+        .quiz-feedback.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .quiz-next-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .quiz-next-btn.visible {
+            display: inline-block;
+        }
+        
+        .quiz-next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+        }
+        
+        /* 历史档案 */
+        .historical-dossier {
+            background-color: rgba(30, 30, 40, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .historical-dossier.visible {
+            display: block;
+        }
+        
+        .dossier-title {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dossier-title i {
+            margin-right: 10px;
+        }
+        
+        .dossier-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dossier-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .dossier-label {
+            color: #bbdefb;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .dossier-value {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* 阅读完成按钮 */
+        .reading-complete-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+        
+        .reading-complete-section.visible {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .complete-reading-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            color: #333;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 179, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .complete-reading-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.4);
+        }
+        
+        .complete-reading-btn i {
+            margin-left: 10px;
+        }
+        
+        /* 成就解锁 */
+        .achievement-unlock {
+            background: linear-gradient(135deg, rgba(255, 179, 0, 0.1) 0%, rgba(255, 179, 0, 0.2) 100%);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid var(--accent-gold);
+            display: none;
+            animation: achievementAppear 0.8s ease;
+        }
+        
+        .achievement-unlock.visible {
+            display: block;
+        }
+        
+        @keyframes achievementAppear {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .achievement-icon {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .achievement-title {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        .achievement-description {
+            color: #e0e0e0;
+            line-height: 1.5;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .continue-button {
+            background-color: var(--accent-gold);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .continue-button:hover {
+            background-color: #ffca28;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .time-locator {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .time-period, .location {
+                margin-bottom: 10px;
+            }
+            
+            .chapter-navigation {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-body {
+                padding: 25px;
+                max-height: 60vh;
+            }
+            
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景 - 会议紧迫感 -->
+    <div class="dynamic-background">
+        <div class="meeting-night"></div>
+        <div class="urgent-clouds">
+            <div class="urgent-cloud urgent-cloud-1"></div>
+            <div class="urgent-cloud urgent-cloud-2"></div>
+            <div class="urgent-cloud urgent-cloud-3"></div>
+        </div>
+        <div class="meeting-lights">
+            <div class="meeting-light meeting-light-1">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
+            </div>
+            <div class="meeting-light meeting-light-2">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
+            </div>
+            <div class="meeting-light meeting-light-3">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
+            </div>
+        </div>
+        <div class="guizhou-mountains">
+            <div class="mountain-shadow"></div>
+            <div class="mountain-shadow"></div>
+            <div class="mountain-shadow"></div>
+        </div>
+        <!-- 紧急信号光点 -->
+        <div id="urgentSignals"></div>
+    </div>
+    
+    <!-- 交互粒子效果 -->
+    <div class="interactive-particles" id="interactiveParticles"></div>
+    
+    <!-- 开始界面 -->
+    <div class="start-screen" id="startScreen">
+        <div class="historical-badge">历史转折任务 #001</div>
+        <h1 class="main-title">伟大转折：<span>遵义会议的三天三夜</span></h1>
+        <p class="subtitle">1935年1月，贵州遵义。在一栋二层小楼里，一场决定中国共产党和中国革命命运的会议正在紧张进行。这三天，将改变一切……</p>
+        <p class="subtitle">现在，你是一名历史见证者，需要还原这场生死攸关的会议真相。每一个细节，都可能影响历史的走向。</p>
+        <button class="start-button" id="startButton">
+            开始见证 <i class="fas fa-history"></i>
+        </button>
+    </div>
+    
+    <!-- 视频播放器 -->
+    <div class="video-overlay" id="videoOverlay">
+        <div class="video-container">
+            <button class="close-video" id="closeVideo">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="historyVideo" controls>
+                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的遵义会议纪录片 -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+        </div>
+        <div class="video-info">
+            <p>观看这段视频，了解1935年1月中央红军面临的严峻形势和遵义会议召开的历史背景。</p>
+            <p>视频结束后，请点击右上角的关闭按钮，继续你的见证之旅。</p>
+        </div>
+    </div>
+    
+    <!-- 探索主界面 -->
+    <div class="exploration-container" id="explorationContainer">
+        <!-- 时间定位器 -->
+        <div class="time-locator">
+            <div class="time-period">
+                <i class="fas fa-calendar-alt"></i>
+                <span>1935年1月15-17日 · 寒冬</span>
+            </div>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>贵州 · 遵义老城柏辉章公馆</span>
+            </div>
+        </div>
+        
+        <!-- 章节导航 -->
+        <div class="chapter-navigation">
+            <div class="chapter-nav-item visible active" data-chapter="1">
+                <div class="chapter-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3 class="chapter-title">生死关头</h3>
+                <p class="chapter-description">了解湘江战役后的危急形势，探索会议召开的必然性</p>
+                <div class="chapter-status status-available">点击见证</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="2">
+                <div class="chapter-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3 class="chapter-title">激烈争论</h3>
+                <p class="chapter-description">亲历会议上的关键发言，感受改变历史的辩论</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="3">
+                <div class="chapter-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h3 class="chapter-title">重大决议</h3>
+                <p class="chapter-description">见证会议的核心成果，理解组织调整的历史意义</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="4">
+                <div class="chapter-icon">
+                    <i class="fas fa-flag"></i>
+                </div>
+                <h3 class="chapter-title">历史转折</h3>
+                <p class="chapter-description">领悟会议的历史地位，感受中国革命的伟大转折</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+        </div>
+        
+        <!-- 内容区域 -->
+        <div class="content-area" id="contentArea">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title" id="contentTitle">生死关头</h2>
+                    <p class="content-subtitle" id="contentSubtitle">湘江战役后的危急形势</p>
+                </div>
+                <button class="close-content" id="closeContent">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="content-body" id="contentBody">
+                <!-- 内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+        
+        <!-- 成就解锁区域 -->
+        <div id="achievementContainer"></div>
+    </div>
+
+    <script>
+        // 探索章节数据 - 遵义会议
+        const explorationData = {
+            1: {
+                title: "生死关头",
+                subtitle: "湘江战役后的危急形势",
+                scene: {
+                    title: "场景模拟：湘江边的血色记忆",
+                    description: "1934年11月底至12月初，湘江战役的惨败让红军从8.6万人锐减至3万余人。江水被染成红色，江面上漂浮着红军战士的遗体、枪支和文件。活下来的战士们眼神空洞，身心俱疲。博古、李德的错误指挥已经让全军上下忍无可忍。在行军途中，毛泽东与王稼祥、张闻天组成的'中央队三人团'，一边养伤一边讨论失败的原因，逐渐形成改变领导的共识……"
+                },
+                interactive: {
+                    title: "点击探索：为什么必须召开遵义会议？",
+                    description: "点击此处，了解湘江战役后的危急形势，探索召开遵义会议的历史必然性。"
+                },
+                quiz: {
+                    question: "湘江战役后，中央红军从多少人锐减到多少人？",
+                    options: [
+                        { text: "从10万减至5万", correct: false },
+                        { text: "从12万减至6万", correct: false },
+                        { text: "从8.6万减至3万", correct: true },
+                        { text: "从9万减至4万", correct: false }
+                    ],
+                    feedback: "正确答案是'从8.6万减至3万'。湘江战役是中央红军长征以来最惨烈的一战，红军付出了巨大牺牲，兵力从8.6万锐减至3万余人，损失超过一半。"
+                },
+                dossier: [
+                    { label: "时间节点", value: "1934年12月，中央红军突破湘江后进入贵州境内。" },
+                    { label: "领导危机", value: "博古、李德的军事指挥已失去全军的信任，'左'倾错误路线难以为继。" },
+                    { label: "酝酿过程", value: "毛泽东与王稼祥、张闻天在行军途中组成'中央队三人团'，系统分析第五次反'围剿'失败原因。" },
+                    { label: "战略转兵", value: "通道转兵、黎平会议、猴场会议为遵义会议创造了条件。" },
+                    { label: "会议准备", value: "1935年1月7日红军占领遵义，获得相对稳定的环境召开会议。" }
+                ],
+                achievement: {
+                    title: "危急形势分析员",
+                    description: "你已了解湘江战役后的危急形势，理解了召开遵义会议的历史必然性。",
+                    nextChapter: 2
+                }
+            },
+            2: {
+                title: "激烈争论",
+                subtitle: "改变历史的三天辩论",
+                scene: {
+                    title: "场景模拟：柏辉章公馆二楼会议室",
+                    description: "1935年1月15日傍晚，在遵义老城柏辉章公馆的二楼会议室，中共中央政治局扩大会议在极端保密的情况下召开。二十多人挤在这间不到30平方米的房间里，空气凝重。长方形的会议桌旁，博古、周恩来、张闻天、毛泽东、朱德等人依次而坐。李德和翻译伍修权坐在门口。煤油灯的光线在每个人脸上跳动，墙上挂着军事地图，标注着红军的行进路线……"
+                },
+                interactive: {
+                    title: "点击见证：会议上的关键发言",
+                    description: "点击此处，亲历遵义会议上的激烈争论，感受毛泽东、张闻天等人的关键发言如何改变历史走向。"
+                },
+                quiz: {
+                    question: "在遵义会议上，谁作了批判'左'倾军事错误的'反报告'，为会议定下了纠正错误的基调？",
+                    options: [
+                        { text: "周恩来", correct: false },
+                        { text: "张闻天", correct: true },
+                        { text: "王稼祥", correct: false },
+                        { text: "朱德", correct: false }
+                    ],
+                    feedback: "正确答案是'张闻天'。张闻天按照会前与毛泽东、王稼祥商定的意见，作了系统批判'左'倾军事错误的发言，被称为'反报告'，为会议定下了纠正错误的基调。"
+                },
+                dossier: [
+                    { label: "会议时间", value: "1935年1月15日至17日，连续三天。" },
+                    { label: "参会人员", value: "政治局委员、候补委员、红军主要军团负责人等20余人。" },
+                    { label: "主要议程", value: "总结第五次反'围剿'和长征以来的军事经验教训。" },
+                    { label: "博古报告", value: "承认失败但强调客观困难，为错误军事领导辩护。" },
+                    { label: "毛泽东发言", value: "长达一个多小时的发言，深刻批判博古、李德的军事指挥错误。" },
+                    { label: "王稼祥投票", value: "明确提出应由毛泽东来指挥红军，投下了'关键一票'。" }
+                ],
+                achievement: {
+                    title: "会议见证者",
+                    description: "你已亲历遵义会议的激烈争论，理解了这场辩论如何改变中国革命的走向。",
+                    nextChapter: 3
+                }
+            },
+            3: {
+                title: "重大决议",
+                subtitle: "会议的核心成果",
+                scene: {
+                    title: "场景模拟：决议通过的历史时刻",
+                    description: "经过三天激烈讨论，会议通过了由张闻天起草的《中央关于反对敌人五次'围剿'的总结的决议》。决议明确指出红军第五次反'围剿'失败的主要原因是博古、李德在军事指挥上犯了严重的'左'倾错误。会议作出重大组织调整：增选毛泽东为中央政治局常委，取消'三人团'，由张闻天接替博古负总责，成立由毛泽东、周恩来、王稼祥组成的'新三人团'负责军事指挥……"
+                },
+                interactive: {
+                    title: "点击分析：会议决议的历史意义",
+                    description: "点击此处，分析遵义会议决议的核心内容，理解这次会议如何解决军事路线和组织领导两大问题。"
+                },
+                quiz: {
+                    question: "遵义会议后成立的'新三人团'（三人军事指挥小组）由哪些人组成？",
+                    options: [
+                        { text: "毛泽东、周恩来、朱德", correct: false },
+                        { text: "毛泽东、周恩来、王稼祥", correct: true },
+                        { text: "毛泽东、张闻天、王稼祥", correct: false },
+                        { text: "周恩来、朱德、张闻天", correct: false }
+                    ],
+                    feedback: "正确答案是'毛泽东、周恩来、王稼祥'。遵义会议后成立的'新三人团'（三人军事指挥小组）由毛泽东、周恩来、王稼祥组成，作为全权指挥军事的最高权力机构。"
+                },
+                dossier: [
+                    { label: "思想路线", value: "决议肯定毛泽东的军事战略战术原则，否定'左'倾冒险主义错误。" },
+                    { label: "组织调整", value: "增选毛泽东为政治局常委，取消博古、李德的最高军事指挥权。" },
+                    { label: "领导分工", value: "张闻天接替博古负总责，主持中央日常工作。" },
+                    { label: "军事指挥", value: "成立'新三人团'（毛泽东、周恩来、王稼祥），负责军事指挥。" },
+                    { label: "历史评价", value: "会议开始确立以毛泽东为代表的马克思主义正确路线在党中央的领导地位。" }
+                ],
+                achievement: {
+                    title: "决议分析家",
+                    description: "你已分析遵义会议的重大决议，理解了这次会议如何确立了正确的军事路线和组织领导。",
+                    nextChapter: 4
+                }
+            },
+            4: {
+                title: "历史转折",
+                subtitle: "中国革命的新起点",
+                scene: {
+                    title: "场景模拟：转折之后的新征程",
+                    description: "遵义会议后，红军面貌焕然一新。毛泽东重新参与军事指挥，红军开始采用灵活机动的运动战术。四渡赤水，巧渡金沙江，强渡大渡河，飞夺泸定桥……红军摆脱了被动挨打的局面，掌握了战场主动权。这次会议不仅挽救了党、挽救了红军、挽救了中国革命，更标志着中国共产党在政治上开始走向成熟……"
+                },
+                interactive: {
+                    title: "点击领悟：会议的历史地位",
+                    description: "点击此处，领悟遵义会议在中国革命史上的重要地位，理解为什么说它是中国共产党历史上生死攸关的转折点。"
+                },
+                quiz: {
+                    question: "遵义会议最重要的历史意义是什么？",
+                    options: [
+                        { text: "确定了北上抗日的方针", correct: false },
+                        { text: "建立了中华苏维埃共和国", correct: false },
+                        { text: "挽救了党、红军和中国革命", correct: true },
+                        { text: "制定了土地革命路线", correct: false }
+                    ],
+                    feedback: "正确答案是'挽救了党、红军和中国革命'。遵义会议在极端危急的历史关头，解决了军事路线和组织领导两大核心问题，挽救了党，挽救了红军，挽救了中国革命。"
+                },
+                dossier: [
+                    { label: "生死攸关的转折点", value: "在党和红军面临覆灭危险的极端危急关头，挽救了革命。" },
+                    { label: "确立实际领导地位", value: "确立了毛泽东在党中央和红军中的实际领导地位。" },
+                    { label: "独立自主的起点", value: "第一次在没有共产国际干预下独立自主解决自身重大问题。" },
+                    { label: "打开革命新局面", value: "中国革命在正确路线指引下走上了胜利发展的道路。" },
+                    { label: "马克思主义中国化", value: "是马克思主义中国化历程中的一个关键节点。" },
+                    { label: "历史评价", value: "标志着中国共产党在政治上开始走向成熟。" }
+                ],
+                achievement: {
+                    title: "历史转折见证者",
+                    description: "恭喜！你已完成遵义会议探索，理解了这次会议如何成为中国共产党和中国革命生死攸关的转折点。",
+                    nextChapter: null
+                }
+            }
+        };
+        
+        // 当前状态
+        let currentChapter = 1;
+        let completedChapters = new Set();
+        let achievementVisible = false;
+        
+        // DOM元素
+        const startScreen = document.getElementById('startScreen');
+        const startButton = document.getElementById('startButton');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const closeVideo = document.getElementById('closeVideo');
+        const historyVideo = document.getElementById('historyVideo');
+        const explorationContainer = document.getElementById('explorationContainer');
+        const chapterNavItems = document.querySelectorAll('.chapter-nav-item');
+        const contentArea = document.getElementById('contentArea');
+        const contentTitle = document.getElementById('contentTitle');
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        const contentBody = document.getElementById('contentBody');
+        const closeContent = document.getElementById('closeContent');
+        const urgentSignalsContainer = document.getElementById('urgentSignals');
+        const interactiveParticles = document.getElementById('interactiveParticles');
+        const achievementContainer = document.getElementById('achievementContainer');
+        
+        // 初始化
+        function init() {
+            // 创建紧急信号光点
+            createUrgentSignals();
+            
+            // 事件监听
+            startButton.addEventListener('click', startExploration);
+            closeVideo.addEventListener('click', closeVideoPlayer);
+            closeContent.addEventListener('click', closeContentArea);
+            
+            // 章节导航点击事件
+            chapterNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (!this.classList.contains('locked')) {
+                        const chapterId = parseInt(this.getAttribute('data-chapter'));
+                        openChapter(chapterId);
+                    }
+                });
+            });
+            
+            // 视频结束后自动关闭
+            historyVideo.addEventListener('ended', function() {
+                setTimeout(() => {
+                    closeVideoPlayer();
+                }, 2000);
+            });
+            
+            // 初始化第一个章节
+            openChapter(1);
+        }
+        
+        // 创建紧急信号光点
+        function createUrgentSignals() {
+            for (let i = 0; i < 20; i++) {
+                const signal = document.createElement('div');
+                signal.className = 'urgent-signal';
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const delay = Math.random() * 4;
+                const duration = 2 + Math.random() * 3;
+                
+                signal.style.left = `${x}%`;
+                signal.style.top = `${y}%`;
+                signal.style.animationDelay = `${delay}s`;
+                signal.style.animationDuration = `${duration}s`;
+                signal.style.opacity = Math.random() * 0.3 + 0.1;
+                
+                urgentSignalsContainer.appendChild(signal);
+            }
+        }
+        
+        // 创建交互粒子效果
+        function createInteractionEffect(x, y, color = '#ffb300', count = 8) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 60 + 30;
+                const targetX = x + Math.cos(angle) * distance;
+                const targetY = y + Math.sin(angle) * distance;
+                
+                interactiveParticles.appendChild(particle);
+                
+                const animation = particle.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${targetX - x}px, ${targetY - y}px) scale(0)`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 500 + Math.random() * 300,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+        
+        // 开始探索
+        function startExploration() {
+            const rect = startButton.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            createInteractionEffect(centerX, centerY, '#ffb300', 12);
+            
+            startScreen.classList.add('hidden');
+            
+            setTimeout(() => {
+                videoOverlay.classList.add('active');
+                historyVideo.play();
+            }, 800);
+        }
+        
+        // 关闭视频播放器
+        function closeVideoPlayer() {
+            const rect = closeVideo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
+            
+            videoOverlay.classList.remove('active');
+            explorationContainer.classList.add('active');
+            historyVideo.pause();
+            historyVideo.currentTime = 0;
+            
+            // 显示章节导航
+            chapterNavItems.forEach(item => {
+                item.classList.add('visible');
+            });
+        }
+        
+        // 打开章节
+        function openChapter(chapterId) {
+            // 如果当前有成就显示，先隐藏它
+            if (achievementVisible) {
+                hideAchievement();
+            }
+            
+            currentChapter = chapterId;
+            const chapterData = explorationData[chapterId];
+            
+            if (!chapterData) return;
+            
+            // 更新导航状态
+            chapterNavItems.forEach(item => {
+                const itemChapterId = parseInt(item.getAttribute('data-chapter'));
+                item.classList.remove('active');
+                
+                if (itemChapterId === chapterId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // 更新内容区域
+            contentTitle.textContent = chapterData.title;
+            contentSubtitle.textContent = chapterData.subtitle;
+            
+            // 构建内容
+            let contentHTML = `
+                <div class="scene-simulation">
+                    <div class="scene-title">
+                        <i class="fas fa-theater-masks"></i>
+                        <span>${chapterData.scene.title}</span>
+                    </div>
+                    <p class="scene-description">${chapterData.scene.description}</p>
+                    <div class="scene-image">
+                        <span>历史场景示意图：${chapterData.title}</span>
+                    </div>
+                </div>
+            `;
+            
+            // 如果章节已完成，直接显示所有内容
+            if (completedChapters.has(chapterId)) {
+                contentHTML += `
+                    <div class="interactive-element disabled">
+                        <div class="interactive-title">
+                            <i class="fas fa-search"></i>
+                            <span>${chapterData.interactive.title}</span>
+                        </div>
+                        <p class="interactive-description">${chapterData.interactive.description}</p>
+                    </div>
+                    
+                    <div class="historical-quiz visible">
+                        <div class="quiz-title">
+                            <i class="fas fa-question-circle"></i>
+                            <span>历史问答</span>
+                        </div>
+                        <div class="quiz-question">${chapterData.quiz.question}</div>
+                        <div class="quiz-options">
+                `;
+                
+                chapterData.quiz.options.forEach((option, index) => {
+                    const isCorrect = option.correct ? 'correct' : '';
+                    contentHTML += `
+                        <div class="quiz-option ${isCorrect}">
+                            ${option.text}
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `
+                        </div>
+                        <div class="quiz-feedback visible">
+                            ${chapterData.quiz.feedback}
+                        </div>
+                    </div>
+                    
+                    <div class="historical-dossier visible">
+                        <div class="dossier-title">
+                            <i class="fas fa-file-alt"></i>
+                            <span>历史档案</span>
+                        </div>
+                `;
+                
+                chapterData.dossier.forEach(item => {
+                    contentHTML += `
+                        <div class="dossier-item">
+                            <div class="dossier-label">${item.label}</div>
+                            <div class="dossier-value">${item.value}</div>
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `</div>`;
+                
+                // 如果不是最后一章，显示继续探索按钮
+                if (chapterData.achievement.nextChapter && !completedChapters.has(chapterData.achievement.nextChapter)) {
+                    contentHTML += `
+                        <div class="reading-complete-section visible">
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">本章节已完成，你可以继续见证下一章</p>
+                            <button class="complete-reading-btn" onclick="continueToNextChapter(${chapterId})">
+                                继续见证下一章 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                // 章节未完成，显示可交互内容
+                contentHTML += `
+                    <div class="interactive-element" id="interactiveElement">
+                        <div class="interactive-title">
+                            <i class="fas fa-search"></i>
+                            <span>${chapterData.interactive.title}</span>
+                        </div>
+                        <p class="interactive-description">${chapterData.interactive.description}</p>
+                    </div>
+                    
+                    <div class="historical-quiz" id="historicalQuiz">
+                        <!-- 历史问答将通过JavaScript动态加载 -->
+                    </div>
+                    
+                    <div class="historical-dossier" id="historicalDossier">
+                        <!-- 历史档案将通过JavaScript动态加载 -->
+                    </div>
+                    
+                    <div class="reading-complete-section" id="readingCompleteSection">
+                        <!-- 阅读完成按钮将通过JavaScript动态加载 -->
+                    </div>
+                `;
+            }
+            
+            // 更新内容区域
+            contentBody.innerHTML = contentHTML;
+            contentArea.classList.add('active');
+            
+            // 如果章节未完成，设置交互事件
+            if (!completedChapters.has(chapterId)) {
+                const interactiveElement = document.getElementById('interactiveElement');
+                interactiveElement.addEventListener('click', function(e) {
+                    // 创建交互特效
+                    createInteractionEffect(e.clientX, e.clientY, '#ffb300', 10);
+                    
+                    // 显示历史问答
+                    const quizElement = document.getElementById('historicalQuiz');
+                    let quizHTML = `
+                        <div class="quiz-title">
+                            <i class="fas fa-question-circle"></i>
+                            <span>历史问答</span>
+                        </div>
+                        <div class="quiz-question">${chapterData.quiz.question}</div>
+                        <div class="quiz-options" id="quizOptions">
+                    `;
+                    
+                    chapterData.quiz.options.forEach((option, index) => {
+                        quizHTML += `
+                            <div class="quiz-option" data-index="${index}" data-correct="${option.correct}">
+                                ${option.text}
+                            </div>
+                        `;
+                    });
+                    
+                    quizHTML += `
+                        </div>
+                        <div class="quiz-feedback" id="quizFeedback">
+                            ${chapterData.quiz.feedback}
+                        </div>
+                        <button class="quiz-next-btn" id="quizNextBtn">继续查看历史档案</button>
+                    `;
+                    
+                    quizElement.innerHTML = quizHTML;
+                    quizElement.classList.add('visible');
+                    
+                    // 禁用交互元素
+                    interactiveElement.classList.add('disabled');
+                    interactiveElement.style.cursor = 'default';
+                    
+                    // 设置问答选项点击事件
+                    const quizOptions = document.querySelectorAll('.quiz-option');
+                    quizOptions.forEach(option => {
+                        option.addEventListener('click', function() {
+                            // 移除所有选项的选中状态
+                            quizOptions.forEach(opt => {
+                                opt.classList.remove('selected');
+                            });
+                            
+                            // 添加当前选项的选中状态
+                            this.classList.add('selected');
+                            
+                            // 显示正确答案和错误答案的样式
+                            const isCorrect = this.getAttribute('data-correct') === 'true';
+                            if (isCorrect) {
+                                this.classList.add('correct');
+                            } else {
+                                this.classList.add('incorrect');
+                                
+                                // 同时显示正确答案
+                                quizOptions.forEach(opt => {
+                                    if (opt.getAttribute('data-correct') === 'true') {
+                                        opt.classList.add('correct');
+                                    }
+                                });
+                            }
+                            
+                            // 显示反馈
+                            const quizFeedback = document.getElementById('quizFeedback');
+                            quizFeedback.classList.add('visible');
+                            
+                            // 显示继续按钮
+                            const quizNextBtn = document.getElementById('quizNextBtn');
+                            quizNextBtn.classList.add('visible');
+                            
+                            // 自动滚动到反馈区域
+                            setTimeout(() => {
+                                quizFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 300);
+                        });
+                    });
+                    
+                    // 设置继续按钮点击事件
+                    const quizNextBtn = document.getElementById('quizNextBtn');
+                    quizNextBtn.addEventListener('click', function() {
+                        // 显示历史档案
+                        const dossierElement = document.getElementById('historicalDossier');
+                        let dossierHTML = `
+                            <div class="dossier-title">
+                                <i class="fas fa-file-alt"></i>
+                                <span>历史档案</span>
+                            </div>
+                        `;
+                        
+                        chapterData.dossier.forEach(item => {
+                            dossierHTML += `
+                                <div class="dossier-item">
+                                    <div class="dossier-label">${item.label}</div>
+                                    <div class="dossier-value">${item.value}</div>
+                                </div>
+                            `;
+                        });
+                        
+                        dossierElement.innerHTML = dossierHTML;
+                        dossierElement.classList.add('visible');
+                        
+                        // 显示阅读完成按钮
+                        const readingCompleteSection = document.getElementById('readingCompleteSection');
+                        readingCompleteSection.innerHTML = `
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">你已经见证完本章节内容，确认完成后可以解锁下一章</p>
+                            <button class="complete-reading-btn" onclick="completeChapter(${chapterId})">
+                                确认完成本章节 <i class="fas fa-check-circle"></i>
+                            </button>
+                        `;
+                        readingCompleteSection.classList.add('visible');
+                        
+                        // 自动滚动到阅读完成按钮
+                        setTimeout(() => {
+                            readingCompleteSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 300);
+                    });
+                    
+                    // 自动滚动到问答区域
+                    setTimeout(() => {
+                        quizElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                });
+            }
+        }
+        
+        // 完成章节
+        function completeChapter(chapterId) {
+            const chapterData = explorationData[chapterId];
+            
+            // 标记章节为已完成
+            completedChapters.add(chapterId);
+            
+            // 更新章节导航状态
+            const currentNavItem = document.querySelector(`.chapter-nav-item[data-chapter="${chapterId}"]`);
+            if (currentNavItem) {
+                currentNavItem.classList.add('completed');
+                const statusEl = currentNavItem.querySelector('.chapter-status');
+                if (statusEl) {
+                    statusEl.textContent = '已完成';
+                    statusEl.className = 'chapter-status status-completed';
+                }
+            }
+            
+            // 解锁下一章
+            if (chapterData.achievement.nextChapter) {
+                unlockNextChapter(chapterData.achievement.nextChapter);
+            }
+            
+            // 显示成就
+            showAchievement(chapterData.achievement);
+            
+            // 创建完成特效
+            const completeBtn = event.target.closest('.complete-reading-btn');
+            if (completeBtn) {
+                const rect = completeBtn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                createInteractionEffect(centerX, centerY, '#2e7d32', 15);
+            }
+        }
+        
+        // 继续到下一章
+        function continueToNextChapter(chapterId) {
+            const chapterData = explorationData[chapterId];
+            
+            if (chapterData.achievement.nextChapter) {
+                // 隐藏当前内容区域
+                contentArea.classList.remove('active');
+                
+                // 打开下一章
+                setTimeout(() => {
+                    openChapter(chapterData.achievement.nextChapter);
+                }, 300);
+                
+                // 创建过渡特效
+                const continueBtn = event.target.closest('.complete-reading-btn');
+                if (continueBtn) {
+                    const rect = continueBtn.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    createInteractionEffect(centerX, centerY, '#ffb300', 12);
+                }
+            }
+        }
+        
+        // 解锁下一章
+        function unlockNextChapter(nextChapterId) {
+            const nextChapterItem = document.querySelector(`.chapter-nav-item[data-chapter="${nextChapterId}"]`);
+            if (nextChapterItem) {
+                nextChapterItem.classList.remove('locked');
+                nextChapterItem.classList.add('visible');
+                nextChapterItem.style.cursor = 'pointer';
+                
+                const statusEl = nextChapterItem.querySelector('.chapter-status');
+                if (statusEl) {
+                    statusEl.textContent = '点击见证';
+                    statusEl.className = 'chapter-status status-available';
+                }
+                
+                // 添加解锁特效
+                const iconEl = nextChapterItem.querySelector('.chapter-icon');
+                const rect = iconEl.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                createInteractionEffect(centerX, centerY, '#ffb300', 10);
+            }
+        }
+        
+        // 关闭内容区域
+        function closeContentArea() {
+            const rect = closeContent.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
+            
+            contentArea.classList.remove('active');
+            
+            // 如果成就显示中，也隐藏它
+            if (achievementVisible) {
+                hideAchievement();
+            }
+        }
+        
+        // 显示成就
+        function showAchievement(achievement) {
+            achievementVisible = true;
+            
+            const achievementHTML = `
+                <div class="achievement-unlock visible">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="achievement-title">${achievement.title}</h3>
+                    <p class="achievement-description">${achievement.description}</p>
+                    ${achievement.nextChapter ? 
+                        `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续见证下一章</button>` : 
+                        `<button class="continue-button" onclick="location.reload()">重新开始见证</button>`
+                    }
+                </div>
+            `;
+            
+            achievementContainer.innerHTML = achievementHTML;
+            
+            // 自动滚动到成就区域
+            setTimeout(() => {
+                const achievementEl = achievementContainer.querySelector('.achievement-unlock');
+                if (achievementEl) {
+                    achievementEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+        }
+        
+        // 隐藏成就
+        function hideAchievement() {
+            achievementVisible = false;
+            achievementContainer.innerHTML = '';
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', init);
+        
+        // 使函数在全局可用
+        window.openChapter = openChapter;
+        window.completeChapter = completeChapter;
+        window.continueToNextChapter = continueToNextChapter;
+    </script>
+</body>
+</html>
