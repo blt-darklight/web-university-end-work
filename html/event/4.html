@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长征起点：战略转移的沉浸式探索</title>
+    <title>长征传奇：灵活机动的战略战术（1935年1月—6月）</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,8 +19,9 @@
             --dark-bg: #0a0a14;
             --light-gray: #f5f5f5;
             --accent-gold: #ffb300;
-            --mystery-blue: #1565c0;
-            --explore-green: #2e7d32;
+            --mountain-blue: #1565c0;
+            --river-blue: #0277bd;
+            --snow-white: #e3f2fd;
             --transition-time: 0.4s;
         }
         
@@ -31,7 +32,7 @@
             overflow-x: hidden;
         }
         
-        /* 动态背景 - 战争紧迫感 */
+        /* 动态背景 - 山川河流与战火 */
         .dynamic-background {
             position: fixed;
             top: 0;
@@ -42,183 +43,109 @@
             overflow: hidden;
         }
         
-        /* 深色战云天空 */
-        .war-sky {
+        /* 深色山川背景 */
+        .mountain-sky {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 30%, #2a1a1a 70%, #1a0a0a 100%);
+            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 20%, #1a2a3a 40%, #2a2a4a 70%, #1a0a0a 100%);
         }
         
-        /* 快速移动的战云 */
-        .war-clouds {
+        /* 移动的山脉轮廓 */
+        .moving-mountains {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            opacity: 0.3;
         }
         
-        .war-cloud {
+        .mountain {
             position: absolute;
-            background: rgba(60, 60, 80, 0.2);
-            border-radius: 100px;
-            filter: blur(30px);
-            opacity: 0.7;
+            bottom: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to top, #1a1a2e 0%, transparent 100%);
+            clip-path: polygon(0% 100%, 5% 80%, 10% 85%, 15% 70%, 20% 90%, 25% 75%, 30% 95%, 35% 65%, 40% 85%, 45% 60%, 50% 100%, 55% 70%, 60% 90%, 65% 55%, 70% 80%, 75% 50%, 80% 75%, 85% 45%, 90% 70%, 95% 40%, 100% 100%);
         }
         
-        .war-cloud-1 {
-            width: 500px;
+        .mountain-2 {
+            height: 250px;
+            opacity: 0.5;
+            background: linear-gradient(to top, #2a1a2e 0%, transparent 100%);
+            clip-path: polygon(0% 100%, 10% 60%, 20% 80%, 30% 50%, 40% 70%, 50% 40%, 60% 65%, 70% 35%, 80% 60%, 90% 30%, 100% 100%);
+            bottom: 50px;
+            animation: mountainMove 120s linear infinite;
+        }
+        
+        @keyframes mountainMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100px); }
+        }
+        
+        /* 河流效果 */
+        .river-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             height: 150px;
-            top: 10%;
-            left: -500px;
-            animation: warCloudMove 25s linear infinite;
-            background: rgba(80, 60, 60, 0.25);
-        }
-        
-        .war-cloud-2 {
-            width: 400px;
-            height: 120px;
-            top: 40%;
-            left: -400px;
-            animation: warCloudMove 30s linear infinite 8s;
-            background: rgba(60, 60, 80, 0.2);
-        }
-        
-        .war-cloud-3 {
-            width: 350px;
-            height: 100px;
-            top: 70%;
-            left: -350px;
-            animation: warCloudMove 28s linear infinite 4s;
-            background: rgba(80, 60, 60, 0.3);
-        }
-        
-        @keyframes warCloudMove {
-            0% { transform: translateX(0); opacity: 0.5; }
-            50% { opacity: 0.8; }
-            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.5; }
-        }
-        
-        /* 远处烽火效果 */
-        .beacon-effects {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .beacon {
-            position: absolute;
-            width: 120px;
-            height: 200px;
-            opacity: 0.4;
-        }
-        
-        .beacon-1 {
-            top: 15%;
-            left: 10%;
-        }
-        
-        .beacon-2 {
-            top: 25%;
-            right: 15%;
-        }
-        
-        .beacon-3 {
-            bottom: 30%;
-            left: 20%;
-        }
-        
-        .beacon-smoke {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 120px;
-            background: radial-gradient(ellipse at center, rgba(150, 100, 50, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(15px);
-            animation: smokeRise 8s infinite alternate;
-        }
-        
-        @keyframes smokeRise {
-            0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.3; }
-            100% { transform: translateX(-50%) translateY(-80px) scale(1.3); opacity: 0.6; }
-        }
-        
-        .beacon-fire {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            background: radial-gradient(ellipse at center, #ff5722 0%, #ff9800 50%, transparent 70%);
-            border-radius: 50% 50% 20% 20%;
-            filter: blur(8px);
-            animation: beaconFire 3s infinite alternate;
-        }
-        
-        @keyframes beaconFire {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.7; }
-            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-        }
-        
-        /* 紧张感的河流 */
-        .tense-river {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(to top, rgba(13, 71, 161, 0.25) 0%, transparent 100%);
             overflow: hidden;
         }
         
-        .tense-wave {
+        .river-water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(2, 119, 189, 0.3) 0%, rgba(21, 101, 192, 0.1) 100%);
+        }
+        
+        .river-wave {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 20px;
-            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), transparent);
-            animation: tenseWaveMove 6s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.4), transparent);
+            animation: riverWaveMove 8s linear infinite;
         }
         
-        .tense-wave:nth-child(2) {
-            animation-delay: -1.5s;
-            opacity: 0.7;
+        .river-wave:nth-child(2) {
+            animation-delay: -2s;
+            opacity: 0.6;
         }
         
-        .tense-wave:nth-child(3) {
-            animation-delay: -3s;
-            opacity: 0.4;
+        .river-wave:nth-child(3) {
+            animation-delay: -4s;
+            opacity: 0.3;
         }
         
-        @keyframes tenseWaveMove {
+        @keyframes riverWaveMove {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
         
-        /* 紧张闪烁的光点（远处炮火） */
-        .distant-fire {
+        /* 雪花效果 */
+        .snow-effect {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: #ff5722;
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: distantFireBlink 5s infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         
-        @keyframes distantFireBlink {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.8; }
+        .snowflake {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            opacity: 0.7;
+            filter: blur(1px);
         }
         
         /* 交互粒子效果 */
@@ -263,7 +190,7 @@
         }
         
         .historical-badge {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--mountain-blue) 0%, #0d47a1 100%);
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
@@ -272,13 +199,13 @@
             margin-bottom: 40px;
             letter-spacing: 2px;
             border: 2px solid var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4);
+            box-shadow: 0 5px 20px rgba(13, 71, 161, 0.4);
             animation: badgePulse 3s infinite alternate;
         }
         
         @keyframes badgePulse {
-            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(198, 40, 40, 0.6); }
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(13, 71, 161, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(13, 71, 161, 0.6); }
         }
         
         .main-title {
@@ -316,13 +243,13 @@
             font-size: 1.4rem;
             margin-bottom: 30px;
             color: #b0bec5;
-            max-width: 800px;
+            max-width: 900px;
             line-height: 1.6;
             font-weight: 300;
         }
         
         .start-button {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--mountain-blue) 0%, #0d47a1 100%);
             color: white;
             border: none;
             padding: 18px 50px;
@@ -332,7 +259,7 @@
             transition: all 0.3s ease;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+            box-shadow: 0 10px 30px rgba(13, 71, 161, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -343,7 +270,7 @@
         
         .start-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.6);
+            box-shadow: 0 15px 35px rgba(13, 71, 161, 0.6);
         }
         
         .start-button i {
@@ -354,88 +281,6 @@
         @keyframes arrowBounce {
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(10px); }
-        }
-        
-        /* 视频播放器 */
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        
-        .video-overlay.active {
-            display: flex;
-            opacity: 1;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .video-container {
-            width: 90%;
-            max-width: 1000px;
-            position: relative;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 0.8s ease 0.3s;
-        }
-        
-        .video-overlay.active .video-container {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .video-container video {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
-        
-        .close-video {
-            position: absolute;
-            top: -60px;
-            right: 0;
-            background-color: var(--primary-red);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .close-video:hover {
-            transform: scale(1.1) rotate(90deg);
-            background-color: #b71c1c;
-        }
-        
-        .video-info {
-            color: white;
-            text-align: center;
-            margin-top: 25px;
-            max-width: 800px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.8;
         }
         
         /* 探索主界面 */
@@ -455,6 +300,11 @@
             display: flex;
             opacity: 1;
             animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         /* 时间定位器 */
@@ -530,6 +380,7 @@
         .chapter-nav-item:nth-child(2) { animation-delay: 0.4s; }
         .chapter-nav-item:nth-child(3) { animation-delay: 0.5s; }
         .chapter-nav-item:nth-child(4) { animation-delay: 0.6s; }
+        .chapter-nav-item:nth-child(5) { animation-delay: 0.7s; }
         
         @keyframes slideUp {
             to { transform: translateY(0); opacity: 1; }
@@ -578,7 +429,7 @@
         .chapter-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--mountain-blue) 0%, #0d47a1 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -595,7 +446,7 @@
         }
         
         .chapter-nav-item.completed .chapter-icon {
-            background: linear-gradient(135deg, var(--explore-green) 0%, #1b5e20 100%);
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
         }
         
         .chapter-title {
@@ -662,7 +513,7 @@
         }
         
         .content-header {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--mountain-blue) 0%, #0d47a1 100%);
             padding: 30px;
             display: flex;
             justify-content: space-between;
@@ -697,7 +548,7 @@
         
         .close-content:hover {
             background-color: white;
-            color: var(--primary-red);
+            color: var(--mountain-blue);
             transform: rotate(90deg);
         }
         
@@ -891,7 +742,7 @@
         
         .quiz-option.correct {
             background-color: rgba(46, 125, 50, 0.3);
-            border-color: var(--explore-green);
+            border-color: #2e7d32;
         }
         
         .quiz-option.incorrect {
@@ -1133,45 +984,31 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-red);
+            background: var(--mountain-blue);
             border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #b71c1c;
+            background: #0d47a1;
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景 - 战争紧迫感 -->
+    <!-- 动态背景 - 山川河流与战火 -->
     <div class="dynamic-background">
-        <div class="war-sky"></div>
-        <div class="war-clouds">
-            <div class="war-cloud war-cloud-1"></div>
-            <div class="war-cloud war-cloud-2"></div>
-            <div class="war-cloud war-cloud-3"></div>
+        <div class="mountain-sky"></div>
+        <div class="moving-mountains">
+            <div class="mountain"></div>
+            <div class="mountain mountain-2"></div>
         </div>
-        <div class="beacon-effects">
-            <div class="beacon beacon-1">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
-            </div>
-            <div class="beacon beacon-2">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
-            </div>
-            <div class="beacon beacon-3">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
-            </div>
+        <div class="river-effect">
+            <div class="river-water"></div>
+            <div class="river-wave"></div>
+            <div class="river-wave"></div>
+            <div class="river-wave"></div>
         </div>
-        <div class="tense-river">
-            <div class="tense-wave"></div>
-            <div class="tense-wave"></div>
-            <div class="tense-wave"></div>
-        </div>
-        <!-- 远处炮火光点 -->
-        <div id="distantFires"></div>
+        <!-- 雪花效果将通过JavaScript动态添加 -->
+        <div id="snowEffect" class="snow-effect"></div>
     </div>
     
     <!-- 交互粒子效果 -->
@@ -1179,31 +1016,13 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">历史探索任务 #001</div>
-        <h1 class="main-title">长征起点：<span>战略转移的秘密</span></h1>
-        <p class="subtitle">1934年10月，江西于都。在夜幕的掩护下，一支8.6万人的队伍悄然出发，踏上了一条未知的征程。他们的决定将改变中国历史的走向……</p>
-        <p class="subtitle">现在，你是一名历史侦探，需要解开这段尘封的历史，还原长征出发的真相。每一段历史背后，都隐藏着不为人知的故事。</p>
+        <div class="historical-badge">军事指挥艺术巅峰 #002</div>
+        <h1 class="main-title">灵活机动的战略战术：<span>毛泽东的"神来之笔"</span></h1>
+        <p class="subtitle">1935年1月至6月，遵义会议后重新获得军事指挥权的毛泽东，指挥仅剩3万余人的中央红军，在川黔滇边境的崇山峻岭中，上演了战争史上惊心动魄的篇章。</p>
+        <p class="subtitle">从四渡赤水的谋略，到巧渡金沙江的果决，再到飞夺泸定桥的勇猛，最后是翻越雪山的坚韧——这是长征史诗中最富传奇色彩的华章。</p>
         <button class="start-button" id="startButton">
-            开始探索 <i class="fas fa-map-signs"></i>
+            开始探索 <i class="fas fa-mountain"></i>
         </button>
-    </div>
-    
-    <!-- 视频播放器 -->
-    <div class="video-overlay" id="videoOverlay">
-        <div class="video-container">
-            <button class="close-video" id="closeVideo">
-                <i class="fas fa-times"></i>
-            </button>
-            <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
-                您的浏览器不支持视频播放
-            </video>
-        </div>
-        <div class="video-info">
-            <p>观看这段视频，了解1934年中央苏区面临的严峻形势和红军长征出发的历史背景。</p>
-            <p>视频结束后，请点击右上角的关闭按钮，继续你的探索之旅。</p>
-        </div>
     </div>
     
     <!-- 探索主界面 -->
@@ -1212,11 +1031,11 @@
         <div class="time-locator">
             <div class="time-period">
                 <i class="fas fa-calendar-alt"></i>
-                <span>1934年10月 · 深秋</span>
+                <span>1935年1月—6月 · 遵义会议后</span>
             </div>
             <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>江西 · 于都河畔</span>
+                <span>川黔滇边境 · 赤水河 · 大渡河 · 夹金山</span>
             </div>
         </div>
         
@@ -1224,37 +1043,46 @@
         <div class="chapter-navigation">
             <div class="chapter-nav-item visible active" data-chapter="1">
                 <div class="chapter-icon">
-                    <i class="fas fa-cloud-sun"></i>
+                    <i class="fas fa-water"></i>
                 </div>
-                <h3 class="chapter-title">危局笼罩</h3>
-                <p class="chapter-description">揭开第五次反"围剿"失败的真相，了解红军面临的生死存亡危机</p>
+                <h3 class="chapter-title">四渡赤水</h3>
+                <p class="chapter-description">毛泽东军事生涯的"神来之笔"，在川黔滇边境四次穿越赤水河，迂回穿插，有效摆脱敌军围追堵截</p>
                 <div class="chapter-status status-available">点击探索</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="2">
                 <div class="chapter-icon">
-                    <i class="fas fa-user-secret"></i>
+                    <i class="fas fa-ship"></i>
                 </div>
-                <h3 class="chapter-title">秘密决策</h3>
-                <p class="chapter-description">探索"三人团"的秘密决策过程，了解长征的真正目标</p>
+                <h3 class="chapter-title">巧渡金沙江</h3>
+                <p class="chapter-description">跳出重围的关键一跃，仅靠7条木船昼夜渡江，摆脱数十万敌军追击</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="3">
                 <div class="chapter-icon">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-bridge"></i>
                 </div>
-                <h3 class="chapter-title">于都集结</h3>
-                <p class="chapter-description">亲历红军在于都的秘密集结，感受那个悲壮的告别之夜</p>
+                <h3 class="chapter-title">强渡大渡河与飞夺泸定桥</h3>
+                <p class="chapter-description">打破"石达开覆辙"的预言，十七勇士强渡大渡河，二十二勇士飞夺泸定桥</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="4">
                 <div class="chapter-icon">
-                    <i class="fas fa-water"></i>
+                    <i class="fas fa-mountain"></i>
                 </div>
-                <h3 class="chapter-title">夜渡出发</h3>
-                <p class="chapter-description">跟随红军战士的脚步，踏上漫漫长征路的第一步</p>
+                <h3 class="chapter-title">翻越夹金山</h3>
+                <p class="chapter-description">与自然极限的较量，红军克服极端严寒和缺氧，成功翻越长征途中第一座大雪山</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="5">
+                <div class="chapter-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="chapter-title">总结与意义</h3>
+                <p class="chapter-description">灵活机动战略战术的精髓，长征军事指挥艺术的巅峰</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
         </div>
@@ -1263,8 +1091,8 @@
         <div class="content-area" id="contentArea">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title" id="contentTitle">危局笼罩</h2>
-                    <p class="content-subtitle" id="contentSubtitle">第五次反"围剿"失败的背后</p>
+                    <h2 class="content-title" id="contentTitle">四渡赤水</h2>
+                    <p class="content-subtitle" id="contentSubtitle">毛泽东军事生涯的"神来之笔"</p>
                 </div>
                 <button class="close-content" id="closeContent">
                     <i class="fas fa-times"></i>
@@ -1283,138 +1111,193 @@
         // 探索章节数据
         const explorationData = {
             1: {
-                title: "危局笼罩",
-                subtitle: "第五次反'围剿'失败的背后",
+                title: "四渡赤水",
+                subtitle: "毛泽东军事生涯的'神来之笔'",
                 scene: {
-                    title: "场景模拟：乌云压城的中央苏区",
-                    description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……"
+                    title: "场景模拟：川黔滇边境的赤水河畔",
+                    description: "1935年1月遵义会议后，蒋介石调集湘、川、滇、桂及中央军约40万兵力，从四面八方向仅剩3万余人的中央红军合围。毛泽东站在赤水河畔，凝视着地图上密集的敌军标志。身后是疲惫但坚定的红军战士，面前是湍急的赤水河。他知道，必须用高度机动的运动战，在敌人的包围圈中撕开一道口子……"
                 },
                 interactive: {
-                    title: "点击探索：第五次反'围剿'为何失败？",
-                    description: "点击此处，揭开红军在第五次反'围剿'中失利的真相。了解博古、李德的错误指挥如何导致红军陷入困境。"
+                    title: "点击探索：四渡赤水的战略精髓",
+                    description: "点击此处，了解毛泽东如何通过四次穿越赤水河，牵着敌人的鼻子走，实现'在运动中歼灭敌人'的战争艺术。"
                 },
                 quiz: {
-                    question: "在第五次反'围剿'中，红军主要采用了什么错误的战术？",
+                    question: "四渡赤水战役中，毛泽东采用的核心战术是什么？",
                     options: [
-                        { text: "游击战术，分散敌人兵力", correct: false },
-                        { text: "阵地战，与敌人硬拼消耗", correct: true },
-                        { text: "运动战，灵活打击敌人弱点", correct: false },
-                        { text: "地道战，利用地形优势", correct: false }
+                        { text: "阵地防御，坚守待援", correct: false },
+                        { text: "高度机动的运动战，迂回穿插", correct: true },
+                        { text: "集中优势兵力，正面突破", correct: false },
+                        { text: "分散突围，各自为战", correct: false }
                     ],
-                    feedback: "正确答案是'阵地战，与敌人硬拼消耗'。在博古和李德的错误指挥下，红军放弃了擅长的游击战和运动战，转而与装备精良的国民党军进行阵地消耗战，导致红军损失惨重。"
+                    feedback: "正确答案是'高度机动的运动战，迂回穿插'。四渡赤水是运动战的典范，通过反复穿越赤水河，调动敌人，使其疲于奔命，兵力分散，最终跳出包围圈。"
                 },
                 dossier: [
-                    { label: "背景", value: "第五次反'围剿'战役进行中，红军面临前所未有的压力。" },
-                    { label: "敌军兵力", value: "国民党调集100万大军，对中央苏区形成铁桶般的包围圈。" },
-                    { label: "红军困境", value: "在错误指挥下，红军采取阵地战策略，与装备精良的敌军硬拼，损失惨重。" },
-                    { label: "关键战役", value: "广昌保卫战失败后，苏区门户大开，形势急转直下。" },
-                    { label: "战略判断", value: "至1934年9月，中央苏区已难以坚守，必须进行战略转移。" }
+                    { label: "时间", value: "1935年1月29日至3月22日" },
+                    { label: "地点", value: "贵州、四川、云南三省交界的赤水河流域" },
+                    { label: "红军兵力", value: "约3万余人（遵义会议后）" },
+                    { label: "敌军兵力", value: "蒋介石调集约40万兵力合围" },
+                    { label: "一渡赤水", value: "1935年1月29日，原计划北渡长江受挫，西渡赤水进入川南" },
+                    { label: "二渡赤水", value: "1935年2月18-21日，回师黔北，发动遵义战役，取得长征以来最大胜利" },
+                    { label: "三渡赤水", value: "1935年3月16-17日，大张旗鼓进入川南，调动敌军" },
+                    { label: "四渡赤水", value: "1935年3月21-22日，秘密折返，南下直插云南，跳出包围圈" },
+                    { label: "战略意义", value: "被公认为毛泽东军事指挥艺术的巅峰之作，体现了'你打你的，我打我的'的主动作战思想" }
                 ],
                 achievement: {
-                    title: "历史观察员",
-                    description: "你已了解第五次反'围剿'失败的背景，理解了红军面临的艰难抉择。",
+                    title: "运动战大师",
+                    description: "你已理解四渡赤水的战略精髓，掌握了毛泽东'走'与'打'完美结合的运动战艺术。",
                     nextChapter: 2
                 }
             },
             2: {
-                title: "秘密决策",
-                subtitle: "三人团的生死抉择",
+                title: "巧渡金沙江",
+                subtitle: "跳出重围的关键一跃",
                 scene: {
-                    title: "场景模拟：瑞金叶坪的深夜会议",
-                    description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……"
+                    title: "场景模拟：皎平渡的七个不眠夜",
+                    description: "1935年5月，云南禄劝与四川会理交界的金沙江皎平渡。湍急的江水在峡谷中轰鸣，对岸是陡峭的悬崖。红军先遣队化装成国民党军，奇袭控制了渡口。全军仅靠搜获的7条木船，在37名当地船工帮助下，昼夜不停地摆渡。毛泽东、周恩来、朱德等领导人亲自组织渡江，每一分钟都关乎生死……"
                 },
                 interactive: {
-                    title: "点击探索：长征决策背后的秘密",
-                    description: "点击此处，了解'三人团'如何秘密筹划战略转移，以及这个决定为何要对普通战士和百姓保密。"
+                    title: "点击探索：巧渡金沙江的奇迹",
+                    description: "点击此处，了解红军如何以少量部队吸引敌军，主力利用仅有的7条木船昼夜渡江，摆脱数十万敌军追击。"
                 },
                 quiz: {
-                    question: "长征出发时，对普通红军战士和百姓宣传的行动代号是什么？",
+                    question: "巧渡金沙江时，红军用了多少条船将3万余人全部渡过江？",
                     options: [
-                        { text: "北上抗日先遣队", correct: true },
-                        { text: "向西突围计划", correct: false },
-                        { text: "南方游击行动", correct: false },
-                        { text: "根据地转移计划", correct: false }
+                        { text: "3条木船", correct: false },
+                        { text: "7条木船", correct: true },
+                        { text: "12条木船", correct: false },
+                        { text: "架设浮桥渡江", correct: false }
                     ],
-                    feedback: "正确答案是'北上抗日先遣队'。为了保密和稳定军心，红军高层对普通战士和百姓宣传这是'北上抗日先遣队'的行动，只有极少数人知道这是战略转移。"
+                    feedback: "正确答案是'7条木船'。红军在皎平渡仅靠搜获的7条木船，在37名船工帮助下，经过7天7夜连续摆渡，将3万余人全部渡过金沙江，未失一人一马。"
                 },
                 dossier: [
-                    { label: "决策团队", value: "博古、李德、周恩来组成'三人团'，负责筹划和指挥转移事宜。" },
-                    { label: "保密等级", value: "绝密。只有极少数高层领导知晓真实意图。" },
-                    { label: "对外宣传", value: "对广大指战员和民众宣传为'北上抗日先遣队'。" },
-                    { label: "转移目标", value: "最初计划向西突围，前往湘西北与红二、六军团会合。" },
-                    { label: "留守人员", value: "项英、陈毅带领1.6万战士留下坚持游击战争，掩护主力转移。" }
+                    { label: "时间", value: "1935年5月3日至5月9日" },
+                    { label: "地点", value: "金沙江皎平渡（四川会理与云南禄劝交界）" },
+                    { label: "渡江方式", value: "仅靠7条木船昼夜摆渡" },
+                    { label: "船工数量", value: "37名当地船工" },
+                    { label: "渡江时间", value: "连续7天7夜" },
+                    { label: "掩护部队", value: "红五军团在石板河一带顽强阻击尾追的国民党中央军" },
+                    { label: "战略佯动", value: "佯攻昆明，调出滇军主力，导致金沙江沿岸防线空虚" },
+                    { label: "历史意义", value: "至此，红军摆脱了自长征以来数十万敌军的围追堵截，取得了战略转移中具有决定意义的胜利" },
+                    { label: "后续影响", value: "待国民党追兵赶到时，只看到废弃的草鞋，红军已远走高飞" }
                 ],
                 achievement: {
-                    title: "战略分析师",
-                    description: "你已揭开长征决策的秘密，理解了'三人团'在历史关头的艰难抉择。",
+                    title: "战略突围专家",
+                    description: "你已掌握巧渡金沙江的战术细节，理解了红军如何以智慧和勇气跳出敌人的重重包围。",
                     nextChapter: 3
                 }
             },
             3: {
-                title: "于都集结",
-                subtitle: "悲壮的告别之夜",
+                title: "强渡大渡河与飞夺泸定桥",
+                subtitle: "打破'石达开覆辙'的预言",
                 scene: {
-                    title: "场景模拟：于都河畔的无声告别",
-                    description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。"
+                    title: "场景模拟：大渡河上的生死较量",
+                    description: "1935年5月，大渡河畔。蒋介石企图让红军重演太平天国翼王石达开在此全军覆没的历史。安顺场，红一团十七勇士在枪林弹雨中强渡大渡河；160公里外的泸定桥，二十二勇士攀着13根光溜溜的铁索向对岸冲击，脚下是奔腾咆哮的河水，对岸是敌人喷着火舌的碉堡……"
                 },
                 interactive: {
-                    title: "点击感受：军民鱼水情",
-                    description: "点击此处，感受于都百姓与红军的深厚感情，了解百姓如何支援红军秘密集结。"
+                    title: "点击感受：飞夺泸定桥的英勇瞬间",
+                    description: "点击此处，亲历红四团一昼夜奔袭240里，二十二勇士飞夺泸定桥的惊心动魄时刻。"
                 },
                 quiz: {
-                    question: "于都百姓用什么材料帮助红军架设浮桥？",
+                    question: "飞夺泸定桥时，红军勇士面对的是怎样的桥面？",
                     options: [
-                        { text: "专业的桥梁材料", correct: false },
-                        { text: "自家的门板、木床甚至寿材", correct: true },
-                        { text: "从敌军缴获的物资", correct: false },
-                        { text: "临时砍伐的树木", correct: false }
+                        { text: "完好的木板桥面", correct: false },
+                        { text: "大部分木板被拆除，只剩13根铁索", correct: true },
+                        { text: "石拱桥，但被炸毁了一半", correct: false },
+                        { text: "简易浮桥，摇摇欲坠", correct: false }
                     ],
-                    feedback: "正确答案是'自家的门板、木床甚至寿材'。于都百姓倾尽所有支援红军，拆下自家的门板、木床，甚至老人的寿材，帮助红军在于都河上架设浮桥。"
+                    feedback: "正确答案是'大部分木板被拆除，只剩13根铁索'。守桥川军已将桥上木板大部拆除，红军二十二勇士在全团火力掩护下，攀着光溜溜的铁索向对岸冲击，创造了战争史上的奇迹。"
                 },
                 dossier: [
-                    { label: "集结时间", value: "1934年10月10日至20日，中央红军主力约8.6万人分批在于都秘密集结。" },
-                    { label: "集结地点", value: "江西于都，苏区西南部，群众基础好，利于保密。" },
-                    { label: "红军人数", value: "中央红军主力约8.6万人。" },
-                    { label: "携带物资", value: "粮食、弹药、医疗器械，甚至印刷机、印钞机等'坛坛罐罐'。" },
-                    { label: "群众支援", value: "于都百姓帮助架设浮桥8处，提供大量粮食和物资。" }
+                    { label: "时间", value: "1935年5月25日（强渡大渡河），5月29日（飞夺泸定桥）" },
+                    { label: "地点", value: "大渡河安顺场（今石棉县安顺场）和泸定桥" },
+                    { label: "强渡部队", value: "红一军团一师一团，团长杨得志" },
+                    { label: "突击队员", value: "十七勇士，由连长熊尚林带队" },
+                    { label: "飞夺部队", value: "红一军团二师四团，团长王开湘，政委杨成武" },
+                    { label: "奔袭距离", value: "一昼夜强行军240华里（约120公里）" },
+                    { label: "泸定桥状况", value: "守军已将桥上木板大部拆除，只剩13根光溜溜的铁索" },
+                    { label: "突击队员", value: "22名勇士（多为共产党员和积极分子）" },
+                    { label: "战斗结果", value: "经过两小时激战，完全占领泸定城，打通北上的生死通道" },
+                    { label: "历史意义", value: "打破了蒋介石让红军成为'石达开第二'的迷梦，'十七勇士'和'二十二勇士'成为长征英雄主义的永恒象征" }
                 ],
                 achievement: {
-                    title: "场景还原师",
-                    description: "你已亲历于都集结的悲壮场景，感受到了红军与百姓的深厚感情。",
+                    title: "英勇无畏的战士",
+                    description: "你已亲历强渡大渡河与飞夺泸定桥的英勇战斗，感受到了红军战士大无畏的革命精神。",
                     nextChapter: 4
                 }
             },
             4: {
-                title: "夜渡出发",
-                subtitle: "长征的第一步",
+                title: "翻越夹金山",
+                subtitle: "与自然极限的较量",
                 scene: {
-                    title: "场景模拟：静默渡河的漫长队伍",
-                    description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……"
+                    title: "场景模拟：海拔4000米的生死考验",
+                    description: "1935年6月，夹金山下。红军官兵大多穿着单衣、草鞋，望着眼前这座海拔4000多米、终年积雪的大雪山。山上空气稀薄，气候变化无常，时而晴空万里，时而冰雹大雪。宣传队员站在危险处鼓舞士气：'同志们，翻过雪山就是胜利！'体弱的战士相互搀扶，用刺刀在冰雪上凿出脚窝，一步一步向上攀登……"
                 },
                 interactive: {
-                    title: "点击思考：为什么选择夜间渡河？",
-                    description: "点击此处，了解红军选择夜间秘密渡河的原因，以及这种决策背后的军事智慧。"
+                    title: "点击体验：翻越雪山的极端挑战",
+                    description: "点击此处，感受红军在极端严寒和缺氧条件下，翻越长征途中第一座大雪山的艰难历程。"
                 },
                 quiz: {
-                    question: "红军选择在夜间渡河最主要的原因是什么？",
+                    question: "红军翻越夹金山时面临的主要困难是什么？",
                     options: [
-                        { text: "红军战士习惯夜间行动", correct: false },
-                        { text: "为了保密，防止被敌军侦察发现", correct: true },
-                        { text: "白天太热，不利于行军", correct: false },
-                        { text: "夜间渡河更有诗意", correct: false }
+                        { text: "敌军的空中轰炸", correct: false },
+                        { text: "当地少数民族的抵抗", correct: false },
+                        { text: "极端严寒、缺氧和衣不蔽体", correct: true },
+                        { text: "迷路和缺乏地图", correct: false }
                     ],
-                    feedback: "正确答案是'为了保密，防止被敌军侦察发现'。在当时的战争环境下，空中侦察是重要威胁。夜间行动可以有效避免被敌人发现，保证战略转移的突然性。"
+                    feedback: "正确答案是'极端严寒、缺氧和衣不蔽体'。红军官兵大多穿着单衣、草鞋，缺乏御寒装备和食物，在空气稀薄、气候变化无常的雪山上，每前进一步都是对生理极限的挑战。"
                 },
                 dossier: [
-                    { label: "渡河时间", value: "1934年10月16日傍晚至10月20日夜间，中央红军主力部队分别从于都城东门等处的多个渡口夜渡于都河。" },
-                    { label: "渡河方式", value: "为保密起见，渡河主要在夜间进行，渡完后立即拆除浮桥，不留痕迹。" },
-                    { label: "队伍构成", value: "红军出发时编为两个野战纵队：第一野战纵队（军委纵队）和第二野战纵队（中央纵队）。" },
-                    { label: "转移方式", value: "这种'大搬家'式的甬道行进，使红军主力变成了一个负担沉重的队伍，严重影响了机动性。" },
-                    { label: "后续影响", value: "这种笨重的转移方式为随后的湘江战役埋下了隐患。" }
+                    { label: "时间", value: "1935年6月12日前后" },
+                    { label: "地点", value: "夹金山（位于今四川宝兴县与懋功县之间）" },
+                    { label: "海拔", value: "4000多米" },
+                    { label: "气候特点", value: "空气稀薄，气候变化无常，时而晴空万里，时而冰雹大雪" },
+                    { label: "红军装备", value: "大多穿着单衣、草鞋，缺乏御寒装备和食物" },
+                    { label: "攀登方式", value: "用刺刀在冰雪上凿出脚窝，相互搀扶" },
+                    { label: "宣传鼓动", value: "宣传队员站在危险处鼓舞士气" },
+                    { label: "会师", value: "1935年6月12日，中央红军先头部队与前来接应的红四方面军一部在达维镇胜利会师" },
+                    { label: "历史意义", value: "成功翻越长征中的第一座大雪山，不仅是对生理极限的挑战，更是对精神意志的磨砺，预示着红军面前没有不可逾越的障碍" }
                 ],
                 achievement: {
-                    title: "长征起点探索者",
-                    description: "恭喜！你已完成长征起点探索，理解了战略转移的艰难启程。长征精神将从这里开始，照耀整个中国革命历程。",
+                    title: "雪山征服者",
+                    description: "你已理解红军翻越夹金山的艰难，感受到了人类意志战胜自然极限的伟大力量。",
+                    nextChapter: 5
+                }
+            },
+            5: {
+                title: "总结与意义",
+                subtitle: "灵活机动战略战术的精髓",
+                scene: {
+                    title: "场景模拟：从被动到主动的战略转变",
+                    description: "从1935年1月到6月，短短半年时间，中央红军在毛泽东的指挥下，彻底摆脱了'搬家式'转移的被动局面，转变为高度机动的'运动战'大师。四渡赤水的谋略，巧渡金沙江的果决，强渡大渡河、飞夺泸定桥的勇猛，翻越雪山的坚韧——这一系列行动淋漓尽致地展现了灵活机动的战略战术。"
+                },
+                interactive: {
+                    title: "点击总结：长征军事指挥艺术的巅峰",
+                    description: "点击此处，全面总结遵义会议后红军灵活机动的战略战术，理解这一时期在长征史上的重要地位。"
+                },
+                quiz: {
+                    question: "遵义会议后红军战略战术的最大转变是什么？",
+                    options: [
+                        { text: "从游击战转变为阵地战", correct: false },
+                        { text: "从'搬家式'转移转变为高度机动的运动战", correct: true },
+                        { text: "从集中兵力转变为分散行动", correct: false },
+                        { text: "从主动进攻转变为被动防御", correct: false }
+                    ],
+                    feedback: "正确答案是'从'搬家式'转移转变为高度机动的运动战'。遵义会议后，毛泽东重新获得军事指挥权，红军彻底摆脱了笨重的'搬家式'转移，转变为高度机动的运动战，掌握了战场主动权。"
+                },
+                dossier: [
+                    { label: "时间范围", value: "1935年1月（遵义会议）至1935年6月（翻越夹金山）" },
+                    { label: "核心转变", value: "从被动转移转变为主动机动作战" },
+                    { label: "指挥艺术", value: "毛泽东军事指挥艺术的集中体现，特别是四渡赤水被称为'神来之笔'" },
+                    { label: "战术特点", value: "高度机动、迂回穿插、调动敌人、创造战机" },
+                    { label: "精神体现", value: "坚定的革命意志、超凡的战斗精神、大无畏的英雄气概" },
+                    { label: "关键战役", value: "四渡赤水、巧渡金沙江、强渡大渡河、飞夺泸定桥、翻越夹金山" },
+                    { label: "战略成果", value: "摆脱数十万敌军围追堵截，实现与红四方面军的会师" },
+                    { label: "历史评价", value: "长征史诗中最富传奇色彩的华章，世界军事史上的奇迹" },
+                    { label: "现代启示", value: "灵活机动的战略战术、坚定的信念和意志力，至今仍有重要的启示意义" }
+                ],
+                achievement: {
+                    title: "长征战略分析师",
+                    description: "恭喜！你已完成'灵活机动的战略战术'全面探索，掌握了毛泽东军事指挥艺术的精髓，理解了这一时期在长征史上的重要地位。",
                     nextChapter: null
                 }
             }
@@ -1428,9 +1311,6 @@
         // DOM元素
         const startScreen = document.getElementById('startScreen');
         const startButton = document.getElementById('startButton');
-        const videoOverlay = document.getElementById('videoOverlay');
-        const closeVideo = document.getElementById('closeVideo');
-        const historyVideo = document.getElementById('historyVideo');
         const explorationContainer = document.getElementById('explorationContainer');
         const chapterNavItems = document.querySelectorAll('.chapter-nav-item');
         const contentArea = document.getElementById('contentArea');
@@ -1438,18 +1318,17 @@
         const contentSubtitle = document.getElementById('contentSubtitle');
         const contentBody = document.getElementById('contentBody');
         const closeContent = document.getElementById('closeContent');
-        const distantFiresContainer = document.getElementById('distantFires');
         const interactiveParticles = document.getElementById('interactiveParticles');
         const achievementContainer = document.getElementById('achievementContainer');
+        const snowEffect = document.getElementById('snowEffect');
         
         // 初始化
         function init() {
-            // 创建远处炮火光点
-            createDistantFires();
+            // 创建雪花效果
+            createSnowflakes();
             
             // 事件监听
             startButton.addEventListener('click', startExploration);
-            closeVideo.addEventListener('click', closeVideoPlayer);
             closeContent.addEventListener('click', closeContentArea);
             
             // 章节导航点击事件
@@ -1462,35 +1341,45 @@
                 });
             });
             
-            // 视频结束后自动关闭
-            historyVideo.addEventListener('ended', function() {
-                setTimeout(() => {
-                    closeVideoPlayer();
-                }, 2000);
-            });
-            
             // 初始化第一个章节
             openChapter(1);
         }
         
-        // 创建远处炮火光点
-        function createDistantFires() {
-            for (let i = 0; i < 25; i++) {
-                const fire = document.createElement('div');
-                fire.className = 'distant-fire';
+        // 创建雪花效果
+        function createSnowflakes() {
+            for (let i = 0; i < 60; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
                 
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = 3 + Math.random() * 4;
+                const size = Math.random() * 4 + 2;
+                const startX = Math.random() * 100;
+                const fallDuration = 10 + Math.random() * 20;
+                const swayAmount = Math.random() * 100 - 50;
+                const delay = Math.random() * 20;
                 
-                fire.style.left = `${x}%`;
-                fire.style.top = `${y}%`;
-                fire.style.animationDelay = `${delay}s`;
-                fire.style.animationDuration = `${duration}s`;
-                fire.style.opacity = Math.random() * 0.3 + 0.1;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+                snowflake.style.left = `${startX}%`;
+                snowflake.style.opacity = Math.random() * 0.5 + 0.3;
                 
-                distantFiresContainer.appendChild(fire);
+                // 雪花飘落动画
+                const animation = snowflake.animate([
+                    { 
+                        transform: 'translate(0, -100px) rotate(0deg)',
+                        opacity: 0 
+                    },
+                    { 
+                        transform: `translate(${swayAmount}px, 100vh) rotate(${360 * 3}deg)`,
+                        opacity: 0.7 
+                    }
+                ], {
+                    duration: fallDuration * 1000,
+                    delay: delay * 1000,
+                    easing: 'linear',
+                    iterations: Infinity
+                });
+                
+                snowEffect.appendChild(snowflake);
             }
         }
         
@@ -1545,28 +1434,13 @@
             startScreen.classList.add('hidden');
             
             setTimeout(() => {
-                videoOverlay.classList.add('active');
-                historyVideo.play();
+                explorationContainer.classList.add('active');
+                
+                // 显示章节导航
+                chapterNavItems.forEach(item => {
+                    item.classList.add('visible');
+                });
             }, 800);
-        }
-        
-        // 关闭视频播放器
-        function closeVideoPlayer() {
-            const rect = closeVideo.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            createInteractionEffect(centerX, centerY, '#c62828', 8);
-            
-            videoOverlay.classList.remove('active');
-            explorationContainer.classList.add('active');
-            historyVideo.pause();
-            historyVideo.currentTime = 0;
-            
-            // 显示章节导航
-            chapterNavItems.forEach(item => {
-                item.classList.add('visible');
-            });
         }
         
         // 打开章节
@@ -1946,7 +1820,7 @@
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
                         `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
-                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                        `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
             `;
@@ -1970,11 +1844,29 @@
         
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', init);
-        
+
+        function finishAndReturnToMap(currentChapter){
+            try{
+                const KEY = 'lm_unlocks_v1';
+                const raw = localStorage.getItem(KEY);
+                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
+                if(st.mode === 'linear' || (!st.mode && true)){
+                    const next = Math.min(7, currentChapter+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
+                }
+                st.mode = st.mode || 'linear';
+                localStorage.setItem(KEY, JSON.stringify(st));
+            }catch(e){}
+            window.location.href = '/html/map.html?mode=linear';
+        }
+
         // 使函数在全局可用
         window.openChapter = openChapter;
         window.completeChapter = completeChapter;
         window.continueToNextChapter = continueToNextChapter;
+        window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
 </body>
 </html>

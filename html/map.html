@@ -17,6 +17,17 @@
         <main class="map-main">
             <div class="map-container">
                 <div class="china-map" id="chinaMap">
+                    <!-- 内嵌简化 SVG 地图（占位，可替换为更精细的 SVG） -->
+                    <svg class="china-svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" aria-label="中国地图占位">
+                        <rect x="0" y="0" width="1000" height="700" fill="transparent"/>
+                        <!-- 简化轮廓（装饰用） -->
+                        <g fill="#f3efe8" stroke="#e6d9c8" stroke-width="1">
+                            <path d="M60,520 C120,480 180,460 260,430 C340,400 420,360 520,340 C620,320 700,300 820,280 C880,270 920,230 960,200 L980,160 L940,120 L860,110 L800,130 L740,110 L680,120 L640,150 L600,170 L560,210 L520,240 L480,270 L440,300 L380,330 L320,360 L260,400 L200,450 L140,500 Z" />
+                        </g>
+                        <!-- 示例路线（装饰） -->
+                        <path d="M250,420 C300,400 350,380 420,360 C480,345 530,335 600,320 C700,300 760,285 820,260" fill="none" stroke="#b22222" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+                    </svg>
+                    <svg class="route-layer" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
                     <!-- 标记由脚本动态生成 -->
                 </div>
             </div>

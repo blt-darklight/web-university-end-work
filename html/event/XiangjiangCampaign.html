@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>三大主力会师：长征的辉煌终点</title>
+    <title>长征起点：战略转移的沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,7 +19,7 @@
             --dark-bg: #0a0a14;
             --light-gray: #f5f5f5;
             --accent-gold: #ffb300;
-            --victory-blue: #1565c0;
+            --mystery-blue: #1565c0;
             --explore-green: #2e7d32;
             --transition-time: 0.4s;
         }
@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
         
-        /* 胜利背景 - 会师喜庆感 */
+        /* 动态背景 - 战争紧迫感 */
         .dynamic-background {
             position: fixed;
             top: 0;
@@ -42,18 +42,18 @@
             overflow: hidden;
         }
         
-        /* 黎明天空 */
-        .dawn-sky {
+        /* 深色战云天空 */
+        .war-sky {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #1a237e 0%, #283593 30%, #3949ab 60%, #5c6bc0 100%);
+            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 30%, #2a1a1a 70%, #1a0a0a 100%);
         }
         
-        /* 缓慢移动的云彩 */
-        .victory-clouds {
+        /* 快速移动的战云 */
+        .war-clouds {
             position: absolute;
             top: 0;
             left: 0;
@@ -61,49 +61,49 @@
             height: 100%;
         }
         
-        .victory-cloud {
+        .war-cloud {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(60, 60, 80, 0.2);
             border-radius: 100px;
             filter: blur(30px);
             opacity: 0.7;
         }
         
-        .victory-cloud-1 {
+        .war-cloud-1 {
             width: 500px;
             height: 150px;
-            top: 15%;
+            top: 10%;
             left: -500px;
-            animation: victoryCloudMove 35s linear infinite;
-            background: rgba(255, 255, 255, 0.15);
+            animation: warCloudMove 25s linear infinite;
+            background: rgba(80, 60, 60, 0.25);
         }
         
-        .victory-cloud-2 {
+        .war-cloud-2 {
             width: 400px;
             height: 120px;
-            top: 50%;
+            top: 40%;
             left: -400px;
-            animation: victoryCloudMove 40s linear infinite 10s;
-            background: rgba(255, 255, 255, 0.1);
+            animation: warCloudMove 30s linear infinite 8s;
+            background: rgba(60, 60, 80, 0.2);
         }
         
-        .victory-cloud-3 {
+        .war-cloud-3 {
             width: 350px;
             height: 100px;
-            top: 75%;
+            top: 70%;
             left: -350px;
-            animation: victoryCloudMove 38s linear infinite 5s;
-            background: rgba(255, 255, 255, 0.12);
+            animation: warCloudMove 28s linear infinite 4s;
+            background: rgba(80, 60, 60, 0.3);
         }
         
-        @keyframes victoryCloudMove {
+        @keyframes warCloudMove {
             0% { transform: translateX(0); opacity: 0.5; }
             50% { opacity: 0.8; }
             100% { transform: translateX(calc(100vw + 600px)); opacity: 0.5; }
         }
         
-        /* 篝火庆祝效果 */
-        .campfire-effects {
+        /* 远处烽火效果 */
+        .beacon-effects {
             position: absolute;
             top: 0;
             left: 0;
@@ -111,114 +111,114 @@
             height: 100%;
         }
         
-        .campfire {
+        .beacon {
             position: absolute;
             width: 120px;
             height: 200px;
-            opacity: 0.6;
+            opacity: 0.4;
         }
         
-        .campfire-1 {
-            top: 20%;
-            left: 15%;
+        .beacon-1 {
+            top: 15%;
+            left: 10%;
         }
         
-        .campfire-2 {
-            top: 35%;
-            right: 20%;
+        .beacon-2 {
+            top: 25%;
+            right: 15%;
         }
         
-        .campfire-3 {
-            bottom: 25%;
-            left: 25%;
+        .beacon-3 {
+            bottom: 30%;
+            left: 20%;
         }
         
-        .campfire-smoke {
+        .beacon-smoke {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             width: 60px;
             height: 120px;
-            background: radial-gradient(ellipse at center, rgba(200, 200, 200, 0.3) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(150, 100, 50, 0.3) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(15px);
-            animation: smokeRise 10s infinite alternate;
+            animation: smokeRise 8s infinite alternate;
         }
         
         @keyframes smokeRise {
             0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.3; }
-            100% { transform: translateX(-50%) translateY(-100px) scale(1.3); opacity: 0.6; }
+            100% { transform: translateX(-50%) translateY(-80px) scale(1.3); opacity: 0.6; }
         }
         
-        .campfire-flame {
+        .beacon-fire {
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 80px;
-            background: radial-gradient(ellipse at center, #ff9800 0%, #ff5722 50%, transparent 70%);
+            width: 40px;
+            height: 60px;
+            background: radial-gradient(ellipse at center, #ff5722 0%, #ff9800 50%, transparent 70%);
             border-radius: 50% 50% 20% 20%;
-            filter: blur(10px);
-            animation: campfireFlame 4s infinite alternate;
+            filter: blur(8px);
+            animation: beaconFire 3s infinite alternate;
         }
         
-        @keyframes campfireFlame {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateX(-50%) scale(1.3); opacity: 1; }
+        @keyframes beaconFire {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.7; }
+            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
         }
         
-        /* 会师河流 */
-        .unification-river {
+        /* 紧张感的河流 */
+        .tense-river {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 180px;
-            background: linear-gradient(to top, rgba(33, 150, 243, 0.3) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(13, 71, 161, 0.25) 0%, transparent 100%);
             overflow: hidden;
         }
         
-        .unification-wave {
+        .tense-wave {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 20px;
-            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.5), transparent);
-            animation: unificationWaveMove 8s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), transparent);
+            animation: tenseWaveMove 6s linear infinite;
         }
         
-        .unification-wave:nth-child(2) {
-            animation-delay: -2s;
+        .tense-wave:nth-child(2) {
+            animation-delay: -1.5s;
             opacity: 0.7;
         }
         
-        .unification-wave:nth-child(3) {
-            animation-delay: -4s;
+        .tense-wave:nth-child(3) {
+            animation-delay: -3s;
             opacity: 0.4;
         }
         
-        @keyframes unificationWaveMove {
+        @keyframes tenseWaveMove {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
         
-        /* 庆祝光点（远处篝火） */
-        .distant-celebration {
+        /* 紧张闪烁的光点（远处炮火） */
+        .distant-fire {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: #ff9800;
+            width: 4px;
+            height: 4px;
+            background-color: #ff5722;
             border-radius: 50%;
             filter: blur(1px);
-            animation: distantCelebrationBlink 6s infinite;
+            animation: distantFireBlink 5s infinite;
         }
         
-        @keyframes distantCelebrationBlink {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.9; }
+        @keyframes distantFireBlink {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.8; }
         }
         
         /* 交互粒子效果 */
@@ -263,7 +263,7 @@
         }
         
         .historical-badge {
-            background: linear-gradient(135deg, var(--victory-blue) 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
@@ -272,13 +272,13 @@
             margin-bottom: 40px;
             letter-spacing: 2px;
             border: 2px solid var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(21, 101, 192, 0.4);
+            box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4);
             animation: badgePulse 3s infinite alternate;
         }
         
         @keyframes badgePulse {
-            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(21, 101, 192, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(21, 101, 192, 0.6); }
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(198, 40, 40, 0.6); }
         }
         
         .main-title {
@@ -322,7 +322,7 @@
         }
         
         .start-button {
-            background: linear-gradient(135deg, var(--victory-blue) 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             color: white;
             border: none;
             padding: 18px 50px;
@@ -332,7 +332,7 @@
             transition: all 0.3s ease;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.4);
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -343,7 +343,7 @@
         
         .start-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(21, 101, 192, 0.6);
+            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.6);
         }
         
         .start-button i {
@@ -408,7 +408,7 @@
             position: absolute;
             top: -60px;
             right: 0;
-            background-color: var(--victory-blue);
+            background-color: var(--primary-red);
             color: white;
             border: none;
             width: 50px;
@@ -425,7 +425,7 @@
         
         .close-video:hover {
             transform: scale(1.1) rotate(90deg);
-            background-color: #0d47a1;
+            background-color: #b71c1c;
         }
         
         .video-info {
@@ -530,6 +530,8 @@
         .chapter-nav-item:nth-child(2) { animation-delay: 0.4s; }
         .chapter-nav-item:nth-child(3) { animation-delay: 0.5s; }
         .chapter-nav-item:nth-child(4) { animation-delay: 0.6s; }
+        .chapter-nav-item:nth-child(5) { animation-delay: 0.7s; }
+        .chapter-nav-item:nth-child(6) { animation-delay: 0.8s; }
         
         @keyframes slideUp {
             to { transform: translateY(0); opacity: 1; }
@@ -578,7 +580,7 @@
         .chapter-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--victory-blue) 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -662,7 +664,7 @@
         }
         
         .content-header {
-            background: linear-gradient(135deg, var(--victory-blue) 0%, #0d47a1 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             padding: 30px;
             display: flex;
             justify-content: space-between;
@@ -697,7 +699,7 @@
         
         .close-content:hover {
             background-color: white;
-            color: var(--victory-blue);
+            color: var(--primary-red);
             transform: rotate(90deg);
         }
         
@@ -762,7 +764,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(45deg, #1a237e, #283593);
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
         }
         
         .scene-image::before {
@@ -1133,45 +1135,45 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--victory-blue);
+            background: var(--primary-red);
             border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #0d47a1;
+            background: #b71c1c;
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景 - 会师胜利感 -->
+    <!-- 动态背景 - 战争紧迫感 -->
     <div class="dynamic-background">
-        <div class="dawn-sky"></div>
-        <div class="victory-clouds">
-            <div class="victory-cloud victory-cloud-1"></div>
-            <div class="victory-cloud victory-cloud-2"></div>
-            <div class="victory-cloud victory-cloud-3"></div>
+        <div class="war-sky"></div>
+        <div class="war-clouds">
+            <div class="war-cloud war-cloud-1"></div>
+            <div class="war-cloud war-cloud-2"></div>
+            <div class="war-cloud war-cloud-3"></div>
         </div>
-        <div class="campfire-effects">
-            <div class="campfire campfire-1">
-                <div class="campfire-smoke"></div>
-                <div class="campfire-flame"></div>
+        <div class="beacon-effects">
+            <div class="beacon beacon-1">
+                <div class="beacon-smoke"></div>
+                <div class="beacon-fire"></div>
             </div>
-            <div class="campfire campfire-2">
-                <div class="campfire-smoke"></div>
-                <div class="campfire-flame"></div>
+            <div class="beacon beacon-2">
+                <div class="beacon-smoke"></div>
+                <div class="beacon-fire"></div>
             </div>
-            <div class="campfire campfire-3">
-                <div class="campfire-smoke"></div>
-                <div class="campfire-flame"></div>
+            <div class="beacon beacon-3">
+                <div class="beacon-smoke"></div>
+                <div class="beacon-fire"></div>
             </div>
         </div>
-        <div class="unification-river">
-            <div class="unification-wave"></div>
-            <div class="unification-wave"></div>
-            <div class="unification-wave"></div>
+        <div class="tense-river">
+            <div class="tense-wave"></div>
+            <div class="tense-wave"></div>
+            <div class="tense-wave"></div>
         </div>
-        <!-- 远处庆祝光点 -->
-        <div id="distantCelebrations"></div>
+        <!-- 远处炮火光点 -->
+        <div id="distantFires"></div>
     </div>
     
     <!-- 交互粒子效果 -->
@@ -1179,12 +1181,12 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">长征史诗终章 #001</div>
-        <h1 class="main-title">三大主力会师：<span>长征的辉煌终点</span></h1>
-        <p class="subtitle">1936年10月，甘肃会宁与宁夏将台堡。在历经两年艰苦卓绝的征战、分合辗转后，中国工农红军第一、二、四方面军终于胜利会师，标志着长征这一伟大战略转移的全面结束。</p>
-        <p class="subtitle">现在，你是一名历史探索者，需要亲历这段激动人心的历史时刻，还原三大主力会师的完整历程。每一场会师背后，都凝聚着无数红军战士的鲜血与信念。</p>
+        <div class="historical-badge">历史探索任务 #001</div>
+        <h1 class="main-title">长征起点：<span>战略转移的秘密</span></h1>
+        <p class="subtitle">1934年10月，江西于都。在夜幕的掩护下，一支8.6万人的队伍悄然出发，踏上了一条未知的征程。他们的决定将改变中国历史的走向……</p>
+        <p class="subtitle">现在，你是一名历史侦探，需要解开这段尘封的历史，还原长征出发的真相。每一段历史背后，都隐藏着不为人知的故事。</p>
         <button class="start-button" id="startButton">
-            开始探索 <i class="fas fa-flag-checkered"></i>
+            开始探索 <i class="fas fa-map-signs"></i>
         </button>
     </div>
     
@@ -1195,13 +1197,13 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征会师纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-sunset-over-a-lake-1864-large.mp4" type="video/mp4">
+                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征纪录片 -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
         <div class="video-info">
-            <p>观看这段视频，了解1936年红军三大主力会师的历史背景和伟大意义。</p>
+            <p>观看这段视频，了解1934年中央苏区面临的严峻形势和红军长征出发的历史背景。</p>
             <p>视频结束后，请点击右上角的关闭按钮，继续你的探索之旅。</p>
         </div>
     </div>
@@ -1212,11 +1214,11 @@
         <div class="time-locator">
             <div class="time-period">
                 <i class="fas fa-calendar-alt"></i>
-                <span>1936年10月 · 金秋</span>
+                <span>1934年10月 · 深秋</span>
             </div>
             <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>甘肃会宁 · 宁夏将台堡</span>
+                <span>江西 · 于都河畔</span>
             </div>
         </div>
         
@@ -1224,19 +1226,19 @@
         <div class="chapter-navigation">
             <div class="chapter-nav-item visible active" data-chapter="1">
                 <div class="chapter-icon">
-                    <i class="fas fa-march"></i>
+                    <i class="fas fa-cloud-sun"></i>
                 </div>
-                <h3 class="chapter-title">红二方面军长征</h3>
-                <p class="chapter-description">探索红二、六军团从湘鄂川黔苏区出发到甘孜会师的转战历程</p>
+                <h3 class="chapter-title">危局笼罩</h3>
+                <p class="chapter-description">揭开第五次反"围剿"失败的真相，了解红军面临的生死存亡危机</p>
                 <div class="chapter-status status-available">点击探索</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="2">
                 <div class="chapter-icon">
-                    <i class="fas fa-handshake"></i>
+                    <i class="fas fa-user-secret"></i>
                 </div>
-                <h3 class="chapter-title">共同北上征程</h3>
-                <p class="chapter-description">了解红二、四方面军如何克服阻力，共同北上穿越草地</p>
+                <h3 class="chapter-title">秘密决策</h3>
+                <p class="chapter-description">探索"三人团"的秘密决策过程，了解长征的真正目标</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
@@ -1244,17 +1246,35 @@
                 <div class="chapter-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3 class="chapter-title">会宁胜利会师</h3>
-                <p class="chapter-description">亲历红一、四方面军在甘肃会宁的激动人心的会师场面</p>
+                <h3 class="chapter-title">于都集结</h3>
+                <p class="chapter-description">亲历红军在于都的秘密集结，感受那个悲壮的告别之夜</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="4">
                 <div class="chapter-icon">
-                    <i class="fas fa-trophy"></i>
+                    <i class="fas fa-water"></i>
                 </div>
-                <h3 class="chapter-title">将台堡大会师</h3>
-                <p class="chapter-description">见证三大主力全面会师，长征胜利结束的伟大时刻</p>
+                <h3 class="chapter-title">夜渡出发</h3>
+                <p class="chapter-description">跟随红军战士的脚步，踏上漫漫长征路的第一步</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="5">
+                <div class="chapter-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3 class="chapter-title">湘江血战</h3>
+                <p class="chapter-description">经历长征中最惨烈的战役，理解转折前夜的代价</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="6">
+                <div class="chapter-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="chapter-title">通道转兵</h3>
+                <p class="chapter-description">见证历史转折的关键决策，理解伟大转折的前奏</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
         </div>
@@ -1263,8 +1283,8 @@
         <div class="content-area" id="contentArea">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title" id="contentTitle">红二方面军长征</h2>
-                    <p class="content-subtitle" id="contentSubtitle">从湘鄂川黔苏区到甘孜会师</p>
+                    <h2 class="content-title" id="contentTitle">危局笼罩</h2>
+                    <p class="content-subtitle" id="contentSubtitle">第五次反"围剿"失败的背后</p>
                 </div>
                 <button class="close-content" id="closeContent">
                     <i class="fas fa-times"></i>
@@ -1283,138 +1303,210 @@
         // 探索章节数据
         const explorationData = {
             1: {
-                title: "红二方面军长征",
-                subtitle: "从湘鄂川黔苏区到甘孜会师",
+                title: "危局笼罩",
+                subtitle: "第五次反'围剿'失败的背后",
                 scene: {
-                    title: "场景模拟：湘鄂川黔苏区的告别",
-                    description: "1935年11月19日，湖南桑植。深秋的寒风中，贺龙、任弼时、关向应等领导人站在队伍前，望着即将出发的红二、六军团1.7万名战士。他们中许多人在这片根据地战斗多年，如今为了策应中央红军长征并摆脱自身困境，必须踏上新的征程。乡亲们默默送来草鞋、干粮，母亲们把最后的鸡蛋塞给年轻的战士。这一走，不知何时才能回到家乡……"
+                    title: "场景模拟：乌云压城的中央苏区",
+                    description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……"
                 },
                 interactive: {
-                    title: "点击探索：红二、六军团的转战历程",
-                    description: "点击此处，了解红二、六军团如何佯攻昆明、巧渡金沙江，最终翻越玉龙雪山进入康藏地区的战略智慧。"
+                    title: "点击探索：第五次反'围剿'为何失败？",
+                    description: "点击此处，揭开红军在第五次反'围剿'中失利的真相。了解博古、李德的错误指挥如何导致红军陷入困境。"
                 },
                 quiz: {
-                    question: "红二、六军团在贵州盘县接到北上与红四方面军会合的电令后，采取了什么战术调动敌人？",
+                    question: "在第五次反'围剿'中，红军主要采用了什么错误的战术？",
                     options: [
-                        { text: "直接北上，强行突破敌军防线", correct: false },
-                        { text: "佯攻昆明，调动敌军后渡江北上", correct: true },
-                        { text: "原地固守，等待敌军撤退", correct: false },
-                        { text: "分散突围，各自寻找北上路线", correct: false }
+                        { text: "游击战术，分散敌人兵力", correct: false },
+                        { text: "阵地战，与敌人硬拼消耗", correct: true },
+                        { text: "运动战，灵活打击敌人弱点", correct: false },
+                        { text: "地道战，利用地形优势", correct: false }
                     ],
-                    feedback: "正确答案是'佯攻昆明，调动敌军后渡江北上'。红二、六军团巧妙佯攻昆明，调动敌军防守力量后，突然转向西进，于1936年4月下旬在石鼓镇等处顺利渡过金沙江。"
+                    feedback: "正确答案是'阵地战，与敌人硬拼消耗'。在博古和李德的错误指挥下，红军放弃了擅长的游击战和运动战，转而与装备精良的国民党军进行阵地消耗战，导致红军损失惨重。"
                 },
                 dossier: [
-                    { label: "出发时间", value: "1935年11月19日，从湖南桑植的湘鄂川黔革命根据地出发。" },
-                    { label: "部队构成", value: "红二、六军团，总兵力约1.7万人，由贺龙、任弼时、关向应等领导。" },
-                    { label: "转战路线", value: "先向湘中进军吸引敌军，然后西进贵州，在乌蒙山与敌人展开千里回旋战。" },
-                    { label: "关键渡江", value: "1936年4月下旬，在石鼓镇等处顺利渡过金沙江，翻越玉龙雪山。" },
-                    { label: "甘孜会师", value: "1936年7月2日，齐集四川甘孜，与红四方面军主力胜利会师。" }
+                    { label: "背景", value: "第五次反'围剿'战役进行中，红军面临前所未有的压力。" },
+                    { label: "敌军兵力", value: "国民党调集100万大军，对中央苏区形成铁桶般的包围圈。" },
+                    { label: "红军困境", value: "在错误指挥下，红军采取阵地战策略，与装备精良的敌军硬拼，损失惨重。" },
+                    { label: "关键战役", value: "广昌保卫战失败后，苏区门户大开，形势急转直下。" },
+                    { label: "战略判断", value: "至1934年9月，中央苏区已难以坚守，必须进行战略转移。" }
                 ],
                 achievement: {
-                    title: "转战追踪者",
-                    description: "你已了解红二、六军团的长征历程，理解了他们在极端困难条件下的战略智慧。",
+                    title: "历史观察员",
+                    description: "你已了解第五次反'围剿'失败的背景，理解了红军面临的艰难抉择。",
                     nextChapter: 2
                 }
             },
             2: {
-                title: "共同北上征程",
-                subtitle: "克服阻力，再次穿越草地",
+                title: "秘密决策",
+                subtitle: "三人团的生死抉择",
                 scene: {
-                    title: "场景模拟：甘孜草原的艰难抉择",
-                    description: "1936年7月，四川甘孜。红二、四方面军会师后，营地中弥漫着复杂的情绪。一方面是会师的喜悦，另一方面是关于北上还是南下的激烈争论。朱德、刘伯承在红四方面军中坚持宣传北上方针，新到达的任弼时、贺龙等红二方面军领导人也坚决拥护中央路线。张国焘在内外压力下，被迫于6月6日宣布取消第二'中央'。现在，两支大军必须做出决定：是留在川康边境艰难求生，还是再次穿越那片夺去无数生命的茫茫草地？"
+                    title: "场景模拟：瑞金叶坪的深夜会议",
+                    description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……"
                 },
                 interactive: {
-                    title: "点击探索：推动北上的关键力量",
-                    description: "点击此处，了解朱德、刘伯承、任弼时、贺龙等人如何通过斗争和策略，促使红四方面军同意北上。"
+                    title: "点击探索：长征决策背后的秘密",
+                    description: "点击此处，了解'三人团'如何秘密筹划战略转移，以及这个决定为何要对普通战士和百姓保密。"
                 },
                 quiz: {
-                    question: "红二方面军到达甘孜后，对推动红四方面军北上起到了什么关键作用？",
+                    question: "长征出发时，对普通红军战士和百姓宣传的行动代号是什么？",
                     options: [
-                        { text: "提供了大量粮食和物资", correct: false },
-                        { text: "加强了拥护中央北上方针的力量", correct: true },
-                        { text: "带来了中央的最新指示", correct: false },
-                        { text: "直接接管了红四方面军的指挥权", correct: false }
+                        { text: "北上抗日先遣队", correct: true },
+                        { text: "向西突围计划", correct: false },
+                        { text: "南方游击行动", correct: false },
+                        { text: "根据地转移计划", correct: false }
                     ],
-                    feedback: "正确答案是'加强了拥护中央北上方针的力量'。红二方面军的到来，极大地加强了朱德、刘伯承等人在红四方面军内部宣传北上方针的力量，促使张国焘最终同意北上。"
+                    feedback: "正确答案是'北上抗日先遣队'。为了保密和稳定军心，红军高层对普通战士和百姓宣传这是'北上抗日先遣队'的行动，只有极少数人知道这是战略转移。"
                 },
                 dossier: [
-                    { label: "北上决策", value: "1936年7月上旬，红二、四方面军分左、中、右三个纵队，开始共同北上。" },
-                    { label: "关键人物", value: "朱德、刘伯承在红四方面军内部坚持宣传北上方针；任弼时、贺龙等红二方面军领导人坚决拥护中央路线。" },
-                    { label: "张国焘妥协", value: "在内外压力下，张国焘被迫于1936年6月6日宣布取消第二'中央'。" },
-                    { label: "二次过草地", value: "第二次穿越茫茫草地，虽然有了经验，但恶劣的自然条件依然夺去了许多战士的生命。" },
-                    { label: "到达甘南", value: "经过一个多月的艰苦行军，于8月初先后到达甘南的哈达铺、岷县一带。" }
+                    { label: "决策团队", value: "博古、李德、周恩来组成'三人团'，负责筹划和指挥转移事宜。" },
+                    { label: "保密等级", value: "绝密。只有极少数高层领导知晓真实意图。" },
+                    { label: "对外宣传", value: "对广大指战员和民众宣传为'北上抗日先遣队'。" },
+                    { label: "转移目标", value: "最初计划向西突围，前往湘西北与红二、六军团会合。" },
+                    { label: "留守人员", value: "项英、陈毅带领1.6万战士留下坚持游击战争，掩护主力转移。" }
                 ],
                 achievement: {
-                    title: "团结推动者",
-                    description: "你已理解推动红二、四方面军共同北上的艰难历程，认识到团结统一的重要性。",
+                    title: "战略分析师",
+                    description: "你已揭开长征决策的秘密，理解了'三人团'在历史关头的艰难抉择。",
                     nextChapter: 3
                 }
             },
             3: {
-                title: "会宁胜利会师",
-                subtitle: "红一、四方面军的激动重逢",
+                title: "于都集结",
+                subtitle: "悲壮的告别之夜",
                 scene: {
-                    title: "场景模拟：会宁城的历史性拥抱",
-                    description: "1936年10月9日，甘肃会宁。清晨的阳光洒在这座西北小城，街道被打扫得干干净净。城门口，红一方面军的战士们翘首以盼。远处，一支长长的队伍出现在地平线上——那是红四方面军的先头部队。当两支队伍越来越近时，人群中爆发出震天的欢呼声。战士们扔掉手中的武器，奔跑着拥抱在一起，热泪盈眶。许多人寻找着失散多年的战友，许多人只是紧紧握住陌生同志的手，激动得说不出话来。这一刻，所有的艰难困苦都化为了胜利的喜悦……"
+                    title: "场景模拟：于都河畔的无声告别",
+                    description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。"
                 },
                 interactive: {
-                    title: "点击感受：会宁会师的盛况",
-                    description: "点击此处，感受红一、四方面军在会宁会师的激动场面，了解这一历史性时刻的细节。"
+                    title: "点击感受：军民鱼水情",
+                    description: "点击此处，感受于都百姓与红军的深厚感情，了解百姓如何支援红军秘密集结。"
                 },
                 quiz: {
-                    question: "红四方面军先头部队是什么时候占领会宁县城的？",
+                    question: "于都百姓用什么材料帮助红军架设浮桥？",
                     options: [
-                        { text: "1936年9月20日", correct: false },
-                        { text: "1936年10月2日", correct: true },
-                        { text: "1936年10月9日", correct: false },
-                        { text: "1936年10月15日", correct: false }
+                        { text: "专业的桥梁材料", correct: false },
+                        { text: "自家的门板、木床甚至寿材", correct: true },
+                        { text: "从敌军缴获的物资", correct: false },
+                        { text: "临时砍伐的树木", correct: false }
                     ],
-                    feedback: "正确答案是'1936年10月2日'。红四方面军先头部队第10师于10月2日占领甘肃会宁县城，为会师创造了条件。"
+                    feedback: "正确答案是'自家的门板、木床甚至寿材'。于都百姓倾尽所有支援红军，拆下自家的门板、木床，甚至老人的寿材，帮助红军在于都河上架设浮桥。"
                 },
                 dossier: [
-                    { label: "会师时间", value: "1936年10月9日，红一、四方面军在甘肃会宁胜利会师。" },
-                    { label: "会师部队", value: "红四方面军总部及第4军、第31军主力；红一方面军第1军团第1师、第15军团第73师部队。" },
-                    { label: "主要领导人", value: "朱德、张国焘、徐向前、陈昌浩率红四方面军；红一方面军代表迎接。" },
-                    { label: "会师仪式", value: "举行了盛大的会师联欢会，战士们热情相拥，庆祝胜利。" },
-                    { label: "历史意义", value: "标志着红一、红四方面军的胜利会师，为三大主力全面会师奠定了基础。" }
+                    { label: "集结时间", value: "1934年10月10日至20日，中央红军主力约8.6万人分批在于都秘密集结。" },
+                    { label: "集结地点", value: "江西于都，苏区西南部，群众基础好，利于保密。" },
+                    { label: "红军人数", value: "中央红军主力约8.6万人。" },
+                    { label: "携带物资", value: "粮食、弹药、医疗器械，甚至印刷机、印钞机等'坛坛罐罐'。" },
+                    { label: "群众支援", value: "于都百姓帮助架设浮桥8处，提供大量粮食和物资。" }
                 ],
                 achievement: {
-                    title: "会师见证者",
-                    description: "你已亲历会宁会师的激动场面，感受到了红军战士胜利重逢的喜悦之情。",
+                    title: "场景还原师",
+                    description: "你已亲历于都集结的悲壮场景，感受到了红军与百姓的深厚感情。",
                     nextChapter: 4
                 }
             },
             4: {
-                title: "将台堡大会师",
-                subtitle: "长征胜利结束的伟大时刻",
+                title: "夜渡出发",
+                subtitle: "长征的第一步",
                 scene: {
-                    title: "场景模拟：将台堡的辉煌终点",
-                    description: "1936年10月22日，宁夏西吉县将台堡。秋风送爽，红旗招展。红二方面军在贺龙、任弼时的率领下，经过连续行军到达这里。早已在此等候的红一方面军战士列队欢迎，锣鼓喧天，口号震地。当贺龙与前来迎接的左权、聂荣臻紧紧握手时，人群中爆发出雷鸣般的掌声和欢呼。战士们互相拥抱，把帽子抛向空中。许多经历过湘江血战、雪山草地、围追堵截的老战士，此刻热泪纵横。两年了，整整两年的万里征战，无数战友牺牲在路上，如今终于迎来了胜利会师的这一天！"
+                    title: "场景模拟：静默渡河的漫长队伍",
+                    description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……"
                 },
                 interactive: {
-                    title: "点击思考：长征的伟大意义",
-                    description: "点击此处，总结长征的历史意义，理解三大主力会师对中国革命的深远影响。"
+                    title: "点击思考：为什么选择夜间渡河？",
+                    description: "点击此处，了解红军选择夜间秘密渡河的原因，以及这种决策背后的军事智慧。"
                 },
                 quiz: {
-                    question: "将台堡会师标志着什么历史事件的结束？",
+                    question: "红军选择在夜间渡河最主要的原因是什么？",
                     options: [
-                        { text: "红一方面军的长征", correct: false },
-                        { text: "红四方面军的长征", correct: false },
-                        { text: "红军三大主力的长征", correct: true },
-                        { text: "中国工农红军的成立", correct: false }
+                        { text: "红军战士习惯夜间行动", correct: false },
+                        { text: "为了保密，防止被敌军侦察发现", correct: true },
+                        { text: "白天太热，不利于行军", correct: false },
+                        { text: "夜间渡河更有诗意", correct: false }
                     ],
-                    feedback: "正确答案是'红军三大主力的长征'。将台堡会师标志着中国工农红军第一、二、四方面军三大主力在经过长达两年的万里征战、分合辗转后，终于全部胜利会师。至此，举世闻名的红军长征全部结束。"
+                    feedback: "正确答案是'为了保密，防止被敌军侦察发现'。在当时的战争环境下，空中侦察是重要威胁。夜间行动可以有效避免被敌人发现，保证战略转移的突然性。"
                 },
                 dossier: [
-                    { label: "会师时间", value: "1936年10月22日，红一、二方面军在宁夏西吉县将台堡胜利会师。" },
-                    { label: "会师部队", value: "红二方面军总指挥部及红二军团主力；红一方面军红一军团代理军团长左权、政委聂荣臻所部及红二师。" },
-                    { label: "历史宣告", value: "将台堡会师标志着红军三大主力全部胜利会师，长征全面结束。" },
-                    { label: "长征数据", value: "红军三大主力长征总里程约6.5万里，跨越14个省，翻越40余座高山，渡过近百条江河。" },
-                    { label: "伟大意义", value: "长征是宣言书、宣传队、播种机，保存了党和红军的骨干，实现了中国革命重心的战略转移。" }
+                    { label: "渡河时间", value: "1934年10月16日傍晚至10月20日夜间，中央红军主力部队分别从于都城东门等处的多个渡口夜渡于都河。" },
+                    { label: "渡河方式", value: "为保密起见，渡河主要在夜间进行，渡完后立即拆除浮桥，不留痕迹。" },
+                    { label: "队伍构成", value: "红军出发时编为两个野战纵队：第一野战纵队（军委纵队）和第二野战纵队（中央纵队）。" },
+                    { label: "转移方式", value: "这种'大搬家'式的甬道行进，使红军主力变成了一个负担沉重的队伍，严重影响了机动性。" },
+                    { label: "后续影响", value: "这种笨重的转移方式为随后的湘江战役埋下了隐患。" }
                 ],
                 achievement: {
-                    title: "长征终点探索者",
-                    description: "恭喜！你已完成长征终点探索，亲历了三大主力胜利会师的伟大时刻。长征精神将永远激励中国人民在中国共产党的领导下克服一切艰难险阻，奋勇前进！",
+                    title: "长征起点探索者",
+                    description: "恭喜！你已完成长征起点探索，理解了战略转移的艰难启程。",
+                    nextChapter: 5
+                }
+            },
+            5: {
+                title: "湘江血战",
+                subtitle: "血染湘江的惨烈战役",
+                scene: {
+                    title: "场景模拟：湘江两岸的血肉战场",
+                    description: "1934年11月下旬，湘江两岸。红军前锋控制了界首渡口，但中央纵队和军委纵队行动迟缓，形成了长约80公里的'血肉甬道'。红军主力在两侧以血肉之躯顶住数倍于己的敌军，掩护中央机关过江。炮火连天，硝烟弥漫，湘江水被战士们的鲜血染红……"
+                },
+                interactive: {
+                    title: "点击探索：湘江战役的关键阻击战",
+                    description: "点击此处，了解觉山铺、新圩、光华铺三大阻击战的惨烈过程，以及殿后部队的悲壮牺牲。"
+                },
+                quiz: {
+                    question: "湘江战役中，哪个部队担任总后卫，几乎全部牺牲在湘江东岸？",
+                    options: [
+                        { text: "红一军团第1师", correct: false },
+                        { text: "红三军团第5师", correct: false },
+                        { text: "红五军团第34师", correct: true },
+                        { text: "红八军团第21师", correct: false }
+                    ],
+                    feedback: "正确答案是'红五军团第34师'。红五军团第34师（陈树湘师长）担任总后卫，被阻于湘江东岸，弹尽粮绝，大部牺牲，师长重伤被俘后断肠明志，壮烈牺牲。"
+                },
+                dossier: [
+                    { label: "战役时间", value: "1934年11月27日至12月1日" },
+                    { label: "战役地点", value: "湘江沿岸，主要渡口为界首渡口" },
+                    { label: "红军兵力", value: "战役开始时约8.6万人" },
+                    { label: "敌军兵力", value: "国民党中央军、湘军、桂军约30万人" },
+                    { label: "关键阻击战", value: "觉山铺阻击战（红一军团）、新圩阻击战（红三军团）、光华铺阻击战（红三军团）" },
+                    { label: "战役损失", value: "中央红军从8.6万人锐减至约3万余人，作战部队损失三分之二以上" },
+                    { label: "历史影响", value: "这场惨败成为党内军内要求改变领导、改变路线的最直接、最强烈的催化剂" }
+                ],
+                achievement: {
+                    title: "悲壮历史见证者",
+                    description: "你已了解湘江战役的惨烈过程，理解了这场战役对红军命运的重大影响。",
+                    nextChapter: 6
+                }
+            },
+            6: {
+                title: "通道转兵",
+                subtitle: "伟大转折的前奏",
+                scene: {
+                    title: "场景模拟：通道县恭城书院的激烈争论",
+                    description: "1934年12月12日，湖南省通道县恭城书院。湘江战役后的红军极度疲惫、减员严重，而蒋介石已在通往湘西的路上布下了一个更大的'口袋阵'。会议室里，李德坚持原计划，毛泽东则力谏转向敌人力量薄弱的贵州。这场争论将决定红军的生死存亡……"
+                },
+                interactive: {
+                    title: "点击探索：通道会议的历史意义",
+                    description: "点击此处，了解毛泽东如何在通道会议上力挽狂澜，以及这次转兵对红军命运的重大意义。"
+                },
+                quiz: {
+                    question: "通道会议最重要的历史意义是什么？",
+                    options: [
+                        { text: "确立了毛泽东在党内的最高领导地位", correct: false },
+                        { text: "第一次根据实际情况否定了既定方针，实现了战略转兵", correct: true },
+                        { text: "决定了红军长征的最终目的地", correct: false },
+                        { text: "解决了红军的粮食补给问题", correct: false }
+                    ],
+                    feedback: "正确答案是'第一次根据实际情况否定了既定方针，实现了战略转兵'。通道转兵是自长征开始以来，中央红军第一次根据实际情况，否定了共产国际顾问和'左'倾领导人的既定方针，实现了战略转兵。"
+                },
+                dossier: [
+                    { label: "会议时间", value: "1934年12月12日" },
+                    { label: "会议地点", value: "湖南省通道县（今通道侗族自治县）的恭城书院" },
+                    { label: "参会人员", value: "博古、李德、周恩来、朱德、张闻天、毛泽东、王稼祥等" },
+                    { label: "主要争论", value: "李德坚持原计划北上湘西，毛泽东力主转向贵州" },
+                    { label: "会议结果", value: "虽然博古、李德仍坚持己见，但多数人支持毛泽东的主张，决定'西进贵州'" },
+                    { label: "历史意义", value: "毛泽东军事影响力的回归，为黎平会议和遵义会议铺平了道路" },
+                    { label: "后续发展", value: "进入贵州后，红军连克黎平、剑河等城，暂时获得了喘息之机" }
+                ],
+                achievement: {
+                    title: "历史转折探索者",
+                    description: "恭喜！你已完成长征初期历史探索，理解了湘江战役的惨痛教训和通道转兵的历史意义。这两者紧密相连，共同构成了遵义会议伟大转折的序曲。",
                     nextChapter: null
                 }
             }
@@ -1438,14 +1530,14 @@
         const contentSubtitle = document.getElementById('contentSubtitle');
         const contentBody = document.getElementById('contentBody');
         const closeContent = document.getElementById('closeContent');
-        const distantCelebrationsContainer = document.getElementById('distantCelebrations');
+        const distantFiresContainer = document.getElementById('distantFires');
         const interactiveParticles = document.getElementById('interactiveParticles');
         const achievementContainer = document.getElementById('achievementContainer');
         
         // 初始化
         function init() {
-            // 创建远处庆祝光点
-            createDistantCelebrations();
+            // 创建远处炮火光点
+            createDistantFires();
             
             // 事件监听
             startButton.addEventListener('click', startExploration);
@@ -1473,24 +1565,24 @@
             openChapter(1);
         }
         
-        // 创建远处庆祝光点
-        function createDistantCelebrations() {
-            for (let i = 0; i < 30; i++) {
-                const celebration = document.createElement('div');
-                celebration.className = 'distant-celebration';
+        // 创建远处炮火光点
+        function createDistantFires() {
+            for (let i = 0; i < 25; i++) {
+                const fire = document.createElement('div');
+                fire.className = 'distant-fire';
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const delay = Math.random() * 6;
-                const duration = 4 + Math.random() * 5;
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 4;
                 
-                celebration.style.left = `${x}%`;
-                celebration.style.top = `${y}%`;
-                celebration.style.animationDelay = `${delay}s`;
-                celebration.style.animationDuration = `${duration}s`;
-                celebration.style.opacity = Math.random() * 0.4 + 0.2;
+                fire.style.left = `${x}%`;
+                fire.style.top = `${y}%`;
+                fire.style.animationDelay = `${delay}s`;
+                fire.style.animationDuration = `${duration}s`;
+                fire.style.opacity = Math.random() * 0.3 + 0.1;
                 
-                distantCelebrationsContainer.appendChild(celebration);
+                distantFiresContainer.appendChild(fire);
             }
         }
         
@@ -1556,7 +1648,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#1565c0', 8);
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
             
             videoOverlay.classList.remove('active');
             explorationContainer.classList.add('active');
@@ -1923,7 +2015,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#1565c0', 8);
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
             
             contentArea.classList.remove('active');
             
@@ -1946,7 +2038,7 @@
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
                         `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
-                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                        `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
             `;
@@ -1970,11 +2062,29 @@
         
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', init);
-        
+
+        function finishAndReturnToMap(currentChapter){
+            try{
+                const KEY = 'lm_unlocks_v1';
+                const raw = localStorage.getItem(KEY);
+                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
+                if(st.mode === 'linear' || (!st.mode && true)){
+                    const next = Math.min(7, currentChapter+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
+                }
+                st.mode = st.mode || 'linear';
+                localStorage.setItem(KEY, JSON.stringify(st));
+            }catch(e){}
+            window.location.href = '/html/map.html?mode=linear';
+        }
+
         // 使函数在全局可用
         window.openChapter = openChapter;
         window.completeChapter = completeChapter;
         window.continueToNextChapter = continueToNextChapter;
+        window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
 </body>
 </html>

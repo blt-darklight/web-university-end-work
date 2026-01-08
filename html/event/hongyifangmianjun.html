@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长征起点：战略转移的沉浸式探索</title>
+    <title>长征胜利：红一方面军抵达陕北的沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,6 +21,7 @@
             --accent-gold: #ffb300;
             --mystery-blue: #1565c0;
             --explore-green: #2e7d32;
+            --victory-gold: #ffd700;
             --transition-time: 0.4s;
         }
         
@@ -31,7 +32,7 @@
             overflow-x: hidden;
         }
         
-        /* 动态背景 - 战争紧迫感 */
+        /* 动态背景 - 胜利曙光感 */
         .dynamic-background {
             position: fixed;
             top: 0;
@@ -42,18 +43,34 @@
             overflow: hidden;
         }
         
-        /* 深色战云天空 */
-        .war-sky {
+        /* 黎明天空 */
+        .dawn-sky {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 30%, #2a1a1a 70%, #1a0a0a 100%);
+            background: linear-gradient(to bottom, #1a0a0a 0%, #2a1a1a 30%, #3a2a2a 70%, #4a3a3a 100%);
         }
         
-        /* 快速移动的战云 */
-        .war-clouds {
+        /* 黎明曙光 */
+        .dawn-light {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top right, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: dawnPulse 20s infinite alternate;
+        }
+        
+        @keyframes dawnPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+        
+        /* 缓慢移动的云 */
+        .victory-clouds {
             position: absolute;
             top: 0;
             left: 0;
@@ -61,49 +78,49 @@
             height: 100%;
         }
         
-        .war-cloud {
+        .victory-cloud {
             position: absolute;
-            background: rgba(60, 60, 80, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 100px;
             filter: blur(30px);
-            opacity: 0.7;
+            opacity: 0.5;
         }
         
-        .war-cloud-1 {
+        .victory-cloud-1 {
             width: 500px;
             height: 150px;
             top: 10%;
             left: -500px;
-            animation: warCloudMove 25s linear infinite;
-            background: rgba(80, 60, 60, 0.25);
+            animation: victoryCloudMove 40s linear infinite;
+            background: rgba(255, 255, 255, 0.15);
         }
         
-        .war-cloud-2 {
+        .victory-cloud-2 {
             width: 400px;
             height: 120px;
             top: 40%;
             left: -400px;
-            animation: warCloudMove 30s linear infinite 8s;
-            background: rgba(60, 60, 80, 0.2);
+            animation: victoryCloudMove 50s linear infinite 10s;
+            background: rgba(255, 255, 255, 0.1);
         }
         
-        .war-cloud-3 {
+        .victory-cloud-3 {
             width: 350px;
             height: 100px;
             top: 70%;
             left: -350px;
-            animation: warCloudMove 28s linear infinite 4s;
-            background: rgba(80, 60, 60, 0.3);
+            animation: victoryCloudMove 45s linear infinite 5s;
+            background: rgba(255, 255, 255, 0.12);
         }
         
-        @keyframes warCloudMove {
-            0% { transform: translateX(0); opacity: 0.5; }
-            50% { opacity: 0.8; }
-            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.5; }
+        @keyframes victoryCloudMove {
+            0% { transform: translateX(0); opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.3; }
         }
         
-        /* 远处烽火效果 */
-        .beacon-effects {
+        /* 庆祝的烽火效果 */
+        .celebration-beacons {
             position: absolute;
             top: 0;
             left: 0;
@@ -111,112 +128,112 @@
             height: 100%;
         }
         
-        .beacon {
+        .celebration-beacon {
             position: absolute;
             width: 120px;
             height: 200px;
-            opacity: 0.4;
+            opacity: 0.5;
         }
         
-        .beacon-1 {
+        .celebration-beacon-1 {
             top: 15%;
             left: 10%;
         }
         
-        .beacon-2 {
+        .celebration-beacon-2 {
             top: 25%;
             right: 15%;
         }
         
-        .beacon-3 {
+        .celebration-beacon-3 {
             bottom: 30%;
             left: 20%;
         }
         
-        .beacon-smoke {
+        .celebration-smoke {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             width: 60px;
             height: 120px;
-            background: radial-gradient(ellipse at center, rgba(150, 100, 50, 0.3) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(15px);
-            animation: smokeRise 8s infinite alternate;
+            animation: celebrationSmoke 10s infinite alternate;
         }
         
-        @keyframes smokeRise {
+        @keyframes celebrationSmoke {
             0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.3; }
-            100% { transform: translateX(-50%) translateY(-80px) scale(1.3); opacity: 0.6; }
+            100% { transform: translateX(-50%) translateY(-100px) scale(1.5); opacity: 0.6; }
         }
         
-        .beacon-fire {
+        .celebration-fire {
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 40px;
             height: 60px;
-            background: radial-gradient(ellipse at center, #ff5722 0%, #ff9800 50%, transparent 70%);
+            background: radial-gradient(ellipse at center, #ffd700 0%, #ff9800 50%, transparent 70%);
             border-radius: 50% 50% 20% 20%;
             filter: blur(8px);
-            animation: beaconFire 3s infinite alternate;
+            animation: celebrationFire 4s infinite alternate;
         }
         
-        @keyframes beaconFire {
+        @keyframes celebrationFire {
             0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.7; }
-            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+            50% { transform: translateX(-50%) scale(1.3); opacity: 1; }
         }
         
-        /* 紧张感的河流 */
-        .tense-river {
+        /* 陕北的黄土高原河流 */
+        .northwest-river {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 180px;
-            background: linear-gradient(to top, rgba(13, 71, 161, 0.25) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(121, 85, 72, 0.3) 0%, transparent 100%);
             overflow: hidden;
         }
         
-        .tense-wave {
+        .northwest-wave {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 20px;
-            background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), transparent);
-            animation: tenseWaveMove 6s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(188, 170, 164, 0.4), transparent);
+            animation: northwestWaveMove 8s linear infinite;
         }
         
-        .tense-wave:nth-child(2) {
-            animation-delay: -1.5s;
+        .northwest-wave:nth-child(2) {
+            animation-delay: -2s;
             opacity: 0.7;
         }
         
-        .tense-wave:nth-child(3) {
-            animation-delay: -3s;
+        .northwest-wave:nth-child(3) {
+            animation-delay: -4s;
             opacity: 0.4;
         }
         
-        @keyframes tenseWaveMove {
+        @keyframes northwestWaveMove {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
         
-        /* 紧张闪烁的光点（远处炮火） */
-        .distant-fire {
+        /* 远处庆祝的光点 */
+        .distant-celebration {
             position: absolute;
             width: 4px;
             height: 4px;
-            background-color: #ff5722;
+            background-color: #ffd700;
             border-radius: 50%;
             filter: blur(1px);
-            animation: distantFireBlink 5s infinite;
+            animation: distantCelebrationBlink 6s infinite;
         }
         
-        @keyframes distantFireBlink {
+        @keyframes distantCelebrationBlink {
             0%, 100% { opacity: 0.1; }
             50% { opacity: 0.8; }
         }
@@ -263,22 +280,22 @@
         }
         
         .historical-badge {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
+            color: #333;
             padding: 12px 30px;
             border-radius: 30px;
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 40px;
             letter-spacing: 2px;
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4);
+            border: 2px solid var(--victory-gold);
+            box-shadow: 0 5px 20px rgba(255, 179, 0, 0.4);
             animation: badgePulse 3s infinite alternate;
         }
         
         @keyframes badgePulse {
-            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(198, 40, 40, 0.6); }
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 179, 0, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255, 179, 0, 0.6); }
         }
         
         .main-title {
@@ -290,7 +307,7 @@
         }
         
         .main-title span {
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             position: relative;
             display: inline-block;
         }
@@ -302,7 +319,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--accent-gold);
+            background-color: var(--victory-gold);
             animation: underline 3s infinite alternate;
         }
         
@@ -322,8 +339,8 @@
         }
         
         .start-button {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
+            color: #333;
             border: none;
             padding: 18px 50px;
             font-size: 1.4rem;
@@ -332,7 +349,7 @@
             transition: all 0.3s ease;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 179, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -343,7 +360,7 @@
         
         .start-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.6);
+            box-shadow: 0 15px 35px rgba(255, 179, 0, 0.6);
         }
         
         .start-button i {
@@ -408,8 +425,8 @@
             position: absolute;
             top: -60px;
             right: 0;
-            background-color: var(--primary-red);
-            color: white;
+            background-color: var(--accent-gold);
+            color: #333;
             border: none;
             width: 50px;
             height: 50px;
@@ -425,7 +442,7 @@
         
         .close-video:hover {
             transform: scale(1.1) rotate(90deg);
-            background-color: #b71c1c;
+            background-color: #ffca28;
         }
         
         .video-info {
@@ -466,7 +483,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-left: 5px solid var(--accent-gold);
+            border-left: 5px solid var(--victory-gold);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-30px);
             opacity: 0;
@@ -480,7 +497,7 @@
         .time-period {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             display: flex;
             align-items: center;
         }
@@ -492,7 +509,7 @@
         
         .location {
             font-size: 1.4rem;
-            color: #bbdefb;
+            color: #ffecb3;
             display: flex;
             align-items: center;
         }
@@ -530,8 +547,6 @@
         .chapter-nav-item:nth-child(2) { animation-delay: 0.4s; }
         .chapter-nav-item:nth-child(3) { animation-delay: 0.5s; }
         .chapter-nav-item:nth-child(4) { animation-delay: 0.6s; }
-        .chapter-nav-item:nth-child(5) { animation-delay: 0.7s; }
-        .chapter-nav-item:nth-child(6) { animation-delay: 0.8s; }
         
         @keyframes slideUp {
             to { transform: translateY(0); opacity: 1; }
@@ -544,7 +559,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 179, 0, 0.05), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
             opacity: 0;
             transition: opacity var(--transition-time) ease;
         }
@@ -555,14 +570,14 @@
         
         .chapter-nav-item:hover {
             transform: translateY(-10px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.15);
+            border-color: var(--victory-gold);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.15);
         }
         
         .chapter-nav-item.active {
-            border-color: var(--accent-gold);
+            border-color: var(--victory-gold);
             background-color: rgba(30, 30, 40, 0.9);
-            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
         }
         
         .chapter-nav-item.locked {
@@ -580,20 +595,20 @@
         .chapter-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
             font-size: 1.8rem;
-            color: white;
+            color: #333;
             position: relative;
             overflow: hidden;
         }
         
         .chapter-nav-item.active .chapter-icon {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
         }
         
         .chapter-nav-item.completed .chapter-icon {
@@ -627,8 +642,8 @@
         }
         
         .status-available {
-            background-color: rgba(33, 150, 243, 0.2);
-            color: #64b5f6;
+            background-color: rgba(255, 179, 0, 0.2);
+            color: #ffb300;
         }
         
         .status-completed {
@@ -664,7 +679,7 @@
         }
         
         .content-header {
-            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
             padding: 30px;
             display: flex;
             justify-content: space-between;
@@ -673,19 +688,19 @@
         
         .content-title {
             font-size: 2.2rem;
-            color: white;
+            color: #333;
         }
         
         .content-subtitle {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(51, 51, 51, 0.9);
             margin-top: 10px;
         }
         
         .close-content {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
+            background-color: rgba(51, 51, 51, 0.2);
+            border: 2px solid #333;
+            color: #333;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -698,8 +713,8 @@
         }
         
         .close-content:hover {
-            background-color: white;
-            color: var(--primary-red);
+            background-color: #333;
+            color: var(--accent-gold);
             transform: rotate(90deg);
         }
         
@@ -715,7 +730,7 @@
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 35px;
-            border-left: 5px solid var(--accent-gold);
+            border-left: 5px solid var(--victory-gold);
             position: relative;
             overflow: hidden;
         }
@@ -727,7 +742,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 0%, rgba(255, 179, 0, 0.05) 100%);
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 215, 0, 0.05) 100%);
             z-index: 0;
         }
         
@@ -735,7 +750,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             font-size: 1.5rem;
             position: relative;
             z-index: 1;
@@ -764,7 +779,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            background: linear-gradient(45deg, #2a1a1a, #3a2a2a);
         }
         
         .scene-image::before {
@@ -788,11 +803,11 @@
         
         /* 互动元素 */
         .interactive-element {
-            background-color: rgba(13, 71, 161, 0.15);
+            background-color: rgba(255, 179, 0, 0.15);
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 35px;
-            border: 1px solid rgba(13, 71, 161, 0.3);
+            border: 1px solid rgba(255, 179, 0, 0.3);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -801,8 +816,8 @@
         
         .interactive-element:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(13, 71, 161, 0.2);
-            border-color: rgba(13, 71, 161, 0.6);
+            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.2);
+            border-color: rgba(255, 179, 0, 0.6);
         }
         
         .interactive-element.disabled {
@@ -816,7 +831,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            color: #bbdefb;
+            color: #ffecb3;
             font-size: 1.4rem;
         }
         
@@ -847,7 +862,7 @@
         }
         
         .quiz-title {
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             font-size: 1.5rem;
             margin-bottom: 20px;
             display: flex;
@@ -883,12 +898,12 @@
         
         .quiz-option:hover {
             background-color: rgba(255, 255, 255, 0.15);
-            border-color: var(--accent-gold);
+            border-color: var(--victory-gold);
         }
         
         .quiz-option.selected {
-            background-color: rgba(255, 179, 0, 0.2);
-            border-color: var(--accent-gold);
+            background-color: rgba(255, 215, 0, 0.2);
+            border-color: var(--victory-gold);
         }
         
         .quiz-option.correct {
@@ -906,7 +921,7 @@
             padding: 15px;
             border-radius: 8px;
             background-color: rgba(0, 0, 0, 0.3);
-            border-left: 4px solid var(--accent-gold);
+            border-left: 4px solid var(--victory-gold);
             display: none;
         }
         
@@ -916,7 +931,7 @@
         }
         
         .quiz-next-btn {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
             color: #333;
             border: none;
             padding: 12px 30px;
@@ -935,7 +950,7 @@
         
         .quiz-next-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
         }
         
         /* 历史档案 */
@@ -954,7 +969,7 @@
         }
         
         .dossier-title {
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             font-size: 1.5rem;
             margin-bottom: 20px;
             display: flex;
@@ -978,7 +993,7 @@
         }
         
         .dossier-label {
-            color: #bbdefb;
+            color: #ffecb3;
             font-weight: bold;
             margin-bottom: 8px;
             font-size: 1.1rem;
@@ -1005,7 +1020,7 @@
         }
         
         .complete-reading-btn {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
             color: #333;
             border: none;
             padding: 15px 40px;
@@ -1014,7 +1029,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 179, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1022,7 +1037,7 @@
         
         .complete-reading-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
         }
         
         .complete-reading-btn i {
@@ -1031,12 +1046,12 @@
         
         /* 成就解锁 */
         .achievement-unlock {
-            background: linear-gradient(135deg, rgba(255, 179, 0, 0.1) 0%, rgba(255, 179, 0, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.2) 100%);
             border-radius: 10px;
             padding: 30px;
             text-align: center;
             margin-top: 40px;
-            border: 2px solid var(--accent-gold);
+            border: 2px solid var(--victory-gold);
             display: none;
             animation: achievementAppear 0.8s ease;
         }
@@ -1052,13 +1067,13 @@
         
         .achievement-icon {
             font-size: 3.5rem;
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             margin-bottom: 20px;
         }
         
         .achievement-title {
             font-size: 1.8rem;
-            color: var(--accent-gold);
+            color: var(--victory-gold);
             margin-bottom: 10px;
         }
         
@@ -1070,7 +1085,7 @@
         }
         
         .continue-button {
-            background-color: var(--accent-gold);
+            background-color: var(--victory-gold);
             color: #333;
             border: none;
             padding: 12px 30px;
@@ -1084,7 +1099,7 @@
         .continue-button:hover {
             background-color: #ffca28;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
         }
         
         /* 响应式设计 */
@@ -1135,45 +1150,46 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-red);
+            background: var(--accent-gold);
             border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #b71c1c;
+            background: #b28704;
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景 - 战争紧迫感 -->
+    <!-- 动态背景 - 胜利曙光感 -->
     <div class="dynamic-background">
-        <div class="war-sky"></div>
-        <div class="war-clouds">
-            <div class="war-cloud war-cloud-1"></div>
-            <div class="war-cloud war-cloud-2"></div>
-            <div class="war-cloud war-cloud-3"></div>
+        <div class="dawn-sky"></div>
+        <div class="dawn-light"></div>
+        <div class="victory-clouds">
+            <div class="victory-cloud victory-cloud-1"></div>
+            <div class="victory-cloud victory-cloud-2"></div>
+            <div class="victory-cloud victory-cloud-3"></div>
         </div>
-        <div class="beacon-effects">
-            <div class="beacon beacon-1">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
+        <div class="celebration-beacons">
+            <div class="celebration-beacon celebration-beacon-1">
+                <div class="celebration-smoke"></div>
+                <div class="celebration-fire"></div>
             </div>
-            <div class="beacon beacon-2">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
+            <div class="celebration-beacon celebration-beacon-2">
+                <div class="celebration-smoke"></div>
+                <div class="celebration-fire"></div>
             </div>
-            <div class="beacon beacon-3">
-                <div class="beacon-smoke"></div>
-                <div class="beacon-fire"></div>
+            <div class="celebration-beacon celebration-beacon-3">
+                <div class="celebration-smoke"></div>
+                <div class="celebration-fire"></div>
             </div>
         </div>
-        <div class="tense-river">
-            <div class="tense-wave"></div>
-            <div class="tense-wave"></div>
-            <div class="tense-wave"></div>
+        <div class="northwest-river">
+            <div class="northwest-wave"></div>
+            <div class="northwest-wave"></div>
+            <div class="northwest-wave"></div>
         </div>
-        <!-- 远处炮火光点 -->
-        <div id="distantFires"></div>
+        <!-- 远处庆祝光点 -->
+        <div id="distantCelebrations"></div>
     </div>
     
     <!-- 交互粒子效果 -->
@@ -1181,12 +1197,12 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">历史探索任务 #001</div>
-        <h1 class="main-title">长征起点：<span>战略转移的秘密</span></h1>
-        <p class="subtitle">1934年10月，江西于都。在夜幕的掩护下，一支8.6万人的队伍悄然出发，踏上了一条未知的征程。他们的决定将改变中国历史的走向……</p>
-        <p class="subtitle">现在，你是一名历史侦探，需要解开这段尘封的历史，还原长征出发的真相。每一段历史背后，都隐藏着不为人知的故事。</p>
+        <div class="historical-badge">历史探索任务 #006</div>
+        <h1 class="main-title">长征胜利：<span>红一方面军抵达陕北</span></h1>
+        <p class="subtitle">1935年10月，陕北吴起镇。历经千难万险，跋涉两万五千里，中央红军主力终于到达陕北革命根据地。他们的到来，为中国革命带来了新的希望和力量……</p>
+        <p class="subtitle">现在，你是一名历史探索者，需要深入了解长征最后阶段的艰难历程，感受红军胜利抵达陕北的历史意义。每一段胜利背后，都隐藏着不为人知的艰辛与智慧。</p>
         <button class="start-button" id="startButton">
-            开始探索 <i class="fas fa-map-signs"></i>
+            开始探索 <i class="fas fa-flag-checkered"></i>
         </button>
     </div>
     
@@ -1203,7 +1219,7 @@
             </video>
         </div>
         <div class="video-info">
-            <p>观看这段视频，了解1934年中央苏区面临的严峻形势和红军长征出发的历史背景。</p>
+            <p>观看这段视频，了解1935年中央红军突破天险腊子口、胜利抵达陕北吴起镇的历史背景。</p>
             <p>视频结束后，请点击右上角的关闭按钮，继续你的探索之旅。</p>
         </div>
     </div>
@@ -1214,11 +1230,11 @@
         <div class="time-locator">
             <div class="time-period">
                 <i class="fas fa-calendar-alt"></i>
-                <span>1934年10月 · 深秋</span>
+                <span>1935年10月 · 深秋</span>
             </div>
             <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>江西 · 于都河畔</span>
+                <span>陕北 · 吴起镇</span>
             </div>
         </div>
         
@@ -1226,55 +1242,37 @@
         <div class="chapter-navigation">
             <div class="chapter-nav-item visible active" data-chapter="1">
                 <div class="chapter-icon">
-                    <i class="fas fa-cloud-sun"></i>
+                    <i class="fas fa-mountain"></i>
                 </div>
-                <h3 class="chapter-title">危局笼罩</h3>
-                <p class="chapter-description">揭开第五次反"围剿"失败的真相，了解红军面临的生死存亡危机</p>
+                <h3 class="chapter-title">突破腊子口</h3>
+                <p class="chapter-description">攻克天险腊子口，打开北上陕甘的最后险关</p>
                 <div class="chapter-status status-available">点击探索</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="2">
                 <div class="chapter-icon">
-                    <i class="fas fa-user-secret"></i>
+                    <i class="fas fa-hands-helping"></i>
                 </div>
-                <h3 class="chapter-title">秘密决策</h3>
-                <p class="chapter-description">探索"三人团"的秘密决策过程，了解长征的真正目标</p>
+                <h3 class="chapter-title">吴起镇会师</h3>
+                <p class="chapter-description">陕甘支队到达陕北吴起镇，与陕北红军胜利会师</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="3">
                 <div class="chapter-icon">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-medal"></i>
                 </div>
-                <h3 class="chapter-title">于都集结</h3>
-                <p class="chapter-description">亲历红军在于都的秘密集结，感受那个悲壮的告别之夜</p>
+                <h3 class="chapter-title">直罗镇战役</h3>
+                <p class="chapter-description">为党中央"把革命大本营放在西北举行了一个奠基礼"</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="4">
                 <div class="chapter-icon">
-                    <i class="fas fa-water"></i>
+                    <i class="fas fa-book"></i>
                 </div>
-                <h3 class="chapter-title">夜渡出发</h3>
-                <p class="chapter-description">跟随红军战士的脚步，踏上漫漫长征路的第一步</p>
-                <div class="chapter-status status-locked">待解锁</div>
-            </div>
-            
-            <div class="chapter-nav-item locked" data-chapter="5">
-                <div class="chapter-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <h3 class="chapter-title">湘江血战</h3>
-                <p class="chapter-description">经历长征中最惨烈的战役，理解转折前夜的代价</p>
-                <div class="chapter-status status-locked">待解锁</div>
-            </div>
-            
-            <div class="chapter-nav-item locked" data-chapter="6">
-                <div class="chapter-icon">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <h3 class="chapter-title">通道转兵</h3>
-                <p class="chapter-description">见证历史转折的关键决策，理解伟大转折的前奏</p>
+                <h3 class="chapter-title">长征胜利的意义</h3>
+                <p class="chapter-description">总结长征的伟大意义和深远历史影响</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
         </div>
@@ -1283,8 +1281,8 @@
         <div class="content-area" id="contentArea">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title" id="contentTitle">危局笼罩</h2>
-                    <p class="content-subtitle" id="contentSubtitle">第五次反"围剿"失败的背后</p>
+                    <h2 class="content-title" id="contentTitle">突破腊子口</h2>
+                    <p class="content-subtitle" id="contentSubtitle">攻克天险，打开北上通道</p>
                 </div>
                 <button class="close-content" id="closeContent">
                     <i class="fas fa-times"></i>
@@ -1303,210 +1301,151 @@
         // 探索章节数据
         const explorationData = {
             1: {
-                title: "危局笼罩",
-                subtitle: "第五次反'围剿'失败的背后",
+                title: "突破腊子口",
+                subtitle: "攻克天险，打开北上通道",
                 scene: {
-                    title: "场景模拟：乌云压城的中央苏区",
-                    description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……"
+                    title: "场景模拟：天险腊子口的攻坚战",
+                    description: "想象一下，1935年9月16日傍晚，甘肃迭部县东北的腊子口。这里山口宽仅30余米，两侧是百米高的悬崖峭壁，中间是奔腾的腊子河，河上只有一座木桥，是唯一的通道。国民党军新编第十四师鲁大昌部在桥头和山崖上构筑了坚固的碉堡群，形成了交叉火力网，号称'一夫当关，万夫莫开'。红一军团二师四团的战士们，在政委杨成武的指挥下，正面临着长征路上的又一道生死考验……"
                 },
                 interactive: {
-                    title: "点击探索：第五次反'围剿'为何失败？",
-                    description: "点击此处，揭开红军在第五次反'围剿'中失利的真相。了解博古、李德的错误指挥如何导致红军陷入困境。"
+                    title: "点击探索：腊子口战斗的战术奇迹",
+                    description: "点击此处，了解红军如何以正面佯攻和侧面攀岩奇袭相结合，攻克腊子口天险的战术细节。"
                 },
                 quiz: {
-                    question: "在第五次反'围剿'中，红军主要采用了什么错误的战术？",
+                    question: "腊子口战斗中，红军采用了什么创新的战术来攻克天险？",
                     options: [
-                        { text: "游击战术，分散敌人兵力", correct: false },
-                        { text: "阵地战，与敌人硬拼消耗", correct: true },
-                        { text: "运动战，灵活打击敌人弱点", correct: false },
-                        { text: "地道战，利用地形优势", correct: false }
+                        { text: "正面强攻，不惜一切代价突破", correct: false },
+                        { text: "正面佯攻，侧面攀岩奇袭", correct: true },
+                        { text: "长期围困，等待敌军粮尽", correct: false },
+                        { text: "劝降敌军，和平通过", correct: false }
                     ],
-                    feedback: "正确答案是'阵地战，与敌人硬拼消耗'。在博古和李德的错误指挥下，红军放弃了擅长的游击战和运动战，转而与装备精良的国民党军进行阵地消耗战，导致红军损失惨重。"
+                    feedback: "正确答案是'正面佯攻，侧面攀岩奇袭'。红一军团二师四团以一个连在正面继续佯攻吸引火力，同时选拔苗族战士'云贵川'等擅长攀爬的战士组成突击队，用绑腿和绳索从侧面绝壁攀岩而上，迂回到敌人侧后，前后夹击攻克了天险。"
                 },
                 dossier: [
-                    { label: "背景", value: "第五次反'围剿'战役进行中，红军面临前所未有的压力。" },
-                    { label: "敌军兵力", value: "国民党调集100万大军，对中央苏区形成铁桶般的包围圈。" },
-                    { label: "红军困境", value: "在错误指挥下，红军采取阵地战策略，与装备精良的敌军硬拼，损失惨重。" },
-                    { label: "关键战役", value: "广昌保卫战失败后，苏区门户大开，形势急转直下。" },
-                    { label: "战略判断", value: "至1934年9月，中央苏区已难以坚守，必须进行战略转移。" }
+                    { label: "时间", value: "1935年9月16日—17日" },
+                    { label: "地点", value: "甘肃迭部县东北，川甘交界的岷山山脉险要隘口" },
+                    { label: "地形特点", value: "山口宽仅30余米，两侧是百米高悬崖，中间是腊子河，河上仅一木桥" },
+                    { label: "敌军部署", value: "国民党新编第十四师鲁大昌部，在桥头和山崖构筑碉堡群，形成交叉火力网" },
+                    { label: "红军指挥", value: "红一军团二师四团，政委杨成武" },
+                    { label: "战术创新", value: "正面佯攻吸引火力，侧面攀岩奇袭，前后夹击" },
+                    { label: "战略意义", value: "打开中央红军北上的最后一道险关，使红军得以脱离雪山草地边缘，进入甘南地区" }
                 ],
                 achievement: {
-                    title: "历史观察员",
-                    description: "你已了解第五次反'围剿'失败的背景，理解了红军面临的艰难抉择。",
+                    title: "天险征服者",
+                    description: "你已了解腊子口战斗的艰难与红军战士的英勇，理解了这次战术奇迹对长征胜利的关键意义。",
                     nextChapter: 2
                 }
             },
             2: {
-                title: "秘密决策",
-                subtitle: "三人团的生死抉择",
+                title: "吴起镇会师",
+                subtitle: "长征落脚点的确立",
                 scene: {
-                    title: "场景模拟：瑞金叶坪的深夜会议",
-                    description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……"
+                    title: "场景模拟：陕北吴起镇的胜利会师",
+                    description: "1935年10月19日，陕北保安县（今志丹县）的吴起镇。历经千难万险的中共中央率领陕甘支队终于抵达这里。当地苏维埃政府和群众热情欢迎，送粮送衣，让衣衫褴褛的红军战士们感受到了'到家'的温暖。几天后，毛泽东亲自部署了'切尾巴'战斗，在吴起镇头道川、二道川设伏，一举击溃紧追不舍的国民党骑兵3个团。10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束……"
                 },
                 interactive: {
-                    title: "点击探索：长征决策背后的秘密",
-                    description: "点击此处，了解'三人团'如何秘密筹划战略转移，以及这个决定为何要对普通战士和百姓保密。"
+                    title: "点击探索：吴起镇会师的历史细节",
+                    description: "点击此处，了解中共中央如何确定陕北为长征落脚点，以及吴起镇会师的具体过程和历史意义。"
                 },
                 quiz: {
-                    question: "长征出发时，对普通红军战士和百姓宣传的行动代号是什么？",
+                    question: "中共中央是在哪里得知陕北有红军和根据地的消息，从而最终确定了'到陕北去'的战略目标？",
                     options: [
-                        { text: "北上抗日先遣队", correct: true },
-                        { text: "向西突围计划", correct: false },
-                        { text: "南方游击行动", correct: false },
-                        { text: "根据地转移计划", correct: false }
+                        { text: "腊子口战斗后", correct: false },
+                        { text: "哈达铺从报纸上得知", correct: true },
+                        { text: "六盘山上", correct: false },
+                        { text: "吴起镇当地群众告知", correct: false }
                     ],
-                    feedback: "正确答案是'北上抗日先遣队'。为了保密和稳定军心，红军高层对普通战士和百姓宣传这是'北上抗日先遣队'的行动，只有极少数人知道这是战略转移。"
+                    feedback: "正确答案是'哈达铺从报纸上得知'。红军突破腊子口后进入甘南哈达铺，从当地报纸上得知陕北有红军和根据地的消息，这使中共中央最终确定了'到陕北去'的战略目标。"
                 },
                 dossier: [
-                    { label: "决策团队", value: "博古、李德、周恩来组成'三人团'，负责筹划和指挥转移事宜。" },
-                    { label: "保密等级", value: "绝密。只有极少数高层领导知晓真实意图。" },
-                    { label: "对外宣传", value: "对广大指战员和民众宣传为'北上抗日先遣队'。" },
-                    { label: "转移目标", value: "最初计划向西突围，前往湘西北与红二、六军团会合。" },
-                    { label: "留守人员", value: "项英、陈毅带领1.6万战士留下坚持游击战争，掩护主力转移。" }
+                    { label: "抵达时间", value: "1935年10月19日" },
+                    { label: "抵达地点", value: "陕北保安县（今志丹县）吴起镇" },
+                    { label: "部队番号", value: "中共中央率领的陕甘支队（原红一、三军团）" },
+                    { label: "群众欢迎", value: "当地苏维埃政府和群众热情欢迎，送粮送衣" },
+                    { label: "'切尾巴'战斗", value: "1935年10月21日，在吴起镇头道川、二道川设伏，击溃国民党骑兵3个团" },
+                    { label: "政治局会议", value: "1935年10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束" },
+                    { label: "毛泽东总结", value: "'长征是宣言书，长征是宣传队，长征是播种机……长征是以我们胜利、敌人失败的结果而告结束。'" }
                 ],
                 achievement: {
-                    title: "战略分析师",
-                    description: "你已揭开长征决策的秘密，理解了'三人团'在历史关头的艰难抉择。",
+                    title: "会师见证者",
+                    description: "你已亲历吴起镇会师的胜利场景，理解了长征落脚点确立的历史意义和毛泽东对长征的经典评价。",
                     nextChapter: 3
                 }
             },
             3: {
-                title: "于都集结",
-                subtitle: "悲壮的告别之夜",
+                title: "直罗镇战役",
+                subtitle: "为革命大本营举行奠基礼",
                 scene: {
-                    title: "场景模拟：于都河畔的无声告别",
-                    description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。"
+                    title: "场景模拟：直罗镇战役的辉煌胜利",
+                    description: "1935年11月21日—24日，陕西富县直罗镇。刚刚会师的红军主力在毛泽东、周恩来、彭德怀的亲自部署下，在这里设下口袋阵。红军战士们埋伏在冰冷的黄土沟壑中，等待着进入包围圈的国民党东北军。当敌军完全进入伏击圈后，冲锋号骤然响起，红军从四面八方发起攻击。经过激烈战斗，红军一举歼灭国民党东北军第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药。这场战役，为党中央'把革命大本营放在西北举行了一个奠基礼'……"
                 },
                 interactive: {
-                    title: "点击感受：军民鱼水情",
-                    description: "点击此处，感受于都百姓与红军的深厚感情，了解百姓如何支援红军秘密集结。"
+                    title: "点击探索：直罗镇战役的战略意义",
+                    description: "点击此处，了解直罗镇战役如何彻底粉碎国民党军对陕北苏区的第三次'围剿'，巩固了西北革命大本营。"
                 },
                 quiz: {
-                    question: "于都百姓用什么材料帮助红军架设浮桥？",
+                    question: "毛泽东如何评价直罗镇战役的意义？",
                     options: [
-                        { text: "专业的桥梁材料", correct: false },
-                        { text: "自家的门板、木床甚至寿材", correct: true },
-                        { text: "从敌军缴获的物资", correct: false },
-                        { text: "临时砍伐的树木", correct: false }
+                        { text: "这是一次普通的胜利", correct: false },
+                        { text: "为党中央'把革命大本营放在西北举行了一个奠基礼'", correct: true },
+                        { text: "标志着长征完全结束", correct: false },
+                        { text: "开启了抗日战争新阶段", correct: false }
                     ],
-                    feedback: "正确答案是'自家的门板、木床甚至寿材'。于都百姓倾尽所有支援红军，拆下自家的门板、木床，甚至老人的寿材，帮助红军在于都河上架设浮桥。"
+                    feedback: "正确答案是'为党中央把革命大本营放在西北举行了一个奠基礼'。毛泽东高度评价直罗镇战役，认为它不仅彻底粉碎了敌人的'围剿'，使陕北根据地转危为安，更重要的是为党中央把革命大本营放在西北举行了一个奠基礼。"
                 },
                 dossier: [
-                    { label: "集结时间", value: "1934年10月10日至20日，中央红军主力约8.6万人分批在于都秘密集结。" },
-                    { label: "集结地点", value: "江西于都，苏区西南部，群众基础好，利于保密。" },
-                    { label: "红军人数", value: "中央红军主力约8.6万人。" },
-                    { label: "携带物资", value: "粮食、弹药、医疗器械，甚至印刷机、印钞机等'坛坛罐罐'。" },
-                    { label: "群众支援", value: "于都百姓帮助架设浮桥8处，提供大量粮食和物资。" }
+                    { label: "时间", value: "1935年11月21日—24日" },
+                    { label: "地点", value: "陕西富县直罗镇" },
+                    { label: "红军指挥", value: "毛泽东、周恩来、彭德怀亲自部署" },
+                    { label: "参战部队", value: "红一方面军（会师后恢复番号）主力" },
+                    { label: "敌军部队", value: "国民党东北军第109师、第106师" },
+                    { label: "战果", value: "歼灭第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药" },
+                    { label: "军事意义", value: "彻底粉碎了国民党军对陕北苏区的第三次'围剿'" },
+                    { label: "政治意义", value: "巩固了陕北作为中国革命新的大本营的地位，增强了全党全军的信心" },
+                    { label: "统战意义", value: "促进了此后中国共产党对东北军的统一战线工作，为'西安事变'埋下伏笔" }
                 ],
                 achievement: {
-                    title: "场景还原师",
-                    description: "你已亲历于都集结的悲壮场景，感受到了红军与百姓的深厚感情。",
+                    title: "战略分析师",
+                    description: "你已理解直罗镇战役的多重意义，不仅是一次军事胜利，更是政治、战略和统战工作的全面胜利。",
                     nextChapter: 4
                 }
             },
             4: {
-                title: "夜渡出发",
-                subtitle: "长征的第一步",
+                title: "长征胜利的意义",
+                subtitle: "伟大的转折与新的起点",
                 scene: {
-                    title: "场景模拟：静默渡河的漫长队伍",
-                    description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……"
+                    title: "场景模拟：长征精神的永恒传承",
+                    description: "从1934年10月到1935年10月，红一方面军主力行程两万五千里，纵横11个省，翻越18座大山，跨过24条大河，经历380余次战斗，攻占700多座县城，牺牲营以上干部430余人。这支衣衫褴褛却斗志昂扬的队伍，以坚定的信念和惊人的毅力，完成了人类历史上绝无仅有的伟大远征。长征的胜利，使中国革命转危为安，为抗日战争和解放战争保存了骨干力量，培育了伟大的长征精神。今天，当我们回顾这段历史，依然能感受到那穿越时空的精神力量……"
                 },
                 interactive: {
-                    title: "点击思考：为什么选择夜间渡河？",
-                    description: "点击此处，了解红军选择夜间秘密渡河的原因，以及这种决策背后的军事智慧。"
+                    title: "点击探索：长征胜利的深远影响",
+                    description: "点击此处，深入了解长征胜利对中国革命和中华民族的深远影响，理解长征精神的时代价值。"
                 },
                 quiz: {
-                    question: "红军选择在夜间渡河最主要的原因是什么？",
+                    question: "毛泽东是如何概括长征意义的？",
                     options: [
-                        { text: "红军战士习惯夜间行动", correct: false },
-                        { text: "为了保密，防止被敌军侦察发现", correct: true },
-                        { text: "白天太热，不利于行军", correct: false },
-                        { text: "夜间渡河更有诗意", correct: false }
+                        { text: "长征是一次失败的撤退", correct: false },
+                        { text: "长征是宣言书，长征是宣传队，长征是播种机", correct: true },
+                        { text: "长征只是地理上的转移", correct: false },
+                        { text: "长征是不得已的选择", correct: false }
                     ],
-                    feedback: "正确答案是'为了保密，防止被敌军侦察发现'。在当时的战争环境下，空中侦察是重要威胁。夜间行动可以有效避免被敌人发现，保证战略转移的突然性。"
+                    feedback: "正确答案是'长征是宣言书，长征是宣传队，长征是播种机'。毛泽东在吴起镇政治局会议上对长征作了精辟总结：'长征是宣言书，长征是宣传队，长征是播种机……长征是以我们胜利、敌人失败的结果而告结束。'"
                 },
                 dossier: [
-                    { label: "渡河时间", value: "1934年10月16日傍晚至10月20日夜间，中央红军主力部队分别从于都城东门等处的多个渡口夜渡于都河。" },
-                    { label: "渡河方式", value: "为保密起见，渡河主要在夜间进行，渡完后立即拆除浮桥，不留痕迹。" },
-                    { label: "队伍构成", value: "红军出发时编为两个野战纵队：第一野战纵队（军委纵队）和第二野战纵队（中央纵队）。" },
-                    { label: "转移方式", value: "这种'大搬家'式的甬道行进，使红军主力变成了一个负担沉重的队伍，严重影响了机动性。" },
-                    { label: "后续影响", value: "这种笨重的转移方式为随后的湘江战役埋下了隐患。" }
+                    { label: "行程", value: "两万五千里" },
+                    { label: "时间", value: "1934年10月—1935年10月（红一方面军主力）" },
+                    { label: "跨越地域", value: "纵横11个省" },
+                    { label: "自然挑战", value: "翻越18座大山，跨过24条大河" },
+                    { label: "战斗经历", value: "经历380余次战斗" },
+                    { label: "干部牺牲", value: "牺牲营以上干部430余人" },
+                    { label: "战略意义", value: "使中国革命转危为安，找到了新的立足点和发展基点" },
+                    { label: "骨干保存", value: "为抗日战争和解放战争保存了经过千锤百炼的骨干力量" },
+                    { label: "精神培育", value: "培育了伟大的长征精神：坚定信念、艰苦奋斗、实事求是、团结一致等" },
+                    { label: "历史地位", value: "人类历史上绝无仅有的伟大远征，中国共产党和红军谱写的壮丽史诗" }
                 ],
                 achievement: {
-                    title: "长征起点探索者",
-                    description: "恭喜！你已完成长征起点探索，理解了战略转移的艰难启程。",
-                    nextChapter: 5
-                }
-            },
-            5: {
-                title: "湘江血战",
-                subtitle: "血染湘江的惨烈战役",
-                scene: {
-                    title: "场景模拟：湘江两岸的血肉战场",
-                    description: "1934年11月下旬，湘江两岸。红军前锋控制了界首渡口，但中央纵队和军委纵队行动迟缓，形成了长约80公里的'血肉甬道'。红军主力在两侧以血肉之躯顶住数倍于己的敌军，掩护中央机关过江。炮火连天，硝烟弥漫，湘江水被战士们的鲜血染红……"
-                },
-                interactive: {
-                    title: "点击探索：湘江战役的关键阻击战",
-                    description: "点击此处，了解觉山铺、新圩、光华铺三大阻击战的惨烈过程，以及殿后部队的悲壮牺牲。"
-                },
-                quiz: {
-                    question: "湘江战役中，哪个部队担任总后卫，几乎全部牺牲在湘江东岸？",
-                    options: [
-                        { text: "红一军团第1师", correct: false },
-                        { text: "红三军团第5师", correct: false },
-                        { text: "红五军团第34师", correct: true },
-                        { text: "红八军团第21师", correct: false }
-                    ],
-                    feedback: "正确答案是'红五军团第34师'。红五军团第34师（陈树湘师长）担任总后卫，被阻于湘江东岸，弹尽粮绝，大部牺牲，师长重伤被俘后断肠明志，壮烈牺牲。"
-                },
-                dossier: [
-                    { label: "战役时间", value: "1934年11月27日至12月1日" },
-                    { label: "战役地点", value: "湘江沿岸，主要渡口为界首渡口" },
-                    { label: "红军兵力", value: "战役开始时约8.6万人" },
-                    { label: "敌军兵力", value: "国民党中央军、湘军、桂军约30万人" },
-                    { label: "关键阻击战", value: "觉山铺阻击战（红一军团）、新圩阻击战（红三军团）、光华铺阻击战（红三军团）" },
-                    { label: "战役损失", value: "中央红军从8.6万人锐减至约3万余人，作战部队损失三分之二以上" },
-                    { label: "历史影响", value: "这场惨败成为党内军内要求改变领导、改变路线的最直接、最强烈的催化剂" }
-                ],
-                achievement: {
-                    title: "悲壮历史见证者",
-                    description: "你已了解湘江战役的惨烈过程，理解了这场战役对红军命运的重大影响。",
-                    nextChapter: 6
-                }
-            },
-            6: {
-                title: "通道转兵",
-                subtitle: "伟大转折的前奏",
-                scene: {
-                    title: "场景模拟：通道县恭城书院的激烈争论",
-                    description: "1934年12月12日，湖南省通道县恭城书院。湘江战役后的红军极度疲惫、减员严重，而蒋介石已在通往湘西的路上布下了一个更大的'口袋阵'。会议室里，李德坚持原计划，毛泽东则力谏转向敌人力量薄弱的贵州。这场争论将决定红军的生死存亡……"
-                },
-                interactive: {
-                    title: "点击探索：通道会议的历史意义",
-                    description: "点击此处，了解毛泽东如何在通道会议上力挽狂澜，以及这次转兵对红军命运的重大意义。"
-                },
-                quiz: {
-                    question: "通道会议最重要的历史意义是什么？",
-                    options: [
-                        { text: "确立了毛泽东在党内的最高领导地位", correct: false },
-                        { text: "第一次根据实际情况否定了既定方针，实现了战略转兵", correct: true },
-                        { text: "决定了红军长征的最终目的地", correct: false },
-                        { text: "解决了红军的粮食补给问题", correct: false }
-                    ],
-                    feedback: "正确答案是'第一次根据实际情况否定了既定方针，实现了战略转兵'。通道转兵是自长征开始以来，中央红军第一次根据实际情况，否定了共产国际顾问和'左'倾领导人的既定方针，实现了战略转兵。"
-                },
-                dossier: [
-                    { label: "会议时间", value: "1934年12月12日" },
-                    { label: "会议地点", value: "湖南省通道县（今通道侗族自治县）的恭城书院" },
-                    { label: "参会人员", value: "博古、李德、周恩来、朱德、张闻天、毛泽东、王稼祥等" },
-                    { label: "主要争论", value: "李德坚持原计划北上湘西，毛泽东力主转向贵州" },
-                    { label: "会议结果", value: "虽然博古、李德仍坚持己见，但多数人支持毛泽东的主张，决定'西进贵州'" },
-                    { label: "历史意义", value: "毛泽东军事影响力的回归，为黎平会议和遵义会议铺平了道路" },
-                    { label: "后续发展", value: "进入贵州后，红军连克黎平、剑河等城，暂时获得了喘息之机" }
-                ],
-                achievement: {
-                    title: "历史转折探索者",
-                    description: "恭喜！你已完成长征初期历史探索，理解了湘江战役的惨痛教训和通道转兵的历史意义。这两者紧密相连，共同构成了遵义会议伟大转折的序曲。",
+                    title: "长征精神传承者",
+                    description: "恭喜！你已完成长征胜利探索的全程，深入理解了长征的伟大意义和长征精神的永恒价值。长征精神将永远激励中国人民克服一切艰难险阻，向着中华民族伟大复兴的目标奋勇前进。",
                     nextChapter: null
                 }
             }
@@ -1530,14 +1469,14 @@
         const contentSubtitle = document.getElementById('contentSubtitle');
         const contentBody = document.getElementById('contentBody');
         const closeContent = document.getElementById('closeContent');
-        const distantFiresContainer = document.getElementById('distantFires');
+        const distantCelebrationsContainer = document.getElementById('distantCelebrations');
         const interactiveParticles = document.getElementById('interactiveParticles');
         const achievementContainer = document.getElementById('achievementContainer');
         
         // 初始化
         function init() {
-            // 创建远处炮火光点
-            createDistantFires();
+            // 创建远处庆祝光点
+            createDistantCelebrations();
             
             // 事件监听
             startButton.addEventListener('click', startExploration);
@@ -1565,29 +1504,29 @@
             openChapter(1);
         }
         
-        // 创建远处炮火光点
-        function createDistantFires() {
+        // 创建远处庆祝光点
+        function createDistantCelebrations() {
             for (let i = 0; i < 25; i++) {
-                const fire = document.createElement('div');
-                fire.className = 'distant-fire';
+                const celebration = document.createElement('div');
+                celebration.className = 'distant-celebration';
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = 3 + Math.random() * 4;
+                const delay = Math.random() * 6;
+                const duration = 4 + Math.random() * 5;
                 
-                fire.style.left = `${x}%`;
-                fire.style.top = `${y}%`;
-                fire.style.animationDelay = `${delay}s`;
-                fire.style.animationDuration = `${duration}s`;
-                fire.style.opacity = Math.random() * 0.3 + 0.1;
+                celebration.style.left = `${x}%`;
+                celebration.style.top = `${y}%`;
+                celebration.style.animationDelay = `${delay}s`;
+                celebration.style.animationDuration = `${duration}s`;
+                celebration.style.opacity = Math.random() * 0.3 + 0.1;
                 
-                distantFiresContainer.appendChild(fire);
+                distantCelebrationsContainer.appendChild(celebration);
             }
         }
         
         // 创建交互粒子效果
-        function createInteractionEffect(x, y, color = '#ffb300', count = 8) {
+        function createInteractionEffect(x, y, color = '#ffd700', count = 8) {
             for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -1632,7 +1571,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#ffb300', 12);
+            createInteractionEffect(centerX, centerY, '#ffd700', 12);
             
             startScreen.classList.add('hidden');
             
@@ -1648,7 +1587,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#c62828', 8);
+            createInteractionEffect(centerX, centerY, '#ffb300', 8);
             
             videoOverlay.classList.remove('active');
             explorationContainer.classList.add('active');
@@ -1800,7 +1739,7 @@
                 const interactiveElement = document.getElementById('interactiveElement');
                 interactiveElement.addEventListener('click', function(e) {
                     // 创建交互特效
-                    createInteractionEffect(e.clientX, e.clientY, '#ffb300', 10);
+                    createInteractionEffect(e.clientX, e.clientY, '#ffd700', 10);
                     
                     // 显示历史问答
                     const quizElement = document.getElementById('historicalQuiz');
@@ -1981,7 +1920,7 @@
                     const rect = continueBtn.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
-                    createInteractionEffect(centerX, centerY, '#ffb300', 12);
+                    createInteractionEffect(centerX, centerY, '#ffd700', 12);
                 }
             }
         }
@@ -2005,7 +1944,7 @@
                 const rect = iconEl.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
-                createInteractionEffect(centerX, centerY, '#ffb300', 10);
+                createInteractionEffect(centerX, centerY, '#ffd700', 10);
             }
         }
         
@@ -2015,7 +1954,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#c62828', 8);
+            createInteractionEffect(centerX, centerY, '#ffb300', 8);
             
             contentArea.classList.remove('active');
             
@@ -2038,7 +1977,7 @@
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
                         `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
-                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                        `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
             `;
@@ -2062,11 +2001,29 @@
         
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', init);
-        
+
+        function finishAndReturnToMap(currentChapter){
+            try{
+                const KEY = 'lm_unlocks_v1';
+                const raw = localStorage.getItem(KEY);
+                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
+                if(st.mode === 'linear' || (!st.mode && true)){
+                    const next = Math.min(7, currentChapter+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
+                }
+                st.mode = st.mode || 'linear';
+                localStorage.setItem(KEY, JSON.stringify(st));
+            }catch(e){}
+            window.location.href = '/html/map.html?mode=linear';
+        }
+
         // 使函数在全局可用
         window.openChapter = openChapter;
         window.completeChapter = completeChapter;
         window.continueToNextChapter = continueToNextChapter;
+        window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长征胜利：红一方面军抵达陕北的沉浸式探索</title>
+    <title>伟大转折——遵义会议沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,7 +21,6 @@
             --accent-gold: #ffb300;
             --mystery-blue: #1565c0;
             --explore-green: #2e7d32;
-            --victory-gold: #ffd700;
             --transition-time: 0.4s;
         }
         
@@ -32,7 +31,7 @@
             overflow-x: hidden;
         }
         
-        /* 动态背景 - 胜利曙光感 */
+        /* 动态背景 - 会议紧迫感 */
         .dynamic-background {
             position: fixed;
             top: 0;
@@ -43,34 +42,18 @@
             overflow: hidden;
         }
         
-        /* 黎明天空 */
-        .dawn-sky {
+        /* 深夜会议氛围 */
+        .meeting-night {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #1a0a0a 0%, #2a1a1a 30%, #3a2a2a 70%, #4a3a3a 100%);
+            background: linear-gradient(to bottom, #0a0a14 0%, #1a1a2e 30%, #1a0a14 70%, #0a050a 100%);
         }
         
-        /* 黎明曙光 */
-        .dawn-light {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at top right, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-            animation: dawnPulse 20s infinite alternate;
-        }
-        
-        @keyframes dawnPulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.7; }
-        }
-        
-        /* 缓慢移动的云 */
-        .victory-clouds {
+        /* 紧急会议云层 */
+        .urgent-clouds {
             position: absolute;
             top: 0;
             left: 0;
@@ -78,49 +61,49 @@
             height: 100%;
         }
         
-        .victory-cloud {
+        .urgent-cloud {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(80, 60, 80, 0.2);
             border-radius: 100px;
             filter: blur(30px);
-            opacity: 0.5;
+            opacity: 0.7;
         }
         
-        .victory-cloud-1 {
+        .urgent-cloud-1 {
             width: 500px;
             height: 150px;
             top: 10%;
             left: -500px;
-            animation: victoryCloudMove 40s linear infinite;
-            background: rgba(255, 255, 255, 0.15);
+            animation: urgentCloudMove 20s linear infinite;
+            background: rgba(80, 60, 80, 0.25);
         }
         
-        .victory-cloud-2 {
+        .urgent-cloud-2 {
             width: 400px;
             height: 120px;
             top: 40%;
             left: -400px;
-            animation: victoryCloudMove 50s linear infinite 10s;
-            background: rgba(255, 255, 255, 0.1);
+            animation: urgentCloudMove 25s linear infinite 5s;
+            background: rgba(60, 60, 100, 0.2);
         }
         
-        .victory-cloud-3 {
+        .urgent-cloud-3 {
             width: 350px;
             height: 100px;
             top: 70%;
             left: -350px;
-            animation: victoryCloudMove 45s linear infinite 5s;
-            background: rgba(255, 255, 255, 0.12);
+            animation: urgentCloudMove 22s linear infinite 8s;
+            background: rgba(80, 60, 80, 0.3);
         }
         
-        @keyframes victoryCloudMove {
-            0% { transform: translateX(0); opacity: 0.3; }
-            50% { opacity: 0.6; }
-            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.3; }
+        @keyframes urgentCloudMove {
+            0% { transform: translateX(0); opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { transform: translateX(calc(100vw + 600px)); opacity: 0.5; }
         }
         
-        /* 庆祝的烽火效果 */
-        .celebration-beacons {
+        /* 会议室灯光效果 */
+        .meeting-lights {
             position: absolute;
             top: 0;
             left: 0;
@@ -128,114 +111,115 @@
             height: 100%;
         }
         
-        .celebration-beacon {
+        .meeting-light {
             position: absolute;
-            width: 120px;
+            width: 200px;
             height: 200px;
-            opacity: 0.5;
+            opacity: 0.3;
         }
         
-        .celebration-beacon-1 {
-            top: 15%;
-            left: 10%;
+        .meeting-light-1 {
+            top: 20%;
+            left: 15%;
         }
         
-        .celebration-beacon-2 {
-            top: 25%;
-            right: 15%;
+        .meeting-light-2 {
+            top: 35%;
+            right: 20%;
         }
         
-        .celebration-beacon-3 {
-            bottom: 30%;
-            left: 20%;
+        .meeting-light-3 {
+            bottom: 25%;
+            left: 25%;
         }
         
-        .celebration-smoke {
+        .light-glow {
             position: absolute;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 120px;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            width: 100px;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
             border-radius: 50%;
-            filter: blur(15px);
-            animation: celebrationSmoke 10s infinite alternate;
+            filter: blur(20px);
+            animation: lightPulse 6s infinite alternate;
         }
         
-        @keyframes celebrationSmoke {
-            0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.3; }
-            100% { transform: translateX(-50%) translateY(-100px) scale(1.5); opacity: 0.6; }
+        @keyframes lightPulse {
+            0% { transform: translateX(-50%) scale(1); opacity: 0.2; }
+            100% { transform: translateX(-50%) scale(1.3); opacity: 0.4; }
         }
         
-        .celebration-fire {
+        .light-source {
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            background: radial-gradient(ellipse at center, #ffd700 0%, #ff9800 50%, transparent 70%);
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(ellipse at center, #ffd700 0%, #ffab00 50%, transparent 70%);
             border-radius: 50% 50% 20% 20%;
-            filter: blur(8px);
-            animation: celebrationFire 4s infinite alternate;
+            filter: blur(10px);
+            animation: lightFlicker 4s infinite alternate;
         }
         
-        @keyframes celebrationFire {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.7; }
-            50% { transform: translateX(-50%) scale(1.3); opacity: 1; }
+        @keyframes lightFlicker {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+            50% { transform: translateX(-50%) scale(1.1); opacity: 0.9; }
         }
         
-        /* 陕北的黄土高原河流 */
-        .northwest-river {
+        /* 贵州山脉轮廓 */
+        .guizhou-mountains {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 180px;
-            background: linear-gradient(to top, rgba(121, 85, 72, 0.3) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(30, 30, 40, 0.7) 0%, transparent 100%);
             overflow: hidden;
+            clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 90% 25%, 80% 40%, 70% 20%, 60% 35%, 50% 15%, 40% 30%, 30% 10%, 20% 25%, 10% 5%, 0% 20%);
         }
         
-        .northwest-wave {
+        .mountain-shadow {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 20px;
-            background: linear-gradient(90deg, transparent, rgba(188, 170, 164, 0.4), transparent);
-            animation: northwestWaveMove 8s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(60, 60, 80, 0.5), transparent);
+            animation: shadowMove 8s linear infinite;
         }
         
-        .northwest-wave:nth-child(2) {
+        .mountain-shadow:nth-child(2) {
             animation-delay: -2s;
             opacity: 0.7;
         }
         
-        .northwest-wave:nth-child(3) {
+        .mountain-shadow:nth-child(3) {
             animation-delay: -4s;
             opacity: 0.4;
         }
         
-        @keyframes northwestWaveMove {
+        @keyframes shadowMove {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
         
-        /* 远处庆祝的光点 */
-        .distant-celebration {
+        /* 紧急信号光点 */
+        .urgent-signal {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: #ffd700;
+            width: 5px;
+            height: 5px;
+            background-color: #ff5722;
             border-radius: 50%;
             filter: blur(1px);
-            animation: distantCelebrationBlink 6s infinite;
+            animation: signalBlink 4s infinite;
         }
         
-        @keyframes distantCelebrationBlink {
+        @keyframes signalBlink {
             0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.8; }
+            50% { opacity: 0.9; }
         }
         
         /* 交互粒子效果 */
@@ -280,22 +264,22 @@
         }
         
         .historical-badge {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
-            color: #333;
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            color: white;
             padding: 12px 30px;
             border-radius: 30px;
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 40px;
             letter-spacing: 2px;
-            border: 2px solid var(--victory-gold);
-            box-shadow: 0 5px 20px rgba(255, 179, 0, 0.4);
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4);
             animation: badgePulse 3s infinite alternate;
         }
         
         @keyframes badgePulse {
-            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 179, 0, 0.4); }
-            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(255, 179, 0, 0.6); }
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(198, 40, 40, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(198, 40, 40, 0.6); }
         }
         
         .main-title {
@@ -307,7 +291,7 @@
         }
         
         .main-title span {
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             position: relative;
             display: inline-block;
         }
@@ -319,7 +303,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--victory-gold);
+            background-color: var(--accent-gold);
             animation: underline 3s infinite alternate;
         }
         
@@ -339,8 +323,8 @@
         }
         
         .start-button {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
-            color: #333;
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
+            color: white;
             border: none;
             padding: 18px 50px;
             font-size: 1.4rem;
@@ -349,7 +333,7 @@
             transition: all 0.3s ease;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(255, 179, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -360,7 +344,7 @@
         
         .start-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 179, 0, 0.6);
+            box-shadow: 0 15px 35px rgba(198, 40, 40, 0.6);
         }
         
         .start-button i {
@@ -425,8 +409,8 @@
             position: absolute;
             top: -60px;
             right: 0;
-            background-color: var(--accent-gold);
-            color: #333;
+            background-color: var(--primary-red);
+            color: white;
             border: none;
             width: 50px;
             height: 50px;
@@ -442,7 +426,7 @@
         
         .close-video:hover {
             transform: scale(1.1) rotate(90deg);
-            background-color: #ffca28;
+            background-color: #b71c1c;
         }
         
         .video-info {
@@ -483,7 +467,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-left: 5px solid var(--victory-gold);
+            border-left: 5px solid var(--accent-gold);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-30px);
             opacity: 0;
@@ -497,7 +481,7 @@
         .time-period {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             display: flex;
             align-items: center;
         }
@@ -509,7 +493,7 @@
         
         .location {
             font-size: 1.4rem;
-            color: #ffecb3;
+            color: #bbdefb;
             display: flex;
             align-items: center;
         }
@@ -559,7 +543,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 179, 0, 0.05), transparent);
             opacity: 0;
             transition: opacity var(--transition-time) ease;
         }
@@ -570,14 +554,14 @@
         
         .chapter-nav-item:hover {
             transform: translateY(-10px);
-            border-color: var(--victory-gold);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.15);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.15);
         }
         
         .chapter-nav-item.active {
-            border-color: var(--victory-gold);
+            border-color: var(--accent-gold);
             background-color: rgba(30, 30, 40, 0.9);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.2);
         }
         
         .chapter-nav-item.locked {
@@ -595,20 +579,20 @@
         .chapter-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
             font-size: 1.8rem;
-            color: #333;
+            color: white;
             position: relative;
             overflow: hidden;
         }
         
         .chapter-nav-item.active .chapter-icon {
-            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
         }
         
         .chapter-nav-item.completed .chapter-icon {
@@ -642,8 +626,8 @@
         }
         
         .status-available {
-            background-color: rgba(255, 179, 0, 0.2);
-            color: #ffb300;
+            background-color: rgba(33, 150, 243, 0.2);
+            color: #64b5f6;
         }
         
         .status-completed {
@@ -679,7 +663,7 @@
         }
         
         .content-header {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b28704 100%);
+            background: linear-gradient(135deg, var(--primary-red) 0%, #8e0000 100%);
             padding: 30px;
             display: flex;
             justify-content: space-between;
@@ -688,19 +672,19 @@
         
         .content-title {
             font-size: 2.2rem;
-            color: #333;
+            color: white;
         }
         
         .content-subtitle {
             font-size: 1.2rem;
-            color: rgba(51, 51, 51, 0.9);
+            color: rgba(255, 255, 255, 0.9);
             margin-top: 10px;
         }
         
         .close-content {
-            background-color: rgba(51, 51, 51, 0.2);
-            border: 2px solid #333;
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -713,8 +697,8 @@
         }
         
         .close-content:hover {
-            background-color: #333;
-            color: var(--accent-gold);
+            background-color: white;
+            color: var(--primary-red);
             transform: rotate(90deg);
         }
         
@@ -730,7 +714,7 @@
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 35px;
-            border-left: 5px solid var(--victory-gold);
+            border-left: 5px solid var(--accent-gold);
             position: relative;
             overflow: hidden;
         }
@@ -742,7 +726,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 0%, rgba(255, 215, 0, 0.05) 100%);
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 179, 0, 0.05) 100%);
             z-index: 0;
         }
         
@@ -750,7 +734,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             font-size: 1.5rem;
             position: relative;
             z-index: 1;
@@ -779,7 +763,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(45deg, #2a1a1a, #3a2a2a);
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
         }
         
         .scene-image::before {
@@ -803,11 +787,11 @@
         
         /* 互动元素 */
         .interactive-element {
-            background-color: rgba(255, 179, 0, 0.15);
+            background-color: rgba(13, 71, 161, 0.15);
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 35px;
-            border: 1px solid rgba(255, 179, 0, 0.3);
+            border: 1px solid rgba(13, 71, 161, 0.3);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -816,8 +800,8 @@
         
         .interactive-element:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.2);
-            border-color: rgba(255, 179, 0, 0.6);
+            box-shadow: 0 15px 30px rgba(13, 71, 161, 0.2);
+            border-color: rgba(13, 71, 161, 0.6);
         }
         
         .interactive-element.disabled {
@@ -831,7 +815,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            color: #ffecb3;
+            color: #bbdefb;
             font-size: 1.4rem;
         }
         
@@ -862,7 +846,7 @@
         }
         
         .quiz-title {
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             font-size: 1.5rem;
             margin-bottom: 20px;
             display: flex;
@@ -898,12 +882,12 @@
         
         .quiz-option:hover {
             background-color: rgba(255, 255, 255, 0.15);
-            border-color: var(--victory-gold);
+            border-color: var(--accent-gold);
         }
         
         .quiz-option.selected {
-            background-color: rgba(255, 215, 0, 0.2);
-            border-color: var(--victory-gold);
+            background-color: rgba(255, 179, 0, 0.2);
+            border-color: var(--accent-gold);
         }
         
         .quiz-option.correct {
@@ -921,7 +905,7 @@
             padding: 15px;
             border-radius: 8px;
             background-color: rgba(0, 0, 0, 0.3);
-            border-left: 4px solid var(--victory-gold);
+            border-left: 4px solid var(--accent-gold);
             display: none;
         }
         
@@ -931,7 +915,7 @@
         }
         
         .quiz-next-btn {
-            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
             color: #333;
             border: none;
             padding: 12px 30px;
@@ -950,7 +934,7 @@
         
         .quiz-next-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
         }
         
         /* 历史档案 */
@@ -969,7 +953,7 @@
         }
         
         .dossier-title {
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             font-size: 1.5rem;
             margin-bottom: 20px;
             display: flex;
@@ -993,7 +977,7 @@
         }
         
         .dossier-label {
-            color: #ffecb3;
+            color: #bbdefb;
             font-weight: bold;
             margin-bottom: 8px;
             font-size: 1.1rem;
@@ -1020,7 +1004,7 @@
         }
         
         .complete-reading-btn {
-            background: linear-gradient(135deg, var(--victory-gold) 0%, #ffca28 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
             color: #333;
             border: none;
             padding: 15px 40px;
@@ -1029,7 +1013,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 179, 0, 0.3);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -1037,7 +1021,7 @@
         
         .complete-reading-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.4);
         }
         
         .complete-reading-btn i {
@@ -1046,12 +1030,12 @@
         
         /* 成就解锁 */
         .achievement-unlock {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(255, 179, 0, 0.1) 0%, rgba(255, 179, 0, 0.2) 100%);
             border-radius: 10px;
             padding: 30px;
             text-align: center;
             margin-top: 40px;
-            border: 2px solid var(--victory-gold);
+            border: 2px solid var(--accent-gold);
             display: none;
             animation: achievementAppear 0.8s ease;
         }
@@ -1067,13 +1051,13 @@
         
         .achievement-icon {
             font-size: 3.5rem;
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             margin-bottom: 20px;
         }
         
         .achievement-title {
             font-size: 1.8rem;
-            color: var(--victory-gold);
+            color: var(--accent-gold);
             margin-bottom: 10px;
         }
         
@@ -1085,7 +1069,7 @@
         }
         
         .continue-button {
-            background-color: var(--victory-gold);
+            background-color: var(--accent-gold);
             color: #333;
             border: none;
             padding: 12px 30px;
@@ -1099,7 +1083,7 @@
         .continue-button:hover {
             background-color: #ffca28;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
         }
         
         /* 响应式设计 */
@@ -1150,46 +1134,45 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: var(--accent-gold);
+            background: var(--primary-red);
             border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #b28704;
+            background: #b71c1c;
         }
     </style>
 </head>
 <body>
-    <!-- 动态背景 - 胜利曙光感 -->
+    <!-- 动态背景 - 会议紧迫感 -->
     <div class="dynamic-background">
-        <div class="dawn-sky"></div>
-        <div class="dawn-light"></div>
-        <div class="victory-clouds">
-            <div class="victory-cloud victory-cloud-1"></div>
-            <div class="victory-cloud victory-cloud-2"></div>
-            <div class="victory-cloud victory-cloud-3"></div>
+        <div class="meeting-night"></div>
+        <div class="urgent-clouds">
+            <div class="urgent-cloud urgent-cloud-1"></div>
+            <div class="urgent-cloud urgent-cloud-2"></div>
+            <div class="urgent-cloud urgent-cloud-3"></div>
         </div>
-        <div class="celebration-beacons">
-            <div class="celebration-beacon celebration-beacon-1">
-                <div class="celebration-smoke"></div>
-                <div class="celebration-fire"></div>
+        <div class="meeting-lights">
+            <div class="meeting-light meeting-light-1">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
             </div>
-            <div class="celebration-beacon celebration-beacon-2">
-                <div class="celebration-smoke"></div>
-                <div class="celebration-fire"></div>
+            <div class="meeting-light meeting-light-2">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
             </div>
-            <div class="celebration-beacon celebration-beacon-3">
-                <div class="celebration-smoke"></div>
-                <div class="celebration-fire"></div>
+            <div class="meeting-light meeting-light-3">
+                <div class="light-glow"></div>
+                <div class="light-source"></div>
             </div>
         </div>
-        <div class="northwest-river">
-            <div class="northwest-wave"></div>
-            <div class="northwest-wave"></div>
-            <div class="northwest-wave"></div>
+        <div class="guizhou-mountains">
+            <div class="mountain-shadow"></div>
+            <div class="mountain-shadow"></div>
+            <div class="mountain-shadow"></div>
         </div>
-        <!-- 远处庆祝光点 -->
-        <div id="distantCelebrations"></div>
+        <!-- 紧急信号光点 -->
+        <div id="urgentSignals"></div>
     </div>
     
     <!-- 交互粒子效果 -->
@@ -1197,12 +1180,12 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">历史探索任务 #006</div>
-        <h1 class="main-title">长征胜利：<span>红一方面军抵达陕北</span></h1>
-        <p class="subtitle">1935年10月，陕北吴起镇。历经千难万险，跋涉两万五千里，中央红军主力终于到达陕北革命根据地。他们的到来，为中国革命带来了新的希望和力量……</p>
-        <p class="subtitle">现在，你是一名历史探索者，需要深入了解长征最后阶段的艰难历程，感受红军胜利抵达陕北的历史意义。每一段胜利背后，都隐藏着不为人知的艰辛与智慧。</p>
+        <div class="historical-badge">历史转折任务 #001</div>
+        <h1 class="main-title">伟大转折：<span>遵义会议的三天三夜</span></h1>
+        <p class="subtitle">1935年1月，贵州遵义。在一栋二层小楼里，一场决定中国共产党和中国革命命运的会议正在紧张进行。这三天，将改变一切……</p>
+        <p class="subtitle">现在，你是一名历史见证者，需要还原这场生死攸关的会议真相。每一个细节，都可能影响历史的走向。</p>
         <button class="start-button" id="startButton">
-            开始探索 <i class="fas fa-flag-checkered"></i>
+            开始见证 <i class="fas fa-history"></i>
         </button>
     </div>
     
@@ -1213,14 +1196,14 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征纪录片 -->
+                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的遵义会议纪录片 -->
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
         <div class="video-info">
-            <p>观看这段视频，了解1935年中央红军突破天险腊子口、胜利抵达陕北吴起镇的历史背景。</p>
-            <p>视频结束后，请点击右上角的关闭按钮，继续你的探索之旅。</p>
+            <p>观看这段视频，了解1935年1月中央红军面临的严峻形势和遵义会议召开的历史背景。</p>
+            <p>视频结束后，请点击右上角的关闭按钮，继续你的见证之旅。</p>
         </div>
     </div>
     
@@ -1230,11 +1213,11 @@
         <div class="time-locator">
             <div class="time-period">
                 <i class="fas fa-calendar-alt"></i>
-                <span>1935年10月 · 深秋</span>
+                <span>1935年1月15-17日 · 寒冬</span>
             </div>
             <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>陕北 · 吴起镇</span>
+                <span>贵州 · 遵义老城柏辉章公馆</span>
             </div>
         </div>
         
@@ -1242,37 +1225,37 @@
         <div class="chapter-navigation">
             <div class="chapter-nav-item visible active" data-chapter="1">
                 <div class="chapter-icon">
-                    <i class="fas fa-mountain"></i>
+                    <i class="fas fa-exclamation-triangle"></i>
                 </div>
-                <h3 class="chapter-title">突破腊子口</h3>
-                <p class="chapter-description">攻克天险腊子口，打开北上陕甘的最后险关</p>
-                <div class="chapter-status status-available">点击探索</div>
+                <h3 class="chapter-title">生死关头</h3>
+                <p class="chapter-description">了解湘江战役后的危急形势，探索会议召开的必然性</p>
+                <div class="chapter-status status-available">点击见证</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="2">
                 <div class="chapter-icon">
-                    <i class="fas fa-hands-helping"></i>
+                    <i class="fas fa-gavel"></i>
                 </div>
-                <h3 class="chapter-title">吴起镇会师</h3>
-                <p class="chapter-description">陕甘支队到达陕北吴起镇，与陕北红军胜利会师</p>
+                <h3 class="chapter-title">激烈争论</h3>
+                <p class="chapter-description">亲历会议上的关键发言，感受改变历史的辩论</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="3">
                 <div class="chapter-icon">
-                    <i class="fas fa-medal"></i>
+                    <i class="fas fa-users-cog"></i>
                 </div>
-                <h3 class="chapter-title">直罗镇战役</h3>
-                <p class="chapter-description">为党中央"把革命大本营放在西北举行了一个奠基礼"</p>
+                <h3 class="chapter-title">重大决议</h3>
+                <p class="chapter-description">见证会议的核心成果，理解组织调整的历史意义</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
             
             <div class="chapter-nav-item locked" data-chapter="4">
                 <div class="chapter-icon">
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-flag"></i>
                 </div>
-                <h3 class="chapter-title">长征胜利的意义</h3>
-                <p class="chapter-description">总结长征的伟大意义和深远历史影响</p>
+                <h3 class="chapter-title">历史转折</h3>
+                <p class="chapter-description">领悟会议的历史地位，感受中国革命的伟大转折</p>
                 <div class="chapter-status status-locked">待解锁</div>
             </div>
         </div>
@@ -1281,8 +1264,8 @@
         <div class="content-area" id="contentArea">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title" id="contentTitle">突破腊子口</h2>
-                    <p class="content-subtitle" id="contentSubtitle">攻克天险，打开北上通道</p>
+                    <h2 class="content-title" id="contentTitle">生死关头</h2>
+                    <p class="content-subtitle" id="contentSubtitle">湘江战役后的危急形势</p>
                 </div>
                 <button class="close-content" id="closeContent">
                     <i class="fas fa-times"></i>
@@ -1298,154 +1281,143 @@
     </div>
 
     <script>
-        // 探索章节数据
+        // 探索章节数据 - 遵义会议
         const explorationData = {
             1: {
-                title: "突破腊子口",
-                subtitle: "攻克天险，打开北上通道",
+                title: "生死关头",
+                subtitle: "湘江战役后的危急形势",
                 scene: {
-                    title: "场景模拟：天险腊子口的攻坚战",
-                    description: "想象一下，1935年9月16日傍晚，甘肃迭部县东北的腊子口。这里山口宽仅30余米，两侧是百米高的悬崖峭壁，中间是奔腾的腊子河，河上只有一座木桥，是唯一的通道。国民党军新编第十四师鲁大昌部在桥头和山崖上构筑了坚固的碉堡群，形成了交叉火力网，号称'一夫当关，万夫莫开'。红一军团二师四团的战士们，在政委杨成武的指挥下，正面临着长征路上的又一道生死考验……"
+                    title: "场景模拟：湘江边的血色记忆",
+                    description: "1934年11月底至12月初，湘江战役的惨败让红军从8.6万人锐减至3万余人。江水被染成红色，江面上漂浮着红军战士的遗体、枪支和文件。活下来的战士们眼神空洞，身心俱疲。博古、李德的错误指挥已经让全军上下忍无可忍。在行军途中，毛泽东与王稼祥、张闻天组成的'中央队三人团'，一边养伤一边讨论失败的原因，逐渐形成改变领导的共识……"
                 },
                 interactive: {
-                    title: "点击探索：腊子口战斗的战术奇迹",
-                    description: "点击此处，了解红军如何以正面佯攻和侧面攀岩奇袭相结合，攻克腊子口天险的战术细节。"
+                    title: "点击探索：为什么必须召开遵义会议？",
+                    description: "点击此处，了解湘江战役后的危急形势，探索召开遵义会议的历史必然性。"
                 },
                 quiz: {
-                    question: "腊子口战斗中，红军采用了什么创新的战术来攻克天险？",
+                    question: "湘江战役后，中央红军从多少人锐减到多少人？",
                     options: [
-                        { text: "正面强攻，不惜一切代价突破", correct: false },
-                        { text: "正面佯攻，侧面攀岩奇袭", correct: true },
-                        { text: "长期围困，等待敌军粮尽", correct: false },
-                        { text: "劝降敌军，和平通过", correct: false }
+                        { text: "从10万减至5万", correct: false },
+                        { text: "从12万减至6万", correct: false },
+                        { text: "从8.6万减至3万", correct: true },
+                        { text: "从9万减至4万", correct: false }
                     ],
-                    feedback: "正确答案是'正面佯攻，侧面攀岩奇袭'。红一军团二师四团以一个连在正面继续佯攻吸引火力，同时选拔苗族战士'云贵川'等擅长攀爬的战士组成突击队，用绑腿和绳索从侧面绝壁攀岩而上，迂回到敌人侧后，前后夹击攻克了天险。"
+                    feedback: "正确答案是'从8.6万减至3万'。湘江战役是中央红军长征以来最惨烈的一战，红军付出了巨大牺牲，兵力从8.6万锐减至3万余人，损失超过一半。"
                 },
                 dossier: [
-                    { label: "时间", value: "1935年9月16日—17日" },
-                    { label: "地点", value: "甘肃迭部县东北，川甘交界的岷山山脉险要隘口" },
-                    { label: "地形特点", value: "山口宽仅30余米，两侧是百米高悬崖，中间是腊子河，河上仅一木桥" },
-                    { label: "敌军部署", value: "国民党新编第十四师鲁大昌部，在桥头和山崖构筑碉堡群，形成交叉火力网" },
-                    { label: "红军指挥", value: "红一军团二师四团，政委杨成武" },
-                    { label: "战术创新", value: "正面佯攻吸引火力，侧面攀岩奇袭，前后夹击" },
-                    { label: "战略意义", value: "打开中央红军北上的最后一道险关，使红军得以脱离雪山草地边缘，进入甘南地区" }
+                    { label: "时间节点", value: "1934年12月，中央红军突破湘江后进入贵州境内。" },
+                    { label: "领导危机", value: "博古、李德的军事指挥已失去全军的信任，'左'倾错误路线难以为继。" },
+                    { label: "酝酿过程", value: "毛泽东与王稼祥、张闻天在行军途中组成'中央队三人团'，系统分析第五次反'围剿'失败原因。" },
+                    { label: "战略转兵", value: "通道转兵、黎平会议、猴场会议为遵义会议创造了条件。" },
+                    { label: "会议准备", value: "1935年1月7日红军占领遵义，获得相对稳定的环境召开会议。" }
                 ],
                 achievement: {
-                    title: "天险征服者",
-                    description: "你已了解腊子口战斗的艰难与红军战士的英勇，理解了这次战术奇迹对长征胜利的关键意义。",
+                    title: "危急形势分析员",
+                    description: "你已了解湘江战役后的危急形势，理解了召开遵义会议的历史必然性。",
                     nextChapter: 2
                 }
             },
             2: {
-                title: "吴起镇会师",
-                subtitle: "长征落脚点的确立",
+                title: "激烈争论",
+                subtitle: "改变历史的三天辩论",
                 scene: {
-                    title: "场景模拟：陕北吴起镇的胜利会师",
-                    description: "1935年10月19日，陕北保安县（今志丹县）的吴起镇。历经千难万险的中共中央率领陕甘支队终于抵达这里。当地苏维埃政府和群众热情欢迎，送粮送衣，让衣衫褴褛的红军战士们感受到了'到家'的温暖。几天后，毛泽东亲自部署了'切尾巴'战斗，在吴起镇头道川、二道川设伏，一举击溃紧追不舍的国民党骑兵3个团。10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束……"
+                    title: "场景模拟：柏辉章公馆二楼会议室",
+                    description: "1935年1月15日傍晚，在遵义老城柏辉章公馆的二楼会议室，中共中央政治局扩大会议在极端保密的情况下召开。二十多人挤在这间不到30平方米的房间里，空气凝重。长方形的会议桌旁，博古、周恩来、张闻天、毛泽东、朱德等人依次而坐。李德和翻译伍修权坐在门口。煤油灯的光线在每个人脸上跳动，墙上挂着军事地图，标注着红军的行进路线……"
                 },
                 interactive: {
-                    title: "点击探索：吴起镇会师的历史细节",
-                    description: "点击此处，了解中共中央如何确定陕北为长征落脚点，以及吴起镇会师的具体过程和历史意义。"
+                    title: "点击见证：会议上的关键发言",
+                    description: "点击此处，亲历遵义会议上的激烈争论，感受毛泽东、张闻天等人的关键发言如何改变历史走向。"
                 },
                 quiz: {
-                    question: "中共中央是在哪里得知陕北有红军和根据地的消息，从而最终确定了'到陕北去'的战略目标？",
+                    question: "在遵义会议上，谁作了批判'左'倾军事错误的'反报告'，为会议定下了纠正错误的基调？",
                     options: [
-                        { text: "腊子口战斗后", correct: false },
-                        { text: "哈达铺从报纸上得知", correct: true },
-                        { text: "六盘山上", correct: false },
-                        { text: "吴起镇当地群众告知", correct: false }
+                        { text: "周恩来", correct: false },
+                        { text: "张闻天", correct: true },
+                        { text: "王稼祥", correct: false },
+                        { text: "朱德", correct: false }
                     ],
-                    feedback: "正确答案是'哈达铺从报纸上得知'。红军突破腊子口后进入甘南哈达铺，从当地报纸上得知陕北有红军和根据地的消息，这使中共中央最终确定了'到陕北去'的战略目标。"
+                    feedback: "正确答案是'张闻天'。张闻天按照会前与毛泽东、王稼祥商定的意见，作了系统批判'左'倾军事错误的发言，被称为'反报告'，为会议定下了纠正错误的基调。"
                 },
                 dossier: [
-                    { label: "抵达时间", value: "1935年10月19日" },
-                    { label: "抵达地点", value: "陕北保安县（今志丹县）吴起镇" },
-                    { label: "部队番号", value: "中共中央率领的陕甘支队（原红一、三军团）" },
-                    { label: "群众欢迎", value: "当地苏维埃政府和群众热情欢迎，送粮送衣" },
-                    { label: "'切尾巴'战斗", value: "1935年10月21日，在吴起镇头道川、二道川设伏，击溃国民党骑兵3个团" },
-                    { label: "政治局会议", value: "1935年10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束" },
-                    { label: "毛泽东总结", value: "'长征是宣言书，长征是宣传队，长征是播种机……长征是以我们胜利、敌人失败的结果而告结束。'" }
+                    { label: "会议时间", value: "1935年1月15日至17日，连续三天。" },
+                    { label: "参会人员", value: "政治局委员、候补委员、红军主要军团负责人等20余人。" },
+                    { label: "主要议程", value: "总结第五次反'围剿'和长征以来的军事经验教训。" },
+                    { label: "博古报告", value: "承认失败但强调客观困难，为错误军事领导辩护。" },
+                    { label: "毛泽东发言", value: "长达一个多小时的发言，深刻批判博古、李德的军事指挥错误。" },
+                    { label: "王稼祥投票", value: "明确提出应由毛泽东来指挥红军，投下了'关键一票'。" }
                 ],
                 achievement: {
-                    title: "会师见证者",
-                    description: "你已亲历吴起镇会师的胜利场景，理解了长征落脚点确立的历史意义和毛泽东对长征的经典评价。",
+                    title: "会议见证者",
+                    description: "你已亲历遵义会议的激烈争论，理解了这场辩论如何改变中国革命的走向。",
                     nextChapter: 3
                 }
             },
             3: {
-                title: "直罗镇战役",
-                subtitle: "为革命大本营举行奠基礼",
+                title: "重大决议",
+                subtitle: "会议的核心成果",
                 scene: {
-                    title: "场景模拟：直罗镇战役的辉煌胜利",
-                    description: "1935年11月21日—24日，陕西富县直罗镇。刚刚会师的红军主力在毛泽东、周恩来、彭德怀的亲自部署下，在这里设下口袋阵。红军战士们埋伏在冰冷的黄土沟壑中，等待着进入包围圈的国民党东北军。当敌军完全进入伏击圈后，冲锋号骤然响起，红军从四面八方发起攻击。经过激烈战斗，红军一举歼灭国民党东北军第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药。这场战役，为党中央'把革命大本营放在西北举行了一个奠基礼'……"
+                    title: "场景模拟：决议通过的历史时刻",
+                    description: "经过三天激烈讨论，会议通过了由张闻天起草的《中央关于反对敌人五次'围剿'的总结的决议》。决议明确指出红军第五次反'围剿'失败的主要原因是博古、李德在军事指挥上犯了严重的'左'倾错误。会议作出重大组织调整：增选毛泽东为中央政治局常委，取消'三人团'，由张闻天接替博古负总责，成立由毛泽东、周恩来、王稼祥组成的'新三人团'负责军事指挥……"
                 },
                 interactive: {
-                    title: "点击探索：直罗镇战役的战略意义",
-                    description: "点击此处，了解直罗镇战役如何彻底粉碎国民党军对陕北苏区的第三次'围剿'，巩固了西北革命大本营。"
+                    title: "点击分析：会议决议的历史意义",
+                    description: "点击此处，分析遵义会议决议的核心内容，理解这次会议如何解决军事路线和组织领导两大问题。"
                 },
                 quiz: {
-                    question: "毛泽东如何评价直罗镇战役的意义？",
+                    question: "遵义会议后成立的'新三人团'（三人军事指挥小组）由哪些人组成？",
                     options: [
-                        { text: "这是一次普通的胜利", correct: false },
-                        { text: "为党中央'把革命大本营放在西北举行了一个奠基礼'", correct: true },
-                        { text: "标志着长征完全结束", correct: false },
-                        { text: "开启了抗日战争新阶段", correct: false }
+                        { text: "毛泽东、周恩来、朱德", correct: false },
+                        { text: "毛泽东、周恩来、王稼祥", correct: true },
+                        { text: "毛泽东、张闻天、王稼祥", correct: false },
+                        { text: "周恩来、朱德、张闻天", correct: false }
                     ],
-                    feedback: "正确答案是'为党中央把革命大本营放在西北举行了一个奠基礼'。毛泽东高度评价直罗镇战役，认为它不仅彻底粉碎了敌人的'围剿'，使陕北根据地转危为安，更重要的是为党中央把革命大本营放在西北举行了一个奠基礼。"
+                    feedback: "正确答案是'毛泽东、周恩来、王稼祥'。遵义会议后成立的'新三人团'（三人军事指挥小组）由毛泽东、周恩来、王稼祥组成，作为全权指挥军事的最高权力机构。"
                 },
                 dossier: [
-                    { label: "时间", value: "1935年11月21日—24日" },
-                    { label: "地点", value: "陕西富县直罗镇" },
-                    { label: "红军指挥", value: "毛泽东、周恩来、彭德怀亲自部署" },
-                    { label: "参战部队", value: "红一方面军（会师后恢复番号）主力" },
-                    { label: "敌军部队", value: "国民党东北军第109师、第106师" },
-                    { label: "战果", value: "歼灭第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药" },
-                    { label: "军事意义", value: "彻底粉碎了国民党军对陕北苏区的第三次'围剿'" },
-                    { label: "政治意义", value: "巩固了陕北作为中国革命新的大本营的地位，增强了全党全军的信心" },
-                    { label: "统战意义", value: "促进了此后中国共产党对东北军的统一战线工作，为'西安事变'埋下伏笔" }
+                    { label: "思想路线", value: "决议肯定毛泽东的军事战略战术原则，否定'左'倾冒险主义错误。" },
+                    { label: "组织调整", value: "增选毛泽东为政治局常委，取消博古、李德的最高军事指挥权。" },
+                    { label: "领导分工", value: "张闻天接替博古负总责，主持中央日常工作。" },
+                    { label: "军事指挥", value: "成立'新三人团'（毛泽东、周恩来、王稼祥），负责军事指挥。" },
+                    { label: "历史评价", value: "会议开始确立以毛泽东为代表的马克思主义正确路线在党中央的领导地位。" }
                 ],
                 achievement: {
-                    title: "战略分析师",
-                    description: "你已理解直罗镇战役的多重意义，不仅是一次军事胜利，更是政治、战略和统战工作的全面胜利。",
+                    title: "决议分析家",
+                    description: "你已分析遵义会议的重大决议，理解了这次会议如何确立了正确的军事路线和组织领导。",
                     nextChapter: 4
                 }
             },
             4: {
-                title: "长征胜利的意义",
-                subtitle: "伟大的转折与新的起点",
+                title: "历史转折",
+                subtitle: "中国革命的新起点",
                 scene: {
-                    title: "场景模拟：长征精神的永恒传承",
-                    description: "从1934年10月到1935年10月，红一方面军主力行程两万五千里，纵横11个省，翻越18座大山，跨过24条大河，经历380余次战斗，攻占700多座县城，牺牲营以上干部430余人。这支衣衫褴褛却斗志昂扬的队伍，以坚定的信念和惊人的毅力，完成了人类历史上绝无仅有的伟大远征。长征的胜利，使中国革命转危为安，为抗日战争和解放战争保存了骨干力量，培育了伟大的长征精神。今天，当我们回顾这段历史，依然能感受到那穿越时空的精神力量……"
+                    title: "场景模拟：转折之后的新征程",
+                    description: "遵义会议后，红军面貌焕然一新。毛泽东重新参与军事指挥，红军开始采用灵活机动的运动战术。四渡赤水，巧渡金沙江，强渡大渡河，飞夺泸定桥……红军摆脱了被动挨打的局面，掌握了战场主动权。这次会议不仅挽救了党、挽救了红军、挽救了中国革命，更标志着中国共产党在政治上开始走向成熟……"
                 },
                 interactive: {
-                    title: "点击探索：长征胜利的深远影响",
-                    description: "点击此处，深入了解长征胜利对中国革命和中华民族的深远影响，理解长征精神的时代价值。"
+                    title: "点击领悟：会议的历史地位",
+                    description: "点击此处，领悟遵义会议在中国革命史上的重要地位，理解为什么说它是中国共产党历史上生死攸关的转折点。"
                 },
                 quiz: {
-                    question: "毛泽东是如何概括长征意义的？",
+                    question: "遵义会议最重要的历史意义是什么？",
                     options: [
-                        { text: "长征是一次失败的撤退", correct: false },
-                        { text: "长征是宣言书，长征是宣传队，长征是播种机", correct: true },
-                        { text: "长征只是地理上的转移", correct: false },
-                        { text: "长征是不得已的选择", correct: false }
+                        { text: "确定了北上抗日的方针", correct: false },
+                        { text: "建立了中华苏维埃共和国", correct: false },
+                        { text: "挽救了党、红军和中国革命", correct: true },
+                        { text: "制定了土地革命路线", correct: false }
                     ],
-                    feedback: "正确答案是'长征是宣言书，长征是宣传队，长征是播种机'。毛泽东在吴起镇政治局会议上对长征作了精辟总结：'长征是宣言书，长征是宣传队，长征是播种机……长征是以我们胜利、敌人失败的结果而告结束。'"
+                    feedback: "正确答案是'挽救了党、红军和中国革命'。遵义会议在极端危急的历史关头，解决了军事路线和组织领导两大核心问题，挽救了党，挽救了红军，挽救了中国革命。"
                 },
                 dossier: [
-                    { label: "行程", value: "两万五千里" },
-                    { label: "时间", value: "1934年10月—1935年10月（红一方面军主力）" },
-                    { label: "跨越地域", value: "纵横11个省" },
-                    { label: "自然挑战", value: "翻越18座大山，跨过24条大河" },
-                    { label: "战斗经历", value: "经历380余次战斗" },
-                    { label: "干部牺牲", value: "牺牲营以上干部430余人" },
-                    { label: "战略意义", value: "使中国革命转危为安，找到了新的立足点和发展基点" },
-                    { label: "骨干保存", value: "为抗日战争和解放战争保存了经过千锤百炼的骨干力量" },
-                    { label: "精神培育", value: "培育了伟大的长征精神：坚定信念、艰苦奋斗、实事求是、团结一致等" },
-                    { label: "历史地位", value: "人类历史上绝无仅有的伟大远征，中国共产党和红军谱写的壮丽史诗" }
+                    { label: "生死攸关的转折点", value: "在党和红军面临覆灭危险的极端危急关头，挽救了革命。" },
+                    { label: "确立实际领导地位", value: "确立了毛泽东在党中央和红军中的实际领导地位。" },
+                    { label: "独立自主的起点", value: "第一次在没有共产国际干预下独立自主解决自身重大问题。" },
+                    { label: "打开革命新局面", value: "中国革命在正确路线指引下走上了胜利发展的道路。" },
+                    { label: "马克思主义中国化", value: "是马克思主义中国化历程中的一个关键节点。" },
+                    { label: "历史评价", value: "标志着中国共产党在政治上开始走向成熟。" }
                 ],
                 achievement: {
-                    title: "长征精神传承者",
-                    description: "恭喜！你已完成长征胜利探索的全程，深入理解了长征的伟大意义和长征精神的永恒价值。长征精神将永远激励中国人民克服一切艰难险阻，向着中华民族伟大复兴的目标奋勇前进。",
+                    title: "历史转折见证者",
+                    description: "恭喜！你已完成遵义会议探索，理解了这次会议如何成为中国共产党和中国革命生死攸关的转折点。",
                     nextChapter: null
                 }
             }
@@ -1469,14 +1441,14 @@
         const contentSubtitle = document.getElementById('contentSubtitle');
         const contentBody = document.getElementById('contentBody');
         const closeContent = document.getElementById('closeContent');
-        const distantCelebrationsContainer = document.getElementById('distantCelebrations');
+        const urgentSignalsContainer = document.getElementById('urgentSignals');
         const interactiveParticles = document.getElementById('interactiveParticles');
         const achievementContainer = document.getElementById('achievementContainer');
         
         // 初始化
         function init() {
-            // 创建远处庆祝光点
-            createDistantCelebrations();
+            // 创建紧急信号光点
+            createUrgentSignals();
             
             // 事件监听
             startButton.addEventListener('click', startExploration);
@@ -1504,29 +1476,29 @@
             openChapter(1);
         }
         
-        // 创建远处庆祝光点
-        function createDistantCelebrations() {
-            for (let i = 0; i < 25; i++) {
-                const celebration = document.createElement('div');
-                celebration.className = 'distant-celebration';
+        // 创建紧急信号光点
+        function createUrgentSignals() {
+            for (let i = 0; i < 20; i++) {
+                const signal = document.createElement('div');
+                signal.className = 'urgent-signal';
                 
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
-                const delay = Math.random() * 6;
-                const duration = 4 + Math.random() * 5;
+                const delay = Math.random() * 4;
+                const duration = 2 + Math.random() * 3;
                 
-                celebration.style.left = `${x}%`;
-                celebration.style.top = `${y}%`;
-                celebration.style.animationDelay = `${delay}s`;
-                celebration.style.animationDuration = `${duration}s`;
-                celebration.style.opacity = Math.random() * 0.3 + 0.1;
+                signal.style.left = `${x}%`;
+                signal.style.top = `${y}%`;
+                signal.style.animationDelay = `${delay}s`;
+                signal.style.animationDuration = `${duration}s`;
+                signal.style.opacity = Math.random() * 0.3 + 0.1;
                 
-                distantCelebrationsContainer.appendChild(celebration);
+                urgentSignalsContainer.appendChild(signal);
             }
         }
         
         // 创建交互粒子效果
-        function createInteractionEffect(x, y, color = '#ffd700', count = 8) {
+        function createInteractionEffect(x, y, color = '#ffb300', count = 8) {
             for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
@@ -1571,7 +1543,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#ffd700', 12);
+            createInteractionEffect(centerX, centerY, '#ffb300', 12);
             
             startScreen.classList.add('hidden');
             
@@ -1587,7 +1559,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#ffb300', 8);
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
             
             videoOverlay.classList.remove('active');
             explorationContainer.classList.add('active');
@@ -1698,9 +1670,9 @@
                 if (chapterData.achievement.nextChapter && !completedChapters.has(chapterData.achievement.nextChapter)) {
                     contentHTML += `
                         <div class="reading-complete-section visible">
-                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">本章节已完成，你可以继续探索下一章</p>
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">本章节已完成，你可以继续见证下一章</p>
                             <button class="complete-reading-btn" onclick="continueToNextChapter(${chapterId})">
-                                继续探索下一章 <i class="fas fa-arrow-right"></i>
+                                继续见证下一章 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     `;
@@ -1739,7 +1711,7 @@
                 const interactiveElement = document.getElementById('interactiveElement');
                 interactiveElement.addEventListener('click', function(e) {
                     // 创建交互特效
-                    createInteractionEffect(e.clientX, e.clientY, '#ffd700', 10);
+                    createInteractionEffect(e.clientX, e.clientY, '#ffb300', 10);
                     
                     // 显示历史问答
                     const quizElement = document.getElementById('historicalQuiz');
@@ -1844,7 +1816,7 @@
                         // 显示阅读完成按钮
                         const readingCompleteSection = document.getElementById('readingCompleteSection');
                         readingCompleteSection.innerHTML = `
-                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">你已经阅读完本章节内容，确认完成后可以解锁下一章</p>
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">你已经见证完本章节内容，确认完成后可以解锁下一章</p>
                             <button class="complete-reading-btn" onclick="completeChapter(${chapterId})">
                                 确认完成本章节 <i class="fas fa-check-circle"></i>
                             </button>
@@ -1920,7 +1892,7 @@
                     const rect = continueBtn.getBoundingClientRect();
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
-                    createInteractionEffect(centerX, centerY, '#ffd700', 12);
+                    createInteractionEffect(centerX, centerY, '#ffb300', 12);
                 }
             }
         }
@@ -1935,7 +1907,7 @@
                 
                 const statusEl = nextChapterItem.querySelector('.chapter-status');
                 if (statusEl) {
-                    statusEl.textContent = '点击探索';
+                    statusEl.textContent = '点击见证';
                     statusEl.className = 'chapter-status status-available';
                 }
                 
@@ -1944,7 +1916,7 @@
                 const rect = iconEl.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
-                createInteractionEffect(centerX, centerY, '#ffd700', 10);
+                createInteractionEffect(centerX, centerY, '#ffb300', 10);
             }
         }
         
@@ -1954,7 +1926,7 @@
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            createInteractionEffect(centerX, centerY, '#ffb300', 8);
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
             
             contentArea.classList.remove('active');
             
@@ -1968,7 +1940,7 @@
         function showAchievement(achievement) {
             achievementVisible = true;
             
-            const achievementHTML = `
+                const achievementHTML = `
                 <div class="achievement-unlock visible">
                     <div class="achievement-icon">
                         <i class="fas fa-medal"></i>
@@ -1977,7 +1949,7 @@
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
                         `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
-                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                        `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
             `;
@@ -2001,11 +1973,29 @@
         
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', init);
-        
+
+        function finishAndReturnToMap(currentChapter){
+            try{
+                const KEY = 'lm_unlocks_v1';
+                const raw = localStorage.getItem(KEY);
+                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
+                if(st.mode === 'linear' || (!st.mode && true)){
+                    const next = Math.min(7, currentChapter+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
+                }
+                st.mode = st.mode || 'linear';
+                localStorage.setItem(KEY, JSON.stringify(st));
+            }catch(e){}
+            window.location.href = '/html/map.html?mode=linear';
+        }
+
         // 使函数在全局可用
         window.openChapter = openChapter;
         window.completeChapter = completeChapter;
         window.continueToNextChapter = continueToNextChapter;
+        window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
 </body>
 </html>
