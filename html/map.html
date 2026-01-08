@@ -10,7 +10,10 @@
 <body>
     <div class="map-page">
         <header class="map-header">
-            <h1>长征节点地图</h1>
+            <div>
+                <h1>长征地图·节点探索</h1>
+                <p style="margin:0; font-size:13px; opacity:0.85;">追溯长征路上的每一步足迹</p>
+            </div>
             <div class="mode-indicator" id="modeIndicator"></div>
         </header>
 
@@ -44,6 +47,15 @@
         </footer>
     </div>
 
-    <script src="/js/mapScript.js"></script>
+    <script>
+        // 动态加载脚本并加时间戳，确保每次进入地图页面加载最新版脚本
+        (function(){
+            const s = document.createElement('script');
+            s.src = '../js/mapScript2.js?ts=' + Date.now();
+            s.async = false;
+            document.body.appendChild(s);
+        })();
+    </script>
 </body>
 </html>
+    
