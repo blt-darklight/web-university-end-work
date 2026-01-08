@@ -1,0 +1,160 @@
+{
+  "nodes": [
+    {
+      "id": "node1",
+      "title": "战略转移开始",
+      "subtitle": "1934年10月·瑞金",
+      "description": "中共中央、中革军委率中央红军主力8.6万余人，从江西瑞金等地出发，开始战略转移",
+      "coordinates": { "x": 73, "y": 37 }, 
+      "year": 1934,
+      "month": 10,
+      "icon": "start",
+      "color": "#FF6B6B",
+      "learningPage": "learning/strategic-transfer.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "瑞金出发",
+        "突破四道封锁线",
+        "中央红军主力转移"
+      ]
+    },
+    {
+      "id": "node2",
+      "title": "湘江战役与转折前夜",
+      "subtitle": "1934年11月·湘江",
+      "description": "中央红军在湘江战役中遭受重大损失，从8.6万人锐减至3万余人，引发对错误军事路线的反思",
+      "coordinates": { "x": 60, "y": 40 },
+      "year": 1934,
+      "month": 11,
+      "icon": "battle",
+      "color": "#FF8E53",
+      "learningPage": "learning/xiangjiang-battle.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "湘江血战",
+        "重大损失",
+        "战略转折前夜"
+      ]
+    },
+    {
+      "id": "node3",
+      "title": "伟大转折——遵义会议",
+      "subtitle": "1935年1月·遵义",
+      "description": "中共中央政治局在遵义召开扩大会议，确立了毛泽东同志在红军和党中央的领导地位",
+      "coordinates": { "x": 52, "y": 43 }, 
+      "year": 1935,
+      "month": 1,
+      "icon": "meeting",
+      "color": "#FFD166",
+      "learningPage": "learning/zunyi-meeting.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "遵义会议召开",
+        "毛泽东领导地位确立",
+        "军事路线转变"
+      ]
+    },
+    {
+      "id": "node4",
+      "title": "灵活机动的战略战术",
+      "subtitle": "1935年1月-6月",
+      "description": "四渡赤水、巧渡金沙江、强渡大渡河、飞夺泸定桥等战役，展现红军灵活机动的战略战术",
+      "coordinates": { "x": 45, "y": 38 }, 
+      "year": 1935,
+      "month": 6,
+      "icon": "tactic",
+      "color": "#06D6A0",
+      "learningPage": "learning/flexible-tactics.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "四渡赤水",
+        "巧渡金沙江",
+        "强渡大渡河",
+        "飞夺泸定桥"
+      ]
+    },
+    {
+      "id": "node5",
+      "title": "红一、红四方面军会师与北上南下之争",
+      "subtitle": "1935年6月-9月·懋功",
+      "description": "红一、红四方面军在四川懋功会师，围绕北上还是南下产生战略分歧",
+      "coordinates": { "x": 40, "y": 35 }, 
+      "year": 1935,
+      "month": 9,
+      "icon": "join",
+      "color": "#118AB2",
+      "learningPage": "learning/north-south-debate.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "懋功会师",
+        "北上南下之争",
+        "过草地"
+      ]
+    },
+    {
+      "id": "node6",
+      "title": "红一方面军胜利到达陕北",
+      "subtitle": "1935年10月·吴起镇",
+      "description": "红一方面军突破腊子口，翻越六盘山，胜利到达陕北吴起镇，与陕北红军会师",
+      "coordinates": { "x": 55, "y": 20 },
+      "year": 1935,
+      "month": 10,
+      "icon": "arrival",
+      "color": "#073B4C",
+      "learningPage": "learning/arrive-north.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "突破腊子口",
+        "翻越六盘山",
+        "吴起镇会师"
+      ]
+    },
+    {
+      "id": "node7",
+      "title": "红二、红四方面军北上与三大主力会师",
+      "subtitle": "1936年7月-10月·会宁",
+      "description": "红二、红四方面军北上，三大主力红军在甘肃会宁胜利会师，长征胜利结束",
+      "coordinates": { "x": 48, "y": 15 },
+      "year": 1936,
+      "month": 10,
+      "icon": "main-join",
+      "color": "#7209B7",
+      "learningPage": "learning/three-forces-join.html",
+      "hasMapPosition": true,
+      "keyEvents": [
+        "红二方面军北上",
+        "红四方面军北上",
+        "会宁会师",
+        "长征结束"
+      ]
+    },
+    {
+      "id": "node8",
+      "title": "长征的总结与意义",
+      "subtitle": "1936年10月·历史意义",
+      "description": "长征是人类历史上的伟大奇迹，是中国共产党和中国革命事业从挫折走向胜利的伟大转折点",
+      "coordinates": null,
+      "year": 1936,
+      "month": 10,
+      "icon": "summary",
+      "color": "#3A0CA3",
+      "learningPage": "learning/summary-significance.html",
+      "hasMapPosition": false,
+      "keyEvents": [
+        "伟大奇迹",
+        "历史转折",
+        "精神财富",
+        "深远影响"
+      ],
+      "isSummary": true
+    }
+  ],
+  "pathSegments": [
+    { "from": "node1", "to": "node2" },
+    { "from": "node2", "to": "node3" },
+    { "from": "node3", "to": "node4" },
+    { "from": "node4", "to": "node5" },
+    { "from": "node5", "to": "node6" },
+    { "from": "node6", "to": "node7" }
+  ]
+}

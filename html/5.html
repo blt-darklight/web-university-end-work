@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长征抉择：红一、红四方面军会师与北上南下之争（1935年6月—9月）</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary-red: #c62828;
+            --secondary-red: #ef5350;
+            --dark-bg: #0a0a14;
+            --light-gray: #f5f5f5;
+            --accent-gold: #ffb300;
+            --grass-green: #2e7d32;
+            --union-blue: #1565c0;
+            --marsh-brown: #5d4037;
+            --transition-time: 0.4s;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* 动态背景 - 草原与雪山 */
+        .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        /* 草原天空背景 */
+        .grassland-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a0a14 0%, #1a2a1a 30%, #2a3a2a 60%, #1a2a1a 90%, #0a0a14 100%);
+        }
+        
+        /* 草原地形效果 */
+        .grassland-terrain {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(to top, rgba(46, 125, 50, 0.2) 0%, transparent 100%);
+            overflow: hidden;
+        }
+        
+        .grass-blade {
+            position: absolute;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to top, #2e7d32, #4caf50);
+            border-radius: 2px 2px 0 0;
+        }
+        
+        /* 移动的云层 */
+        .moving-clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            filter: blur(20px);
+        }
+        
+        .cloud-1 {
+            width: 300px;
+            height: 100px;
+            top: 20%;
+            left: -300px;
+            animation: cloudMove 40s linear infinite;
+        }
+        
+        .cloud-2 {
+            width: 250px;
+            height: 80px;
+            top: 40%;
+            left: -250px;
+            animation: cloudMove 50s linear infinite 10s;
+        }
+        
+        .cloud-3 {
+            width: 200px;
+            height: 70px;
+            top: 60%;
+            left: -200px;
+            animation: cloudMove 45s linear infinite 5s;
+        }
+        
+        @keyframes cloudMove {
+            0% { transform: translateX(0); opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { transform: translateX(calc(100vw + 400px)); opacity: 0.3; }
+        }
+        
+        /* 沼泽水洼效果 */
+        .marsh-pools {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .marsh-pool {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(93, 64, 55, 0.3) 0%, transparent 70%);
+            filter: blur(10px);
+            opacity: 0.5;
+        }
+        
+        /* 交互粒子效果 */
+        .interactive-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        /* 开始界面 */
+        .start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(10, 10, 20, 0.95);
+            z-index: 1000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        .start-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .historical-badge {
+            background: linear-gradient(135deg, var(--grass-green) 0%, #1b5e20 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4);
+            animation: badgePulse 3s infinite alternate;
+        }
+        
+        @keyframes badgePulse {
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(46, 125, 50, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(46, 125, 50, 0.6); }
+        }
+        
+        .main-title {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+        }
+        
+        .main-title span {
+            color: var(--accent-gold);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .main-title span::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-gold);
+            animation: underline 3s infinite alternate;
+        }
+        
+        @keyframes underline {
+            0% { width: 0%; left: 0; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0%; left: 100%; }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #b0bec5;
+            max-width: 900px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .start-button {
+            background: linear-gradient(135deg, var(--grass-green) 0%, #1b5e20 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .start-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.6);
+        }
+        
+        .start-button i {
+            margin-left: 15px;
+            animation: arrowBounce 1.5s infinite;
+        }
+        
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* 探索主界面 */
+        .exploration-container {
+            min-height: 100vh;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .exploration-container.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 时间定位器 */
+        .time-locator {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 5px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-30px);
+            opacity: 0;
+            animation: slideIn 0.8s ease 0.2s forwards;
+        }
+        
+        @keyframes slideIn {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .time-period {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-period i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .location {
+            font-size: 1.4rem;
+            color: #bbdefb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location i {
+            margin-right: 10px;
+        }
+        
+        /* 章节导航 */
+        .chapter-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .chapter-nav-item {
+            background-color: rgba(30, 30, 40, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all var(--transition-time) ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .chapter-nav-item.visible {
+            animation: slideUp 0.6s ease forwards;
+        }
+        
+        .chapter-nav-item:nth-child(1) { animation-delay: 0.3s; }
+        .chapter-nav-item:nth-child(2) { animation-delay: 0.4s; }
+        .chapter-nav-item:nth-child(3) { animation-delay: 0.5s; }
+        .chapter-nav-item:nth-child(4) { animation-delay: 0.6s; }
+        .chapter-nav-item:nth-child(5) { animation-delay: 0.7s; }
+        
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .chapter-nav-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 179, 0, 0.05), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-time) ease;
+        }
+        
+        .chapter-nav-item:hover::before {
+            opacity: 1;
+        }
+        
+        .chapter-nav-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(255, 179, 0, 0.15);
+        }
+        
+        .chapter-nav-item.active {
+            border-color: var(--accent-gold);
+            background-color: rgba(30, 30, 40, 0.9);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.2);
+        }
+        
+        .chapter-nav-item.locked {
+            cursor: not-allowed;
+            opacity: 0.5;
+            transform: none !important;
+        }
+        
+        .chapter-nav-item.locked:hover {
+            transform: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        
+        .chapter-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--grass-green) 0%, #1b5e20 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-nav-item.active .chapter-icon {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+        }
+        
+        .chapter-nav-item.completed .chapter-icon {
+            background: linear-gradient(135deg, var(--union-blue) 0%, #0d47a1 100%);
+        }
+        
+        .chapter-title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .chapter-description {
+            color: #b0bec5;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .status-locked {
+            background-color: rgba(85, 85, 85, 0.5);
+            color: #aaa;
+        }
+        
+        .status-available {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: #64b5f6;
+        }
+        
+        .status-completed {
+            background-color: rgba(46, 125, 50, 0.2);
+            color: #81c784;
+        }
+        
+        /* 内容区域 */
+        .content-area {
+            flex-grow: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 0;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            display: none;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .content-area.active {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+            animation: contentAppear 0.6s ease;
+        }
+        
+        @keyframes contentAppear {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .content-header {
+            background: linear-gradient(135deg, var(--grass-green) 0%, #1b5e20 100%);
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .content-title {
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .content-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+        }
+        
+        .close-content {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .close-content:hover {
+            background-color: white;
+            color: var(--grass-green);
+            transform: rotate(90deg);
+        }
+        
+        .content-body {
+            padding: 40px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        /* 场景模拟 */
+        .scene-simulation {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border-left: 5px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-simulation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 179, 0, 0.05) 100%);
+            z-index: 0;
+        }
+        
+        .scene-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene-title i {
+            margin-right: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .scene-description {
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scene-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1a2a1a, #1a3a1a);
+        }
+        
+        .scene-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .scene-image span {
+            position: relative;
+            z-index: 1;
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* 互动元素 */
+        .interactive-element {
+            background-color: rgba(46, 125, 50, 0.15);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(46, 125, 50, 0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46, 125, 50, 0.2);
+            border-color: rgba(46, 125, 50, 0.6);
+        }
+        
+        .interactive-element.disabled {
+            cursor: default;
+            opacity: 0.7;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .interactive-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #a5d6a7;
+            font-size: 1.4rem;
+        }
+        
+        .interactive-title i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .interactive-description {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* 历史问答 */
+        .historical-quiz {
+            background-color: rgba(30, 30, 40, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .historical-quiz.visible {
+            display: block;
+        }
+        
+        .quiz-title {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-title i {
+            margin-right: 10px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quiz-option {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-gold);
+        }
+        
+        .quiz-option.selected {
+            background-color: rgba(255, 179, 0, 0.2);
+            border-color: var(--accent-gold);
+        }
+        
+        .quiz-option.correct {
+            background-color: rgba(46, 125, 50, 0.3);
+            border-color: var(--grass-green);
+        }
+        
+        .quiz-option.incorrect {
+            background-color: rgba(198, 40, 40, 0.3);
+            border-color: var(--primary-red);
+        }
+        
+        .quiz-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--accent-gold);
+            display: none;
+        }
+        
+        .quiz-feedback.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .quiz-next-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .quiz-next-btn.visible {
+            display: inline-block;
+        }
+        
+        .quiz-next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+        }
+        
+        /* 历史档案 */
+        .historical-dossier {
+            background-color: rgba(30, 30, 40, 0.6);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .historical-dossier.visible {
+            display: block;
+        }
+        
+        .dossier-title {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dossier-title i {
+            margin-right: 10px;
+        }
+        
+        .dossier-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dossier-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .dossier-label {
+            color: #a5d6a7;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .dossier-value {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        /* 阅读完成按钮 */
+        .reading-complete-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+        
+        .reading-complete-section.visible {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .complete-reading-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ff8f00 100%);
+            color: #333;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 179, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .complete-reading-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.4);
+        }
+        
+        .complete-reading-btn i {
+            margin-left: 10px;
+        }
+        
+        /* 成就解锁 */
+        .achievement-unlock {
+            background: linear-gradient(135deg, rgba(255, 179, 0, 0.1) 0%, rgba(255, 179, 0, 0.2) 100%);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid var(--accent-gold);
+            display: none;
+            animation: achievementAppear 0.8s ease;
+        }
+        
+        .achievement-unlock.visible {
+            display: block;
+        }
+        
+        @keyframes achievementAppear {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .achievement-icon {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        
+        .achievement-title {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        .achievement-description {
+            color: #e0e0e0;
+            line-height: 1.5;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .continue-button {
+            background-color: var(--accent-gold);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .continue-button:hover {
+            background-color: #ffca28;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 179, 0, 0.3);
+        }
+        
+        /* 分歧路径视觉效果 */
+        .path-divergence {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .path-option {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 15px;
+            text-align: center;
+            flex: 1;
+            max-width: 300px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .path-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .path-option.north {
+            background-color: rgba(33, 150, 243, 0.2);
+            border: 2px solid rgba(33, 150, 243, 0.5);
+        }
+        
+        .path-option.south {
+            background-color: rgba(198, 40, 40, 0.2);
+            border: 2px solid rgba(198, 40, 40, 0.5);
+        }
+        
+        .path-option-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .path-option.north .path-option-title {
+            color: #64b5f6;
+        }
+        
+        .path-option.south .path-option-title {
+            color: #ef5350;
+        }
+        
+        .path-option-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+        
+        .divergence-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .time-locator {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .time-period, .location {
+                margin-bottom: 10px;
+            }
+            
+            .chapter-navigation {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-body {
+                padding: 25px;
+                max-height: 60vh;
+            }
+            
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .path-divergence {
+                flex-direction: column;
+            }
+            
+            .path-option {
+                margin: 10px 0;
+                max-width: 100%;
+            }
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--grass-green);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景 - 草原与雪山 -->
+    <div class="dynamic-background">
+        <div class="grassland-sky"></div>
+        <div class="moving-clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+        <div class="grassland-terrain" id="grasslandTerrain">
+            <!-- 草叶将通过JavaScript动态添加 -->
+        </div>
+        <div class="marsh-pools" id="marshPools">
+            <!-- 沼泽水洼将通过JavaScript动态添加 -->
+        </div>
+    </div>
+    
+    <!-- 交互粒子效果 -->
+    <div class="interactive-particles" id="interactiveParticles"></div>
+    
+    <!-- 开始界面 -->
+    <div class="start-screen" id="startScreen">
+        <div class="historical-badge">长征的十字路口 #003</div>
+        <h1 class="main-title">会师与抉择：<span>北上南下之争的历史关口</span></h1>
+        <p class="subtitle">1935年6月至9月，中央红军与红四方面军在四川懋功会师，喜悦之后却面临"向哪里去"的战略分歧。这是长征中最复杂、最危险的时期之一。</p>
+        <p class="subtitle">从会师的希望到战略的争论，从穿越死亡草地的磨难到最终痛苦的分裂——这一时期展现了红军在生存危机与政治路线之间的艰难抉择。</p>
+        <button class="start-button" id="startButton">
+            开始探索 <i class="fas fa-hands-helping"></i>
+        </button>
+    </div>
+    
+    <!-- 探索主界面 -->
+    <div class="exploration-container" id="explorationContainer">
+        <!-- 时间定位器 -->
+        <div class="time-locator">
+            <div class="time-period">
+                <i class="fas fa-calendar-alt"></i>
+                <span>1935年6月—9月 · 会师与分裂</span>
+            </div>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>四川懋功 · 松潘草地 · 巴西地区</span>
+            </div>
+        </div>
+        
+        <!-- 章节导航 -->
+        <div class="chapter-navigation">
+            <div class="chapter-nav-item visible active" data-chapter="1">
+                <div class="chapter-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="chapter-title">懋功会师</h3>
+                <p class="chapter-description">中央红军与红四方面军在四川懋功会师，喜悦中隐藏着实力对比与政治分歧的隐忧</p>
+                <div class="chapter-status status-available">点击探索</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="2">
+                <div class="chapter-icon">
+                    <i class="fas fa-map"></i>
+                </div>
+                <h3 class="chapter-title">两河口会议与北上战略</h3>
+                <p class="chapter-description">中共中央决定集中主力向北进攻，创建川陕甘革命根据地</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="3">
+                <div class="chapter-icon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <h3 class="chapter-title">过草地</h3>
+                <p class="chapter-description">红军穿越松潘湿地（若尔盖草原），面临沼泽、饥饿和寒冷的极端考验</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="4">
+                <div class="chapter-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <h3 class="chapter-title">分裂危机与陕甘支队先行北上</h3>
+                <p class="chapter-description">张国焘拒绝执行北上方针，中共中央率红一、三军团改编为陕甘支队单独北上</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+            
+            <div class="chapter-nav-item locked" data-chapter="5">
+                <div class="chapter-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3 class="chapter-title">总结与意义</h3>
+                <p class="chapter-description">北上南下之争的本质与历史意义，两条路线的不同结局</p>
+                <div class="chapter-status status-locked">待解锁</div>
+            </div>
+        </div>
+        
+        <!-- 内容区域 -->
+        <div class="content-area" id="contentArea">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title" id="contentTitle">懋功会师</h2>
+                    <p class="content-subtitle" id="contentSubtitle">喜悦与实力对比的隐忧</p>
+                </div>
+                <button class="close-content" id="closeContent">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="content-body" id="contentBody">
+                <!-- 内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+        
+        <!-- 成就解锁区域 -->
+        <div id="achievementContainer"></div>
+    </div>
+
+    <script>
+        // 探索章节数据
+        const explorationData = {
+            1: {
+                title: "懋功会师",
+                subtitle: "喜悦与实力对比的隐忧",
+                scene: {
+                    title: "场景模拟：达维镇会师的喜悦与隐忧",
+                    description: "1935年6月12日，四川懋功达维镇。中央红军先头部队红一军团二师四团与红四方面军先头部队第九军二十五师七十四团在这里胜利会师。衣衫褴褛、面容憔悴的中央红军战士与装备整齐、士气高昂的红四方面军战士紧紧拥抱，欢呼声在山谷中回荡。然而，细心的人会发现，中央红军仅剩约2万余人，装备简陋；而红四方面军则兵强马壮，拥有约8万余人。这种巨大的实力差距，为后续的战略分歧埋下了伏笔……"
+                },
+                interactive: {
+                    title: "点击探索：会师背后的实力对比与隐忧",
+                    description: "点击此处，了解中央红军与红四方面军会师时的实力差距，以及这种差距如何影响了后续的战略决策和领导权之争。"
+                },
+                quiz: {
+                    question: "1935年6月懋功会师时，中央红军与红四方面军的兵力对比大约是？",
+                    options: [
+                        { text: "中央红军8万余人，红四方面军2万余人", correct: false },
+                        { text: "中央红军2万余人，红四方面军8万余人", correct: true },
+                        { text: "中央红军5万余人，红四方面军5万余人", correct: false },
+                        { text: "中央红军3万余人，红四方面军7万余人", correct: false }
+                    ],
+                    feedback: "正确答案是'中央红军2万余人，红四方面军8万余人'。经过长途征战，中央红军仅剩约2万余人，装备简陋；而红四方面军则兵强马壮，拥有约8万余人。这种实力差距助长了张国焘的政治野心。"
+                },
+                dossier: [
+                    { label: "时间", value: "1935年6月12日（先头部队会师），6月18日（主要领导会面）" },
+                    { label: "地点", value: "四川懋功达维镇（今小金县达维），后移师懋功县城" },
+                    { label: "会师部队", value: "中央红军（红一方面军）与红四方面军" },
+                    { label: "中央红军兵力", value: "约2万余人，装备简陋，官兵疲惫" },
+                    { label: "红四方面军兵力", value: "约8万余人，装备较好，士气高昂" },
+                    { label: "先头部队", value: "红一军团二师四团（中央红军）与第九军二十五师七十四团（红四方面军）" },
+                    { label: "主要领导", value: "毛泽东、周恩来、张闻天（中央）；张国焘、徐向前、陈昌浩（红四方面军）" },
+                    { label: "会师意义", value: "实现了红军两大主力的会合，增强了红军力量" },
+                    { label: "潜在问题", value: "实力差距巨大，为后续的战略分歧和权力之争埋下伏笔" }
+                ],
+                achievement: {
+                    title: "会师观察员",
+                    description: "你已理解懋功会师的历史背景，认识到喜悦背后隐藏的实力对比与政治隐忧。",
+                    nextChapter: 2
+                }
+            },
+            2: {
+                title: "两河口会议与北上战略",
+                subtitle: "向哪里去的战略抉择",
+                scene: {
+                    title: "场景模拟：两河口的激烈争论",
+                    description: "1935年6月26日，四川懋功以北的两河口。中共中央政治局扩大会议正在召开。毛泽东、周恩来、张闻天等主张'北上'，创建川陕甘革命根据地，接通华北抗日前线；张国焘则主张'西进'或'南下'，向川康边发展。墙上挂着一张巨大的地图，代表着不同的战略方向。窗外是连绵的群山，屋内是激烈的争论。红军的未来，将在这场会议中决定……"
+                },
+                interactive: {
+                    title: "点击探索：北上与南下战略的争论焦点",
+                    description: "点击此处，了解毛泽东北上战略与张国焘南下主张的核心分歧，以及两河口会议的历史意义。"
+                },
+                quiz: {
+                    question: "两河口会议上，毛泽东等主张北上的最主要理由是什么？",
+                    options: [
+                        { text: "川陕甘地区敌人力量薄弱，易于发展", correct: false },
+                        { text: "接通华北抗日前线，有利于领导和推动全国抗日运动", correct: true },
+                        { text: "北方气候适宜，有利于部队休整", correct: false },
+                        { text: "北方有苏联的支援，可以获得外援", correct: false }
+                    ],
+                    feedback: "正确答案是'接通华北抗日前线，有利于领导和推动全国抗日运动'。毛泽东等主张北上，最重要的考虑是政治高度——接通华北抗日前线，有利于领导和推动全国抗日运动，这是北上战略的核心价值。"
+                },
+                dossier: [
+                    { label: "时间与地点", value: "1935年6月26日，四川懋功以北的两河口（今小金县两河口镇）" },
+                    { label: "会议性质", value: "中共中央政治局扩大会议" },
+                    { label: "核心议题", value: "会师后的战略方针" },
+                    { label: "北上主张", value: "毛泽东、周恩来、张闻天等主张，创建川陕甘革命根据地，接通华北抗日前线" },
+                    { label: "北上理由", value: "1. 接通华北抗日前线，有利于领导和推动全国抗日运动（政治高度）；2. 该地区敌人力量相对薄弱，有较好的群众基础（军事可行）" },
+                    { label: "南下主张", value: "张国焘主张'西进'或'南下'，先向川康边发展，或南下夺取成都平原" },
+                    { label: "南下理由", value: "该地区人口多、物资丰富，可暂时解决补给困难" },
+                    { label: "会议决议", value: "通过了北上建立川陕甘根据地的战略方针" },
+                    { label: "后续安排", value: "决定两大主力红军混编为左、右两路军，共同北上" },
+                    { label: "历史意义", value: "明确了北上抗日的战略方向，但分歧并未真正解决" }
+                ],
+                achievement: {
+                    title: "战略分析师",
+                    description: "你已掌握两河口会议的核心争论，理解了北上与南下战略的本质区别。",
+                    nextChapter: 3
+                }
+            },
+            3: {
+                title: "过草地",
+                subtitle: "人类生存极限的考验",
+                scene: {
+                    title: "场景模拟：松潘草地的死亡陷阱",
+                    description: "1935年8月，松潘大草地（今若尔盖草原）。一眼望不到边的沼泽、草甸，遍地是隐藏的死亡陷阱。右路军官兵拖着疲惫的身躯，深一脚浅一脚地在泥泞中前行。饥饿的战士挖野菜充饥，有人误食毒草倒下；夜间严寒，衣衫单薄的战士们背靠背取暖；不时有战友陷入沼泽，顷刻间被泥潭吞没。每走一段路，就会看到倒下的同志。这是一场与自然极限的生死较量……"
+                },
+                interactive: {
+                    title: "点击体验：穿越草地的极端挑战",
+                    description: "点击此处，感受红军在沼泽、饥饿和寒冷的多重考验下，穿越'死亡陷阱'的艰难历程。"
+                },
+                quiz: {
+                    question: "红军穿越松潘草地时面临的主要困难不包括以下哪一项？",
+                    options: [
+                        { text: "遍地沼泽，人和马容易陷入其中", correct: false },
+                        { text: "极度饥饿，缺乏食物来源", correct: false },
+                        { text: "敌军空袭和地面追击", correct: true },
+                        { text: "昼夜温差大，夜间严寒难耐", correct: false }
+                    ],
+                    feedback: "正确答案是'敌军空袭和地面追击'。过草地的主要困难是自然环境的极端恶劣：遍地沼泽、极度饥饿、昼夜温差大。当时敌军并未在草地实施大规模追击，红军主要面对的是自然环境的挑战。"
+                },
+                dossier: [
+                    { label: "时间", value: "1935年8月21日至27日左右" },
+                    { label: "地点", value: "松潘大草地（今四川若尔盖草原）" },
+                    { label: "穿越部队", value: "右路军（由中央机关、红一方面军大部及红四方面军一部组成）" },
+                    { label: "草地环境", value: "海拔3500米以上，气候恶劣，遍地沼泽和泥潭" },
+                    { label: "主要困难", value: "1. 沼泽：人和马一旦陷入，顷刻间被淹没；2. 饥饿：缺乏食物，只得挖野菜、煮皮带，误食毒草身亡；3. 寒冷：昼夜温差极大，夜间严寒，衣衫单薄" },
+                    { label: "穿越时间", value: "约一周时间" },
+                    { label: "惨重损失", value: "无数战士因饥饿、寒冷、疾病和陷入沼泽而牺牲在草地上" },
+                    { label: "到达地点", value: "班佑、巴西地区" },
+                    { label: "历史评价", value: "人类生存极限的考验，红军以巨大牺牲完成了这一壮举" },
+                    { label: "后续影响", value: "右路军走出草地后，占领包座，打开了北出甘南的通道" }
+                ],
+                achievement: {
+                    title: "草地穿越者",
+                    description: "你已理解红军过草地的极端艰难，感受到了人类意志战胜自然极限的伟大力量。",
+                    nextChapter: 4
+                }
+            },
+            4: {
+                title: "分裂危机与陕甘支队先行北上",
+                subtitle: "长征中最危急的政治关头",
+                scene: {
+                    title: "场景模拟：巴西的紧急行动",
+                    description: "1935年9月9日夜，巴西地区。毛泽东、张闻天、周恩来等中央领导人接到叶剑英送来的'密电'——张国焘强令右路军中的红四方面军部队'南下，彻底开展党内斗争'。局势万分危急，红军内部分裂甚至冲突一触即发。毛泽东立即召集紧急会议，决定率红一、三军团及中央机关连夜秘密北上。临行前，毛泽东亲自询问徐向前意见，徐向前回答：'天下哪有红军打红军的道理！'这个夜晚，决定了中国革命的命运……"
+                },
+                interactive: {
+                    title: "点击思考：北上南下之争的本质",
+                    description: "点击此处，理解北上南下之争的本质，以及中共中央为何必须率部先行北上。"
+                },
+                quiz: {
+                    question: "1935年9月巴西紧急行动中，中共中央率部先行北上的直接原因是什么？",
+                    options: [
+                        { text: "国民党军队大规模追击，必须立即转移", correct: false },
+                        { text: "张国焘发出'密电'，强令部队南下并威胁开展党内斗争", correct: true },
+                        { text: "北方气候转暖，有利于部队行动", correct: false },
+                        { text: "获得情报，陕北有更好的根据地条件", correct: false }
+                    ],
+                    feedback: "正确答案是'张国焘发出'密电'，强令部队南下并威胁开展党内斗争'。巴西紧急行动的直接原因是张国焘拒绝执行北上方针，并发出带有威胁意味的'密电'，中共中央为避免红军内部可能的冲突，决定率部先行北上。"
+                },
+                dossier: [
+                    { label: "背景", value: "右路军走出草地后，占领包座，打开了北出甘南的通道" },
+                    { label: "电报之争", value: "中央连电左路军迅速北上会合；张国焘以葛曲河涨水、粮草困难为由，拒绝北上" },
+                    { label: "'密电'事件", value: "1935年9月9日，张国焘电令右路军中的红四方面军部队'南下，彻底开展党内斗争'" },
+                    { label: "获知情报", value: "前敌指挥部参谋长叶剑英获知'密电'内容，立即报告毛泽东" },
+                    { label: "紧急决策", value: "毛泽东、张闻天、周恩来等决定率红一、三军团及中央机关连夜秘密北上" },
+                    { label: "徐向前表态", value: "毛泽东询问徐向前意见，徐答：'天下哪有红军打红军的道理！'" },
+                    { label: "行动时间", value: "1935年9月9日—10日夜" },
+                    { label: "部队改编", value: "9月12日，俄界会议将北上的中央红军改编为中国工农红军陕甘支队（约7000余人）" },
+                    { label: "领导任命", value: "彭德怀任司令员，毛泽东任政委" },
+                    { label: "历史意义", value: "避免了红军内部可能的冲突，坚持了北上抗日的正确路线" }
+                ],
+                achievement: {
+                    title: "危机决策者",
+                    description: "你已理解长征分裂危机的严重性，认识到中共中央在危急关头做出先行北上决策的历史意义。",
+                    nextChapter: 5
+                }
+            },
+            5: {
+                title: "总结与意义",
+                subtitle: "北上南下之争的本质与历史意义",
+                scene: {
+                    title: "场景模拟：两条路线的不同结局",
+                    description: "历史在1935年秋天分叉。向北，毛泽东率领的陕甘支队继续向陕北前进，目标是抗日前线和新的革命根据地；向南，张国焘率领的红四方面军等部掉头南下，目标是川康边地区。北上路线虽然艰难，但接通了全国抗日大局；南下路线虽然初期取得一些战术胜利，但最终在强敌围攻下遭受重大挫折。两条路线的不同结局，验证了北上抗日的正确性……"
+                },
+                interactive: {
+                    title: "点击总结：北上南下之争的历史启示",
+                    description: "点击此处，全面总结北上南下之争的本质、两条路线的不同结局，以及这一时期的历史启示。"
+                },
+                quiz: {
+                    question: "北上南下之争的本质是什么？",
+                    options: [
+                        { text: "个人权力之争", correct: false },
+                        { text: "军事战术分歧", correct: false },
+                        { text: "'向抗日前线进军'与'偏安一隅求生存'两条路线的斗争", correct: true },
+                        { text: "对根据地位置的地理偏好", correct: false }
+                    ],
+                    feedback: "正确答案是''向抗日前线进军'与'偏安一隅求生存'两条路线的斗争'。北上南下之争的本质是政治路线的分歧：是向抗日前线进军，融入全国抗日大局；还是偏安一隅，只求暂时生存。这不仅是军事问题，更是政治战略问题。"
+                },
+                dossier: [
+                    { label: "时间范围", value: "1935年6月（懋功会师）至1935年9月（巴西分裂）" },
+                    { label: "核心矛盾", value: "'向哪里去'的战略方向之争，背后是领导权与政治路线的深刻分歧" },
+                    { label: "北上路线本质", value: "'向抗日前线进军'，将革命融入全国抗日大局，具有政治高度和历史远见" },
+                    { label: "南下路线本质", value: "'偏安一隅求生存'，注重短期物质利益，缺乏政治远见" },
+                    { label: "北上结局", value: "中共中央坚持北上，最终将革命大本营安置在西北，为中国革命赢得了新的战略基地和未来" },
+                    { label: "南下结局", value: "张国焘率部南下，虽初期取得一些战术胜利，但最终在强敌围攻下遭受重大挫折，被迫于1936年再次北上" },
+                    { label: "历史验证", value: "北上路线的正确性被历史所验证，南下路线的错误也被历史所证明" },
+                    { label: "分裂损失", value: "红军分裂使本已弱小的革命力量进一步分散，延长了长征时间，增加了革命代价" },
+                    { label: "政治教训", value: "必须坚持党中央的集中统一领导，维护党的团结，反对分裂主义" },
+                    { label: "当代启示", value: "坚持正确政治方向，胸怀大局，反对狭隘的本位主义和分裂倾向" }
+                ],
+                achievement: {
+                    title: "历史洞察者",
+                    description: "恭喜！你已完成'会师与北上南下之争'全面探索，理解了这一时期复杂的历史背景、战略分歧的本质，以及北上路线最终被历史验证的正确性。",
+                    nextChapter: null
+                }
+            }
+        };
+        
+        // 当前状态
+        let currentChapter = 1;
+        let completedChapters = new Set();
+        let achievementVisible = false;
+        
+        // DOM元素
+        const startScreen = document.getElementById('startScreen');
+        const startButton = document.getElementById('startButton');
+        const explorationContainer = document.getElementById('explorationContainer');
+        const chapterNavItems = document.querySelectorAll('.chapter-nav-item');
+        const contentArea = document.getElementById('contentArea');
+        const contentTitle = document.getElementById('contentTitle');
+        const contentSubtitle = document.getElementById('contentSubtitle');
+        const contentBody = document.getElementById('contentBody');
+        const closeContent = document.getElementById('closeContent');
+        const interactiveParticles = document.getElementById('interactiveParticles');
+        const achievementContainer = document.getElementById('achievementContainer');
+        const grasslandTerrain = document.getElementById('grasslandTerrain');
+        const marshPools = document.getElementById('marshPools');
+        
+        // 初始化
+        function init() {
+            // 创建草原效果
+            createGrasslandEffect();
+            
+            // 创建沼泽水洼效果
+            createMarshPools();
+            
+            // 事件监听
+            startButton.addEventListener('click', startExploration);
+            closeContent.addEventListener('click', closeContentArea);
+            
+            // 章节导航点击事件
+            chapterNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (!this.classList.contains('locked')) {
+                        const chapterId = parseInt(this.getAttribute('data-chapter'));
+                        openChapter(chapterId);
+                    }
+                });
+            });
+            
+            // 初始化第一个章节
+            openChapter(1);
+        }
+        
+        // 创建草原效果
+        function createGrasslandEffect() {
+            for (let i = 0; i < 150; i++) {
+                const grassBlade = document.createElement('div');
+                grassBlade.className = 'grass-blade';
+                
+                const x = Math.random() * 100;
+                const height = 10 + Math.random() * 40;
+                const swayAmount = Math.random() * 20 - 10;
+                const swayDuration = 2 + Math.random() * 4;
+                const delay = Math.random() * 2;
+                
+                grassBlade.style.left = `${x}%`;
+                grassBlade.style.height = `${height}px`;
+                
+                // 草叶摆动动画
+                const animation = grassBlade.animate([
+                    { transform: `translateX(0)` },
+                    { transform: `translateX(${swayAmount}px)` },
+                    { transform: `translateX(0)` }
+                ], {
+                    duration: swayDuration * 1000,
+                    delay: delay * 1000,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                });
+                
+                grasslandTerrain.appendChild(grassBlade);
+            }
+        }
+        
+        // 创建沼泽水洼效果
+        function createMarshPools() {
+            for (let i = 0; i < 15; i++) {
+                const pool = document.createElement('div');
+                pool.className = 'marsh-pool';
+                
+                const size = 30 + Math.random() * 70;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const opacity = 0.3 + Math.random() * 0.3;
+                
+                pool.style.width = `${size}px`;
+                pool.style.height = `${size * 0.6}px`;
+                pool.style.left = `${x}%`;
+                pool.style.top = `${y}%`;
+                pool.style.opacity = opacity;
+                
+                marshPools.appendChild(pool);
+            }
+        }
+        
+        // 创建交互粒子效果
+        function createInteractionEffect(x, y, color = '#ffb300', count = 8) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 6 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 60 + 30;
+                const targetX = x + Math.cos(angle) * distance;
+                const targetY = y + Math.sin(angle) * distance;
+                
+                interactiveParticles.appendChild(particle);
+                
+                const animation = particle.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${targetX - x}px, ${targetY - y}px) scale(0)`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 500 + Math.random() * 300,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+        
+        // 开始探索
+        function startExploration() {
+            const rect = startButton.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            createInteractionEffect(centerX, centerY, '#ffb300', 12);
+            
+            startScreen.classList.add('hidden');
+            
+            setTimeout(() => {
+                explorationContainer.classList.add('active');
+                
+                // 显示章节导航
+                chapterNavItems.forEach(item => {
+                    item.classList.add('visible');
+                });
+            }, 800);
+        }
+        
+        // 打开章节
+        function openChapter(chapterId) {
+            // 如果当前有成就显示，先隐藏它
+            if (achievementVisible) {
+                hideAchievement();
+            }
+            
+            currentChapter = chapterId;
+            const chapterData = explorationData[chapterId];
+            
+            if (!chapterData) return;
+            
+            // 更新导航状态
+            chapterNavItems.forEach(item => {
+                const itemChapterId = parseInt(item.getAttribute('data-chapter'));
+                item.classList.remove('active');
+                
+                if (itemChapterId === chapterId) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // 更新内容区域
+            contentTitle.textContent = chapterData.title;
+            contentSubtitle.textContent = chapterData.subtitle;
+            
+            // 构建内容
+            let contentHTML = `
+                <div class="scene-simulation">
+                    <div class="scene-title">
+                        <i class="fas fa-theater-masks"></i>
+                        <span>${chapterData.scene.title}</span>
+                    </div>
+                    <p class="scene-description">${chapterData.scene.description}</p>
+            `;
+            
+            // 如果是第2章或第5章，添加分歧路径视觉效果
+            if (chapterId === 2 || chapterId === 5) {
+                contentHTML += `
+                    <div class="path-divergence">
+                        <div class="path-option north">
+                            <div class="divergence-icon">
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                            <div class="path-option-title">北上路线</div>
+                            <div class="path-option-description">向抗日前线进军，融入全国抗日大局，具有政治高度和历史远见</div>
+                        </div>
+                        <div class="path-option south">
+                            <div class="divergence-icon">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="path-option-title">南下路线</div>
+                            <div class="path-option-description">偏安一隅求生存，注重短期物质利益，缺乏政治远见</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            contentHTML += `
+                    <div class="scene-image">
+                        <span>历史场景示意图：${chapterData.title}</span>
+                    </div>
+                </div>
+            `;
+            
+            // 如果章节已完成，直接显示所有内容
+            if (completedChapters.has(chapterId)) {
+                contentHTML += `
+                    <div class="interactive-element disabled">
+                        <div class="interactive-title">
+                            <i class="fas fa-search"></i>
+                            <span>${chapterData.interactive.title}</span>
+                        </div>
+                        <p class="interactive-description">${chapterData.interactive.description}</p>
+                    </div>
+                    
+                    <div class="historical-quiz visible">
+                        <div class="quiz-title">
+                            <i class="fas fa-question-circle"></i>
+                            <span>历史问答</span>
+                        </div>
+                        <div class="quiz-question">${chapterData.quiz.question}</div>
+                        <div class="quiz-options">
+                `;
+                
+                chapterData.quiz.options.forEach((option, index) => {
+                    const isCorrect = option.correct ? 'correct' : '';
+                    contentHTML += `
+                        <div class="quiz-option ${isCorrect}">
+                            ${option.text}
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `
+                        </div>
+                        <div class="quiz-feedback visible">
+                            ${chapterData.quiz.feedback}
+                        </div>
+                    </div>
+                    
+                    <div class="historical-dossier visible">
+                        <div class="dossier-title">
+                            <i class="fas fa-file-alt"></i>
+                            <span>历史档案</span>
+                        </div>
+                `;
+                
+                chapterData.dossier.forEach(item => {
+                    contentHTML += `
+                        <div class="dossier-item">
+                            <div class="dossier-label">${item.label}</div>
+                            <div class="dossier-value">${item.value}</div>
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `</div>`;
+                
+                // 如果不是最后一章，显示继续探索按钮
+                if (chapterData.achievement.nextChapter && !completedChapters.has(chapterData.achievement.nextChapter)) {
+                    contentHTML += `
+                        <div class="reading-complete-section visible">
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">本章节已完成，你可以继续探索下一章</p>
+                            <button class="complete-reading-btn" onclick="continueToNextChapter(${chapterId})">
+                                继续探索下一章 <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    `;
+                }
+            } else {
+                // 章节未完成，显示可交互内容
+                contentHTML += `
+                    <div class="interactive-element" id="interactiveElement">
+                        <div class="interactive-title">
+                            <i class="fas fa-search"></i>
+                            <span>${chapterData.interactive.title}</span>
+                        </div>
+                        <p class="interactive-description">${chapterData.interactive.description}</p>
+                    </div>
+                    
+                    <div class="historical-quiz" id="historicalQuiz">
+                        <!-- 历史问答将通过JavaScript动态加载 -->
+                    </div>
+                    
+                    <div class="historical-dossier" id="historicalDossier">
+                        <!-- 历史档案将通过JavaScript动态加载 -->
+                    </div>
+                    
+                    <div class="reading-complete-section" id="readingCompleteSection">
+                        <!-- 阅读完成按钮将通过JavaScript动态加载 -->
+                    </div>
+                `;
+            }
+            
+            // 更新内容区域
+            contentBody.innerHTML = contentHTML;
+            contentArea.classList.add('active');
+            
+            // 如果章节未完成，设置交互事件
+            if (!completedChapters.has(chapterId)) {
+                const interactiveElement = document.getElementById('interactiveElement');
+                interactiveElement.addEventListener('click', function(e) {
+                    // 创建交互特效
+                    createInteractionEffect(e.clientX, e.clientY, '#ffb300', 10);
+                    
+                    // 显示历史问答
+                    const quizElement = document.getElementById('historicalQuiz');
+                    let quizHTML = `
+                        <div class="quiz-title">
+                            <i class="fas fa-question-circle"></i>
+                            <span>历史问答</span>
+                        </div>
+                        <div class="quiz-question">${chapterData.quiz.question}</div>
+                        <div class="quiz-options" id="quizOptions">
+                    `;
+                    
+                    chapterData.quiz.options.forEach((option, index) => {
+                        quizHTML += `
+                            <div class="quiz-option" data-index="${index}" data-correct="${option.correct}">
+                                ${option.text}
+                            </div>
+                        `;
+                    });
+                    
+                    quizHTML += `
+                        </div>
+                        <div class="quiz-feedback" id="quizFeedback">
+                            ${chapterData.quiz.feedback}
+                        </div>
+                        <button class="quiz-next-btn" id="quizNextBtn">继续查看历史档案</button>
+                    `;
+                    
+                    quizElement.innerHTML = quizHTML;
+                    quizElement.classList.add('visible');
+                    
+                    // 禁用交互元素
+                    interactiveElement.classList.add('disabled');
+                    interactiveElement.style.cursor = 'default';
+                    
+                    // 设置问答选项点击事件
+                    const quizOptions = document.querySelectorAll('.quiz-option');
+                    quizOptions.forEach(option => {
+                        option.addEventListener('click', function() {
+                            // 移除所有选项的选中状态
+                            quizOptions.forEach(opt => {
+                                opt.classList.remove('selected');
+                            });
+                            
+                            // 添加当前选项的选中状态
+                            this.classList.add('selected');
+                            
+                            // 显示正确答案和错误答案的样式
+                            const isCorrect = this.getAttribute('data-correct') === 'true';
+                            if (isCorrect) {
+                                this.classList.add('correct');
+                            } else {
+                                this.classList.add('incorrect');
+                                
+                                // 同时显示正确答案
+                                quizOptions.forEach(opt => {
+                                    if (opt.getAttribute('data-correct') === 'true') {
+                                        opt.classList.add('correct');
+                                    }
+                                });
+                            }
+                            
+                            // 显示反馈
+                            const quizFeedback = document.getElementById('quizFeedback');
+                            quizFeedback.classList.add('visible');
+                            
+                            // 显示继续按钮
+                            const quizNextBtn = document.getElementById('quizNextBtn');
+                            quizNextBtn.classList.add('visible');
+                            
+                            // 自动滚动到反馈区域
+                            setTimeout(() => {
+                                quizFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 300);
+                        });
+                    });
+                    
+                    // 设置继续按钮点击事件
+                    const quizNextBtn = document.getElementById('quizNextBtn');
+                    quizNextBtn.addEventListener('click', function() {
+                        // 显示历史档案
+                        const dossierElement = document.getElementById('historicalDossier');
+                        let dossierHTML = `
+                            <div class="dossier-title">
+                                <i class="fas fa-file-alt"></i>
+                                <span>历史档案</span>
+                            </div>
+                        `;
+                        
+                        chapterData.dossier.forEach(item => {
+                            dossierHTML += `
+                                <div class="dossier-item">
+                                    <div class="dossier-label">${item.label}</div>
+                                    <div class="dossier-value">${item.value}</div>
+                                </div>
+                            `;
+                        });
+                        
+                        dossierElement.innerHTML = dossierHTML;
+                        dossierElement.classList.add('visible');
+                        
+                        // 显示阅读完成按钮
+                        const readingCompleteSection = document.getElementById('readingCompleteSection');
+                        readingCompleteSection.innerHTML = `
+                            <p style="margin-bottom: 20px; color: #b0bec5; font-size: 1.1rem;">你已经阅读完本章节内容，确认完成后可以解锁下一章</p>
+                            <button class="complete-reading-btn" onclick="completeChapter(${chapterId})">
+                                确认完成本章节 <i class="fas fa-check-circle"></i>
+                            </button>
+                        `;
+                        readingCompleteSection.classList.add('visible');
+                        
+                        // 自动滚动到阅读完成按钮
+                        setTimeout(() => {
+                            readingCompleteSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 300);
+                    });
+                    
+                    // 自动滚动到问答区域
+                    setTimeout(() => {
+                        quizElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                });
+            }
+        }
+        
+        // 完成章节
+        function completeChapter(chapterId) {
+            const chapterData = explorationData[chapterId];
+            
+            // 标记章节为已完成
+            completedChapters.add(chapterId);
+            
+            // 更新章节导航状态
+            const currentNavItem = document.querySelector(`.chapter-nav-item[data-chapter="${chapterId}"]`);
+            if (currentNavItem) {
+                currentNavItem.classList.add('completed');
+                const statusEl = currentNavItem.querySelector('.chapter-status');
+                if (statusEl) {
+                    statusEl.textContent = '已完成';
+                    statusEl.className = 'chapter-status status-completed';
+                }
+            }
+            
+            // 解锁下一章
+            if (chapterData.achievement.nextChapter) {
+                unlockNextChapter(chapterData.achievement.nextChapter);
+            }
+            
+            // 显示成就
+            showAchievement(chapterData.achievement);
+            
+            // 创建完成特效
+            const completeBtn = event.target.closest('.complete-reading-btn');
+            if (completeBtn) {
+                const rect = completeBtn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                createInteractionEffect(centerX, centerY, '#2e7d32', 15);
+            }
+        }
+        
+        // 继续到下一章
+        function continueToNextChapter(chapterId) {
+            const chapterData = explorationData[chapterId];
+            
+            if (chapterData.achievement.nextChapter) {
+                // 隐藏当前内容区域
+                contentArea.classList.remove('active');
+                
+                // 打开下一章
+                setTimeout(() => {
+                    openChapter(chapterData.achievement.nextChapter);
+                }, 300);
+                
+                // 创建过渡特效
+                const continueBtn = event.target.closest('.complete-reading-btn');
+                if (continueBtn) {
+                    const rect = continueBtn.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    createInteractionEffect(centerX, centerY, '#ffb300', 12);
+                }
+            }
+        }
+        
+        // 解锁下一章
+        function unlockNextChapter(nextChapterId) {
+            const nextChapterItem = document.querySelector(`.chapter-nav-item[data-chapter="${nextChapterId}"]`);
+            if (nextChapterItem) {
+                nextChapterItem.classList.remove('locked');
+                nextChapterItem.classList.add('visible');
+                nextChapterItem.style.cursor = 'pointer';
+                
+                const statusEl = nextChapterItem.querySelector('.chapter-status');
+                if (statusEl) {
+                    statusEl.textContent = '点击探索';
+                    statusEl.className = 'chapter-status status-available';
+                }
+                
+                // 添加解锁特效
+                const iconEl = nextChapterItem.querySelector('.chapter-icon');
+                const rect = iconEl.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                createInteractionEffect(centerX, centerY, '#ffb300', 10);
+            }
+        }
+        
+        // 关闭内容区域
+        function closeContentArea() {
+            const rect = closeContent.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            createInteractionEffect(centerX, centerY, '#c62828', 8);
+            
+            contentArea.classList.remove('active');
+            
+            // 如果成就显示中，也隐藏它
+            if (achievementVisible) {
+                hideAchievement();
+            }
+        }
+        
+        // 显示成就
+        function showAchievement(achievement) {
+            achievementVisible = true;
+            
+            const achievementHTML = `
+                <div class="achievement-unlock visible">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="achievement-title">${achievement.title}</h3>
+                    <p class="achievement-description">${achievement.description}</p>
+                    ${achievement.nextChapter ? 
+                        `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
+                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                    }
+                </div>
+            `;
+            
+            achievementContainer.innerHTML = achievementHTML;
+            
+            // 自动滚动到成就区域
+            setTimeout(() => {
+                const achievementEl = achievementContainer.querySelector('.achievement-unlock');
+                if (achievementEl) {
+                    achievementEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+        }
+        
+        // 隐藏成就
+        function hideAchievement() {
+            achievementVisible = false;
+            achievementContainer.innerHTML = '';
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', init);
+        
+        // 使函数在全局可用
+        window.openChapter = openChapter;
+        window.completeChapter = completeChapter;
+        window.continueToNextChapter = continueToNextChapter;
+    </script>
+</body>
+</html>

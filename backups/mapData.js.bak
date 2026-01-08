@@ -1,0 +1,32 @@
+// js/mapData.js - 长征节点数据
+const longMarchNodes = [
+    {
+        id: 'node1',
+        title: '战略转移开始',
+        subtitle: '1934年10月·瑞金',
+        description: '中共中央、中革军委率中央红军主力8.6万余人，从江西瑞金等地出发，开始战略转移。',
+        year: 1934,
+        month: 10,
+        coordinates: { x: 620, y: 480 },
+        learningPage: 'learning/node1.html',
+        color: '#FF6B6B',
+        keyEvents: [
+            '瑞金出发',
+            '突破四道封锁线',
+            '中央红军主力转移'
+        ],
+        hasMapPosition: true
+    },
+    ... (已备份当前 mapData.js 内容)
+];
+
+// 长征路线连接
+const longMarchPath = [
+    { from: 'node1', to: 'node2' },
+    { from: 'node2', to: 'node3' },
+    { from: 'node3', to: 'node4' },
+    { from: 'node4', to: 'node5' },
+    { from: 'node5', to: 'node6' },
+    { from: 'node6', to: 'node7' }
+
+];

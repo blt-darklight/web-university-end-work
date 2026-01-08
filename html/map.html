@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>长征地图 - 交互探索</title>
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/mapStyle.css">
+</head>
+<body>
+    <div class="map-page">
+        <header class="map-header">
+            <h1>长征节点地图</h1>
+            <div class="mode-indicator" id="modeIndicator"></div>
+        </header>
+
+        <main class="map-main">
+            <div class="map-container">
+                <div class="china-map" id="chinaMap">
+                    <!-- 标记由脚本动态生成 -->
+                </div>
+            </div>
+
+            <aside class="map-sidebar" id="mapSidebar">
+                <h3>节点列表</h3>
+                <ul id="nodeList"></ul>
+            </aside>
+        </main>
+
+        <footer class="map-footer">
+            <button id="resetProgress">重置进度</button>
+            <a href="/html/index.html">返回首页</a>
+        </footer>
+    </div>
+
+    <script src="/js/mapScript.js"></script>
+</body>
+</html>

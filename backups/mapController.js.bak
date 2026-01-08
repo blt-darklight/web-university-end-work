@@ -1,0 +1,22 @@
+// js/mapController.js - 地图控制器
+// 备份：已保存当前版本
+
+class MapController {
+    constructor() {
+        this.progressManager = new ProgressManager();
+        this.currentMode = this.progressManager.getMode();
+        this.currentNode = null;
+        this.nodes = longMarchNodes;
+        this.paths = longMarchPath;
+        
+        // SVG 元素
+        this.svgMap = document.getElementById('chinaMap');
+        this.pathsGroup = document.getElementById('longMarchPath');
+        this.nodesGroup = document.getElementById('nodesContainer');
+        this.nodesList = document.getElementById('nodesList');
+        
+        this.init();
+    }
+
+    // 省略其余内容（备份文件）
+}

@@ -248,5 +248,14 @@
 
     <!-- 脚本 -->
     <script src="/js/mainScript.js"></script>
+    <script>
+        // 将首页两个按钮连接到地图页（传 mode 参数）
+        (function(){
+            const linear = document.getElementById('linearBtn');
+            const free = document.getElementById('freeBtn');
+            if(linear) linear.addEventListener('click', ()=>{ location.href = 'map.html?mode=linear'; });
+            if(free) free.addEventListener('click', ()=>{ location.href = 'map.html?mode=free'; });
+        })();
+    </script>
 </body>
 </html>

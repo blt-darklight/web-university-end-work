@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>事件学习 - 长征</title>
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <style>body{padding:20px;font-family: "Noto Serif SC", serif;} .card{max-width:800px;border:1px solid #eee;padding:18px;border-radius:8px;background:#fff;} button{margin-top:12px;padding:8px 12px;background:#b22222;color:#fff;border:none;border-radius:4px;cursor:pointer}</style>
+</head>
+<body>
+    <div class="card">
+        <h2 id="title">事件学习</h2>
+        <p id="desc">这里是事件内容占位。真实内容请接入你的学习接口。</p>
+        <p><strong>提示：</strong>点击“完成学习”后页面会返回地图并（如果是线性模式）解锁下一个节点。</p>
+        <div>
+            <button id="completeBtn">完成学习并返回地图</button>
+            <a id="backLink" style="margin-left:12px;">直接返回地图</a>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const param = (name)=>{ const u = new URL(window.location.href); return u.searchParams.get(name); };
+            const id = parseInt(param('id') || '0',10);
+            const mode = param('mode') || 'linear';
+            const nodes = [
+                '战略转移开始','湘江战役与转折前夜','伟大转折——遵义会议','灵活机动的战略战术（1935年1月—6月）',
+                '红一、红四方面军会师与北上南下之争（1935年6月—9月）','红一方面军胜利到达陕北（1935年10月）',
+                '红二、红四方面军北上与三大主力会师（1936年7月—10月）','长征的总结与意义（总结页）'
+            ];
+            document.getElementById('title').textContent = (id+1) + '. ' + (nodes[id] || '事件');
+            document.getElementById('desc').textContent = '示例内容：这是“' + (nodes[id]||'事件') + '” 的学习页面。请把真实课程/学习组件嵌入此处。';
+
+            const KEY = 'lm_unlocks_v1';
+            function loadState(){ try{ return JSON.parse(localStorage.getItem(KEY)) || null;}catch(e){return null;} }
+            function saveState(st){ localStorage.setItem(KEY, JSON.stringify(st)); }
+
+            document.getElementById('completeBtn').addEventListener('click', ()=>{
+                // 在线性模式下，解锁下一个节点
+                const st = loadState() || { mode:mode, unlocked: Array(nodes.length).fill(false), unlockedIndex:0 };
+                if(mode === 'linear'){
+                    // 确保当前位置已解锁，再解锁下一个
+                    if(!st.unlocked[id]) st.unlocked[id] = true;
+                    const next = Math.min(nodes.length-1, id+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex || 0, next);
+                    st.mode = 'linear';
+                    saveState(st);
+                }
+                // 返回地图
+                window.location.href = '/html/map.html?mode=' + mode;
+            });
+
+            document.getElementById('backLink').addEventListener('click', ()=>{ window.location.href = '/html/map.html?mode=' + mode; });
+        })();
+    </script>
+</body>
+</html>
