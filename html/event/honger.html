@@ -1141,6 +1141,52 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #0d47a1;
         }
+        /* 场景示意图 */
+        .scene-image {
+            margin-top: 14px;
+            width: 100%;
+            min-height: 220px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scene-image.has-image {
+            border: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .scene-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.35));
+            pointer-events: none;
+        }
+        .scene-image-label {
+            position: relative;
+            font-weight: 600;
+            color: #fff;
+            z-index: 1;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        .scene-image-placeholder {
+            position: relative;
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -1288,7 +1334,8 @@
                 subtitle: "从湘鄂川黔苏区到甘孜会师",
                 scene: {
                     title: "场景模拟：湘鄂川黔苏区的告别",
-                    description: "1935年11月19日，湖南桑植。深秋的寒风中，贺龙、任弼时、关向应等领导人站在队伍前，望着即将出发的红二、六军团1.7万名战士。他们中许多人在这片根据地战斗多年，如今为了策应中央红军长征并摆脱自身困境，必须踏上新的征程。乡亲们默默送来草鞋、干粮，母亲们把最后的鸡蛋塞给年轻的战士。这一走，不知何时才能回到家乡……"
+                    description: "1935年11月19日，湖南桑植。深秋的寒风中，贺龙、任弼时、关向应等领导人站在队伍前，望着即将出发的红二、六军团1.7万名战士。他们中许多人在这片根据地战斗多年，如今为了策应中央红军长征并摆脱自身困境，必须踏上新的征程。乡亲们默默送来草鞋、干粮，母亲们把最后的鸡蛋塞给年轻的战士。这一走，不知何时才能回到家乡……",
+                    image: "../img/scene-honger-chuzheng.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：红二、六军团的转战历程",
@@ -1322,7 +1369,8 @@
                 subtitle: "克服阻力，再次穿越草地",
                 scene: {
                     title: "场景模拟：甘孜草原的艰难抉择",
-                    description: "1936年7月，四川甘孜。红二、四方面军会师后，营地中弥漫着复杂的情绪。一方面是会师的喜悦，另一方面是关于北上还是南下的激烈争论。朱德、刘伯承在红四方面军中坚持宣传北上方针，新到达的任弼时、贺龙等红二方面军领导人也坚决拥护中央路线。张国焘在内外压力下，被迫于6月6日宣布取消第二'中央'。现在，两支大军必须做出决定：是留在川康边境艰难求生，还是再次穿越那片夺去无数生命的茫茫草地？"
+                    description: "1936年7月，四川甘孜。红二、四方面军会师后，营地中弥漫着复杂的情绪。一方面是会师的喜悦，另一方面是关于北上还是南下的激烈争论。朱德、刘伯承在红四方面军中坚持宣传北上方针，新到达的任弼时、贺龙等红二方面军领导人也坚决拥护中央路线。张国焘在内外压力下，被迫于6月6日宣布取消第二'中央'。现在，两支大军必须做出决定：是留在川康边境艰难求生，还是再次穿越那片夺去无数生命的茫茫草地？",
+                    image: "../img/scene-honger-gongtongbeishang.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：推动北上的关键力量",
@@ -1356,7 +1404,8 @@
                 subtitle: "红一、四方面军的激动重逢",
                 scene: {
                     title: "场景模拟：会宁城的历史性拥抱",
-                    description: "1936年10月9日，甘肃会宁。清晨的阳光洒在这座西北小城，街道被打扫得干干净净。城门口，红一方面军的战士们翘首以盼。远处，一支长长的队伍出现在地平线上——那是红四方面军的先头部队。当两支队伍越来越近时，人群中爆发出震天的欢呼声。战士们扔掉手中的武器，奔跑着拥抱在一起，热泪盈眶。许多人寻找着失散多年的战友，许多人只是紧紧握住陌生同志的手，激动得说不出话来。这一刻，所有的艰难困苦都化为了胜利的喜悦……"
+                    description: "1936年10月9日，甘肃会宁。清晨的阳光洒在这座西北小城，街道被打扫得干干净净。城门口，红一方面军的战士们翘首以盼。远处，一支长长的队伍出现在地平线上——那是红四方面军的先头部队。当两支队伍越来越近时，人群中爆发出震天的欢呼声。战士们扔掉手中的武器，奔跑着拥抱在一起，热泪盈眶。许多人寻找着失散多年的战友，许多人只是紧紧握住陌生同志的手，激动得说不出话来。这一刻，所有的艰难困苦都化为了胜利的喜悦……",
+                    image: "../img/scene-honger-huining.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击感受：会宁会师的盛况",
@@ -1390,7 +1439,8 @@
                 subtitle: "长征胜利结束的伟大时刻",
                 scene: {
                     title: "场景模拟：将台堡的辉煌终点",
-                    description: "1936年10月22日，宁夏西吉县将台堡。秋风送爽，红旗招展。红二方面军在贺龙、任弼时的率领下，经过连续行军到达这里。早已在此等候的红一方面军战士列队欢迎，锣鼓喧天，口号震地。当贺龙与前来迎接的左权、聂荣臻紧紧握手时，人群中爆发出雷鸣般的掌声和欢呼。战士们互相拥抱，把帽子抛向空中。许多经历过湘江血战、雪山草地、围追堵截的老战士，此刻热泪纵横。两年了，整整两年的万里征战，无数战友牺牲在路上，如今终于迎来了胜利会师的这一天！"
+                    description: "1936年10月22日，宁夏西吉县将台堡。秋风送爽，红旗招展。红二方面军在贺龙、任弼时的率领下，经过连续行军到达这里。早已在此等候的红一方面军战士列队欢迎，锣鼓喧天，口号震地。当贺龙与前来迎接的左权、聂荣臻紧紧握手时，人群中爆发出雷鸣般的掌声和欢呼。战士们互相拥抱，把帽子抛向空中。许多经历过湘江血战、雪山草地、围追堵截的老战士，此刻热泪纵横。两年了，整整两年的万里征战，无数战友牺牲在路上，如今终于迎来了胜利会师的这一天！",
+                    image: "../img/scene-honger-jiangtaibao.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击思考：长征的伟大意义",
@@ -1598,6 +1648,8 @@
             contentSubtitle.textContent = chapterData.subtitle;
             
             // 构建内容
+            const sceneImage = chapterData.scene && chapterData.scene.image;
+            const hasImage = sceneImage && sceneImage.trim() !== '';
             let contentHTML = `
                 <div class="scene-simulation">
                     <div class="scene-title">
@@ -1605,8 +1657,9 @@
                         <span>${chapterData.scene.title}</span>
                     </div>
                     <p class="scene-description">${chapterData.scene.description}</p>
-                    <div class="scene-image">
-                        <span>历史场景示意图：${chapterData.title}</span>
+                    <div class="scene-image ${hasImage ? 'has-image' : 'no-image'}" ${hasImage ? `style="background-image: url('${sceneImage}')"` : ''}>
+                        <div class="scene-image-label">历史场景示意图：${chapterData.title}</div>
+                        ${hasImage ? '' : '<div class="scene-image-placeholder">暂未上传图片</div>'}
                     </div>
                 </div>
             `;

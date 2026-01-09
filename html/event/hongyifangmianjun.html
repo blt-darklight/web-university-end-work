@@ -1158,6 +1158,52 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #b28704;
         }
+        /* 场景示意图 */
+        .scene-image {
+            margin-top: 14px;
+            width: 100%;
+            min-height: 220px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scene-image.has-image {
+            border: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .scene-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.35));
+            pointer-events: none;
+        }
+        .scene-image-label {
+            position: relative;
+            font-weight: 600;
+            color: #fff;
+            z-index: 1;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        .scene-image-placeholder {
+            position: relative;
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -1306,7 +1352,8 @@
                 subtitle: "攻克天险，打开北上通道",
                 scene: {
                     title: "场景模拟：天险腊子口的攻坚战",
-                    description: "想象一下，1935年9月16日傍晚，甘肃迭部县东北的腊子口。这里山口宽仅30余米，两侧是百米高的悬崖峭壁，中间是奔腾的腊子河，河上只有一座木桥，是唯一的通道。国民党军新编第十四师鲁大昌部在桥头和山崖上构筑了坚固的碉堡群，形成了交叉火力网，号称'一夫当关，万夫莫开'。红一军团二师四团的战士们，在政委杨成武的指挥下，正面临着长征路上的又一道生死考验……"
+                    description: "想象一下，1935年9月16日傍晚，甘肃迭部县东北的腊子口。这里山口宽仅30余米，两侧是百米高的悬崖峭壁，中间是奔腾的腊子河，河上只有一座木桥，是唯一的通道。国民党军新编第十四师鲁大昌部在桥头和山崖上构筑了坚固的碉堡群，形成了交叉火力网，号称'一夫当关，万夫莫开'。红一军团二师四团的战士们，在政委杨成武的指挥下，正面临着长征路上的又一道生死考验……",
+                    image: "../img/scene-lazikou.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：腊子口战斗的战术奇迹",
@@ -1342,7 +1389,8 @@
                 subtitle: "长征落脚点的确立",
                 scene: {
                     title: "场景模拟：陕北吴起镇的胜利会师",
-                    description: "1935年10月19日，陕北保安县（今志丹县）的吴起镇。历经千难万险的中共中央率领陕甘支队终于抵达这里。当地苏维埃政府和群众热情欢迎，送粮送衣，让衣衫褴褛的红军战士们感受到了'到家'的温暖。几天后，毛泽东亲自部署了'切尾巴'战斗，在吴起镇头道川、二道川设伏，一举击溃紧追不舍的国民党骑兵3个团。10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束……"
+                    description: "1935年10月19日，陕北保安县（今志丹县）的吴起镇。历经千难万险的中共中央率领陕甘支队终于抵达这里。当地苏维埃政府和群众热情欢迎，送粮送衣，让衣衫褴褛的红军战士们感受到了'到家'的温暖。几天后，毛泽东亲自部署了'切尾巴'战斗，在吴起镇头道川、二道川设伏，一举击溃紧追不舍的国民党骑兵3个团。10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束……",
+                    image: "../img/scene-wuqizhen.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：吴起镇会师的历史细节",
@@ -1378,7 +1426,8 @@
                 subtitle: "为革命大本营举行奠基礼",
                 scene: {
                     title: "场景模拟：直罗镇战役的辉煌胜利",
-                    description: "1935年11月21日—24日，陕西富县直罗镇。刚刚会师的红军主力在毛泽东、周恩来、彭德怀的亲自部署下，在这里设下口袋阵。红军战士们埋伏在冰冷的黄土沟壑中，等待着进入包围圈的国民党东北军。当敌军完全进入伏击圈后，冲锋号骤然响起，红军从四面八方发起攻击。经过激烈战斗，红军一举歼灭国民党东北军第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药。这场战役，为党中央'把革命大本营放在西北举行了一个奠基礼'……"
+                    description: "1935年11月21日—24日，陕西富县直罗镇。刚刚会师的红军主力在毛泽东、周恩来、彭德怀的亲自部署下，在这里设下口袋阵。红军战士们埋伏在冰冷的黄土沟壑中，等待着进入包围圈的国民党东北军。当敌军完全进入伏击圈后，冲锋号骤然响起，红军从四面八方发起攻击。经过激烈战斗，红军一举歼灭国民党东北军第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药。这场战役，为党中央'把革命大本营放在西北举行了一个奠基礼'……",
+                    image: "../img/scene-zhiluozhen.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：直罗镇战役的战略意义",
@@ -1416,7 +1465,8 @@
                 subtitle: "伟大的转折与新的起点",
                 scene: {
                     title: "场景模拟：长征精神的永恒传承",
-                    description: "从1934年10月到1935年10月，红一方面军主力行程两万五千里，纵横11个省，翻越18座大山，跨过24条大河，经历380余次战斗，攻占700多座县城，牺牲营以上干部430余人。这支衣衫褴褛却斗志昂扬的队伍，以坚定的信念和惊人的毅力，完成了人类历史上绝无仅有的伟大远征。长征的胜利，使中国革命转危为安，为抗日战争和解放战争保存了骨干力量，培育了伟大的长征精神。今天，当我们回顾这段历史，依然能感受到那穿越时空的精神力量……"
+                    description: "从1934年10月到1935年10月，红一方面军主力行程两万五千里，纵横11个省，翻越18座大山，跨过24条大河，经历380余次战斗，攻占700多座县城，牺牲营以上干部430余人。这支衣衫褴褛却斗志昂扬的队伍，以坚定的信念和惊人的毅力，完成了人类历史上绝无仅有的伟大远征。长征的胜利，使中国革命转危为安，为抗日战争和解放战争保存了骨干力量，培育了伟大的长征精神。今天，当我们回顾这段历史，依然能感受到那穿越时空的精神力量……",
+                    image: "../img/scene-changzheng-yiyi.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：长征胜利的深远影响",
@@ -1629,6 +1679,8 @@
             contentSubtitle.textContent = chapterData.subtitle;
             
             // 构建内容
+            const sceneImage = chapterData.scene && chapterData.scene.image;
+            const hasImage = sceneImage && sceneImage.trim() !== '';
             let contentHTML = `
                 <div class="scene-simulation">
                     <div class="scene-title">
@@ -1636,8 +1688,9 @@
                         <span>${chapterData.scene.title}</span>
                     </div>
                     <p class="scene-description">${chapterData.scene.description}</p>
-                    <div class="scene-image">
-                        <span>历史场景示意图：${chapterData.title}</span>
+                    <div class="scene-image ${hasImage ? 'has-image' : 'no-image'}" ${hasImage ? `style="background-image: url('${sceneImage}')"` : ''}>
+                        <div class="scene-image-label">历史场景示意图：${chapterData.title}</div>
+                        ${hasImage ? '' : '<div class="scene-image-placeholder">暂未上传图片</div>'}
                     </div>
                 </div>
             `;

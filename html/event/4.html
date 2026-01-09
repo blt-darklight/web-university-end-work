@@ -1074,6 +1074,52 @@
             line-height: 1.6;
             opacity: 0.8;
         }
+        /* 场景示意图 */
+        .scene-image {
+            margin-top: 14px;
+            width: 100%;
+            min-height: 220px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scene-image.has-image {
+            border: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .scene-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.35));
+            pointer-events: none;
+        }
+        .scene-image-label {
+            position: relative;
+            font-weight: 600;
+            color: #fff;
+            z-index: 1;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        .scene-image-placeholder {
+            position: relative;
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -1215,7 +1261,8 @@
                 subtitle: "毛泽东军事生涯的'神来之笔'",
                 scene: {
                     title: "场景模拟：川黔滇边境的赤水河畔",
-                    description: "1935年1月遵义会议后，蒋介石调集湘、川、滇、桂及中央军约40万兵力，从四面八方向仅剩3万余人的中央红军合围。毛泽东站在赤水河畔，凝视着地图上密集的敌军标志。身后是疲惫但坚定的红军战士，面前是湍急的赤水河。他知道，必须用高度机动的运动战，在敌人的包围圈中撕开一道口子……"
+                    description: "1935年1月遵义会议后，蒋介石调集湘、川、滇、桂及中央军约40万兵力，从四面八方向仅剩3万余人的中央红军合围。毛泽东站在赤水河畔，凝视着地图上密集的敌军标志。身后是疲惫但坚定的红军战士，面前是湍急的赤水河。他知道，必须用高度机动的运动战，在敌人的包围圈中撕开一道口子……",
+                    image: "../img/scene-chishui.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：四渡赤水的战略精髓",
@@ -1253,7 +1300,8 @@
                 subtitle: "跳出重围的关键一跃",
                 scene: {
                     title: "场景模拟：皎平渡的七个不眠夜",
-                    description: "1935年5月，云南禄劝与四川会理交界的金沙江皎平渡。湍急的江水在峡谷中轰鸣，对岸是陡峭的悬崖。红军先遣队化装成国民党军，奇袭控制了渡口。全军仅靠搜获的7条木船，在37名当地船工帮助下，昼夜不停地摆渡。毛泽东、周恩来、朱德等领导人亲自组织渡江，每一分钟都关乎生死……"
+                    description: "1935年5月，云南禄劝与四川会理交界的金沙江皎平渡。湍急的江水在峡谷中轰鸣，对岸是陡峭的悬崖。红军先遣队化装成国民党军，奇袭控制了渡口。全军仅靠搜获的7条木船，在37名当地船工帮助下，昼夜不停地摆渡。毛泽东、周恩来、朱德等领导人亲自组织渡江，每一分钟都关乎生死……",
+                    image: "../img/scene-jinshajiang.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：巧渡金沙江的奇迹",
@@ -1291,7 +1339,8 @@
                 subtitle: "打破'石达开覆辙'的预言",
                 scene: {
                     title: "场景模拟：大渡河上的生死较量",
-                    description: "1935年5月，大渡河畔。蒋介石企图让红军重演太平天国翼王石达开在此全军覆没的历史。安顺场，红一团十七勇士在枪林弹雨中强渡大渡河；160公里外的泸定桥，二十二勇士攀着13根光溜溜的铁索向对岸冲击，脚下是奔腾咆哮的河水，对岸是敌人喷着火舌的碉堡……"
+                    description: "1935年5月，大渡河畔。蒋介石企图让红军重演太平天国翼王石达开在此全军覆没的历史。安顺场，红一团十七勇士在枪林弹雨中强渡大渡河；160公里外的泸定桥，二十二勇士攀着13根光溜溜的铁索向对岸冲击，脚下是奔腾咆哮的河水，对岸是敌人喷着火舌的碉堡……",
+                    image: "../img/scene-daduhe.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击感受：飞夺泸定桥的英勇瞬间",
@@ -1330,7 +1379,8 @@
                 subtitle: "与自然极限的较量",
                 scene: {
                     title: "场景模拟：海拔4000米的生死考验",
-                    description: "1935年6月，夹金山下。红军官兵大多穿着单衣、草鞋，望着眼前这座海拔4000多米、终年积雪的大雪山。山上空气稀薄，气候变化无常，时而晴空万里，时而冰雹大雪。宣传队员站在危险处鼓舞士气：'同志们，翻过雪山就是胜利！'体弱的战士相互搀扶，用刺刀在冰雪上凿出脚窝，一步一步向上攀登……"
+                    description: "1935年6月，夹金山下。红军官兵大多穿着单衣、草鞋，望着眼前这座海拔4000多米、终年积雪的大雪山。山上空气稀薄，气候变化无常，时而晴空万里，时而冰雹大雪。宣传队员站在危险处鼓舞士气：'同志们，翻过雪山就是胜利！'体弱的战士相互搀扶，用刺刀在冰雪上凿出脚窝，一步一步向上攀登……",
+                    image: "../img/scene-jiajinshan.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击体验：翻越雪山的极端挑战",
@@ -1368,7 +1418,8 @@
                 subtitle: "灵活机动战略战术的精髓",
                 scene: {
                     title: "场景模拟：从被动到主动的战略转变",
-                    description: "从1935年1月到6月，短短半年时间，中央红军在毛泽东的指挥下，彻底摆脱了'搬家式'转移的被动局面，转变为高度机动的'运动战'大师。四渡赤水的谋略，巧渡金沙江的果决，强渡大渡河、飞夺泸定桥的勇猛，翻越雪山的坚韧——这一系列行动淋漓尽致地展现了灵活机动的战略战术。"
+                    description: "从1935年1月到6月，短短半年时间，中央红军在毛泽东的指挥下，彻底摆脱了'搬家式'转移的被动局面，转变为高度机动的'运动战'大师。四渡赤水的谋略，巧渡金沙江的果决，强渡大渡河、飞夺泸定桥的勇猛，翻越雪山的坚韧——这一系列行动淋漓尽致地展现了灵活机动的战略战术。",
+                    image: "../img/scene-summary-4th-leg.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击总结：长征军事指挥艺术的巅峰",
@@ -1599,6 +1650,8 @@
             contentSubtitle.textContent = chapterData.subtitle;
             
             // 构建内容
+            const sceneImage = chapterData.scene && chapterData.scene.image;
+            const hasImage = sceneImage && sceneImage.trim() !== '';
             let contentHTML = `
                 <div class="scene-simulation">
                     <div class="scene-title">
@@ -1606,8 +1659,9 @@
                         <span>${chapterData.scene.title}</span>
                     </div>
                     <p class="scene-description">${chapterData.scene.description}</p>
-                    <div class="scene-image">
-                        <span>历史场景示意图：${chapterData.title}</span>
+                    <div class="scene-image ${hasImage ? 'has-image' : 'no-image'}" ${hasImage ? `style="background-image: url('${sceneImage}')"` : ''}>
+                        <div class="scene-image-label">历史场景示意图：${chapterData.title}</div>
+                        ${hasImage ? '' : '<div class="scene-image-placeholder">暂未上传图片</div>'}
                     </div>
                 </div>
             `;

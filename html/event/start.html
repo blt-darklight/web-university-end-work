@@ -1141,6 +1141,52 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #b71c1c;
         }
+        /* 场景示意图 */
+        .scene-image {
+            margin-top: 14px;
+            width: 100%;
+            min-height: 220px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .scene-image.has-image {
+            border: none;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .scene-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.35));
+            pointer-events: none;
+        }
+        .scene-image-label {
+            position: relative;
+            font-weight: 600;
+            color: #fff;
+            z-index: 1;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        .scene-image-placeholder {
+            position: relative;
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -1288,7 +1334,8 @@
                 subtitle: "第五次反'围剿'失败的背后",
                 scene: {
                     title: "场景模拟：乌云压城的中央苏区",
-                    description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……"
+                    description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……",
+                    image: "../img/scene-weijulongzhao.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：第五次反'围剿'为何失败？",
@@ -1322,7 +1369,8 @@
                 subtitle: "三人团的生死抉择",
                 scene: {
                     title: "场景模拟：瑞金叶坪的深夜会议",
-                    description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……"
+                    description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……",
+                    image: "../img/scene-mimijuece.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击探索：长征决策背后的秘密",
@@ -1356,7 +1404,8 @@
                 subtitle: "悲壮的告别之夜",
                 scene: {
                     title: "场景模拟：于都河畔的无声告别",
-                    description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。"
+                    description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。",
+                    image: "/img/于都河畔.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击感受：军民鱼水情",
@@ -1390,7 +1439,8 @@
                 subtitle: "长征的第一步",
                 scene: {
                     title: "场景模拟：静默渡河的漫长队伍",
-                    description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……"
+                    description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……",
+                    image: "../img/scene-yedu.jpg" // TODO: 替换为实际图片
                 },
                 interactive: {
                     title: "点击思考：为什么选择夜间渡河？",
@@ -1598,6 +1648,8 @@
             contentSubtitle.textContent = chapterData.subtitle;
             
             // 构建内容
+            const sceneImage = chapterData.scene && chapterData.scene.image;
+            const hasImage = sceneImage && sceneImage.trim() !== '';
             let contentHTML = `
                 <div class="scene-simulation">
                     <div class="scene-title">
@@ -1605,8 +1657,9 @@
                         <span>${chapterData.scene.title}</span>
                     </div>
                     <p class="scene-description">${chapterData.scene.description}</p>
-                    <div class="scene-image">
-                        <span>历史场景示意图：${chapterData.title}</span>
+                    <div class="scene-image ${hasImage ? 'has-image' : 'no-image'}" ${hasImage ? `style="background-image: url('${sceneImage}')"` : ''}>
+                        <div class="scene-image-label">历史场景示意图：${chapterData.title}</div>
+                        ${hasImage ? '' : '<div class="scene-image-placeholder">暂未上传图片</div>'}
                     </div>
                 </div>
             `;
