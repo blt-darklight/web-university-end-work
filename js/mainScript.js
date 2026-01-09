@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // 更新活动链接
             sideNavLinks.forEach(link => link.classList.remove('active'));
             this.classList.add('active');
+            // 立即更新指示器位置，使动画与点击同步
+            updateNavIndicator();
         });
     });
     
@@ -101,10 +103,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const linkRect = activeLink.getBoundingClientRect();
             const navRect = document.querySelector('.side-nav').getBoundingClientRect();
             
-            navIndicator.style.top = `${linkRect.top - navRect.top}px`;
-            navIndicator.style.height = `${linkRect.height}px`;
+            // 计算相对位置并约束在侧边栏内部范围
+            const topPos = Math.max(0, linkRect.top - navRect.top);
+            const maxHeight = navRect.height - 8; // 留一点内边距
+            const desiredHeight = Math.min(linkRect.height, maxHeight);
+
+            navIndicator.style.top = `${topPos}px`;
+            navIndicator.style.height = `${desiredHeight}px`;
         }
     }
+
+    // 在窗口尺寸变化时重新计算指示器位置
+    window.addEventListener('resize', function() {
+        // 小延迟确保布局稳定
+        setTimeout(updateNavIndicator, 80);
+    });
     
     // 滚动时更新活动导航链接
     window.addEventListener('scroll', function() {

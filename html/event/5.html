@@ -1050,6 +1050,90 @@
             background: #1b5e20;
         }
     </style>
+    
+    <style>
+        /* 视频播放器 */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .video-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .video-overlay.active .video-container {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .close-video {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            background-color: var(--grass-green);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-video:hover {
+            transform: scale(1.1) rotate(90deg);
+            background-color: #124017;
+        }
+
+        .video-info {
+            color: white;
+            text-align: center;
+            margin-top: 25px;
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
     <!-- 动态背景 - 草原与雪山 -->
@@ -1082,6 +1166,23 @@
         </button>
     </div>
     
+    <!-- 视频播放器 -->
+    <div class="video-overlay" id="videoOverlay">
+        <div class="video-container">
+            <button class="close-video" id="closeVideo">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="historyVideo" controls>
+                <!-- 占位视频，实际使用时请替换为对应事件的视频文件或 URL -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+        </div>
+        <div class="video-info">
+            <p>观看本段视频以更好理解事件背景。观看结束后关闭播放器继续探索。</p>
+        </div>
+    </div>
+
     <!-- 探索主界面 -->
     <div class="exploration-container" id="explorationContainer">
         <!-- 时间定位器 -->
@@ -1382,6 +1483,10 @@
         const achievementContainer = document.getElementById('achievementContainer');
         const grasslandTerrain = document.getElementById('grasslandTerrain');
         const marshPools = document.getElementById('marshPools');
+        // 视频元素（新增）
+        const videoOverlay = document.getElementById('videoOverlay');
+        const closeVideo = document.getElementById('closeVideo');
+        const historyVideo = document.getElementById('historyVideo');
         
         // 初始化
         function init() {
@@ -1394,6 +1499,11 @@
             // 事件监听
             startButton.addEventListener('click', startExploration);
             closeContent.addEventListener('click', closeContentArea);
+            // 视频控制事件
+            if (closeVideo) closeVideo.addEventListener('click', closeVideoPlayer);
+            if (historyVideo) historyVideo.addEventListener('ended', function() {
+                setTimeout(() => { closeVideoPlayer(); }, 1500);
+            });
             
             // 章节导航点击事件
             chapterNavItems.forEach(item => {
@@ -1501,24 +1611,43 @@
             }
         }
         
-        // 开始探索
+        // 开始探索（改为先展示视频）
         function startExploration() {
             const rect = startButton.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-            
+
             createInteractionEffect(centerX, centerY, '#ffb300', 12);
-            
+
             startScreen.classList.add('hidden');
-            
+
             setTimeout(() => {
-                explorationContainer.classList.add('active');
-                
-                // 显示章节导航
-                chapterNavItems.forEach(item => {
-                    item.classList.add('visible');
-                });
+                if (videoOverlay && historyVideo) {
+                    videoOverlay.classList.add('active');
+                    try { historyVideo.play(); } catch(e) {}
+                } else {
+                    explorationContainer.classList.add('active');
+                    chapterNavItems.forEach(item => item.classList.add('visible'));
+                }
             }, 800);
+        }
+
+        // 关闭视频并进入探索界面
+        function closeVideoPlayer() {
+            const rect = closeVideo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            createInteractionEffect(centerX, centerY, '#1565c0', 8);
+
+            if (videoOverlay) videoOverlay.classList.remove('active');
+            explorationContainer.classList.add('active');
+            try { historyVideo.pause(); historyVideo.currentTime = 0; } catch(e) {}
+
+            // 显示章节导航
+            chapterNavItems.forEach(item => {
+                item.classList.add('visible');
+            });
         }
         
         // 打开章节

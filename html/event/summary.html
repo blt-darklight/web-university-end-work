@@ -6,26 +6,41 @@
     <title>长征总结与意义</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body{font-family: 'Noto Serif SC', serif;background:#f7f7f7;color:#222;padding:24px}
-        .card{max-width:900px;margin:40px auto;padding:24px;background:#fff;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
-        h1{color:#b22222}
-        .actions{margin-top:18px}
-        .btn{display:inline-block;padding:10px 14px;background:#b22222;color:#fff;border-radius:6px;text-decoration:none}
+        :root{
+            --bg:#0a0a14; --card:#0f1720; --accent:#ffb300; --muted:#b0bec5;
+        }
+        body{font-family: 'Noto Serif SC', serif;background:var(--bg);color:#fff;padding:32px;min-height:100vh;}
+        .wrap{max-width:1100px;margin:40px auto;}
+        .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:14px;padding:28px;border:1px solid rgba(255,179,0,0.06);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
+        .header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+        .badge{background:linear-gradient(90deg,var(--accent),#ff8f00);color:#111;padding:8px 14px;border-radius:999px;font-weight:800}
+        h1{font-size:2rem;margin:0;color:var(--accent)}
+        p,li{color:var(--muted);line-height:1.8}
+        ul{margin-left:20px;margin-top:12px}
+        .actions{margin-top:22px}
+        .btn{display:inline-block;padding:12px 16px;background:var(--accent);color:#111;border-radius:8px;text-decoration:none;font-weight:700}
+        .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted);margin-left:12px}
+        @media(max-width:700px){.header{flex-direction:column;align-items:flex-start} .wrap{padding:16px}}
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>长征的总结与意义</h1>
-        <p>长征不仅是军事行动，更是中国共产党在极端困难情况下的政治、组织和思想的胜利。它锻造了党的领导核心、保存了革命力量并在全国范围内播下了革命种子。</p>
-        <h3>核心意义</h3>
-        <ul>
-            <li>巩固了中国共产党的领导地位与组织体系。</li>
-            <li>检验并发展了党的战略战术与军事指挥能力。</li>
-            <li>在群众中扩大了党的影响，为后续胜利奠定基础。</li>
-        </ul>
-        <div class="actions">
-            <a class="btn" href="/html/map.html?mode=linear">返回地图</a>
-            <a class="btn" href="/html/index.html" style="margin-left:12px;background:#444">返回首页</a>
+    <div class="wrap">
+        <div class="card">
+            <div class="header">
+                <div class="badge">总结</div>
+                <h1>长征的总结与意义</h1>
+            </div>
+            <p>长征不仅是军事行动，更是中国共产党在极端困难情况下的政治、组织和思想的胜利。它锻造了党的领导核心、保存了革命力量并在全国范围内播下了革命种子。</p>
+            <h3 style="color:var(--accent);margin-top:18px">核心意义</h3>
+            <ul>
+                <li>巩固了中国共产党的领导地位与组织体系。</li>
+                <li>检验并发展了党的战略战术与军事指挥能力。</li>
+                <li>在群众中扩大了党的影响，为后续胜利奠定基础。</li>
+            </ul>
+            <div class="actions">
+                <a class="btn" href="/html/map.html?mode=linear">返回地图</a>
+                <a class="btn secondary" href="/html/index.html">返回首页</a>
+            </div>
         </div>
     </div>
 </body>
