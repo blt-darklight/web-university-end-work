@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>湘江战役与转折前夜：生死存亡的抉择</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1427,7 +1428,8 @@
         };
         
         // 当前状态
-        let currentChapter = 1;
+        let currentChapter = 1;  // 全局节点ID
+        let currentInternalChapter = 0;  // 内部章节ID
         let completedChapters = new Set();
         let achievementVisible = false;
         
@@ -1582,7 +1584,7 @@
                 hideAchievement();
             }
             
-            currentChapter = chapterId;
+            currentInternalChapter = chapterId;  // 更新内部章节ID
             const chapterData = explorationData[chapterId];
             
             if (!chapterData) return;
@@ -1951,8 +1953,8 @@
                     <h3 class="achievement-title">${achievement.title}</h3>
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
-                        `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
-                        `<button class="continue-button" onclick="location.reload()">重新开始探索</button>`
+                        `<button class="continue-button" onclick="continueToNextChapter(${currentInternalChapter})">继续探索下一章</button>` : 
+                        `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
             `;
@@ -1976,11 +1978,54 @@
         
         // 页面加载完成后初始化
         window.addEventListener('DOMContentLoaded', init);
+
+        // 完成并返回地图
+        function finishAndReturnToMap(currentChapter){
+            try{
+                const KEY = 'lm_unlocks_v1';
+                const raw = localStorage.getItem(KEY);
+                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
+                // 线性模式默认解锁下一个
+                if(st.mode === 'linear' || (!st.mode && true)){
+                    const next = Math.min(7, currentChapter+1);
+                    st.unlocked[next] = true;
+                    st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
+                }
+                st.mode = st.mode || 'linear';
+                localStorage.setItem(KEY, JSON.stringify(st));
+            }catch(e){ /* ignore */ }
+            window.location.href = '/html/map.html?mode=linear';
+        }
         
         // 使函数在全局可用
         window.openChapter = openChapter;
         window.completeChapter = completeChapter;
         window.continueToNextChapter = continueToNextChapter;
+        window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
+
+
+    <!-- AI助手按钮 -->
+<button id="aiAssistantButton" title="AI助手">
+  <span>🤖</span>
+</button>
+
+<!-- AI对话窗口 -->
+<div id="aiChatWindow">
+  <div class="chat-header">
+    <h3>长征小助手</h3>
+    <button id="closeChat">×</button>
+  </div>
+  <div id="chatMessages"></div>
+  <div class="chat-input-area">
+    <textarea id="userInput" placeholder="输入你的问题... (Enter发送，Shift+Enter换行)" rows="2"></textarea>
+    <button id="sendButton">发送</button>
+  </div>
+  <div id="loadingIndicator" style="display: none;">思考中...</div>
+</div>
+
+<script src="/js/ai-assistant.js"></script>
 </body>
 </html>
+

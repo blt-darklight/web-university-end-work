@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长征传奇：灵活机动的战略战术（1935年1月—6月）</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1403,7 +1404,8 @@
         };
         
         // 当前状态
-        let currentChapter = 1;
+        let currentChapter = 3;  // 全局节点ID
+        let currentInternalChapter = 0;  // 内部章节ID
         let completedChapters = new Set();
         let achievementVisible = false;
         
@@ -1577,7 +1579,7 @@
                 hideAchievement();
             }
             
-            currentChapter = chapterId;
+            currentInternalChapter = chapterId;  // 更新内部章节ID
             const chapterData = explorationData[chapterId];
             
             if (!chapterData) return;
@@ -1946,7 +1948,7 @@
                     <h3 class="achievement-title">${achievement.title}</h3>
                     <p class="achievement-description">${achievement.description}</p>
                     ${achievement.nextChapter ? 
-                        `<button class="continue-button" onclick="continueToNextChapter(${currentChapter})">继续探索下一章</button>` : 
+                        `<button class="continue-button" onclick="continueToNextChapter(${currentInternalChapter})">继续探索下一章</button>` : 
                         `<button class="continue-button" onclick="finishAndReturnToMap(${currentChapter})">返回地图</button>`
                     }
                 </div>
@@ -1995,5 +1997,27 @@
         window.continueToNextChapter = continueToNextChapter;
         window.finishAndReturnToMap = finishAndReturnToMap;
     </script>
+
+
+    <!-- AI助手按钮 -->
+<button id="aiAssistantButton" title="AI助手">
+  <span>🤖</span>
+</button>
+
+<!-- AI对话窗口 -->
+<div id="aiChatWindow">
+  <div class="chat-header">
+    <h3>长征小助手</h3>
+    <button id="closeChat">×</button>
+  </div>
+  <div id="chatMessages"></div>
+  <div class="chat-input-area">
+    <textarea id="userInput" placeholder="输入你的问题... (Enter发送，Shift+Enter换行)" rows="2"></textarea>
+    <button id="sendButton">发送</button>
+  </div>
+  <div id="loadingIndicator" style="display: none;">思考中...</div>
+</div>
+
+<script src="/js/ai-assistant.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>重走长征路 - 红色精神传承</title>
     <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/ai-assistant.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -257,5 +258,26 @@
             if(free) free.addEventListener('click', ()=>{ location.href = 'map.html?mode=free'; });
         })();
     </script>
+
+    <!-- AI助手按钮 -->
+<button id="aiAssistantButton" title="AI助手">
+  <span>🤖</span>
+</button>
+
+<!-- AI对话窗口 -->
+<div id="aiChatWindow">
+  <div class="chat-header">
+    <h3>长征小助手</h3>
+    <button id="closeChat">×</button>
+  </div>
+  <div id="chatMessages"></div>
+  <div class="chat-input-area">
+    <textarea id="userInput" placeholder="输入你的问题... (Enter发送，Shift+Enter换行)" rows="2"></textarea>
+    <button id="sendButton">发送</button>
+  </div>
+  <div id="loadingIndicator" style="display: none;"></div>
+</div>
+
+<script src="/js/ai-assistant.js"></script>
 </body>
 </html>
