@@ -12,11 +12,42 @@ const MODEL_NAME = 'deepseek-ai/DeepSeek-V3';
 // ========== DOM元素引用 ==========
 let aiButton, chatWindow, closeButton, chatMessages;
 let userInput, sendButton, loadingIndicator;
+let aiBroadcastChannel = null; // 复用频道，避免多次创建
 
 // 持久化键与频道
 const AI_STORAGE_KEY = 'deepseek_ai_chat_v1';
 const AI_BC_CHANNEL = 'deepseek_ai_channel_v1';
 
+// 全局时间格式化：YYYY-MM-DD HH:MM:SS
+function formatTimestamp(ts){
+    try{
+        const d = new Date(ts);
+        const Y = d.getFullYear();
+        const M = String(d.getMonth() + 1).padStart(2, '0');
+        const D = String(d.getDate()).padStart(2, '0');
+        const h = String(d.getHours()).padStart(2, '0');
+        const m = String(d.getMinutes()).padStart(2, '0');
+        const s = String(d.getSeconds()).padStart(2, '0');
+        return `${Y}-${M}-${D} ${h}:${m}:${s}`;
+    }catch(e){ return ''; }
+}
+// 回复清理：去除括号说明并控制长度不超过200字
+function sanitizeReply(text){
+    try{
+        let t = text || '';
+        const patterns = [/（[^）]*）/g, /\([^)]*\)/g, /\[[^\]]*\]/g];
+        let prev;
+        do{
+            prev = t;
+            patterns.forEach(p => { t = t.replace(p, ''); });
+        }while(t !== prev);
+        t = t.replace(/\s{2,}/g, ' ').trim();
+        if(t.length > 200) t = t.slice(0, 200);
+        return t;
+    }catch(e){
+        return (text || '').slice(0,200);
+    }
+}
 // ========== 初始化函数 ==========
 function initAIAssistant() {
     // 获取DOM元素
@@ -107,19 +138,6 @@ function handleOutsideClick(event) {
 
 // ========== 消息处理 ==========
 function addMessage(content, isUser) {
-    // 时间格式化
-    function formatTimestamp(ts){
-        try{
-            const d = new Date(ts);
-            const now = new Date();
-            const sameDay = d.toDateString() === now.toDateString();
-            if(sameDay){
-                return d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-            }
-            return d.toLocaleString([], {year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'});
-        }catch(e){ return '' }
-    }
-
     // 渲染到 DOM（可接受时间戳）
     function renderMessage(content, isUser, ts){
         const messageDiv = document.createElement('div');
@@ -151,51 +169,26 @@ function addMessage(content, isUser) {
             if(arr.length > 200) arr.splice(0, arr.length - 200);
             localStorage.setItem(AI_STORAGE_KEY, JSON.stringify(arr));
             // 广播更新
-            if(window.BroadcastChannel){ try{ (new BroadcastChannel(AI_BC_CHANNEL)).postMessage({ type: 'sync' }); }catch(e){} }
+            const bc = getBroadcastChannel();
+            if(bc){ try{ bc.postMessage({ type: 'sync' }); }catch(e){} }
         }
-    }catch(e){}
+    }catch(e){
+        // 历史损坏则清空，避免后续解析失败
+        try{ localStorage.removeItem(AI_STORAGE_KEY); }catch(err){}
+    }
 
     // 如果 DOM was rendered without timestamp, update timestamp node
     try{ if(dom){ const tn = dom.querySelector && dom.querySelector('.msg-time'); if(tn) tn.textContent = formatTimestamp(nowTs); } }catch(e){}
-
     return dom;
 }
 
-function initChatHistory() {
-    // 尝试从 localStorage 恢复历史（渲染而不重复保存）
+function getBroadcastChannel(){
+    if(!window.BroadcastChannel) return null;
+    if(aiBroadcastChannel) return aiBroadcastChannel;
     try{
-        const raw = localStorage.getItem(AI_STORAGE_KEY);
-        if(raw){
-            const msgs = JSON.parse(raw);
-            msgs.forEach(m => {
-                const d = document.createElement('div');
-                d.className = `message ${m.isUser ? 'user-message' : 'bot-message'}`;
-                const textNode = document.createElement('div');
-                textNode.className = 'msg-text';
-                textNode.textContent = m.text;
-                const timeNode = document.createElement('div');
-                timeNode.className = 'msg-time';
-                timeNode.textContent = m.ts ? (new Date(m.ts)).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : '';
-                d.appendChild(textNode);
-                d.appendChild(timeNode);
-                chatMessages.appendChild(d);
-            });
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return;
-        }
-    }catch(e){ }
-
-    // 默认欢迎语（当历史为空时写入）
-    addMessage("你好！我是你的长征问答小助手，有什么可以帮你的吗？", false);
-}
-
-// BroadcastChannel 监听，接收到 sync 时重载消息显示
-if(window.BroadcastChannel){
-    try{
-        const bc = new BroadcastChannel(AI_BC_CHANNEL);
-        bc.onmessage = (ev) => {
+        aiBroadcastChannel = new BroadcastChannel(AI_BC_CHANNEL);
+        aiBroadcastChannel.onmessage = (ev) => {
             if(ev.data && ev.data.type === 'sync'){
-                // 重新渲染历史到 chatMessages
                 try{
                     const raw = localStorage.getItem(AI_STORAGE_KEY);
                     const arr = raw ? JSON.parse(raw) : [];
@@ -209,18 +202,24 @@ if(window.BroadcastChannel){
                             textNode.textContent = m.text;
                             const timeNode = document.createElement('div');
                             timeNode.className = 'msg-time';
-                            timeNode.textContent = m.ts ? (new Date(m.ts)).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : '';
+                            timeNode.textContent = m.ts ? formatTimestamp(m.ts) : '';
                             d.appendChild(textNode);
                             d.appendChild(timeNode);
                             chatMessages.appendChild(d);
                         });
                         chatMessages.scrollTop = chatMessages.scrollHeight;
                     }
-                }catch(e){}
+                }catch(e){
+                    try{ localStorage.removeItem(AI_STORAGE_KEY); }catch(err){}
+                }
             }
         };
-    }catch(e){}
+    }catch(e){ aiBroadcastChannel = null; }
+    return aiBroadcastChannel;
 }
+
+// 初始化频道
+getBroadcastChannel();
 
 // ========== API调用 ==========
 async function callDeepSeekAPI(userMessage) {
@@ -271,99 +270,140 @@ async function callDeepSeekAPI(userMessage) {
     
     const contextMessages = getRecentContext();
     
-    try {
-        // 创建超时信号
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15秒超时
-        
-        const response = await fetch(API_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${SILICONFLOW_API_KEY}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: MODEL_NAME,
-                messages: [
-                    { 
-                        role: 'system', 
-                        content: '你是"长征小助手"，一个喜欢讲历史故事的朋友。用聊天的方式给大家讲长征的事。\n\n说话风格：自然、亲切、口语化。不要用列点（1.2.3. 或 -），用自然的段落把内容串起来。可以用"其实"、"说起来"这样的词，但不要太多，保持自然就好。\n\n回答内容：主要讲长征历史、长征人物、长征战役，以及相关的中国历史。如果问题跟长征无关，就委婉地说"这个我不太了解，不过我可以给你讲讲长征的事"。\n\n记住：你是"长征小助手"，不要提"AI"、"人工智能"。回答简短（2-3句话），像聊天不像背书。' 
-                    },
-                    ...contextMessages,
-                    { role: 'user', content: userMessage }
-                ],
-                max_tokens: 300,
-                temperature: 0.7,
-                top_p: 0.9,
-                stream: false
-            }),
-            signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
+    const MAX_RETRY = 3;
+    const BASE_DELAY = 500; // ms
+    let attempt = 0;
+    let lastError = null;
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`API请求失败 (${response.status}): ${errorText}`);
-        }
+    const shouldRetry = (errMsg) => /429|500|502|503|504|NetworkError|Failed to fetch|abort/i.test(errMsg || '');
 
-        const data = await response.json();
-        
-        if (data.choices && data.choices[0]) {
-            const aiReply = data.choices[0].message.content;
-            // 停止计时器
-            clearInterval(timerInterval);
-            addMessage(aiReply, false);
-        } else {
-            throw new Error('API返回格式异常: ' + JSON.stringify(data));
+    while(attempt < MAX_RETRY){
+        attempt++;
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+            if(attempt > 1){
+                loadingIndicator.textContent = `✨ 第 ${attempt} 次重试中... (${elapsed}秒)`;
+            }
+
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${SILICONFLOW_API_KEY}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: MODEL_NAME,
+                    messages: [
+                        { 
+                            role: 'system', 
+                                content: '你是"长征小助手"。默认用 1-2 句回答，必要时可展开但请控制在 200 字内，先给核心再补一句解释。语气自然、口语化，不要列点，也不要用任何括号或中括号做说明，不要闲聊跑题。\n\n主要擅长长征/中国近代史；其他日常科普也可以简短回答，只要不涉及敏感/违规内容。遇到不清楚的就直接说不知道，不要编造。\n\n不要自称AI，不要输出无关的寒暄或背景。' 
+                        },
+                        ...contextMessages,
+                        { role: 'user', content: userMessage }
+                    ],
+                    max_tokens: 300,
+                    temperature: 0.7,
+                    top_p: 0.9,
+                    stream: false
+                }),
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`API请求失败 (${response.status}): ${errorText}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.choices && data.choices[0]) {
+                    const aiReply = sanitizeReply(data.choices[0].message.content);
+                clearInterval(timerInterval);
+                addMessage(aiReply, false);
+                lastError = null;
+                break;
+            } else {
+                throw new Error('API返回格式异常: ' + JSON.stringify(data));
+            }
+        } catch (error) {
+            lastError = error;
+            const msg = error && error.message ? error.message : '';
+            if(attempt >= MAX_RETRY || !shouldRetry(msg)){
+                break;
+            }
+            const delay = BASE_DELAY * Math.pow(2, attempt - 1);
+            await new Promise(res => setTimeout(res, delay));
         }
-        
-    } catch (error) {
-        console.error('调用API时出错:', error);
-        
-        // 停止计时器
+    }
+
+    if(lastError){
+        console.error('调用API时出错:', lastError);
         clearInterval(timerInterval);
-        // 移除"正在思考..."的提示消息
         const thinkingMsg = document.getElementById('thinkingMessage');
-        if (thinkingMsg) {
-            thinkingMsg.remove();
-        }
-        
-        // 根据不同的错误类型显示不同的提示
+        if (thinkingMsg) thinkingMsg.remove();
         let errorMsg = `抱歉，我这边出了点问题，稍等一会儿再试试吧。`;
-        
-        if (error.message.includes('401') || error.message.includes('认证')) {
+        const msg = lastError.message || '';
+        if (msg.includes('401') || msg.includes('认证')) {
             errorMsg = '系统验证出了点问题，可能需要管理员检查一下配置。';
-        } else if (error.message.includes('403')) {
+        } else if (msg.includes('403')) {
             errorMsg = '看起来权限不太够，可能需要联系管理员看看。';
-        } else if (error.message.includes('429')) {
+        } else if (msg.includes('429')) {
             errorMsg = '问得有点快了，让我缓一缓，等一小会儿再问我吧。';
-        } else if (error.message.includes('500') || error.message.includes('502') || error.message.includes('503')) {
+        } else if (msg.includes('500') || msg.includes('502') || msg.includes('503')) {
             errorMsg = '🔧 API服务器错误，请稍后再试。';
-        } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-            errorMsg = '🌐 网络连接失败，请检查网络。';
-        } else if (error.message.includes('CORS')) {
+        } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('abort')) {
+            errorMsg = '🌐 网络连接失败或超时，请检查网络。';
+        } else if (msg.includes('CORS')) {
             errorMsg = '🔒 跨域请求被阻止，这是服务器配置问题。';
         }
-        
         addMessage(errorMsg, false);
-        
-        // 在控制台显示详细错误，方便调试
-        console.log('详细错误信息:', error.message);
-    } finally {
-        // 重置界面状态
-        loadingIndicator.style.display = 'none';
-        userInput.disabled = false;
-        sendButton.disabled = false;
-        userInput.focus();
+        console.log('详细错误信息:', msg);
     }
+    // 重置界面状态
+    loadingIndicator.style.display = 'none';
+    userInput.disabled = false;
+    sendButton.disabled = false;
+    userInput.focus();
 }
 
 // ========== 输入处理 ==========
 function sendMessage() {
     const message = userInput.value.trim();
-    if (message) {
-        callDeepSeekAPI(message);
+    if(!message) return;
+    if(message.length > 2000){
+        addMessage('内容有点长，先简化一下再问我吧（建议少于2000字）。', false);
+        return;
+    }
+    callDeepSeekAPI(message);
+}
+
+// 载入并渲染历史聊天记录（在初始化时调用）
+function initChatHistory(){
+    try{
+        const raw = localStorage.getItem(AI_STORAGE_KEY);
+        const arr = raw ? JSON.parse(raw) : [];
+        if(chatMessages){
+            chatMessages.innerHTML = '';
+            arr.forEach(m => {
+                const d = document.createElement('div');
+                d.className = `message ${m.isUser ? 'user-message' : 'bot-message'}`;
+                const textNode = document.createElement('div');
+                textNode.className = 'msg-text';
+                textNode.textContent = m.text;
+                const timeNode = document.createElement('div');
+                timeNode.className = 'msg-time';
+                timeNode.textContent = m.ts ? formatTimestamp(m.ts) : '';
+                d.appendChild(textNode);
+                d.appendChild(timeNode);
+                chatMessages.appendChild(d);
+            });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }catch(e){
+        try{ localStorage.removeItem(AI_STORAGE_KEY); }catch(err){}
     }
 }
 
