@@ -582,7 +582,6 @@
         
         .scene-title i {
             margin-right: 15px;
-            font-size: 1.8rem;
         }
         
         .scene-description {
@@ -1320,7 +1319,7 @@
                 scene: {
                     title: "场景模拟：达维镇会师的喜悦与隐忧",
                     description: "1935年6月12日，四川懋功达维镇。中央红军先头部队红一军团二师四团与红四方面军先头部队第九军二十五师七十四团在这里胜利会师。衣衫褴褛、面容憔悴的中央红军战士与装备整齐、士气高昂的红四方面军战士紧紧拥抱，欢呼声在山谷中回荡。然而，细心的人会发现，中央红军仅剩约2万余人，装备简陋；而红四方面军则兵强马壮，拥有约8万余人。这种巨大的实力差距，为后续的战略分歧埋下了伏笔……",
-                    image: "../../img/红二红四会军.webp"
+                    image: "../../img/达维镇会师.webp"
                 },
                 interactive: {
                     title: "点击探索：会师背后的实力对比与隐忧",
@@ -1359,7 +1358,7 @@
                 scene: {
                     title: "场景模拟：两河口的激烈争论",
                     description: "1935年6月26日，四川懋功以北的两河口。中共中央政治局扩大会议正在召开。毛泽东、周恩来、张闻天等主张'北上'，创建川陕甘革命根据地，接通华北抗日前线；张国焘则主张'西进'或'南下'，向川康边发展。墙上挂着一张巨大的地图，代表着不同的战略方向。窗外是连绵的群山，屋内是激烈的争论。红军的未来，将在这场会议中决定……",
-                    image: "../../img/运动战.webp"
+                    image: "../../img/两河口会议.webp"
                 },
                 interactive: {
                     title: "点击探索：北上与南下战略的争论焦点",
@@ -1399,7 +1398,7 @@
                 scene: {
                     title: "场景模拟：松潘草地的死亡陷阱",
                     description: "1935年8月，松潘大草地（今若尔盖草原）。一眼望不到边的沼泽、草甸，遍地是隐藏的死亡陷阱。右路军官兵拖着疲惫的身躯，深一脚浅一脚地在泥泞中前行。饥饿的战士挖野菜充饥，有人误食毒草倒下；夜间严寒，衣衫单薄的战士们背靠背取暖；不时有战友陷入沼泽，顷刻间被泥潭吞没。每走一段路，就会看到倒下的同志。这是一场与自然极限的生死较量……",
-                    image: "../../img/红军减员.webp"
+                    image: "../../img/松潘草地.webp"
                 },
                 interactive: {
                     title: "点击体验：穿越草地的极端挑战",
@@ -1439,7 +1438,7 @@
                 scene: {
                     title: "场景模拟：巴西的紧急行动",
                     description: "1935年9月9日夜，巴西地区。毛泽东、张闻天、周恩来等中央领导人接到叶剑英送来的'密电'——张国焘强令右路军中的红四方面军部队'南下，彻底开展党内斗争'。局势万分危急，红军内部分裂甚至冲突一触即发。毛泽东立即召集紧急会议，决定率红一、三军团及中央机关连夜秘密北上。临行前，毛泽东亲自询问徐向前意见，徐向前回答：'天下哪有红军打红军的道理！'这个夜晚，决定了中国革命的命运……",
-                    image: "../../img/红二方面军.webp"
+                    image: "../../img/连夜上北.webp"
                 },
                 interactive: {
                     title: "点击思考：北上南下之争的本质",
@@ -1479,7 +1478,7 @@
                 scene: {
                     title: "场景模拟：两条路线的不同结局",
                     description: "历史在1935年秋天分叉。向北，毛泽东率领的陕甘支队继续向陕北前进，目标是抗日前线和新的革命根据地；向南，张国焘率领的红四方面军等部掉头南下，目标是川康边地区。北上路线虽然艰难，但接通了全国抗日大局；南下路线虽然初期取得一些战术胜利，但最终在强敌围攻下遭受重大挫折。两条路线的不同结局，验证了北上抗日的正确性……",
-                    image: "../../img/长征数据历史意义.webp"
+                    image: "../../img/北上南下.webp"
                 },
                 interactive: {
                     title: "点击总结：北上南下之争的历史启示",
@@ -1859,6 +1858,14 @@
             // 更新内容区域
             contentBody.innerHTML = contentHTML;
             contentArea.classList.add('active');
+
+            // 设置场景图背景
+            const sceneImageEl = contentBody.querySelector('.scene-image');
+            if (sceneImageEl && chapterData.scene.image) {
+                const imageUrl = encodeURI(chapterData.scene.image);
+                sceneImageEl.style.backgroundImage = `url(${imageUrl})`;
+                sceneImageEl.classList.add('has-image');
+            }
             
             // 如果章节未完成，设置交互事件
             if (!completedChapters.has(chapterId)) {
