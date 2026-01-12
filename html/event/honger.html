@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>三大主力会师：长征的辉煌终点</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1242,8 +1242,8 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征会师纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-sunset-over-a-lake-1864-large.mp4" type="video/mp4">
+                <!-- 使用本地图像资源播放会师相关视频 -->
+                <source src="../../video/长征结束的标志.mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
@@ -1335,7 +1335,7 @@
                 scene: {
                     title: "场景模拟：湘鄂川黔苏区的告别",
                     description: "1935年11月19日，湖南桑植。深秋的寒风中，贺龙、任弼时、关向应等领导人站在队伍前，望着即将出发的红二、六军团1.7万名战士。他们中许多人在这片根据地战斗多年，如今为了策应中央红军长征并摆脱自身困境，必须踏上新的征程。乡亲们默默送来草鞋、干粮，母亲们把最后的鸡蛋塞给年轻的战士。这一走，不知何时才能回到家乡……",
-                    image: "../img/scene-honger-chuzheng.jpg" // TODO: 替换为实际图片
+                    image: "../../img/红二方面军.webp"
                 },
                 interactive: {
                     title: "点击探索：红二、六军团的转战历程",
@@ -1370,7 +1370,7 @@
                 scene: {
                     title: "场景模拟：甘孜草原的艰难抉择",
                     description: "1936年7月，四川甘孜。红二、四方面军会师后，营地中弥漫着复杂的情绪。一方面是会师的喜悦，另一方面是关于北上还是南下的激烈争论。朱德、刘伯承在红四方面军中坚持宣传北上方针，新到达的任弼时、贺龙等红二方面军领导人也坚决拥护中央路线。张国焘在内外压力下，被迫于6月6日宣布取消第二'中央'。现在，两支大军必须做出决定：是留在川康边境艰难求生，还是再次穿越那片夺去无数生命的茫茫草地？",
-                    image: "../img/scene-honger-gongtongbeishang.jpg" // TODO: 替换为实际图片
+                    image: "../../img/红二红四会军.webp"
                 },
                 interactive: {
                     title: "点击探索：推动北上的关键力量",
@@ -1405,7 +1405,7 @@
                 scene: {
                     title: "场景模拟：会宁城的历史性拥抱",
                     description: "1936年10月9日，甘肃会宁。清晨的阳光洒在这座西北小城，街道被打扫得干干净净。城门口，红一方面军的战士们翘首以盼。远处，一支长长的队伍出现在地平线上——那是红四方面军的先头部队。当两支队伍越来越近时，人群中爆发出震天的欢呼声。战士们扔掉手中的武器，奔跑着拥抱在一起，热泪盈眶。许多人寻找着失散多年的战友，许多人只是紧紧握住陌生同志的手，激动得说不出话来。这一刻，所有的艰难困苦都化为了胜利的喜悦……",
-                    image: "../img/scene-honger-huining.jpg" // TODO: 替换为实际图片
+                    image: "../../img/会宁会师.webp"
                 },
                 interactive: {
                     title: "点击感受：会宁会师的盛况",
@@ -1440,7 +1440,7 @@
                 scene: {
                     title: "场景模拟：将台堡的辉煌终点",
                     description: "1936年10月22日，宁夏西吉县将台堡。秋风送爽，红旗招展。红二方面军在贺龙、任弼时的率领下，经过连续行军到达这里。早已在此等候的红一方面军战士列队欢迎，锣鼓喧天，口号震地。当贺龙与前来迎接的左权、聂荣臻紧紧握手时，人群中爆发出雷鸣般的掌声和欢呼。战士们互相拥抱，把帽子抛向空中。许多经历过湘江血战、雪山草地、围追堵截的老战士，此刻热泪纵横。两年了，整整两年的万里征战，无数战友牺牲在路上，如今终于迎来了胜利会师的这一天！",
-                    image: "../img/scene-honger-jiangtaibao.jpg" // TODO: 替换为实际图片
+                    image: "../../img/长征数据历史意义.webp"
                 },
                 interactive: {
                     title: "点击思考：长征的伟大意义",
@@ -2040,7 +2040,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){}
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
 
         // 使函数在全局可用
@@ -2070,7 +2070,7 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长征起点：战略转移的沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1242,8 +1242,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征纪录片 -->
-                <source src="/video/红军为什么要长征.mp4" type="video/mp4">
+                <source src="../../video/红军为什么要长征.mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
@@ -1335,7 +1334,7 @@
                 scene: {
                     title: "场景模拟：乌云压城的中央苏区",
                     description: "想象一下，1934年的秋天，在江西瑞金的中央苏区，空气格外沉重。原本热闹的红军训练场变得寂静，战士们脸上的笑容少了，取而代之的是紧锁的眉头。远处传来的炮声一天比一天近，蒋介石调集的百万大军，像铁桶一样层层包围中央苏区。红军的根据地一天天缩小，就像被蚕食的树叶……",
-                    image: "../img/scene-weijulongzhao.jpg" // TODO: 替换为实际图片
+                    image: "../../img/瑞金叶坪.jpg"
                 },
                 interactive: {
                     title: "点击探索：第五次反'围剿'为何失败？",
@@ -1370,7 +1369,7 @@
                 scene: {
                     title: "场景模拟：瑞金叶坪的深夜会议",
                     description: "1934年9月的一个深夜，江西瑞金叶坪的一间普通民房里，灯火通明。博古、李德、周恩来组成的'三人团'正在召开秘密会议。窗外是寂静的夜色，屋内是紧张的气氛。墙上的地图用红笔标出了不断缩小的苏区范围。他们知道，必须做出一个艰难的决定……",
-                    image: "../img/scene-mimijuece.jpg" // TODO: 替换为实际图片
+                    image: "../../img/通道会议.webp"
                 },
                 interactive: {
                     title: "点击探索：长征决策背后的秘密",
@@ -1405,7 +1404,7 @@
                 scene: {
                     title: "场景模拟：于都河畔的无声告别",
                     description: "1934年10月16日傍晚，于都河边突然热闹起来。百姓们拆下自家的门板、木床，甚至老人的寿材，帮助红军架设浮桥；妇女们连夜赶制草鞋、炒米干粮；战士们默默整理行装，与亲人拥抱告别——母亲把最后的鸡蛋塞给儿子，妻子默默擦泪，孩子紧紧抱住父亲的腿……很多人不知道，这一走，何时才能回来。",
-                    image: "/img/于都河畔.jpg" // TODO: 替换为实际图片
+                    image: "../../img/于都河畔.jpg"
                 },
                 interactive: {
                     title: "点击感受：军民鱼水情",
@@ -1440,7 +1439,7 @@
                 scene: {
                     title: "场景模拟：静默渡河的漫长队伍",
                     description: "深秋的于都河，河水冰凉刺骨。从10月16日到20日，连续五个夜晚，红军主力从八个渡口悄然渡河。火把很少，只有月光照亮战士们年轻的脸庞。浮桥在脚下晃动，河水在黑暗中流淌。没有人说话，只有轻轻的脚步声和偶尔的马嘶。对岸是未知的征程，背后是渐行渐远的家乡……",
-                    image: "../img/scene-yedu.jpg" // TODO: 替换为实际图片
+                    image: "../../img/长征第一渡.jpg"
                 },
                 interactive: {
                     title: "点击思考：为什么选择夜间渡河？",
@@ -2042,7 +2041,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){ /* ignore */ }
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
 
         // 使函数在全局可用
@@ -2072,6 +2071,6 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>

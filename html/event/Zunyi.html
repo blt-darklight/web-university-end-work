@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伟大转折——遵义会议沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1243,8 +1243,8 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的遵义会议纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                <!-- 使用本地视频回顾遵义会议背景与影响 -->
+                <source src="../../video/奇迹有密码｜3分钟告诉你遵义会议有多重要 - 1.奇迹有密码｜3分钟告诉你遵义会议有多重要(Av720756430,P1).mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
@@ -1336,7 +1336,7 @@
                 scene: {
                     title: "场景模拟：湘江边的血色记忆",
                     description: "1934年11月底至12月初，湘江战役的惨败让红军从8.6万人锐减至3万余人。江水被染成红色，江面上漂浮着红军战士的遗体、枪支和文件。活下来的战士们眼神空洞，身心俱疲。博古、李德的错误指挥已经让全军上下忍无可忍。在行军途中，毛泽东与王稼祥、张闻天组成的'中央队三人团'，一边养伤一边讨论失败的原因，逐渐形成改变领导的共识……",
-                    image: "../img/scene-zunyi-shengsi.jpg" // TODO: 替换为实际图片
+                    image: "../../img/湘江战役.webp"
                 },
                 interactive: {
                     title: "点击探索：为什么必须召开遵义会议？",
@@ -1371,7 +1371,7 @@
                 scene: {
                     title: "场景模拟：柏辉章公馆二楼会议室",
                     description: "1935年1月15日傍晚，在遵义老城柏辉章公馆的二楼会议室，中共中央政治局扩大会议在极端保密的情况下召开。二十多人挤在这间不到30平方米的房间里，空气凝重。长方形的会议桌旁，博古、周恩来、张闻天、毛泽东、朱德等人依次而坐。李德和翻译伍修权坐在门口。煤油灯的光线在每个人脸上跳动，墙上挂着军事地图，标注着红军的行进路线……",
-                    image: "../img/scene-zunyi-zhenglun.jpg" // TODO: 替换为实际图片
+                    image: "../../img/遵义会议.webp"
                 },
                 interactive: {
                     title: "点击见证：会议上的关键发言",
@@ -1407,7 +1407,7 @@
                 scene: {
                     title: "场景模拟：决议通过的历史时刻",
                     description: "经过三天激烈讨论，会议通过了由张闻天起草的《中央关于反对敌人五次'围剿'的总结的决议》。决议明确指出红军第五次反'围剿'失败的主要原因是博古、李德在军事指挥上犯了严重的'左'倾错误。会议作出重大组织调整：增选毛泽东为中央政治局常委，取消'三人团'，由张闻天接替博古负总责，成立由毛泽东、周恩来、王稼祥组成的'新三人团'负责军事指挥……",
-                    image: "../img/scene-zunyi-jueyi.jpg" // TODO: 替换为实际图片
+                    image: "../../img/反对第五次围剿.webp"
                 },
                 interactive: {
                     title: "点击分析：会议决议的历史意义",
@@ -1442,7 +1442,7 @@
                 scene: {
                     title: "场景模拟：转折之后的新征程",
                     description: "遵义会议后，红军面貌焕然一新。毛泽东重新参与军事指挥，红军开始采用灵活机动的运动战术。四渡赤水，巧渡金沙江，强渡大渡河，飞夺泸定桥……红军摆脱了被动挨打的局面，掌握了战场主动权。这次会议不仅挽救了党、挽救了红军、挽救了中国革命，更标志着中国共产党在政治上开始走向成熟……",
-                    image: "../img/scene-zunyi-zhuanzhe.jpg" // TODO: 替换为实际图片
+                    image: "../../img/通道转兵.webp"
                 },
                 interactive: {
                     title: "点击领悟：会议的历史地位",
@@ -2043,7 +2043,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){}
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
 
         // 使函数在全局可用
@@ -2073,7 +2073,7 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>
 

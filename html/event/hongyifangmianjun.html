@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长征胜利：红一方面军抵达陕北的沉浸式探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1260,8 +1260,8 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的长征纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                <!-- 使用本地资源展现腊子口突破等关键节点 -->
+                <source src="../../video/突破天险腊子口，三维地形图直观了解：红军长征中经过的最后的、最险要的一道关口 - 1.腊子口战斗(Av455484526,P1).mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
@@ -1353,7 +1353,7 @@
                 scene: {
                     title: "场景模拟：天险腊子口的攻坚战",
                     description: "想象一下，1935年9月16日傍晚，甘肃迭部县东北的腊子口。这里山口宽仅30余米，两侧是百米高的悬崖峭壁，中间是奔腾的腊子河，河上只有一座木桥，是唯一的通道。国民党军新编第十四师鲁大昌部在桥头和山崖上构筑了坚固的碉堡群，形成了交叉火力网，号称'一夫当关，万夫莫开'。红一军团二师四团的战士们，在政委杨成武的指挥下，正面临着长征路上的又一道生死考验……",
-                    image: "../img/scene-lazikou.jpg" // TODO: 替换为实际图片
+                    image: "../../img/天险腊子口.webp"
                 },
                 interactive: {
                     title: "点击探索：腊子口战斗的战术奇迹",
@@ -1390,7 +1390,7 @@
                 scene: {
                     title: "场景模拟：陕北吴起镇的胜利会师",
                     description: "1935年10月19日，陕北保安县（今志丹县）的吴起镇。历经千难万险的中共中央率领陕甘支队终于抵达这里。当地苏维埃政府和群众热情欢迎，送粮送衣，让衣衫褴褛的红军战士们感受到了'到家'的温暖。几天后，毛泽东亲自部署了'切尾巴'战斗，在吴起镇头道川、二道川设伏，一举击溃紧追不舍的国民党骑兵3个团。10月22日，中共中央在吴起镇召开政治局会议，正式宣告红一方面军主力长征胜利结束……",
-                    image: "../img/scene-wuqizhen.jpg" // TODO: 替换为实际图片
+                    image: "../../img/吴起镇战役.webp"
                 },
                 interactive: {
                     title: "点击探索：吴起镇会师的历史细节",
@@ -1427,7 +1427,7 @@
                 scene: {
                     title: "场景模拟：直罗镇战役的辉煌胜利",
                     description: "1935年11月21日—24日，陕西富县直罗镇。刚刚会师的红军主力在毛泽东、周恩来、彭德怀的亲自部署下，在这里设下口袋阵。红军战士们埋伏在冰冷的黄土沟壑中，等待着进入包围圈的国民党东北军。当敌军完全进入伏击圈后，冲锋号骤然响起，红军从四面八方发起攻击。经过激烈战斗，红军一举歼灭国民党东北军第109师全部和第106师一个团，俘虏5300余人，缴获大量武器弹药。这场战役，为党中央'把革命大本营放在西北举行了一个奠基礼'……",
-                    image: "../img/scene-zhiluozhen.jpg" // TODO: 替换为实际图片
+                    image: "../../img/直罗镇战役.webp"
                 },
                 interactive: {
                     title: "点击探索：直罗镇战役的战略意义",
@@ -1466,7 +1466,7 @@
                 scene: {
                     title: "场景模拟：长征精神的永恒传承",
                     description: "从1934年10月到1935年10月，红一方面军主力行程两万五千里，纵横11个省，翻越18座大山，跨过24条大河，经历380余次战斗，攻占700多座县城，牺牲营以上干部430余人。这支衣衫褴褛却斗志昂扬的队伍，以坚定的信念和惊人的毅力，完成了人类历史上绝无仅有的伟大远征。长征的胜利，使中国革命转危为安，为抗日战争和解放战争保存了骨干力量，培育了伟大的长征精神。今天，当我们回顾这段历史，依然能感受到那穿越时空的精神力量……",
-                    image: "../img/scene-changzheng-yiyi.jpg" // TODO: 替换为实际图片
+                    image: "../../img/长征数据历史意义.webp"
                 },
                 interactive: {
                     title: "点击探索：长征胜利的深远影响",
@@ -2071,7 +2071,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){}
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
 
         // 使函数在全局可用
@@ -2101,7 +2101,7 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>
 

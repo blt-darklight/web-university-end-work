@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>湘江战役与转折前夜：生死存亡的抉择</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1242,8 +1242,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <video id="historyVideo" controls>
-                <!-- 由于版权原因，这里使用替代视频，实际应用中可替换为真实的湘江战役纪录片 -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4" type="video/mp4">
+                <source src="../../video/湘江战役%20-%201.湘江战役(Av260186374,P1).mp4" type="video/mp4">
                 您的浏览器不支持视频播放
             </video>
         </div>
@@ -1335,7 +1334,7 @@
                 scene: {
                     title: "场景模拟：国民党军的'铁三角'合围",
                     description: "1934年11月下旬，湘江以东地区。蒋介石已判明红军西进意图，调动中央军、湘军、桂军、粤军共约25个师，30余万兵力，在湘江以东构筑了一个巨大的'口袋阵'。北面何键的湘军控制全州至衡阳段湘江沿岸；南面白崇禧的桂军在灌阳至兴安段布防；东面中央军周浑元、吴奇伟纵队及湘、粤军尾追。而此时的红军，经过前三道封锁线，已减员至约6.4万人，且因携带大量辎重，行动缓慢如'大搬家'。",
-                    image: "../img/scene-xiangjiang-juejing.jpg" // TODO: 替换为实际图片
+                    image: "../../img/湘江战役.webp"
                 },
                 interactive: {
                     title: "点击探索：红军为何陷入绝境？",
@@ -1371,7 +1370,7 @@
                 scene: {
                     title: "场景模拟：血染湘江的五昼夜",
                     description: "1934年11月27日至12月1日，湘江两岸。红一军团控制了界首渡口，在觉山铺阻击湘军；红三军团在新圩、光华铺阻击桂军。庞大的中央纵队和军委纵队行动迟缓，在渡口与阻击阵地之间形成了一条长约80公里的狭长甬道。红军主力以血肉之躯在两侧顶住数倍于己的敌军，掩护中央机关过江。湘江上漂浮着红军战士的遗体，江水被染红。'三年不饮湘江水，十年不食湘江鱼'的民谣从此流传。",
-                    image: "../img/scene-xiangjiang-xuezhan.jpg" // TODO: 替换为实际图片
+                    image: "../../img/红军减员.webp"
                 },
                 interactive: {
                     title: "点击感受：红军战士的英勇牺牲",
@@ -1407,7 +1406,7 @@
                 scene: {
                     title: "场景模拟：通道会议的激烈争论",
                     description: "1934年12月12日，湖南通道县恭城书院。湘江战役后，极度疲惫的红军进入湖南。情报显示，蒋介石已在通往湘西的路上布下了一个更大的、约20万兵力的'口袋阵'。在恭城书院的这次'飞行会议'上，博古、李德坚持原计划北上湘西与红二、六军团会合。毛泽东力排众议，坚决反对北上钻入口袋，提出转向敌人力量薄弱的贵州。虽然博古、李德仍坚持己见，但周恩来、朱德、张闻天、王稼祥等多数人支持毛泽东的主张。",
-                    image: "../img/scene-tongdao-zhuanbing.jpg" // TODO: 替换为实际图片
+                    image: "../../img/通道转兵.webp"
                 },
                 interactive: {
                     title: "点击参与：通道会议的关键决策",
@@ -1444,7 +1443,7 @@
                 scene: {
                     title: "场景模拟：从绝望到希望的转变",
                     description: "湘江战役后，红军中弥漫着悲观失望的情绪。'左'倾错误路线导致的惨重损失让广大指战员对博古、李德的指挥达到绝望的顶点。而通道转兵的成功实施，让红军进入贵州后连克黎平、剑河等城，暂时获得了喘息之机。这一成功用事实证明了毛泽东主张的正确性，极大地鼓舞了支持改变领导的同志们。红军指战员开始思考：为什么毛泽东的主张能挽救红军？为什么博古、李德的指挥会导致惨败？这种思考直接催生了随后的黎平会议和遵义会议。",
-                    image: "../img/scene-zhuanzhe-qianye.jpg" // TODO: 替换为实际图片
+                    image: "../../img/反对第五次围剿.webp"
                 },
                 interactive: {
                     title: "点击思考：历史转折的必然性",
@@ -2048,7 +2047,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){ /* ignore */ }
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
         
         // 使函数在全局可用
@@ -2078,7 +2077,7 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>
 
