@@ -14,7 +14,7 @@
         if(obj){
             try{
                 // 给 object.data 加时间戳，强制浏览器重新加载最新文件（使用相对路径以支持 file://）
-                obj.data = '../img/china.svg?ts=' + Date.now();
+                obj.data = '...img/china.svg?ts=' + Date.now();
                 // 等待 object 的 load 事件（短超时后继续）
                 await new Promise((resolve)=>{
                     let resolved = false;
@@ -38,7 +38,7 @@
         if(window.location.protocol === 'file:') return false;
 
         try{
-            const res = await fetch('../img/china.svg?ts=' + Date.now());
+            const res = await fetch('.../img/china.svg?ts=' + Date.now());
             if(!res.ok) throw new Error('no svg');
             const text = await res.text();
             const container = document.querySelector('.china-map');

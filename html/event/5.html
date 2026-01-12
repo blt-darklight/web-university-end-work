@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长征抉择：红一、红四方面军会师与北上南下之争（1935年6月—9月）</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/ai-assistant.css">
+    <link rel="stylesheet" href="../../css/ai-assistant.css">
     <style>
         * {
             margin: 0;
@@ -1515,23 +1515,20 @@
                 }
             }
         };
-        
-            // 构建内容
-            const sceneImage = chapterData.scene && chapterData.scene.image;
-            const hasImage = sceneImage && sceneImage.trim() !== '';
-            let contentHTML = `
-                <div class="scene-simulation">
-                    <div class="scene-title">
-                        <i class="fas fa-theater-masks"></i>
-                        <span>${chapterData.scene.title}</span>
-                    </div>
-                    <p class="scene-description">${chapterData.scene.description}</p>
-                    <div class="scene-image ${hasImage ? 'has-image' : 'no-image'}" ${hasImage ? `style="background-image: url('${sceneImage}')"` : ''}>
-                        <div class="scene-image-label">历史场景示意图：${chapterData.title}</div>
-                        ${hasImage ? '' : '<div class="scene-image-placeholder">暂未上传图片</div>'}
-                    </div>
-                </div>
-            `;
+
+        // 当前状态
+        let currentChapter = 4;  // 全局节点ID
+        let currentInternalChapter = 0;  // 内部章节ID
+        let completedChapters = new Set();
+        let achievementVisible = false;
+
+        // DOM元素
+        const startScreen = document.getElementById('startScreen');
+        const startButton = document.getElementById('startButton');
+        const explorationContainer = document.getElementById('explorationContainer');
+        const chapterNavItems = document.querySelectorAll('.chapter-nav-item');
+        const contentArea = document.getElementById('contentArea');
+        const contentTitle = document.getElementById('contentTitle');
         const contentSubtitle = document.getElementById('contentSubtitle');
         const contentBody = document.getElementById('contentBody');
         const closeContent = document.getElementById('closeContent');
@@ -1539,7 +1536,6 @@
         const achievementContainer = document.getElementById('achievementContainer');
         const grasslandTerrain = document.getElementById('grasslandTerrain');
         const marshPools = document.getElementById('marshPools');
-        // 视频元素（新增）
         const videoOverlay = document.getElementById('videoOverlay');
         const closeVideo = document.getElementById('closeVideo');
         const historyVideo = document.getElementById('historyVideo');
@@ -2147,7 +2143,7 @@
                 st.mode = st.mode || 'linear';
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){}
-            window.location.href = '/html/map.html?mode=linear';
+            window.location.href = '../map.html?mode=linear';
         }
 
         // 使函数在全局可用
@@ -2177,6 +2173,6 @@
   <div id="loadingIndicator" style="display: none;">思考中...</div>
 </div>
 
-<script src="/js/ai-assistant.js"></script>
+<script src="../../js/ai-assistant.js"></script>
 </body>
 </html>
