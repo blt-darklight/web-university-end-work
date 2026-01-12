@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 线性引导按钮点击事件 — 直接进入地图并传递模式参数
     linearBtn.addEventListener('click', function() {
-        window.location.href = '../html/map.html?mode=explore';
+        window.location.href = '../html/map.html?debug=1';
     });
     
     // 自由探索按钮点击事件 — 直接进入地图并传递模式参数

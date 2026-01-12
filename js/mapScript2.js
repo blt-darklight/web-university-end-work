@@ -66,21 +66,24 @@
     const debugMode = param('debug') === '1' || param('debug') === 'true';
     const KEY = 'lm_unlocks_v1';
 
-    // SVG 初始变换参数（从调试模式导出）
-    let svgZoom = 1.83;
-    let svgPanX = 12;
-    let svgPanY = 95;
+    // SVG 初始变换参数（来自最新调试导出）
+    let svgZoom = 1.79;
+    let svgPanX = -24;
+    let svgPanY = 221;
+
+    // 为了与之前的布局一致，优先使用百分比定位而不是 svg 坐标映射
+    const preferPercentPositions = false;
 
     const nodes = [
         // svgX/svgY 使用当前页面内 svg 的 viewBox 坐标系（map.html 内置 SVG viewBox="0 0 1000 700"）
         // 已根据您提供的数据更新节点坐标与大小
-        { id:0, title:'战略转移开始', onMap:true, svgX:283.5, svgY:97.9, top:'70%', left:'43%', _size:21 },
-        { id:1, title:'湘江战役与转折前夜', onMap:true, svgX:259.7, svgY:116.7, top:'66%', left:'40%', _size:24 },
-        { id:2, title:'伟大转折——遵义会议', onMap:true, svgX:250.3, svgY:102.7, top:'58%', left:'44%', _size:21 },
-        { id:3, title:'灵活机动的战略战术（1935年1月—6月）', onMap:true, svgX:236.1, svgY:102.7, top:'62%', left:'35%', _size:27 },
-        { id:4, title:'红一、红四方面军会师与北上南下之争（1935年6月—9月）', onMap:true, svgX:236.1, svgY:86.3, top:'52%', left:'33%', _size:24 },
-        { id:5, title:'红一方面军胜利到达陕北（1935年10月）', onMap:true, svgX:259.7, svgY:69.9, top:'32%', left:'36%', _size:24 },
-        { id:6, title:'红二、红四方面军北上与三大主力会师（1936年7月—10月）', onMap:true, svgX:245.6, svgY:58.2, top:'24%', left:'44%', _size:23 },
+        { id:0, title:'战略转移开始', onMap:true, svgX:592.6, svgY:305.3, top:'70%', left:'43%', _size:21 },
+        { id:1, title:'湘江战役与转折前夜', onMap:true, svgX:576.5, svgY:343.1, top:'66%', left:'40%', _size:24 },
+        { id:2, title:'伟大转折——遵义会议', onMap:true, svgX:538.7, svgY:339.3, top:'58%', left:'44%', _size:21 },
+        { id:3, title:'灵活机动的战略战术（1935年1月—6月）', onMap:true, svgX:495.6, svgY:316.7, top:'62%', left:'35%', _size:27 },
+        { id:4, title:'红一、红四方面军会师与北上南下之争（1935年6月—9月）', onMap:true, svgX:498.2, svgY:268.2, top:'52%', left:'33%', _size:24 },
+        { id:5, title:'红一方面军胜利到达陕北（1935年10月）', onMap:true, svgX:538.7, svgY:229.8, top:'32%', left:'36%', _size:24 },
+        { id:6, title:'红二、红四方面军北上与三大主力会师（1936年7月—10月）', onMap:true, svgX:515.4, svgY:207.7, top:'24%', left:'44%', _size:23 },
         { id:7, title:'长征的总结与意义（总结页，不在地图内）', onMap:false }
     ];
 
@@ -158,20 +161,12 @@
                 el.innerHTML = `<div class="dot">${idx+1}</div><div class="label">${n.title}</div>`;
                 if(n._size){ el.style.width = el.style.height = (n._size)+'px'; }
 
-                // 计算定位：优先使用 svgX/svgY（SVG 坐标系），回退到百分比定位
-                if(typeof n.svgX === 'number' && typeof n.svgY === 'number'){
+                // 计算定位：根据开关优先选择百分比定位，避免布局突变
+                if(!preferPercentPositions && typeof n.svgX === 'number' && typeof n.svgY === 'number'){
                     try{
                         const mapSvgPoint = (svg, x, y)=>{
                             if(!svg) return null;
-                            // 优先用 getScreenCTM + createSVGPoint
-                            try{
-                                        if(typeof svg.createSVGPoint === 'function' && svg.getScreenCTM){
-                                            const pt = svg.createSVGPoint(); pt.x = x; pt.y = y;
-                                            const ctm = svg.getScreenCTM();
-                                            if(ctm) return { screen:true, x: pt.matrixTransform(ctm).x, y: pt.matrixTransform(ctm).y };
-                                        }
-                            }catch(e){}
-                            // 回退：使用 viewBox 映射
+                            // 统一使用 viewBox -> 内层容器尺寸映射，避免 CTM 差异导致的坐标颠倒或偏移
                             try{
                                 const rect = svg.getBoundingClientRect();
                                 let vb = null;
@@ -181,7 +176,6 @@
                                     vb = { x: parts[0], y: parts[1], width: parts[2], height: parts[3] };
                                 }
                                 if(vb){
-                                    // use inner's untransformed size to compute local coordinates
                                     const inner = document.querySelector('.china-inner');
                                     const w = inner ? inner.clientWidth : rect.width;
                                     const h = inner ? inner.clientHeight : rect.height;
@@ -189,7 +183,7 @@
                                     const scaleY = h / vb.height;
                                     const left = (x - vb.x) * scaleX;
                                     const top = (y - vb.y) * scaleY;
-                                    return { screen:false, x: left, y: top };
+                                    return { x: left, y: top };
                                 }
                             }catch(e){}
                             return null;
@@ -197,16 +191,9 @@
 
                         const loc = mapSvgPoint(svgEl, n.svgX, n.svgY);
                         if(loc){
-                            if(loc.screen){
-                                const leftPx = loc.x - mapRect.left;
-                                const topPx = loc.y - mapRect.top;
-                                el.style.left = leftPx + 'px';
-                                el.style.top = topPx + 'px';
-                            }else{
-                                // local coordinates relative to inner
-                                el.style.left = loc.x + 'px';
-                                el.style.top = loc.y + 'px';
-                            }
+                            // 使用相对于内层容器的本地坐标
+                            el.style.left = loc.x + 'px';
+                            el.style.top = loc.y + 'px';
                         }else{
                             el.style.left = n.left || '50%';
                             el.style.top = n.top || '50%';
