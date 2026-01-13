@@ -2059,19 +2059,26 @@
 
         function finishAndReturnToMap(currentChapter){
             try{
-                const KEY = 'lm_unlocks_v1';
+                // 从URL获取模式，使用对应的localStorage键
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentMode = urlParams.get('mode') || 'linear';
+                const KEY = currentMode === 'free' ? 'lm_unlocks_free_v1' : 'lm_unlocks_linear_v1';
                 const raw = localStorage.getItem(KEY);
-                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                const st = raw ? JSON.parse(raw) : { mode:currentMode, unlocked: Array(8).fill(false), unlockedIndex:0 };
                 if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
-                if(st.mode === 'linear' || (!st.mode && true)){
+                if(currentMode === 'linear' || st.mode === 'linear'){
                     const next = Math.min(7, currentChapter+1);
                     st.unlocked[next] = true;
                     st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
                 }
-                st.mode = st.mode || 'linear';
+                st.mode = currentMode;
                 localStorage.setItem(KEY, JSON.stringify(st));
-            }catch(e){}
-            window.location.href = '../map.html?mode=linear';
+                window.location.href = '../map.html?mode=' + currentMode;
+            }catch(e){
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentMode = urlParams.get('mode') || 'linear';
+                window.location.href = '../map.html?mode=' + currentMode;
+            }
         }
 
         // 使函数在全局可用

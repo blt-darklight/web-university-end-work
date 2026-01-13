@@ -19,22 +19,95 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 开始按钮点击事件 - 滚动到探索区域
+    // 开始按钮点击事件 - 先轻微放大当前Banner再滚动到探索区域
     startBtn.addEventListener('click', function() {
-        document.getElementById('explore').scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-        });
+        // 添加加载动画
+        startBtn.classList.add('loading');
+        
+        const activeCard = document.querySelector('.home-swiper .swiper-slide.swiper-slide-active .banner-card');
+        if (activeCard) {
+            // 添加轻微放大效果
+            activeCard.classList.add('boost');
+            // 小延迟后开始滚动，并在滚动开始后移除放大
+            setTimeout(() => {
+                const explore = document.getElementById('explore');
+                if (explore) {
+                    explore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                setTimeout(() => {
+                    activeCard.classList.remove('boost');
+                    startBtn.classList.remove('loading');
+                }, 500);
+            }, 300);
+        } else {
+            // 无活动卡片时直接滚动
+            setTimeout(() => {
+                document.getElementById('explore').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => {
+                    startBtn.classList.remove('loading');
+                }, 400);
+            }, 300);
+        }
     });
     
-    // 线性引导按钮点击事件 — 直接进入地图并传递模式参数
+    // 显示加载转场页面并模拟进度
+    function showLoadingTransition(targetUrl) {
+        const loadingTransition = document.getElementById('loadingTransition');
+        const progressBar = document.getElementById('progressBar');
+        const loadingTips = document.getElementById('loadingTips');
+        
+        const tips = [
+            '准备进入长征之旅...',
+            '加载历史地图数据...',
+            '初始化长征路线...',
+            '准备好了，即将启程！'
+        ];
+        
+        loadingTransition.classList.add('active');
+        
+        // 创建隐藏的iframe预加载目标页面
+        const preloadFrame = document.createElement('iframe');
+        preloadFrame.style.display = 'none';
+        preloadFrame.src = targetUrl;
+        document.body.appendChild(preloadFrame);
+        
+        let progress = 0;
+        let tipIndex = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15 + 10;
+            if (progress > 100) progress = 100;
+            
+            progressBar.style.width = progress + '%';
+            
+            // 更新提示文字
+            if (progress > 25 * (tipIndex + 1) && tipIndex < tips.length - 1) {
+                tipIndex++;
+                loadingTips.textContent = tips[tipIndex];
+            }
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 300);
+            }
+        }, 200);
+    }
+    
+    // 线性引导按钮点击事件
     linearBtn.addEventListener('click', function() {
-        window.location.href = '../html/map.html?mode=explore';
+        linearBtn.classList.add('loading');
+        setTimeout(() => {
+            showLoadingTransition('../html/map.html?mode=linear');
+        }, 400);
     });
     
-    // 自由探索按钮点击事件 — 直接进入地图并传递模式参数
+    // 自由探索按钮点击事件
     freeBtn.addEventListener('click', function() {
-        window.location.href = '../html/map.html?mode=free';
+        freeBtn.classList.add('loading');
+        setTimeout(() => {
+            showLoadingTransition('../html/map.html?mode=free');
+        }, 400);
     });
     
     // 启动进入动画
@@ -218,4 +291,40 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         document.body.style.overflow = 'auto';
     }, 500);
+
+    // -------- 首页缩放 Banner 轮播初始化 --------
+    try {
+        const bannerEl = document.querySelector('.home-swiper');
+        if (bannerEl && window.Swiper) {
+            const bannerSwiper = new Swiper('.home-swiper', {
+                loop: false,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                grabCursor: true,
+                speed: 800,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false
+                },
+                pagination: { el: '.home-swiper .swiper-pagination', clickable: true },
+                navigation: { nextEl: '.home-swiper .swiper-button-next', prevEl: '.home-swiper .swiper-button-prev' }
+            });
+
+            // 进入视口时才启动自动播放，避免后台标签无意义轮播
+            const bannerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        bannerSwiper.autoplay.start();
+                    } else {
+                        bannerSwiper.autoplay.stop();
+                    }
+                });
+            }, { threshold: 0.25 });
+            bannerObserver.observe(bannerEl);
+        }
+    } catch (e) {
+        // ignore
+    }
 });

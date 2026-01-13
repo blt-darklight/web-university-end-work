@@ -39,11 +39,18 @@
                 <li>在群众中扩大了党的影响，为后续胜利奠定基础。</li>
             </ul>
             <div class="actions">
-                <a class="btn" href="../map.html?mode=linear">返回地图</a>
+                <a class="btn" id="returnMapBtn">返回地图</a>
                 <a class="btn secondary" href="/html/index.html">返回首页</a>
             </div>
         </div>
     </div>
+
+    <script>
+        // 保持原始模式
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentMode = urlParams.get('mode') || 'linear';
+        document.getElementById('returnMapBtn').href = '../map.html?mode=' + currentMode;
+    </script>
 
 
     <!-- AI助手按钮 -->

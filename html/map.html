@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 加载转场页面 -->
+    <div class="loading-transition" id="loadingTransition">
+        <div class="loading-content">
+            <div class="red-star-spinner">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2 class="loading-text">正在进入事件</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="loading-tips" id="loadingTips">准备探索历史...</p>
+        </div>
+    </div>
+
     <div class="map-page">
         <header class="map-header">
             <div>

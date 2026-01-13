@@ -8,8 +8,24 @@
     <link rel="stylesheet" href="../css/ai-assistant.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS for banner slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css">
 </head>
 <body>
+    <!-- 加载转场页面 -->
+    <div class="loading-transition" id="loadingTransition">
+        <div class="loading-content">
+            <div class="red-star-spinner">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2 class="loading-text">正在加载地图</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="loading-tips" id="loadingTips">准备进入长征之旅...</p>
+        </div>
+    </div>
+
     <!-- 视差滚动图片 -->
     <div class="parallax-container">
         <div class="parallax-image" id="parallaxImage"></div>
@@ -78,6 +94,82 @@
                         开始重走长征路
                         <i class="fas fa-arrow-right"></i>
                     </button>
+                </div>
+            </section>
+
+            <!-- 缩放轮播 Banner -->
+            <section class="banner-section" id="home-banner">
+                <div class="home-swiper swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/瑞金叶坪.jpg');">
+                                <div class="banner-overlay">
+                                    <h3>长征精神·不畏艰难</h3>
+                                    <p>跨越雪山草地，坚定理想信念</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/遵义会议.webp');">
+                                <div class="banner-overlay">
+                                    <h3>遵义会议·伟大转折</h3>
+                                    <p>独立自主，实事求是的光辉典范</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/会宁会师.webp');">
+                                <div class="banner-overlay">
+                                    <h3>胜利会师·大道不孤</h3>
+                                    <p>三大主力汇聚，革命力量延续</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/通道转兵.webp');">
+                                <div class="banner-overlay">
+                                    <h3>通道转兵·战略抉择</h3>
+                                    <p>关键时刻的正确方向</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/巧渡金沙江.webp');">
+                                <div class="banner-overlay">
+                                    <h3>巧渡金沙江·智取胜机</h3>
+                                    <p>以机动战赢得主动</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/四渡赤水.webp');">
+                                <div class="banner-overlay">
+                                    <h3>四渡赤水·神出鬼没</h3>
+                                    <p>运动战的经典范例</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/飞夺泸定桥.webp');">
+                                <div class="banner-overlay">
+                                    <h3>飞夺泸定桥·勇不可挡</h3>
+                                    <p>铁索桥上的英勇事迹</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="banner-card" style="background-image:url('../img/天险腊子口.webp');">
+                                <div class="banner-overlay">
+                                    <h3>强渡腊子口·破天险</h3>
+                                    <p>艰险地形中的突破之战</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 导航控件 -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </section>
 
@@ -248,16 +340,9 @@
     </div>
 
     <!-- 脚本 -->
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js"></script>
     <script src="../js/mainScript.js"></script>
-    <script>
-        // 将首页两个按钮连接到地图页（传 mode 参数）
-        (function(){
-            const linear = document.getElementById('linearBtn');
-            const free = document.getElementById('freeBtn');
-            if(linear) linear.addEventListener('click', ()=>{ location.href = 'map.html?mode=linear'; });
-            if(free) free.addEventListener('click', ()=>{ location.href = 'map.html?mode=free'; });
-        })();
-    </script>
 
     <!-- AI助手按钮 -->
 <button id="aiAssistantButton" title="AI助手">

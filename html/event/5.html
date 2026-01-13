@@ -1203,7 +1203,7 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">长征的十字路口 #003</div>
+        <div class="historical-badge">长征的十字路口 #005</div>
         <h1 class="main-title">会师与抉择：<span>北上南下之争的历史关口</span></h1>
         <p class="subtitle">1935年6月至9月，中央红军与红四方面军在四川懋功会师，喜悦之后却面临"向哪里去"的战略分歧。这是长征中最复杂、最危险的时期之一。</p>
         <p class="subtitle">从会师的希望到战略的争论，从穿越死亡草地的磨难到最终痛苦的分裂——这一时期展现了红军在生存危机与政治路线之间的艰难抉择。</p>
@@ -2137,19 +2137,25 @@
 
         function finishAndReturnToMap(currentChapter){
             try{
-                const KEY = 'lm_unlocks_v1';
+                // 从URL获取模式，使用对应的localStorage键
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentMode = urlParams.get('mode') || 'linear';
+                const KEY = currentMode === 'free' ? 'lm_unlocks_free_v1' : 'lm_unlocks_linear_v1';
                 const raw = localStorage.getItem(KEY);
-                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                const st = raw ? JSON.parse(raw) : { mode:currentMode, unlocked: Array(8).fill(false), unlockedIndex:0 };
                 if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
-                if(st.mode === 'linear' || (!st.mode && true)){
+                if(st.mode === 'linear' || (!st.mode && currentMode === 'linear')){
                     const next = Math.min(7, currentChapter+1);
                     st.unlocked[next] = true;
                     st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
                 }
-                st.mode = st.mode || 'linear';
+                st.mode = currentMode;
                 localStorage.setItem(KEY, JSON.stringify(st));
             }catch(e){}
-            window.location.href = '../map.html?mode=linear';
+            // 保持原始模式，从URL参数获取
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentMode = urlParams.get('mode') || 'linear';
+            window.location.href = '../map.html?mode=' + currentMode;
         }
 
         // 使函数在全局可用

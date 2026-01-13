@@ -1226,7 +1226,7 @@
     
     <!-- 开始界面 -->
     <div class="start-screen" id="startScreen">
-        <div class="historical-badge">长征史诗终章 #001</div>
+        <div class="historical-badge">长征史诗终章 #007</div>
         <h1 class="main-title">三大主力会师：<span>长征的辉煌终点</span></h1>
         <p class="subtitle">1936年10月，甘肃会宁与宁夏将台堡。在历经两年艰苦卓绝的征战、分合辗转后，中国工农红军第一、二、四方面军终于胜利会师，标志着长征这一伟大战略转移的全面结束。</p>
         <p class="subtitle">现在，你是一名历史探索者，需要亲历这段激动人心的历史时刻，还原三大主力会师的完整历程。每一场会师背后，都凝聚着无数红军战士的鲜血与信念。</p>
@@ -2028,19 +2028,26 @@
 
         function finishAndReturnToMap(currentChapter){
             try{
-                const KEY = 'lm_unlocks_v1';
+                // 从URL获取模式，使用对应的localStorage键
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentMode = urlParams.get('mode') || 'linear';
+                const KEY = currentMode === 'free' ? 'lm_unlocks_free_v1' : 'lm_unlocks_linear_v1';
                 const raw = localStorage.getItem(KEY);
-                const st = raw ? JSON.parse(raw) : { mode:'linear', unlocked: Array(8).fill(false), unlockedIndex:0 };
+                const st = raw ? JSON.parse(raw) : { mode:currentMode, unlocked: Array(8).fill(false), unlockedIndex:0 };
                 if(!st.unlocked[currentChapter]) st.unlocked[currentChapter] = true;
-                if(st.mode === 'linear' || (!st.mode && true)){
+                if(currentMode === 'linear' || st.mode === 'linear'){
                     const next = Math.min(7, currentChapter+1);
                     st.unlocked[next] = true;
                     st.unlockedIndex = Math.max(st.unlockedIndex||0, next);
                 }
-                st.mode = st.mode || 'linear';
+                st.mode = currentMode;
                 localStorage.setItem(KEY, JSON.stringify(st));
-            }catch(e){}
-            window.location.href = '../map.html?mode=linear';
+                window.location.href = '../map.html?mode=' + currentMode;
+            }catch(e){
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentMode = urlParams.get('mode') || 'linear';
+                window.location.href = '../map.html?mode=' + currentMode;
+            }
         }
 
         // 使函数在全局可用

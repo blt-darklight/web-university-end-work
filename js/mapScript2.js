@@ -7,6 +7,55 @@
     - 测试时重置进度方法：在地图页点击“重置进度”按钮，或在浏览器控制台执行 `localStorage.removeItem('lm_unlocks_v1')` 然后刷新页面。
 */
 (function(){
+    // 显示加载转场页面
+    function showLoadingTransition(targetUrl) {
+        const loadingTransition = document.getElementById('loadingTransition');
+        const progressBar = document.getElementById('progressBar');
+        const loadingTips = document.getElementById('loadingTips');
+        
+        if(!loadingTransition) {
+            window.location.href = targetUrl;
+            return;
+        }
+        
+        const tips = [
+            '准备探索历史...',
+            '加载事件详情...',
+            '初始化沉浸体验...',
+            '准备好了，即将进入！'
+        ];
+        
+        loadingTransition.classList.add('active');
+        
+        // 创建隐藏的iframe预加载目标页面
+        const preloadFrame = document.createElement('iframe');
+        preloadFrame.style.display = 'none';
+        preloadFrame.src = targetUrl;
+        document.body.appendChild(preloadFrame);
+        
+        let progress = 0;
+        let tipIndex = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15 + 10;
+            if (progress > 100) progress = 100;
+            
+            progressBar.style.width = progress + '%';
+            
+            // 更新提示文字
+            if (progress > 25 * (tipIndex + 1) && tipIndex < tips.length - 1) {
+                tipIndex++;
+                loadingTips.textContent = tips[tipIndex];
+            }
+            
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 300);
+            }
+        }, 200);
+    }
+
     // 尝试加载工程目录下的更精确 SVG：/img/china.svg
     async function loadExternalSVG(){
         // 优先使用 <object id="chinaObject"> 的内容（如果可用）
@@ -64,7 +113,8 @@
     const param = (name)=>{ const u = new URL(window.location.href); return u.searchParams.get(name); };
     const mode = param('mode') || 'linear';
     const debugMode = param('debug') === '1' || param('debug') === 'true';
-    const KEY = 'lm_unlocks_v1';
+    // 为不同模式使用不同的localStorage键，避免数据互通
+    const KEY = mode === 'free' ? 'lm_unlocks_free_v1' : 'lm_unlocks_linear_v1';
 
     // SVG 初始变换参数（来自最新调试导出）
     let svgZoom = 1.79;
@@ -156,7 +206,9 @@
         nodes.forEach((n, idx)=>{
             if(n.onMap){
                 const el = document.createElement('div');
-                el.className = 'marker ' + (st.unlocked[idx] ? 'unlocked' : 'locked');
+                // 自由探索模式下所有节点都显示为已解锁
+                const isUnlocked = mode === 'free' || st.unlocked[idx];
+                el.className = 'marker ' + (isUnlocked ? 'unlocked' : 'locked');
                 el.dataset.id = idx;
                 el.innerHTML = `<div class="dot">${idx+1}</div><div class="label">${n.title}</div>`;
                 if(n._size){ el.style.width = el.style.height = (n._size)+'px'; }
@@ -209,8 +261,8 @@
 
                 el.addEventListener('click', ()=>{
                     if(mode === 'free' || st.unlocked[idx]){
-                            const target = eventPages[idx] || 'event.html';
-                        window.location.href = `${target}?mode=${mode}&id=${idx}`;
+                        const target = eventPages[idx] || 'event.html';
+                        showLoadingTransition(`${target}?mode=${mode}&id=${idx}`);
                     }else{
                         alert('该节点尚未解锁，请先完成前置学习。');
                     }
@@ -229,16 +281,24 @@
         const list = document.getElementById('nodeList'); list.innerHTML = '';
         nodes.forEach((n, idx)=>{
             const li = document.createElement('li');
-            li.className = st.unlocked[idx] ? 'unlocked' : 'locked';
+            // 自由探索模式下所有节点都显示为已解锁
+            const isUnlocked = mode === 'free' || st.unlocked[idx];
+            li.className = isUnlocked ? 'unlocked' : 'locked';
             const title = document.createElement('span'); title.textContent = `${idx+1}. ${n.title}`;
-            const btn = document.createElement('button'); btn.textContent = st.unlocked[idx] || mode==='free' ? '进入学习' : '锁定';
+            const btn = document.createElement('button'); 
+            const btnText = st.unlocked[idx] || mode==='free' ? '进入学习' : '🔒 锁定';
+            btn.innerHTML = `<span>${btnText}</span>`;
             btn.disabled = !(st.unlocked[idx] || mode==='free');
-            btn.addEventListener('click', ()=>{ const target = eventPages[idx] || 'event.html'; window.location.href = `${target}?mode=${mode}&id=${idx}`; });
+            btn.addEventListener('click', ()=>{ const target = eventPages[idx] || 'event.html'; showLoadingTransition(`${target}?mode=${mode}&id=${idx}`); });
             li.appendChild(title); li.appendChild(btn); list.appendChild(li);
         });
 
         document.getElementById('resetProgress').addEventListener('click', ()=>{
-            if(confirm('确认重置学习进度？')){ localStorage.removeItem(KEY); location.reload(); }
+            const modeText = mode === 'free' ? '自由探索' : '线性引导';
+            if(confirm(`确认重置${modeText}模式的学习进度？\n\n注意：这只会重置${modeText}模式的数据，不会影响其他模式。`)){ 
+                localStorage.removeItem(KEY); 
+                location.reload(); 
+            }
         });
         if(debugMode) setupDebugPanel();
     }
