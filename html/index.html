@@ -6,12 +6,11 @@
     <title>重走长征路 - 红色精神传承</title>
     <link rel="stylesheet" href="../css/mainStyle.css">
     <link rel="stylesheet" href="../css/ai-assistant.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css">
     <!-- Swiper CSS for banner slider -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../vendor/swiper/swiper-bundle.min.css">
 </head>
-<body>
+<body class="home-page">
     <!-- 加载转场页面 -->
     <div class="loading-transition" id="loadingTransition">
         <div class="loading-content">
@@ -26,29 +25,6 @@
         </div>
     </div>
 
-    <!-- 视差滚动图片 -->
-    <div class="parallax-container">
-        <div class="parallax-image" id="parallaxImage"></div>
-        <div class="parallax-overlay"></div>
-    </div>
-
-    <!-- 背景元素 -->
-    <div class="background-container">
-        <div class="red-banner"></div>
-        <div class="mountain-bg"></div>
-        <div class="clouds"></div>
-        <div class="clouds clouds2"></div>
-        <div class="river"></div>
-        <div class="route-line"></div>
-        <div class="stars">
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-        </div>
-    </div>
-
     <!-- 侧边导航 -->
     <nav class="side-nav" id="sideNav">
         <div class="side-nav-logo">
@@ -59,50 +35,21 @@
             <li><a href="#context"><i class="fas fa-book-open"></i><span>前情提要</span></a></li>
             <li><a href="#explore"><i class="fas fa-compass"></i><span>开始探索</span></a></li>
             <li><a href="#stats"><i class="fas fa-chart-bar"></i><span>长征数据</span></a></li>
-            <li><a href="#features"><i class="fas fa-star"></i><span>特色功能</span></a></li>
+            
         </ul>
         <div class="side-nav-indicator" id="navIndicator"></div>
     </nav>
 
     <!-- 主容器 -->
     <div class="container">
-        <!-- 顶部导航 - 简化版 -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-mountain"></i>
-                <h1>重走长征路</h1>
-            </div>
-            <div class="header-quote">
-                <p>不忘初心，牢记使命，传承红色基因</p>
-            </div>
-        </header>
-
         <!-- 主要内容 -->
         <main class="main-content">
-            <!-- 标题区域 -->
-            <section class="hero-section" id="home">
-                <div class="title-container">
-                    <h2 class="subtitle">纪念中国工农红军长征胜利</h2>
-                    <h1 class="main-title">重走长征路</h1>
-                    <div class="title-line">
-                        <div class="line-part"></div>
-                        <div class="star-icon"><i class="fas fa-star"></i></div>
-                        <div class="line-part"></div>
-                    </div>
-                    <p class="tagline">体验长征精神，传承红色文化</p>
-                    <button class="start-btn" id="startBtn">
-                        开始重走长征路
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </section>
-
-            <!-- 缩放轮播 Banner -->
-            <section class="banner-section" id="home-banner">
+            <!-- 顶部全宽轮播 Banner（首页主视觉） -->
+            <section class="banner-section" id="home">
                 <div class="home-swiper swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/瑞金叶坪.jpg');">
+                            <div class="banner-card" style="background-image:url('../img/瑞金叶坪.jpg');" data-bg="../img/瑞金叶坪.jpg">
                                 <div class="banner-overlay">
                                     <h3>长征精神·不畏艰难</h3>
                                     <p>跨越雪山草地，坚定理想信念</p>
@@ -110,7 +57,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/遵义会议.webp');">
+                            <div class="banner-card" data-bg="../img/遵义会议.webp">
                                 <div class="banner-overlay">
                                     <h3>遵义会议·伟大转折</h3>
                                     <p>独立自主，实事求是的光辉典范</p>
@@ -118,7 +65,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/会宁会师.webp');">
+                            <div class="banner-card" data-bg="../img/会宁会师.webp">
                                 <div class="banner-overlay">
                                     <h3>胜利会师·大道不孤</h3>
                                     <p>三大主力汇聚，革命力量延续</p>
@@ -126,7 +73,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/通道转兵.webp');">
+                            <div class="banner-card" data-bg="../img/通道转兵.webp">
                                 <div class="banner-overlay">
                                     <h3>通道转兵·战略抉择</h3>
                                     <p>关键时刻的正确方向</p>
@@ -134,7 +81,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/巧渡金沙江.webp');">
+                            <div class="banner-card" data-bg="../img/巧渡金沙江.webp">
                                 <div class="banner-overlay">
                                     <h3>巧渡金沙江·智取胜机</h3>
                                     <p>以机动战赢得主动</p>
@@ -142,7 +89,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/四渡赤水.webp');">
+                            <div class="banner-card" data-bg="../img/四渡赤水.webp">
                                 <div class="banner-overlay">
                                     <h3>四渡赤水·神出鬼没</h3>
                                     <p>运动战的经典范例</p>
@@ -150,7 +97,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/飞夺泸定桥.webp');">
+                            <div class="banner-card" data-bg="../img/飞夺泸定桥.webp">
                                 <div class="banner-overlay">
                                     <h3>飞夺泸定桥·勇不可挡</h3>
                                     <p>铁索桥上的英勇事迹</p>
@@ -158,7 +105,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="banner-card" style="background-image:url('../img/天险腊子口.webp');">
+                            <div class="banner-card" data-bg="../img/天险腊子口.webp">
                                 <div class="banner-overlay">
                                     <h3>强渡腊子口·破天险</h3>
                                     <p>艰险地形中的突破之战</p>
@@ -168,8 +115,27 @@
                     </div>
                     <!-- 导航控件 -->
                     <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                </div>
+
+                <!-- 主标题叠加层 -->
+                <div class="banner-hero" aria-label="首页主视觉">
+                    <div class="banner-hero-inner">
+                        <div class="hero-star" aria-hidden="true">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h2 class="subtitle">纪念中国工农红军长征胜利</h2>
+                        <h1 class="main-title">重走长征路</h1>
+                        <div class="title-line" aria-hidden="true">
+                            <div class="line-part"></div>
+                            <div class="star-icon"><i class="fas fa-star"></i></div>
+                            <div class="line-part"></div>
+                        </div>
+                        <p class="tagline">体验长征精神，传承红色文化</p>
+                        <button class="start-btn" id="startBtn">
+                            开启重走长征路
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
             </section>
 
@@ -289,36 +255,13 @@
                 </div>
             </section>
 
-            <!-- 特色功能区域 -->
-            <section class="features-section" id="features">
-                <div class="section-header">
-                    <h3><i class="fas fa-star"></i> 体验特色功能</h3>
-                    <div class="section-line"></div>
-                </div>
-                <div class="features-container">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-vr-cardboard"></i>
-                        </div>
-                        <h4 class="feature-title">沉浸式体验</h4>
-                        <p class="feature-description">身临其境感受长征路上的艰苦与荣光。</p>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h4 class="feature-title">AI答疑</h4>
-                        <p class="feature-description">智能AI助手，随时解答关于长征历史的各种问题。</p>
-                    </div>
-                </div>
-            </section>
+            
         </main>
 
         <!-- 底部信息 - 简化版 -->
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <i class="fas fa-mountain"></i>
                     <span>重走长征路 - 红色精神传承项目</span>
                 </div>
                 <div class="footer-quote">
@@ -341,7 +284,7 @@
 
     <!-- 脚本 -->
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js"></script>
+    <script src="../vendor/swiper/swiper-bundle.min.js"></script>
     <script src="../js/mainScript.js"></script>
 
     <!-- AI助手按钮 -->

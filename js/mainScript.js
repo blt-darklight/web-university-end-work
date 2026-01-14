@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 低配设备自动启用轻量渲染：减少模糊/阴影等高成本效果
+    try {
+        const deviceMemory = Number(navigator.deviceMemory || 0);
+        const cores = Number(navigator.hardwareConcurrency || 0);
+        const isLowEnd = (deviceMemory && deviceMemory <= 4) || (cores && cores <= 4);
+        if (isLowEnd) {
+            document.body.classList.add('perf-lite');
+        }
+    } catch (e) {}
+
     // 页面元素
     const linearBtn = document.getElementById('linearBtn');
     const freeBtn = document.getElementById('freeBtn');
@@ -7,20 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const statsNumbers = document.querySelectorAll('.stat-number');
     const sideNavLinks = document.querySelectorAll('.side-nav-list a');
     const navIndicator = document.getElementById('navIndicator');
-    const parallaxImage = document.getElementById('parallaxImage');
     
-    // 视差滚动效果
-    if (parallaxImage) {
-        document.addEventListener('mousemove', function(e) {
-            const x = (window.innerWidth - e.pageX * 2) / 100;
-            const y = (window.innerHeight - e.pageY * 2) / 100;
-            
-            parallaxImage.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        });
-    }
-    
-    // 开始按钮点击事件 - 先轻微放大当前Banner再滚动到探索区域
-    startBtn.addEventListener('click', function() {
+    // 开始按钮点击事件 - 先轻微放大当前Banner再滚动到“前情提要”
+    if (startBtn) startBtn.addEventListener('click', function() {
         // 添加加载动画
         startBtn.classList.add('loading');
         
@@ -30,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
             activeCard.classList.add('boost');
             // 小延迟后开始滚动，并在滚动开始后移除放大
             setTimeout(() => {
-                const explore = document.getElementById('explore');
-                if (explore) {
-                    explore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const context = document.getElementById('context');
+                if (context) {
+                    context.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
                 setTimeout(() => {
                     activeCard.classList.remove('boost');
@@ -42,7 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // 无活动卡片时直接滚动
             setTimeout(() => {
-                document.getElementById('explore').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const context = document.getElementById('context');
+                if (context) {
+                    context.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
                 setTimeout(() => {
                     startBtn.classList.remove('loading');
                 }, 400);
@@ -292,10 +294,40 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }, 500);
 
+    // 首页背景图延迟加载：先快出首屏，再在空闲时加载大图
+    if (document.body && document.body.classList.contains('home-page')) {
+        const markReady = () => document.body.classList.add('bg-ready');
+        if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(markReady, { timeout: 1200 });
+        } else {
+            setTimeout(markReady, 300);
+        }
+    }
+
     // -------- 首页缩放 Banner 轮播初始化 --------
     try {
         const bannerEl = document.querySelector('.home-swiper');
         if (bannerEl && window.Swiper) {
+            // 懒加载 slide 背景图：避免首屏把所有大图一次性下载
+            const ensureSlideBg = (slideEl) => {
+                if (!slideEl) return;
+                const card = slideEl.querySelector('.banner-card');
+                if (!card) return;
+                if (card.dataset && card.dataset.bg && !card.dataset.bgLoaded) {
+                    const url = card.dataset.bg;
+                    card.style.backgroundImage = `url('${url}')`;
+                    card.dataset.bgLoaded = '1';
+                }
+            };
+
+            const ensureAround = (swiper) => {
+                if (!swiper || !swiper.slides) return;
+                const i = swiper.activeIndex;
+                ensureSlideBg(swiper.slides[i]);
+                ensureSlideBg(swiper.slides[i + 1]);
+                ensureSlideBg(swiper.slides[i - 1]);
+            };
+
             const bannerSwiper = new Swiper('.home-swiper', {
                 loop: false,
                 slidesPerView: 1,
@@ -304,12 +336,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 fadeEffect: { crossFade: true },
                 grabCursor: true,
                 speed: 800,
+                preloadImages: false,
                 autoplay: {
                     delay: 4000,
                     disableOnInteraction: false
                 },
                 pagination: { el: '.home-swiper .swiper-pagination', clickable: true },
-                navigation: { nextEl: '.home-swiper .swiper-button-next', prevEl: '.home-swiper .swiper-button-prev' }
+            });
+
+            // 初始化先加载当前/相邻
+            ensureAround(bannerSwiper);
+            bannerSwiper.on('slideChangeTransitionStart', () => ensureAround(bannerSwiper));
+
+            // 点击轮播图：向右切换（自动轮播不变）
+            bannerEl.addEventListener('click', (e) => {
+                // 不抢占标题区/按钮点击
+                if (e.target && e.target.closest && e.target.closest('.banner-hero-inner')) return;
+                // 不抢占分页圆点点击
+                if (e.target && e.target.closest && e.target.closest('.swiper-pagination')) return;
+                // 只要点在轮播区域，就切到下一张
+                bannerSwiper.slideNext(800);
             });
 
             // 进入视口时才启动自动播放，避免后台标签无意义轮播

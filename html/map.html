@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../css/mainStyle.css">
     <link rel="stylesheet" href="../css/mapStyle.css">
     <link rel="stylesheet" href="../css/ai-assistant.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css">
 </head>
-<body>
+<body class="map-page-bg">
     <!-- 加载转场页面 -->
     <div class="loading-transition" id="loadingTransition">
         <div class="loading-content">
@@ -59,15 +59,7 @@
         </footer>
     </div>
 
-    <script>
-        // 动态加载脚本并加时间戳，确保每次进入地图页面加载最新版脚本
-        (function(){
-            const s = document.createElement('script');
-            s.src = '../js/mapScript2.js?ts=' + Date.now();
-            s.async = false;
-            document.body.appendChild(s);
-        })();
-    </script>
+    <script src="../js/mapScript2.js" defer></script>
 
     <!-- AI助手按钮 -->
 <button id="aiAssistantButton" title="AI助手">
