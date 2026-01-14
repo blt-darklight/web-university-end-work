@@ -291,9 +291,287 @@ body { margin:0; padding:0; background:transparent; }
 }
 #modeIndicator { font-size:13px; padding:4px 12px; background:rgba(255,255,255,0.2); border-radius:20px; }
 
-/* 响应 */
-@media (max-width:1100px){ 
-  .map-main { flex-direction:column; } 
-  .map-sidebar { width:100%; border-left:none; border-top:3px solid #d4a574; border-radius:0; }
-  .china-map { width:100%; max-width:800px; }
+/* 响应式设计 */
+/* 大屏幕：>1100px（默认） */
+
+/* 平板/中等屏幕：768px-1100px */
+@media (max-width: 1100px){ 
+  .map-main { 
+    flex-direction: column; 
+    gap: 0;
+  } 
+  .map-sidebar { 
+    width: 100%; 
+    border-left: none; 
+    border-top: 3px solid #d4a574; 
+    border-radius: 0;
+    max-height: 400px;
+  }
+  .china-map { 
+    width: 100%; 
+    max-width: 800px; 
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .map-header h1 {
+    font-size: 24px;
+  }
+}
+
+/* 小平板/大手机：600px-768px */
+@media (max-width: 768px) {
+  .map-page {
+    min-height: auto;
+  }
+  
+  .map-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+  
+  .map-header h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  
+  .map-header p {
+    font-size: 12px;
+  }
+  
+  .mode-indicator {
+    font-size: 12px !important;
+  }
+  
+  .map-main {
+    flex-direction: column;
+    padding: 16px;
+    gap: 0;
+  }
+  
+  .map-container {
+    min-height: 400px;
+    padding: 0;
+    margin-bottom: 12px;
+  }
+  
+  .china-map {
+    width: 100%;
+    height: 350px;
+    aspect-ratio: auto;
+    border-radius: 12px;
+  }
+  
+  .map-sidebar {
+    width: 100%;
+    border-left: none;
+    border-top: 3px solid #d4a574;
+    border-radius: 0;
+    padding: 16px;
+    max-height: 300px;
+    box-shadow: -12px 0 0 transparent;
+  }
+  
+  .map-sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .map-sidebar li {
+    padding: 12px 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  
+  .map-sidebar li button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .map-footer {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  
+  .map-footer button,
+  .map-footer a {
+    padding: 6px 12px;
+    font-size: 13px;
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .marker {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* 手机：≤600px */
+@media (max-width: 600px) {
+  .map-header {
+    padding: 12px 15px;
+  }
+  
+  .map-header h1 {
+    font-size: 20px;
+  }
+  
+  .map-header p {
+    font-size: 11px;
+  }
+  
+  .map-main {
+    padding: 12px;
+    min-height: calc(100vh - 120px);
+  }
+  
+  .map-container {
+    min-height: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .china-map {
+    height: 300px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+  
+  .map-sidebar {
+    border-top: 2px solid #d4a574;
+    padding: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  
+  .map-sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .map-sidebar li {
+    padding: 10px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  
+  .map-sidebar li button {
+    padding: 5px 10px;
+    font-size: 11px;
+    flex: 0 0 auto;
+  }
+  
+  .map-footer {
+    padding: 8px 12px;
+  }
+  
+  .map-footer button,
+  .map-footer a {
+    padding: 6px 10px;
+    font-size: 12px;
+    flex: 1;
+  }
+  
+  .marker {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .marker .padlock {
+    font-size: 12px;
+  }
+  
+  .marker .label {
+    font-size: 11px;
+    padding: 6px 10px;
+    top: 20px;
+  }
+}
+
+/* 超小屏幕：≤480px */
+@media (max-width: 480px) {
+  .map-header {
+    padding: 10px 12px;
+  }
+  
+  .map-header h1 {
+    font-size: 18px;
+  }
+  
+  .map-header p {
+    display: none;
+  }
+  
+  .map-main {
+    padding: 8px;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .map-container {
+    min-height: 250px;
+    margin-bottom: 8px;
+  }
+  
+  .china-map {
+    height: 250px;
+    border-radius: 8px;
+  }
+  
+  .map-sidebar {
+    border-top: 2px solid #d4a574;
+    padding: 10px;
+    max-height: 200px;
+  }
+  
+  .map-sidebar h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+  
+  .map-sidebar li {
+    padding: 8px;
+    margin-bottom: 4px;
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+  
+  .map-sidebar li span {
+    flex: 1 1 100%;
+    margin-bottom: 6px;
+  }
+  
+  .map-sidebar li button {
+    padding: 4px 8px;
+    font-size: 10px;
+    flex: 1 1 auto;
+    min-width: 60px;
+  }
+  
+  .map-footer {
+    padding: 6px 10px;
+    flex-direction: column;
+  }
+  
+  .map-footer button,
+  .map-footer a {
+    padding: 6px 8px;
+    font-size: 11px;
+    width: 100%;
+  }
+  
+  .marker {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .marker .label {
+    font-size: 10px;
+    padding: 4px 8px;
+    top: 18px;
+  }
 }
